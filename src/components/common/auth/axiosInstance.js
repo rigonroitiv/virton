@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { BASE_URL } from '../../utils/consts';
+import { BASE_URL } from '../../../utils/consts';
 import CryptoJS, { enc, SHA1 } from 'crypto-js';
 
 function getSession() {
