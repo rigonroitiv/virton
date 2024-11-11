@@ -1,8 +1,12 @@
 import React from 'react'
+import ApartmentsFilter from '../components/filter/ApartmentsFilter'
 
 const ApartmentsPage = () => {
   return (
-    <div>ApartmentsPage</div>
+    <div>
+        Apartmenti eshte ketu
+        <ApartmentsFilter />
+    </div>
   )
 }
 

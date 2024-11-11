@@ -1,9 +1,13 @@
 import React from 'react'
+import { Route, Routes } from 'react-router-dom'
+import ApartmentsPage from './ApartmentsPage'
 
 const ClientPage = () => {
   return (
     <div>
-      <h1>COMING SOON</h1>
+      <Routes>
+        <Route path='/apartments/:id' element={<ApartmentsPage />} />
+      </Routes>
     </div>
   )
 }
