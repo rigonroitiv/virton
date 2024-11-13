@@ -1,15 +1,15 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import ApartmentsPage from './ApartmentsPage'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import ApartmentsPage from "./ApartmentsPage";
 
 const ClientPage = () => {
   return (
     <div>
       <Routes>
-        <Route path='/apartments/:id' element={<ApartmentsPage />} />
+        <Route path="/apartments/:id" element={<ApartmentsPage />} />
       </Routes>
     </div>
-  )
-}
+  );
+};
 
-export default ClientPage
+export default ClientPage;

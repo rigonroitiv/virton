@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
+import FilterApartment from "../components/FilterApartment";
 
 const FloorplanPage = () => {
   return (
-    <div>FloorplanPage</div>
-  )
-}
+    <>
+      <FilterApartment />
+    </>
+  );
+};
 
-export default FloorplanPage
+export default FloorplanPage;

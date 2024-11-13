@@ -648,3 +648,91 @@ export const apartments = [
         floor: 2,
     },
 ]
+
+
+export const planimetrite = [
+    {
+      "id": 1,
+      "siperfaqja": "100 m²",
+      "tipi": "Apartment",
+      "kati": 3,
+      "image": "./assets/images/planidemo.png"
+    },
+    {
+      "id": 2,
+      "siperfaqja": "150 m²",
+      "tipi": "House",
+      "kati": 1,
+      "image": "./assets/images/planidemo.png"
+    },
+    {
+      "id": 3,
+      "siperfaqja": "75 m²",
+      "tipi": "Studio",
+      "kati": 2,
+      "image": "./assets/images/planidemo.png"
+    },
+    {
+      "id": 4,
+      "siperfaqja": "200 m²",
+      "tipi": "Villa",
+      "kati": 2,
+      "image": "./assets/images/planidemo.png"
+    },
+    {
+        "id": 5,
+        "siperfaqja": "100 m²",
+        "tipi": "Apartment",
+        "kati": 3,
+        "image": "./assets/images/planidemo.png"
+      },
+      {
+        "id": 6,
+        "siperfaqja": "150 m²",
+        "tipi": "House",
+        "kati": 1,
+        "image": "./assets/images/planidemo.png"
+      },
+      {
+        "id": 7,
+        "siperfaqja": "75 m²",
+        "tipi": "Studio",
+        "kati": 2,
+        "image": "./assets/images/planidemo.png"
+      },
+      {
+        "id": 8,
+        "siperfaqja": "200 m²",
+        "tipi": "Villa",
+        "kati": 2,
+        "image": "./assets/images/planidemo.png"
+      },
+      {
+        "id": 9,
+        "siperfaqja": "100 m²",
+        "tipi": "Apartment",
+        "kati": 3,
+        "image": "./assets/images/planidemo.png"
+      },
+      {
+        "id": 10,
+        "siperfaqja": "150 m²",
+        "tipi": "House",
+        "kati": 1,
+        "image": "./assets/images/planidemo.png"
+      },
+      {
+        "id": 11,
+        "siperfaqja": "75 m²",
+        "tipi": "Studio",
+        "kati": 2,
+        "image": "./assets/images/planidemo.png"
+      },
+      {
+        "id": 12,
+        "siperfaqja": "200 m²",
+        "tipi": "Villa",
+        "kati": 2,
+        "image": "./assets/images/planidemo.png"
+      }
+  ];
