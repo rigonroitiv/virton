@@ -3,22 +3,23 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Button,
   Grid,
   Typography,
 } from "@mui/material";
 import React from "react";
-const planimetrite = []
+import { planimetrite } from "../../utils/server";
+
 const PlanimetriCards = () => {
   return (
     <Box
       sx={{
         flexGrow: 1,
-        padding: "50px 100px",
+        // padding: "50px 100px",
         backgroundColor: "white",
         marginTop: "50px",
       }}
     >
-      ss
       <Grid container spacing={5} justifyContent="center">
         {planimetrite.map((property) => (
           <Grid
@@ -47,7 +48,7 @@ const PlanimetriCards = () => {
                 component="img"
                 sx={{
                   backgroundColor: "white",
-                  padding: "10px",
+                  padding: "15px",
                   borderRadius: "5px",
                 }}
                 height="300"
@@ -68,18 +69,22 @@ const PlanimetriCards = () => {
                   flexDirection="row"
                   justifyContent="space-between"
                   alignItems="start"
-                  sx={{ marginBottom: 1 }}
+                  sx={{ marginBottom: 1, marginTop: 3 }}
                 >
                   <Typography
                     sx={{
                       fontSize: "15px",
                       color: "#C1AC40",
                       fontWeight: "400",
+                      fontFamily: "poppins",
                     }}
                   >
                     Siperfaqja
                   </Typography>
-                  <Typography variant="body1" sx={{ color: "white" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "white", fontFamily: "poppins" }}
+                  >
                     {property.siperfaqja}
                   </Typography>
                 </Box>
@@ -96,11 +101,15 @@ const PlanimetriCards = () => {
                       fontSize: "15px",
                       color: "#C1AC40",
                       fontWeight: "400",
+                      fontFamily: "poppins",
                     }}
                   >
                     Tipi
                   </Typography>
-                  <Typography variant="body1" sx={{ color: "white" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "white", fontFamily: "poppins" }}
+                  >
                     {property.tipi}
                   </Typography>
                 </Box>
@@ -116,11 +125,15 @@ const PlanimetriCards = () => {
                       fontSize: "15px",
                       color: "#C1AC40",
                       fontWeight: "400",
+                      fontFamily: "poppins",
                     }}
                   >
                     Kati
                   </Typography>
-                  <Typography variant="body1" sx={{ color: "white" }}>
+                  <Typography
+                    variant="body1"
+                    sx={{ color: "white", fontFamily: "poppins" }}
+                  >
                     {property.kati}
                   </Typography>
                 </Box>
@@ -134,7 +147,11 @@ const PlanimetriCards = () => {
                   }}
                 >
                   <Button
-                    sx={{ color: "#C1AC40", textTransform: "capitalize" }}
+                    sx={{
+                      color: "#C1AC40",
+                      textTransform: "capitalize",
+                      fontFamily: "poppins",
+                    }}
                   >
                     <img
                       src="/assets/images/vector.png"
