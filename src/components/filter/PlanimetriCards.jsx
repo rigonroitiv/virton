@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 import React from "react";
-
+const planimetrite = []
 const PlanimetriCards = () => {
   return (
     <Box
@@ -18,6 +18,7 @@ const PlanimetriCards = () => {
         marginTop: "50px",
       }}
     >
+      ss
       <Grid container spacing={5} justifyContent="center">
         {planimetrite.map((property) => (
           <Grid
