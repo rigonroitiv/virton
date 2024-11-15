@@ -736,3 +736,6 @@ export const planimetrite = [
         "image": "./assets/images/planidemo.png"
       }
   ];
+
+
+  

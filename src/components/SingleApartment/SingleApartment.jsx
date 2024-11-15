@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Avatar, Box, Button, Typography } from "@mui/material";
 import React from "react";
 
 const SingleApartment = () => {
@@ -23,6 +23,7 @@ const SingleApartment = () => {
             backgroundColor: "white",
             borderRadius: "50px",
             textTransform: "capitalize",
+            height: "60px",
           }}
         >
           3D Plan
@@ -39,6 +40,7 @@ const SingleApartment = () => {
             backgroundColor: "#1d1d3a",
             borderRadius: "50px",
             textTransform: "capitalize",
+            height: "60px",
           }}
         >
           <img
@@ -56,17 +58,20 @@ const SingleApartment = () => {
           flexDirection: "row",
           width: "100%",
           gap: "20px",
+          justifyContent: "start",
         }}
       >
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            flex: "6",
+            flex: "5",
             width: "100%",
-            borderTop: "1px solid #C1AC40",
-            borderBottom: "1px solid #C1AC40",
+            // borderTop: "1px solid #C1AC40",
+            // borderBottom: "1px solid #C1AC40",
             gap: "10px",
+            padding: "50px 100px 50px 50px",
+            justifyContent: "space-between",
           }}
         >
           <Box
@@ -74,6 +79,8 @@ const SingleApartment = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
+              borderTop: "1px solid #c1ac40",
+              paddingTop: "30px",
             }}
           >
             <Typography
@@ -253,9 +260,79 @@ const SingleApartment = () => {
             >
               6
             </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              justifyContent: "space-between",
+              width: "100%",
+              borderTop: "1px solid #c1ac40",
+              paddingTop: "30px",
+              alignItems: "center",
+            }}
+          >
+            <Avatar />
+            <Button
+              sx={{
+                width: "45%",
+                fontFamily: "poppins",
+                fontSize: "20px",
+                fontWeight: "600",
+                color: "#1d1d3a",
+                backgroundColor: "#C1AC40",
+                textTransform: "capitalize",
+                borderRadius: "50px",
+                height: "60px",
+              }}
+            >
+              <img
+                src="/assets/images/shkarkopdf.png"
+                alt=""
+                style={{ marginRight: "7px" }}
+              />{" "}
+              Shkarko PDF
+            </Button>
+
+            <Button
+              sx={{
+                width: "45%",
+                fontFamily: "poppins",
+                fontSize: "20px",
+                fontWeight: "600",
+                color: "#C1AC40",
+                backgroundColor: "#1d1d3a",
+                textTransform: "capitalize",
+                borderRadius: "50px",
+                height: "60px",
+              }}
+            >
+              <img
+                src="/assets/images/vector.png"
+                alt=""
+                style={{ marginRight: "7px" }}
+              />{" "}
+              Pyet Per Cmimin
+            </Button>
           </Box>
         </Box>
-        <Box></Box>
+        <Box
+          sx={{
+            display: "flex",
+            flex: "6",
+            width: "100%",
+            objectFit: "cover",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <img
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            src="/assets/images/plani.jpg"
+            alt=""
+          />
+        </Box>
       </Box>
     </Box>
   );
