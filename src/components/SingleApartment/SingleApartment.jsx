@@ -1,7 +1,9 @@
-import { Avatar, Box, Button, Typography } from "@mui/material";
+import { Avatar, Box, Button, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 
 const SingleApartment = () => {
+  const isSmallDev = useMediaQuery("(max-width: 768px)");
+
   return (
     <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
       <Box
@@ -14,7 +16,7 @@ const SingleApartment = () => {
       >
         <Button
           sx={{
-            width: "190px",
+            width: isSmallDev ? "50%" : "190px",
             border: "1px solid #C1AC40",
             fontFamily: "poppins",
             fontSize: "15px",
@@ -31,7 +33,7 @@ const SingleApartment = () => {
 
         <Button
           sx={{
-            width: "190px",
+            width: isSmallDev ? "50%" : "190px",
             border: "1px solid #1d1d3a",
             fontFamily: "poppins",
             fontSize: "15px",
@@ -55,7 +57,7 @@ const SingleApartment = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: isSmallDev ? "column" : "row",
           width: "100%",
           gap: "20px",
           justifyContent: "start",
@@ -70,7 +72,7 @@ const SingleApartment = () => {
             // borderTop: "1px solid #C1AC40",
             // borderBottom: "1px solid #C1AC40",
             gap: "10px",
-            padding: "50px 100px 50px 50px",
+            padding: isSmallDev ? "20px" : "50px 100px 50px 50px",
             justifyContent: "space-between",
           }}
         >
@@ -85,7 +87,7 @@ const SingleApartment = () => {
           >
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -96,7 +98,7 @@ const SingleApartment = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -116,7 +118,7 @@ const SingleApartment = () => {
           >
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -127,7 +129,7 @@ const SingleApartment = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -147,7 +149,7 @@ const SingleApartment = () => {
           >
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -158,7 +160,7 @@ const SingleApartment = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -178,7 +180,7 @@ const SingleApartment = () => {
           >
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -189,7 +191,7 @@ const SingleApartment = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -209,7 +211,7 @@ const SingleApartment = () => {
           >
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -220,7 +222,7 @@ const SingleApartment = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -236,11 +238,12 @@ const SingleApartment = () => {
               display: "flex",
               flexDirection: "row",
               justifyContent: "space-between",
+              paddingBottom: "30px",
             }}
           >
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -251,7 +254,7 @@ const SingleApartment = () => {
             </Typography>
             <Typography
               sx={{
-                fontSize: "30px",
+                fontSize: isSmallDev ? "25px" : "30px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -270,6 +273,7 @@ const SingleApartment = () => {
               width: "100%",
               borderTop: "1px solid #c1ac40",
               paddingTop: "30px",
+              gap: "2px",
               alignItems: "center",
             }}
           >
@@ -278,7 +282,7 @@ const SingleApartment = () => {
               sx={{
                 width: "45%",
                 fontFamily: "poppins",
-                fontSize: "20px",
+                fontSize: isSmallDev ? "14px" : "20px",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 backgroundColor: "#C1AC40",
@@ -299,7 +303,8 @@ const SingleApartment = () => {
               sx={{
                 width: "45%",
                 fontFamily: "poppins",
-                fontSize: "20px",
+                fontSize: isSmallDev ? "14px" : "20px",
+
                 fontWeight: "600",
                 color: "#C1AC40",
                 backgroundColor: "#1d1d3a",

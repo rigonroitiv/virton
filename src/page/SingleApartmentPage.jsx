@@ -1,4 +1,10 @@
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from "@mui/material";
 import React from "react";
 import SingleApartment from "../components/SingleApartment/SingleApartment";
 import GallerySlider from "../components/common/GallerySlider";
@@ -11,15 +17,17 @@ const images = [
 ];
 
 const SingleApartmentPage = () => {
+  const isSmallDev = useMediaQuery("(max-width: 768px)");
+
   return (
     <Box>
       <Box
         sx={{
-          height: "450px",
+          height: isSmallDev ? "350px" : "450px",
           backgroundColor: "#1d1d3a",
           display: "flex",
           flexDirection: "column",
-          padding: "150px 50px 0 50px",
+          padding: isSmallDev ? "100px 20px" : "150px 50px 0 50px",
           gap: "30px",
         }}
       >
@@ -49,13 +57,14 @@ const SingleApartmentPage = () => {
             flexDirection: "row",
             width: "100%",
             justifyContent: "space-between",
+            alignItems: isSmallDev ? "center" : "start",
           }}
         >
           <Typography
             sx={{
               fontFamily: "poppins",
               fontWeight: "600",
-              fontSize: "70px",
+              fontSize: isSmallDev ? "30px" : "70px",
               color: "#C1AC40",
             }}
           >
@@ -64,28 +73,42 @@ const SingleApartmentPage = () => {
 
           <Box
             sx={{
-              height: "170px",
+              height: isSmallDev ? "100px" : "170px",
               backgroundColor: "white",
               alignItems: "center",
               justifyContent: "center",
-              borderRadius: "25px",
+              borderRadius: isSmallDev ? "15px " : "25px",
             }}
           >
             <img
-              style={{ width: "100%", height: "100%" }}
+              style={{
+                width: isSmallDev ? "100px" : "100%",
+                height: isSmallDev ? "100px" : "100%",
+                objectFit: "cover",
+              }}
               src="/assets/images/kendifoto.png"
               alt=""
             />
           </Box>
         </Box>
       </Box>
-      <Box sx={{ padding: "50px" }}>
+      <Box sx={{ padding: isSmallDev ? "20px" : "50px" }}>
         <SingleApartment />
       </Box>
       <GallerySlider images={images} />
-      <Box sx={{ display: "flex", flexDirection: "column", padding: "50px" }}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          padding: isSmallDev ? "20px" : "50px",
+        }}
+      >
         <Typography
-          sx={{ fontFamily: "poppins", fontSize: "50px", fontWeight: "300" }}
+          sx={{
+            fontFamily: "poppins",
+            fontSize: isSmallDev ? "40px" : "50px",
+            fontWeight: "300",
+          }}
         >
           Apartamentet e <span style={{ fontWeight: "700" }}>ngjajshme</span>
         </Typography>

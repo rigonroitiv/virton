@@ -1,13 +1,14 @@
 import React, { useState } from "react";
-import { Box, IconButton, Typography } from "@mui/material";
+import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 
 const GallerySlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const isSmallDev = useMediaQuery("(max-width: 768px)");
 
   // Show 3 images per row
-  const itemsToShow = 3;
+  const itemsToShow = isSmallDev ? 1 : 3;
 
   const handleNext = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
@@ -29,7 +30,7 @@ const GallerySlider = ({ images }) => {
         justifyContent: "center",
         backgroundColor: "#1A1A40",
         width: "100%",
-        padding: "50px",
+        padding: isSmallDev ? "20px 20px" : "50px",
         height: "750px",
       }}
     >
@@ -48,7 +49,7 @@ const GallerySlider = ({ images }) => {
           sx={{
             fontFamily: "poppins",
             fontWeight: "600",
-            fontSize: "50px",
+            fontSize: isSmallDev ? "40px" : "50px",
           }}
         >
           Galeria
@@ -59,7 +60,7 @@ const GallerySlider = ({ images }) => {
             display: "flex",
             flexDirection: "row",
             alignItems: "center",
-            gap: "70px",
+            gap: isSmallDev ? "30px" : "70px",
           }}
         >
           <IconButton
@@ -68,8 +69,8 @@ const GallerySlider = ({ images }) => {
               color: "#C1AC40",
               border: "1px solid #C1AC40",
               borderRadius: "50px",
-              width: "70px",
-              height: "70px",
+              width: isSmallDev ? "50px" : "70px",
+              height: isSmallDev ? "50px" : "70px",
             }}
           >
             <ArrowBackIosNewIcon />
@@ -80,8 +81,8 @@ const GallerySlider = ({ images }) => {
               color: "#C1AC40",
               border: "1px solid #C1AC40",
               borderRadius: "50px",
-              width: "70px",
-              height: "70px",
+              width: isSmallDev ? "50px" : "70px",
+              height: isSmallDev ? "50px" : "70px",
             }}
           >
             <ArrowForwardIosIcon />

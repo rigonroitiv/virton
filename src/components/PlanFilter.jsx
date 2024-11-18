@@ -11,6 +11,7 @@ import {
   Slider,
   SliderValueLabel,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import React from "react";
 import { planimetrite } from "../utils/server";
@@ -18,6 +19,7 @@ import PlanimetriCards from "./filter/PlanimetriCards";
 
 const PlanFilter = () => {
   const [value, setValue] = React.useState([20, 37]);
+  const isSmallDev = useMediaQuery("(max-width: 768px)");
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -30,14 +32,15 @@ const PlanFilter = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: "50px ",
+        padding: isSmallDev ? "50px 20px" : "50px ",
         backgroundColor: "#1D1D3A",
       }}
     >
       <Typography
         sx={{
           fontFamily: "poppins",
-          fontSize: "70px",
+          width: "100%",
+          fontSize: isSmallDev ? "40px" : "70px",
           fontWeight: "600",
           color: "#C1AC40",
           marginBottom: "50px",
@@ -50,8 +53,8 @@ const PlanFilter = () => {
         sx={{
           width: "100%",
           display: "flex",
-          flexDirection: "row",
-          gap: "70px",
+          flexDirection: isSmallDev ? "column" : "row",
+          gap: isSmallDev ? "20px" : "70px",
         }}
       >
         <FormControl fullWidth>
@@ -170,8 +173,8 @@ const PlanFilter = () => {
         sx={{
           width: "100%",
           display: "flex",
-          flexDirection: "row",
-          gap: "70px",
+          flexDirection: isSmallDev ? "column" : "row",
+          gap: isSmallDev ? "20px" : "70px",
         }}
       >
         <Box
@@ -179,7 +182,7 @@ const PlanFilter = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "start",
-            marginTop: "80px",
+            marginTop: isSmallDev ? "30px" : "80px",
             width: "100%",
           }}
         >
@@ -221,7 +224,7 @@ const PlanFilter = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "start",
-            marginTop: "80px",
+            marginTop: isSmallDev ? "0px" : "80px",
             width: "100%",
           }}
         >
@@ -263,7 +266,7 @@ const PlanFilter = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "start",
-            marginTop: "80px",
+            marginTop: isSmallDev ? "0px" : "80px",
             width: "100%",
           }}
         >
@@ -320,7 +323,7 @@ const PlanFilter = () => {
             fontFamily: "poppins",
             fontSize: "15px",
             color: "white",
-            width: "150px",
+            width: isSmallDev ? "40%" : "150px",
           }}
         >
           Reseto
@@ -334,7 +337,7 @@ const PlanFilter = () => {
             color: "white",
             fontFamily: "poppins",
             fontSize: "15px",
-            width: "150px",
+            width: isSmallDev ? "40%" : "150px",
           }}
         >
           <img

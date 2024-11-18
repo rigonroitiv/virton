@@ -1,13 +1,14 @@
 import React from "react";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
 import PlanFilter from "../components/PlanFilter";
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 
 const FloorplanPage = () => {
+  const isSmallDev = useMediaQuery("(max-width: 768px)");
   return (
     <>
       <PlanFilter />
-      <Box sx={{ padding: "50px " }}>
+      <Box sx={{ padding: isSmallDev ? "20px" : "50px " }}>
         <PlanimetriCards />
       </Box>
     </>

@@ -1,16 +1,23 @@
-import { Avatar, Box, Button, Typography } from "@mui/material";
+import { Avatar, Box, Button, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import ApartmentSvg from "../components/filter/ApartmentSvg";
 import ApartmentsFilter from "../components/filter/ApartmentsFilter";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
 
 const ApartmentsPage = () => {
+  const isSmallDev = useMediaQuery("(max-width:768px)");
   return (
-    <Box sx={{ width: "100%", height: "100%", padding: "50px " }}>
+    <Box
+      sx={{
+        width: "100%",
+        height: "100%",
+        padding: isSmallDev ? "20px" : "50px ",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
+          flexDirection: isSmallDev ? "column" : "row",
           width: "100%",
           justifyContent: "space-between",
           alignItems: "center",
@@ -28,7 +35,7 @@ const ApartmentsPage = () => {
           <Avatar />
           <Typography
             sx={{
-              fontSize: "35px",
+              fontSize: isSmallDev ? "20px" : "35px",
               fontWeight: "600",
               fontFamily: "poppins",
               color: "#1d1d3a",
@@ -53,6 +60,7 @@ const ApartmentsPage = () => {
                 color: "#1D1D3A",
                 borderRadius: "50px",
                 fontFamily: "poppins",
+                fontSize: isSmallDev ? "10px" : "13px",
               }}
             >
               TOP VIEW
@@ -66,6 +74,7 @@ const ApartmentsPage = () => {
                 color: "white",
                 borderRadius: "50px",
                 fontFamily: "poppins",
+                fontSize: isSmallDev ? "10px" : "13px",
               }}
             >
               <img
