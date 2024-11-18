@@ -61,6 +61,22 @@ const SingleApartmentPage = () => {
           >
             Apartamenti: <span style={{ color: "white" }}>A10</span>
           </Typography>
+
+          <Box
+            sx={{
+              height: "170px",
+              backgroundColor: "white",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "25px",
+            }}
+          >
+            <img
+              style={{ width: "100%", height: "100%" }}
+              src="/assets/images/kendifoto.png"
+              alt=""
+            />
+          </Box>
         </Box>
       </Box>
       <Box sx={{ padding: "50px" }}>
