@@ -16,6 +16,7 @@ import {
 import React from "react";
 import { planimetrite } from "../utils/server";
 import PlanimetriCards from "./filter/PlanimetriCards";
+import Logo from "../assets/svg/logo";
 
 const PlanFilter = () => {
   const [value, setValue] = React.useState([20, 37]);
@@ -48,6 +49,17 @@ const PlanFilter = () => {
       >
         Filtro Apartamentet...
       </Typography>
+
+      <Box
+        sx={{
+          position: "absolute",
+          right: "-120px",
+          top: "-140px",
+          overflow: "hidden",
+        }}
+      >
+        <Logo height={"444px"} width={"444px"} />
+      </Box>
 
       <Box
         sx={{

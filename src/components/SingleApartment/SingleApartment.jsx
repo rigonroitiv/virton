@@ -3,9 +3,16 @@ import React from "react";
 
 const SingleApartment = () => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
+  const isMidDev = useMediaQuery("(max-width: 1024px)");
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", width: "100%" }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        width: "100%",
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -19,13 +26,13 @@ const SingleApartment = () => {
             width: isSmallDev ? "50%" : "190px",
             border: "1px solid #C1AC40",
             fontFamily: "poppins",
-            fontSize: "15px",
+            fontSize: isSmallDev ? "12px" : "15px",
             fontWeight: "600",
             color: "#1d1d3a",
             backgroundColor: "white",
             borderRadius: "50px",
             textTransform: "capitalize",
-            height: "60px",
+            height: isSmallDev ? "50px" : "60px",
           }}
         >
           3D Plan
@@ -36,13 +43,13 @@ const SingleApartment = () => {
             width: isSmallDev ? "50%" : "190px",
             border: "1px solid #1d1d3a",
             fontFamily: "poppins",
-            fontSize: "15px",
+            fontSize: isSmallDev ? "12px" : "15px",
             fontWeight: "600",
             color: "white",
             backgroundColor: "#1d1d3a",
             borderRadius: "50px",
             textTransform: "capitalize",
-            height: "60px",
+            height: isSmallDev ? "50px" : "60px",
           }}
         >
           <img
@@ -57,7 +64,7 @@ const SingleApartment = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: isSmallDev ? "column" : "row",
+          flexDirection: isSmallDev ? "column-reverse" : "row",
           width: "100%",
           gap: "20px",
           justifyContent: "start",
@@ -72,7 +79,11 @@ const SingleApartment = () => {
             // borderTop: "1px solid #C1AC40",
             // borderBottom: "1px solid #C1AC40",
             gap: "10px",
-            padding: isSmallDev ? "20px" : "50px 100px 50px 50px",
+            padding: isSmallDev
+              ? "20px"
+              : isMidDev
+              ? "20px"
+              : "50px 100px 50px 50px",
             justifyContent: "space-between",
           }}
         >
@@ -282,7 +293,7 @@ const SingleApartment = () => {
               sx={{
                 width: "45%",
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "14px" : "20px",
+                fontSize: isSmallDev ? "12px" : isMidDev ? "15px" : "20px",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 backgroundColor: "#C1AC40",
@@ -303,7 +314,7 @@ const SingleApartment = () => {
               sx={{
                 width: "45%",
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "14px" : "20px",
+                fontSize: isSmallDev ? "12px" : isMidDev ? "15px" : "20px",
 
                 fontWeight: "600",
                 color: "#C1AC40",
@@ -327,6 +338,7 @@ const SingleApartment = () => {
             display: "flex",
             flex: "6",
             width: "100%",
+            height: "100%",
             objectFit: "cover",
             justifyContent: "center",
             alignItems: "center",

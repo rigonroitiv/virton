@@ -6,22 +6,24 @@ import PlanimetriCards from "../components/filter/PlanimetriCards";
 
 const ApartmentsPage = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+  const isMidDev = useMediaQuery("(max-width:1024px)");
   return (
     <Box
       sx={{
         width: "100%",
         height: "100%",
-        padding: isSmallDev ? "20px" : "50px ",
+        padding: isSmallDev ? "20px" : isMidDev ? "20px" : "50px ",
       }}
     >
       <Box
         sx={{
           display: "flex",
-          flexDirection: isSmallDev ? "column" : "row",
+          flexDirection: isSmallDev ? "column" : isMidDev ? "row" : "row",
           width: "100%",
           justifyContent: "space-between",
-          alignItems: "center",
+          alignItems: isSmallDev ? "start" : isMidDev ? "center" : "center",
           marginBottom: "15px",
+          gap: "10px",
         }}
       >
         <Box
@@ -30,6 +32,7 @@ const ApartmentsPage = () => {
             flexDirection: "row",
             alignItems: "center",
             gap: "10px",
+            width: "100%",
           }}
         >
           <Avatar />
@@ -44,23 +47,32 @@ const ApartmentsPage = () => {
             OBJEKTI 1
           </Typography>
         </Box>
-        <Box sx={{ display: "flex", flexDirection: "row", gap: "20px" }}>
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            gap: "10px",
+            width: "100%",
+            justifyContent: "center",
+          }}
+        >
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              gap: "10px",
+              gap: isSmallDev ? "5px" : "20px",
             }}
           >
             <Button
               sx={{
-                width: "140px",
+                width: isSmallDev ? "100%" : isMidDev ? "100px" : "140px",
                 backgroundColor: "white",
                 border: "1px solid #C1AC40",
                 color: "#1D1D3A",
                 borderRadius: "50px",
+                height: isSmallDev ? "40px" : "56px",
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "10px" : "13px",
+                fontSize: isSmallDev ? "9px" : "13px",
               }}
             >
               TOP VIEW
@@ -68,17 +80,21 @@ const ApartmentsPage = () => {
 
             <Button
               sx={{
-                width: "140px",
+                width: isSmallDev ? "100%" : isMidDev ? "100px" : "140px",
                 backgroundColor: "#1D1D3A",
                 border: "1px solid #1D1D3A",
                 color: "white",
                 borderRadius: "50px",
+                height: isSmallDev ? "40px" : "56px",
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "10px" : "13px",
+                fontSize: isSmallDev ? "9px" : "13px",
               }}
             >
               <img
-                style={{ marginRight: "6px" }}
+                style={{
+                  marginRight: "6px",
+                  width: isSmallDev ? "15px" : "30px",
+                }}
                 src="/assets/images/vector.png"
                 alt=""
               />{" "}
@@ -89,21 +105,24 @@ const ApartmentsPage = () => {
           <Box sx={{ display: "flex", flexDirection: "row" }}>
             <Button
               sx={{
-                width: "240px",
+                width: isSmallDev ? "100%" : isMidDev ? "240px" : "240px",
                 backgroundColor: "white",
                 border: "1px solid #C1AC40",
                 color: "#1D1D3A",
-                height: "56px",
+                height: isSmallDev ? "40px" : "56px",
                 borderRadius: "50px",
                 fontFamily: "poppins",
                 fontWeight: "600",
-                fontSize: "20px",
+                fontSize: isSmallDev ? "12px" : "20px",
                 textTransform: "capitalize",
-                marginRight: "-50px",
+                marginRight: isSmallDev ? "2px" : isMidDev ? "2px" : "-50px",
               }}
             >
               <img
-                style={{ marginRight: "6px" }}
+                style={{
+                  marginRight: "6px",
+                  width: isSmallDev ? "15px" : "30px",
+                }}
                 src="/assets/images/parkingicon.png"
                 alt=""
               />{" "}
@@ -112,20 +131,23 @@ const ApartmentsPage = () => {
 
             <Button
               sx={{
-                width: "240px",
+                width: isSmallDev ? "100%" : isMidDev ? "240px" : "240px",
                 backgroundColor: "#1D1D3A",
                 border: "1px solid #1D1D3A",
                 color: "white",
-                height: "56px",
+                height: isSmallDev ? "40px" : "56px",
                 borderRadius: "50px",
                 fontFamily: "poppins",
                 fontWeight: "600",
-                fontSize: "20px",
+                fontSize: isSmallDev ? "12px" : "20px",
                 textTransform: "capitalize",
               }}
             >
               <img
-                style={{ marginRight: "6px" }}
+                style={{
+                  marginRight: "6px",
+                  width: isSmallDev ? "15px" : "30px",
+                }}
                 src="/assets/images/apartmenticon.png"
                 alt=""
               />
@@ -137,8 +159,8 @@ const ApartmentsPage = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: "row",
-          height: "90vh",
+          flexDirection: isSmallDev ? "column" : isMidDev ? "column" : "row",
+          height: isSmallDev ? "100%" : isMidDev ? "100%" : "90vh",
           width: "100%",
           gap: "20px",
         }}

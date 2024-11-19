@@ -6,18 +6,21 @@ import {
   Button,
   Grid,
   Typography,
+  useMediaQuery,
 } from "@mui/material";
 import React from "react";
 import { planimetrite } from "../../utils/server";
 
 const PlanimetriCards = () => {
+  const isSmallDev = useMediaQuery("(max-width:768px)");
+
   return (
     <Box
       sx={{
         flexGrow: 1,
         // padding: "50px 100px",
         backgroundColor: "white",
-        marginTop: "50px",
+        marginTop: isSmallDev ? "20px" : "50px",
       }}
     >
       <Grid container spacing={5} justifyContent="center">

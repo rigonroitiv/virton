@@ -1,7 +1,9 @@
-import { Box, Button, Slider, Typography } from "@mui/material";
+import { Box, Button, Slider, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 
 const ApartmentsFilter = () => {
+  const isSmallDev = useMediaQuery("(max-width:768px)");
+
   return (
     <Box
       sx={{
@@ -12,7 +14,7 @@ const ApartmentsFilter = () => {
         justifyContent: "space-between",
         alignItems: "start",
         fontFamily: "poppins",
-        padding: "30px",
+        padding: isSmallDev ? "20px" : "30px",
         backgroundColor: "#1D1D3A",
         borderRadius: "5px",
       }}
@@ -20,7 +22,7 @@ const ApartmentsFilter = () => {
       <Typography
         sx={{
           color: "#C1AC40",
-          fontSize: "30px",
+          fontSize: isSmallDev ? "20px" : "30px",
           marginBottom: "20px",
           fontWeight: "600",
           fontFamily: "poppins",
@@ -39,7 +41,7 @@ const ApartmentsFilter = () => {
       >
         <Typography
           sx={{
-            fontSize: "20px",
+            fontSize: isSmallDev ? "14px" : "20px",
             color: "white",
             fontWeight: "600",
             fontFamily: "poppins",
@@ -59,7 +61,7 @@ const ApartmentsFilter = () => {
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
-              fontSize: "13px",
+              fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
               borderRadius: "50px",
@@ -72,7 +74,7 @@ const ApartmentsFilter = () => {
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
-              fontSize: "13px",
+              fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
               borderRadius: "50px",
@@ -85,7 +87,7 @@ const ApartmentsFilter = () => {
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
-              fontSize: "13px",
+              fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
               borderRadius: "50px",
@@ -98,7 +100,7 @@ const ApartmentsFilter = () => {
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
-              fontSize: "13px",
+              fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
               borderRadius: "50px",
@@ -121,7 +123,7 @@ const ApartmentsFilter = () => {
       >
         <Typography
           sx={{
-            fontSize: "20px",
+            fontSize: isSmallDev ? "14px" : "20px",
             color: "white",
             fontWeight: "600",
             fontFamily: "poppins",
@@ -164,7 +166,7 @@ const ApartmentsFilter = () => {
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
-              fontSize: "13px",
+              fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
               borderRadius: "50px",
@@ -178,7 +180,7 @@ const ApartmentsFilter = () => {
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
-              fontSize: "13px",
+              fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
               borderRadius: "50px",
@@ -201,7 +203,7 @@ const ApartmentsFilter = () => {
       >
         <Typography
           sx={{
-            fontSize: "20px",
+            fontSize: isSmallDev ? "14px" : "20px",
             color: "white",
             fontWeight: "600",
             fontFamily: "poppins",
@@ -244,7 +246,7 @@ const ApartmentsFilter = () => {
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
-              fontSize: "13px",
+              fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
               borderRadius: "50px",
@@ -258,7 +260,7 @@ const ApartmentsFilter = () => {
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
-              fontSize: "13px",
+              fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
               borderRadius: "50px",
@@ -285,9 +287,10 @@ const ApartmentsFilter = () => {
             border: "1px solid #C1AC40",
             backgroundColor: "transparent",
             color: "white",
-            width: "140px",
+            width: isSmallDev ? "35%" : "140px",
             borderRadius: "50px",
             fontFamily: "poppins",
+            height: isSmallDev ? "30px" : "56px",
           }}
         >
           Reseto
@@ -298,13 +301,14 @@ const ApartmentsFilter = () => {
             border: "1px solid #C1AC40",
             backgroundColor: "#C1AC40",
             color: "white",
-            width: "140px",
+            width: isSmallDev ? "35%" : "140px",
             borderRadius: "50px",
             fontFamily: "poppins",
+            height: isSmallDev ? "30px" : "56px",
           }}
         >
           <img
-            style={{ marginRight: "10px" }}
+            style={{ marginRight: "10px", width: isSmallDev ? "20px" : "30px" }}
             src="/assets/images/vector1.png"
             alt=""
           />{" "}

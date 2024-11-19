@@ -1,7 +1,9 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, useMediaQuery } from "@mui/material";
 import React from "react";
 
 const ApartmentSvg = () => {
+  const isSmallDev = useMediaQuery("(max-width:768px)");
+
   return (
     <Box
       sx={{
@@ -16,7 +18,7 @@ const ApartmentSvg = () => {
         alt=""
         style={{
           width: "100%",
-          height: "100%",
+          height: isSmallDev ? "250px" : "100%",
           objectFit: "cover",
           borderRadius: "5px",
         }}
@@ -24,7 +26,7 @@ const ApartmentSvg = () => {
 
       <Box sx={{ position: "absolute", display: "flex", top: "50%", left: 5 }}>
         <svg
-          width="40"
+          width={isSmallDev ? "25px" : "40px"}
           height="40"
           viewBox="0 0 54 54"
           fill="none"
@@ -40,7 +42,7 @@ const ApartmentSvg = () => {
 
       <Box sx={{ position: "absolute", display: "flex", top: "50%", right: 5 }}>
         <svg
-          width="40"
+          width={isSmallDev ? "25px" : "40px"}
           height="40"
           viewBox="0 0 40 40"
           fill="none"
