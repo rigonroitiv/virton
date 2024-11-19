@@ -35,6 +35,8 @@ const PlanFilter = () => {
         alignItems: "center",
         padding: isSmallDev ? "50px 20px" : "50px ",
         backgroundColor: "#1D1D3A",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
       <Typography
@@ -55,6 +57,17 @@ const PlanFilter = () => {
           position: "absolute",
           right: "-120px",
           top: "-140px",
+          overflow: "hidden",
+        }}
+      >
+        <Logo height={"444px"} width={"444px"} />
+      </Box>
+
+      <Box
+        sx={{
+          position: "absolute",
+          left: "-200px",
+          bottom: "-100px",
           overflow: "hidden",
         }}
       >

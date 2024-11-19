@@ -1,5 +1,6 @@
 import { Box, Button, Slider, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
+import Logo from "../../assets/svg/logo";
 
 const ApartmentsFilter = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -17,8 +18,20 @@ const ApartmentsFilter = () => {
         padding: isSmallDev ? "20px" : "30px",
         backgroundColor: "#1D1D3A",
         borderRadius: "5px",
+        position: "relative",
+        overflow: "hidden",
       }}
     >
+      <Box sx={{ position: "absolute", top: "-120px", right: "-120px" }}>
+        {" "}
+        <Logo height={"350px"} width={"350px"} />
+      </Box>
+
+      <Box sx={{ position: "absolute", bottom: "-100px", left: "-150px" }}>
+        {" "}
+        <Logo height={"350px"} width={"350px"} />
+      </Box>
+
       <Typography
         sx={{
           color: "#C1AC40",

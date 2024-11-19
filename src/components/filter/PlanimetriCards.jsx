@@ -10,6 +10,7 @@ import {
 } from "@mui/material";
 import React from "react";
 import { planimetrite } from "../../utils/server";
+import Logo from "../../assets/svg/logo";
 
 const PlanimetriCards = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -65,6 +66,8 @@ const PlanimetriCards = () => {
                   display: "flex",
                   flexDirection: "column",
                   justifyContent: "center",
+                  position: "relative",
+                  overflow: "hidden",
                 }}
               >
                 <Box
@@ -163,6 +166,16 @@ const PlanimetriCards = () => {
                     />
                     Me Shume...
                   </Button>
+                </Box>
+
+                <Box
+                  sx={{
+                    position: "absolute",
+                    bottom: "-80px",
+                    right: "-120px",
+                  }}
+                >
+                  <Logo height={"290px"} width={"290px"} />
                 </Box>
               </CardContent>
             </Card>
