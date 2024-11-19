@@ -9,6 +9,7 @@ import React from "react";
 import SingleApartment from "../components/SingleApartment/SingleApartment";
 import GallerySlider from "../components/common/GallerySlider";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
+import Logo from "../assets/svg/logo";
 
 const images = [
   "/assets/images/galeria1.jpg",
@@ -29,8 +30,19 @@ const SingleApartmentPage = () => {
           flexDirection: "column",
           padding: isSmallDev ? "100px 20px" : "150px 50px 0 50px",
           gap: "30px",
+          position: "relative",
+          overflow: "hidden",
         }}
       >
+        <Box sx={{ position: "absolute", top: "-140px", right: "-150px" }}>
+          {" "}
+          <Logo height={"444px"} width={"444px"} />{" "}
+        </Box>
+
+        <Box sx={{ position: "absolute", bottom: "-140px", left: "-150px" }}>
+          {" "}
+          <Logo height={"444px"} width={"444px"} />{" "}
+        </Box>
         <Box>
           <Button
             sx={{
