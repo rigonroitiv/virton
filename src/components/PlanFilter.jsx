@@ -242,6 +242,37 @@ const PlanFilter = () => {
               },
             }}
           />
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "5px",
+              marginTop: "10px",
+            }}
+          >
+            {" "}
+            <input
+              type="text"
+              style={{
+                border: "1px solid #c1ac40",
+                backgroundColor: "transparent",
+                borderRadius: "50px",
+                height: isSmallDev ? "40px" : "40px",
+                width: "30%",
+              }}
+            />
+            <input
+              type="text"
+              style={{
+                border: "1px solid #c1ac40",
+                backgroundColor: "transparent",
+                borderRadius: "50px",
+                height: isSmallDev ? "40px" : "40px",
+                width: "30%",
+              }}
+            />
+          </Box>
         </Box>
 
         <Box
@@ -284,6 +315,36 @@ const PlanFilter = () => {
               },
             }}
           />
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "5px",
+              marginTop: "10px",
+            }}
+          >
+            {" "}
+            <input
+              type="text"
+              style={{
+                border: "1px solid #c1ac40",
+                backgroundColor: "transparent",
+                borderRadius: "50px",
+                height: isSmallDev ? "40px" : "40px",
+                width: "30%",
+              }}
+            />
+            <input
+              type="text"
+              style={{
+                border: "1px solid #c1ac40",
+                backgroundColor: "transparent",
+                borderRadius: "50px",
+                height: isSmallDev ? "40px" : "40px",
+                width: "30%",
+              }}
+            />
+          </Box>
         </Box>
 
         <Box
