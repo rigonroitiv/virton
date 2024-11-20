@@ -23,16 +23,16 @@ const SingleApartment = () => {
       >
         <Button
           sx={{
-            width: isSmallDev ? "50%" : "190px",
+            width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #C1AC40",
             fontFamily: "poppins",
-            fontSize: isSmallDev ? "12px" : "15px",
+            fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "600",
             color: "#1d1d3a",
             backgroundColor: "white",
             borderRadius: "50px",
             textTransform: "capitalize",
-            height: isSmallDev ? "50px" : "60px",
+            height: isSmallDev ? "40px" : "60px",
           }}
         >
           3D Plan
@@ -40,16 +40,16 @@ const SingleApartment = () => {
 
         <Button
           sx={{
-            width: isSmallDev ? "50%" : "190px",
+            width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #1d1d3a",
             fontFamily: "poppins",
-            fontSize: isSmallDev ? "12px" : "15px",
+            fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "600",
             color: "white",
             backgroundColor: "#1d1d3a",
             borderRadius: "50px",
             textTransform: "capitalize",
-            height: isSmallDev ? "50px" : "60px",
+            height: isSmallDev ? "40px" : "60px",
           }}
         >
           <img
@@ -291,43 +291,46 @@ const SingleApartment = () => {
             <Avatar />
             <Button
               sx={{
-                width: "45%",
+                width: isSmallDev ? "100%" : isMidDev ? "100px" : "100%",
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "12px" : isMidDev ? "15px" : "20px",
+                fontSize: isSmallDev ? "10px" : isMidDev ? "15px" : "20px",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 backgroundColor: "#C1AC40",
                 textTransform: "capitalize",
                 borderRadius: "50px",
-                height: "60px",
+                height: isSmallDev ? "40px" : "60px",
               }}
             >
               <img
                 src="/assets/images/shkarkopdf.png"
                 alt=""
-                style={{ marginRight: "7px" }}
+                style={{
+                  marginRight: "7px",
+                  width: isSmallDev ? "20px" : "25px",
+                }}
               />{" "}
               Shkarko PDF
             </Button>
 
             <Button
               sx={{
-                width: "45%",
+                width: isSmallDev ? "100%" : isMidDev ? "100px" : "100%",
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "12px" : isMidDev ? "15px" : "20px",
+                fontSize: isSmallDev ? "10px" : isMidDev ? "15px" : "20px",
 
                 fontWeight: "600",
                 color: "#C1AC40",
                 backgroundColor: "#1d1d3a",
                 textTransform: "capitalize",
                 borderRadius: "50px",
-                height: "60px",
+                height: isSmallDev ? "40px" : "60px",
               }}
             >
               <img
                 src="/assets/images/vector.png"
                 alt=""
-                style={{ marginRight: "7px" }}
+                style={{ marginRight: "7px", width: "25px" }}
               />{" "}
               Pyet Per Cmimin
             </Button>

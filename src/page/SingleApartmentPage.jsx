@@ -46,18 +46,19 @@ const SingleApartmentPage = () => {
         <Box>
           <Button
             sx={{
-              width: "240px",
+              width: isSmallDev ? "60%" : "240px",
               backgroundColor: "white",
               color: "#1d1d3a",
               borderRadius: "50px",
-              height: "55px",
+              height: isSmallDev ? "40px" : "55px",
+              fontSize: isSmallDev ? "12px" : "15px",
             }}
           >
             {" "}
             <img
               src="/assets/images/vector1.png"
               alt=""
-              style={{ marginRight: "10px" }}
+              style={{ marginRight: "10px", width: "25px" }}
             />
             Kthehu pas
           </Button>

@@ -7,31 +7,78 @@ import {
   Grid,
   Typography,
   useMediaQuery,
+  IconButton,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { planimetrite } from "../../utils/server";
 import Logo from "../../assets/svg/logo";
+import SingleViewIcon from "@mui/icons-material/ViewAgenda"; // Icon for single card view
+import GridViewIcon from "@mui/icons-material/ViewModule"; // Icon for grid view
 
 const PlanimetriCards = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+  const isMidDev = useMediaQuery("(max-width:1024px)");
+  const [columns, setColumns] = useState(2); // Default to 2 columns for mobile
+
+  const handleSingleView = () => setColumns(1);
+  const handleGridView = () => setColumns(2);
 
   return (
     <Box
       sx={{
         flexGrow: 1,
-        // padding: "50px 100px",
         backgroundColor: "white",
         marginTop: isSmallDev ? "20px" : "50px",
       }}
     >
-      <Grid container spacing={5} justifyContent="center">
+      {/* Display toggle icons only on mobile */}
+      {isSmallDev && (
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "end",
+            marginBottom: "10px",
+            gap: "5px",
+          }}
+        >
+          <IconButton
+            onClick={handleSingleView}
+            sx={{
+              color: columns === 2 ? "#1d1d3a" : "#c1ac40", // Text/icon color
+              border: `1px solid ${columns === 2 ? "#1d1d3a" : "#c1ac40"}`, // Border matches the color
+              borderRadius: "50px", // Optional: Add rounded corners
+              "&:hover": {
+                backgroundColor: "rgba(0, 0, 0, 0.1)", // Optional hover effect
+              },
+            }}
+          >
+            <SingleViewIcon />
+          </IconButton>
+          <IconButton
+            onClick={handleGridView}
+            sx={{
+              color: columns === 2 ? "#c1ac40" : "#1d1d3a", // Text/icon color
+              border: `1px solid ${columns === 2 ? "#c1ac40" : "#1d1d3a"}`, // Border matches the color
+              borderRadius: "50px", // Optional: Add rounded corners
+              "&:hover": {
+                backgroundColor: "rgba(0, 0, 0, 0.1)", // Optional hover effect
+              },
+            }}
+          >
+            <GridViewIcon />
+          </IconButton>
+        </Box>
+      )}
+
+      <Grid
+        container
+        spacing={isSmallDev ? 1 : isMidDev ? 2 : 5}
+        justifyContent="center"
+      >
         {planimetrite.map((property) => (
           <Grid
             item
-            xs={12}
-            sm={6}
-            md={4}
-            lg={3}
+            xs={isSmallDev ? 12 / columns : 3} // Adjust dynamically for mobile, 3 (4 cards) for desktop
             key={property.id}
             display="flex"
             justifyContent="center"
@@ -55,7 +102,7 @@ const PlanimetriCards = () => {
                   padding: "15px",
                   borderRadius: "5px",
                 }}
-                height="300"
+                height={isSmallDev ? (columns === 1 ? "300" : "200") : "300"}
                 image={property.image}
                 alt={`${property.tipi} image`}
               />
