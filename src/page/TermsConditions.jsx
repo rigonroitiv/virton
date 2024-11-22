@@ -1,7 +1,7 @@
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 
-const Faq = () => {
+const TermsConditions = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
 
   return (
@@ -31,7 +31,7 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          FAQ
+          Kushtet dhe Rregullat
         </Typography>
       </Box>
 
@@ -49,7 +49,7 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          1. Kush jemi ne?
+          1. Qëllimi i dokumentit
         </Typography>
         <p
           style={{
@@ -58,8 +58,8 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Ne jemi Virton, një kompani e dedikuar për ndërtimin e apartamenteve
-          cilësore në Podujevë, Kosovë.
+          Ky dokument përcakton kushtet dhe rregullat për përdorimin e
+          shërbimeve tona.
         </p>
 
         <Typography
@@ -70,7 +70,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          2. Cilat shërbime ofrojmë?
+          2. Përdorimi i shërbimeve
         </Typography>
         <p
           style={{
@@ -79,8 +79,8 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Ofrojmë ndërtimin e apartamenteve moderne dhe të qëndrueshme, të
-          dizajnuara për komoditetin tuaj.
+          Përdorimi i shërbimeve tona nënkupton pranimin e kushteve të
+          përcaktuara këtu.
         </p>
 
         <Typography
@@ -91,7 +91,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          3. Ku ndodhemi?
+          3. Kufizimi i përgjegjësisë
         </Typography>
         <p
           style={{
@@ -100,8 +100,8 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Zyra jonë kryesore ndodhet në Podujevë, Kosovë, dhe operojmë në të
-          gjithë rajonin.
+          Ne nuk mbajmë përgjegjësi për dëmet që mund të shkaktohen nga
+          përdorimi i pasaktë i shërbimeve tona.
         </p>
 
         <Typography
@@ -112,7 +112,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          4. Pse të na zgjidhni ne?
+          4. Të drejtat e pronësisë intelektuale
         </Typography>
         <p
           style={{
@@ -121,8 +121,8 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Me një fokus në cilësi dhe inovacion, ne sigurojmë që çdo projekt të
-          përmbushë standardet më të larta.
+          Të gjitha materialet dhe përmbajtjet janë pronë e kompanisë sonë dhe
+          nuk mund të riprodhohen pa leje.
         </p>
 
         <Typography
@@ -133,7 +133,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          5. A ofrojmë mbështetje pas shitjes?
+          5. Ndryshimet në kushte
         </Typography>
         <p
           style={{
@@ -142,8 +142,8 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Po, ne ofrojmë mbështetje të plotë pas shitjes për çdo klient, duke
-          siguruar kënaqësi dhe përkushtim të vazhdueshëm.
+          Ne rezervojmë të drejtën për të ndryshuar këto kushte në çdo kohë, pa
+          paralajmërim paraprak.
         </p>
 
         <Typography
@@ -154,7 +154,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          6. Sa kohë zgjasin projektet tona?
+          6. Kontakt
         </Typography>
         <p
           style={{
@@ -163,54 +163,12 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Kohëzgjatja e projekteve tona ndryshon në varësi të kompleksitetit,
-          por gjithmonë angazhohemi për dorëzim në kohë.
-        </p>
-
-        <Typography
-          style={{
-            color: "white",
-            fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
-            marginTop: "20px",
-          }}
-        >
-          7. Si mund të na kontaktoni?
-        </Typography>
-        <p
-          style={{
-            color: "white",
-            fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
-          }}
-        >
-          Mund të na kontaktoni përmes telefonit, email-it, ose të na vizitoni
-          në zyrën tonë në Podujevë.
-        </p>
-
-        <Typography
-          style={{
-            color: "white",
-            fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
-            marginTop: "20px",
-          }}
-        >
-          8. A bashkëpunojmë me kompani të tjera?
-        </Typography>
-        <p
-          style={{
-            color: "white",
-            fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
-          }}
-        >
-          Po, bashkëpunojmë me kompani të tjera për të siguruar cilësi dhe
-          ekspertizë në çdo hap të ndërtimit.
+          Për çdo pyetje ose çështje, ju lutemi na kontaktoni përmes detajeve të
+          kontaktit të ofruara në faqen tonë.
         </p>
       </Box>
     </Box>
   );
 };
 
-export default Faq;
+export default TermsConditions;

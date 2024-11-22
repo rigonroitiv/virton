@@ -1,7 +1,7 @@
 import { Box, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 
-const Faq = () => {
+const PrivacyPolicy = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
 
   return (
@@ -31,7 +31,7 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          FAQ
+          Politika e Privatësisë
         </Typography>
       </Box>
 
@@ -49,7 +49,7 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          1. Kush jemi ne?
+          1. Mbledhja e informacionit
         </Typography>
         <p
           style={{
@@ -58,8 +58,9 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Ne jemi Virton, një kompani e dedikuar për ndërtimin e apartamenteve
-          cilësore në Podujevë, Kosovë.
+          Ne mbledhim informacione personale kur ju regjistroheni, vendosni një
+          porosi, ose përdorni faqen tonë të internetit. Këto informacione
+          përfshijnë emrin tuaj, adresën e email-it dhe të dhënat e kontaktit.
         </p>
 
         <Typography
@@ -70,7 +71,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          2. Cilat shërbime ofrojmë?
+          2. Përdorimi i informacionit
         </Typography>
         <p
           style={{
@@ -79,8 +80,9 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Ofrojmë ndërtimin e apartamenteve moderne dhe të qëndrueshme, të
-          dizajnuara për komoditetin tuaj.
+          Informacioni i mbledhur përdoret për të përmirësuar përvojën tuaj, për
+          të personalizuar shërbimet tona dhe për të siguruar mbështetje më të
+          mirë.
         </p>
 
         <Typography
@@ -91,7 +93,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          3. Ku ndodhemi?
+          3. Mbrojtja e të dhënave
         </Typography>
         <p
           style={{
@@ -100,8 +102,8 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Zyra jonë kryesore ndodhet në Podujevë, Kosovë, dhe operojmë në të
-          gjithë rajonin.
+          Ne përdorim masa të sigurta për të mbrojtur të dhënat tuaja personale
+          dhe për të parandaluar aksesin e paautorizuar.
         </p>
 
         <Typography
@@ -112,7 +114,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          4. Pse të na zgjidhni ne?
+          4. Shkëmbimi i informacionit
         </Typography>
         <p
           style={{
@@ -121,8 +123,9 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Me një fokus në cilësi dhe inovacion, ne sigurojmë që çdo projekt të
-          përmbushë standardet më të larta.
+          Ne nuk ndajmë informacionin tuaj personal me palët e treta, përveç
+          rasteve kur kërkohet me ligj ose kur është e nevojshme për të
+          përmbushur një shërbim.
         </p>
 
         <Typography
@@ -133,7 +136,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          5. A ofrojmë mbështetje pas shitjes?
+          5. Cookies
         </Typography>
         <p
           style={{
@@ -142,8 +145,8 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Po, ne ofrojmë mbështetje të plotë pas shitjes për çdo klient, duke
-          siguruar kënaqësi dhe përkushtim të vazhdueshëm.
+          Faqja jonë përdor cookies për të analizuar trafikun dhe për të
+          personalizuar përmbajtjen në bazë të preferencave tuaja.
         </p>
 
         <Typography
@@ -154,7 +157,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          6. Sa kohë zgjasin projektet tona?
+          6. Të drejtat tuaja
         </Typography>
         <p
           style={{
@@ -163,8 +166,8 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Kohëzgjatja e projekteve tona ndryshon në varësi të kompleksitetit,
-          por gjithmonë angazhohemi për dorëzim në kohë.
+          Ju keni të drejtë të aksesoni, modifikoni ose fshini informacionet
+          tuaja personale në çdo kohë duke na kontaktuar.
         </p>
 
         <Typography
@@ -175,7 +178,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          7. Si mund të na kontaktoni?
+          7. Ndryshimet në politikë
         </Typography>
         <p
           style={{
@@ -184,8 +187,9 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Mund të na kontaktoni përmes telefonit, email-it, ose të na vizitoni
-          në zyrën tonë në Podujevë.
+          Ne rezervojmë të drejtën për të përditësuar këtë politikë në çdo kohë
+          dhe do t’ju njoftojmë për çdo ndryshim përmes faqes sonë të
+          internetit.
         </p>
 
         <Typography
@@ -196,7 +200,7 @@ const Faq = () => {
             marginTop: "20px",
           }}
         >
-          8. A bashkëpunojmë me kompani të tjera?
+          8. Kontakti
         </Typography>
         <p
           style={{
@@ -205,12 +209,12 @@ const Faq = () => {
             fontFamily: "poppins",
           }}
         >
-          Po, bashkëpunojmë me kompani të tjera për të siguruar cilësi dhe
-          ekspertizë në çdo hap të ndërtimit.
+          Për çdo pyetje lidhur me politikën e privatësisë, ju lutemi na
+          kontaktoni përmes detajeve të ofruara në faqen tonë të internetit.
         </p>
       </Box>
     </Box>
   );
 };
 
-export default Faq;
+export default PrivacyPolicy;

@@ -6,6 +6,8 @@ import GallerySlider from "../components/common/GallerySlider";
 import SingleApartmentPage from "./SingleApartmentPage";
 import GeneralBuilding from "./GeneralBuilding";
 import Faq from "./Faq";
+import TermsConditions from "./TermsConditions";
+import PrivacyPolicy from "./PrivacyPolicy";
 
 const ClientPage = () => {
   return (
@@ -16,6 +18,8 @@ const ClientPage = () => {
         <Route path="/test" element={<SingleApartmentPage />} />
         <Route path="/building" element={<GeneralBuilding />} />
         <Route path="/faq" element={<Faq />} />
+        <Route path="/terms-conditions" element={<TermsConditions />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
       </Routes>
     </div>
   );
