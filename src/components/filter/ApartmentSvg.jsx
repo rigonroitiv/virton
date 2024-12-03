@@ -7,6 +7,8 @@ import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice"
 import { getWishlistCount } from "../../features/wishList/WishlistSlice";
 import { getFilterState } from "../../features/filter/FilterSlice";
 import { imagePath } from "../../utils/consts";
+import ContextMenu from "../common/contextMenu/ContextMenu";
+import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
 
 const maxFloor = 6;
 const minFloor = -2;
@@ -242,6 +244,8 @@ const ApartmentSvg = () => {
           alt=""
         />
       </Box>
+      <ContextMenu menu={contextMenu} setMenu={setContextMenu}/>
+      <AdmApartmentModal />
     </Box>
   );
 };

@@ -8,11 +8,11 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import { CheckBox, CheckBoxOutlineBlank, Close, Edit, FlipCameraAndroid, SupportAgent } from '@mui/icons-material';
 import { useDispatch, useSelector } from 'react-redux';
-import { getSession, handleLoginModalState, isAuthorized } from '../../features/auth/AuthSlice';
+import { getSession, handleLoginModalState, isAuthorized } from '../../../features/auth/AuthSlice';
 import { toast } from 'react-toastify';
-import { setApartmentEditData, setApartmentEditModalState } from '../../features/apartment/ApartmentEditSlice';
-import { updateIsSold } from '../../features/apartment/ApartmentAPI';
-import { setApartmentIdModalApartmentId, setApartmentIdModalId, setApartmentIdModalState } from '../../features/apartment/ApartmentSlice';
+import { setApartmentEditData, setApartmentEditModalState } from '../../../features/apartment/ApartmentEditSlice';
+import { updateIsSold } from '../../../features/apartment/ApartmentAPI';
+import { setApartmentIdModalApartmentId, setApartmentIdModalId, setApartmentIdModalState } from '../../../features/apartment/ApartmentSlice';
 
 const ContextMenu = ({ menu, setMenu }) => {
     const dispatch = useDispatch()

@@ -1,0 +1,52 @@
+.st0 {
+    fill: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s ease 0s;
+    opacity: 0.5;
+    stroke: #fff;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    stroke-width: 1px;
+    outline: none;
+    width: 100%;
+}
+
+.st2 {
+    fill: #26c43bf1;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s ease 0s;
+    opacity: 0.4;
+    stroke: white;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    stroke-width: 1px;
+    outline: none;
+    width: 100%;
+}
+
+.st2:hover {
+    fill: #337C3D;
+}
+
+.st0:hover {
+    fill: #337C3D;
+    opacity: 0.5;
+
+}
+
+.st1 {
+    fill: #8b0000;
+    opacity: 0.5;
+    stroke-width: 1px;
+    stroke: white;
+}
+
+.st3 {
+    fill: transparent;
+    stroke-width: 1px;
+    stroke: white;
+}
