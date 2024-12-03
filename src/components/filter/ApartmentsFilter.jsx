@@ -303,7 +303,7 @@ const ApartmentsFilter = () => {
             width: isSmallDev ? "35%" : "140px",
             borderRadius: "50px",
             fontFamily: "poppins",
-            height: isSmallDev ? "30px" : "56px",
+            height: isSmallDev ? "30px" : "35px",
           }}
         >
           Reseto
@@ -317,11 +317,11 @@ const ApartmentsFilter = () => {
             width: isSmallDev ? "35%" : "140px",
             borderRadius: "50px",
             fontFamily: "poppins",
-            height: isSmallDev ? "30px" : "56px",
+            height: isSmallDev ? "30px" : "35px",
           }}
         >
           <img
-            style={{ marginRight: "10px", width: isSmallDev ? "20px" : "30px" }}
+            style={{ marginRight: "10px", width: isSmallDev ? "20px" : "20px" }}
             src="/assets/images/vector1.png"
             alt=""
           />{" "}

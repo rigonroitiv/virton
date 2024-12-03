@@ -1,5 +1,5 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import ApartmentSvg from "../components/filter/ApartmentSvg";
 import ApartmentsFilter from "../components/filter/ApartmentsFilter";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
@@ -7,12 +7,21 @@ import PlanimetriCards from "../components/filter/PlanimetriCards";
 const ApartmentsPage = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const isMidDev = useMediaQuery("(max-width:1024px)");
+
+  // State to manage active button
+  const [activeButton, setActiveButton] = useState(null);
+
+  // Handler for button click
+  const handleButtonClick = (buttonIndex) => {
+    setActiveButton(buttonIndex);
+  };
+
   return (
     <Box
       sx={{
         width: "100%",
         height: "100%",
-        padding: isSmallDev ? "20px" : isMidDev ? "20px" : "50px ",
+        padding: isSmallDev ? "20px" : isMidDev ? "20px" : "50px",
       }}
     >
       <Box
@@ -30,7 +39,6 @@ const ApartmentsPage = () => {
             width: "100%",
             height: "100%",
             justifyContent: "space-between",
-            marginRight: "20px",
           }}
         >
           <Box
@@ -41,7 +49,7 @@ const ApartmentsPage = () => {
               gap: isSmallDev ? "5px" : "10px",
             }}
           >
-            <Avatar />{" "}
+            <Avatar />
             <Typography
               sx={{
                 fontFamily: "poppins",
@@ -57,78 +65,69 @@ const ApartmentsPage = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
-              // gap: "10px",
               alignItems: "center",
             }}
           >
-            <Button
-              sx={{
+            {[
+              {
+                text: "3D Plan",
+                icon: "/assets/images/vector.png",
                 width: isSmallDev ? "100%" : "140px",
-                border: "1px solid #c1ac40",
-                color: "#1D1D3A",
-                backgroundColor: "transparent",
-                fontFamily: "poppins",
-                fontWeight: "600",
-                borderRadius: "0px",
-                borderTopLeftRadius: "50px",
-                borderBottomLeftRadius: "50px",
-
-                height: isSmallDev ? "35px" : "45px",
-                fontSize: isSmallDev ? "9px" : "15px",
-              }}
-            >
-              TOP VIEW
-            </Button>
-            <Button
-              sx={{
+                borderRadius: { left: "50px", right: "0" },
+              },
+              {
+                text: "Top View",
+                icon: "/assets/images/tile.png",
                 width: isSmallDev ? "100%" : "140px",
-                border: "1px solid #c1ac40",
-                color: "white",
-                backgroundColor: "#1d1d3a",
-                fontFamily: "poppins",
-                fontWeight: "600",
-                borderRadius: "0px",
-                height: isSmallDev ? "35px" : "45px",
-                fontSize: isSmallDev ? "9px" : "15px",
-              }}
-            >
-              {" "}
-              <img
-                src="/assets/images/vector.png"
-                alt=""
-                style={{
-                  marginRight: "6px",
-                  width: isSmallDev ? "15px" : "25px",
-                }}
-              />
-              3D PLAN
-            </Button>
-            <Button
-              sx={{
+                borderRadius: { left: "0", right: "0" },
+              },
+              {
+                text: "Apartamentet",
+                icon: "/assets/images/floor-plan.png",
                 width: isSmallDev ? "100%" : "170px",
-                border: "1px solid #c1ac40",
-                color: "#1D1D3A",
-                backgroundColor: "transparent",
-                fontFamily: "poppins",
-                fontWeight: "600",
-                borderRadius: "0px",
-                borderTopRightRadius: "50px",
-                borderBottomRightRadius: "50px",
-                height: isSmallDev ? "35px" : "45px",
-                fontSize: isSmallDev ? "9px" : "15px",
-              }}
-            >
-              APARTAMENTET
-            </Button>
+                borderRadius: { left: "0", right: "50px" },
+              },
+            ].map((button, index) => (
+              <Button
+                key={index}
+                onClick={() => handleButtonClick(index)}
+                sx={{
+                  width: button.width,
+                  border: "1px solid #c1ac40",
+                  color: activeButton === index ? "white" : "#1D1D3A",
+                  backgroundColor: activeButton === index ? "#1D1D3A" : "white",
+                  fontFamily: "poppins",
+                  fontWeight: "400",
+                  borderRadius: "0px",
+                  borderTopLeftRadius: button.borderRadius.left,
+                  borderBottomLeftRadius: button.borderRadius.left,
+                  borderTopRightRadius: button.borderRadius.right,
+                  borderBottomRightRadius: button.borderRadius.right,
+                  textTransform: "capitalize",
+                  height: isSmallDev ? "30px" : "35px",
+                  fontSize: isSmallDev ? "9px" : "15px",
+                }}
+              >
+                <img
+                  src={button.icon}
+                  alt={button.text}
+                  style={{
+                    marginRight: "6px",
+                    width: isSmallDev ? "15px" : "20px",
+                  }}
+                />
+                {button.text}
+              </Button>
+            ))}
           </Box>
         </Box>
         <Box
           sx={{
             display: "flex",
-            flex: 4,
+            flex: 3,
             width: "100%",
-            height: "100%",
             justifyContent: "end",
+            alignItems: "center",
           }}
         >
           <Button
@@ -140,7 +139,7 @@ const ApartmentsPage = () => {
               fontFamily: "poppins",
               fontWeight: "600",
               borderRadius: "50px",
-              height: isSmallDev ? "35px" : "50px",
+              height: isSmallDev ? "30px" : "35px",
               fontSize: isSmallDev ? "12px" : "15px",
             }}
           >
@@ -158,10 +157,10 @@ const ApartmentsPage = () => {
           gap: "20px",
         }}
       >
-        <Box sx={{ display: "flex", flex: 8, width: "100%", height: "100%" }}>
+        <Box sx={{ display: "flex", flex: 9, width: "100%", height: "100%" }}>
           <ApartmentSvg />
         </Box>
-        <Box sx={{ display: "flex", flex: 4, width: "100%", height: "100%" }}>
+        <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
           <ApartmentsFilter />
         </Box>
       </Box>
