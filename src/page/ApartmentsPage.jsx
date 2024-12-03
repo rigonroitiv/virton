@@ -18,144 +18,137 @@ const ApartmentsPage = () => {
       <Box
         sx={{
           display: "flex",
-          flexDirection: isSmallDev ? "column" : isMidDev ? "row" : "row",
+          flexDirection: isSmallDev ? "column" : isMidDev ? "column" : "row",
           width: "100%",
-          justifyContent: "space-between",
-          alignItems: isSmallDev ? "start" : isMidDev ? "center" : "center",
           marginBottom: "15px",
-          gap: "10px",
         }}
       >
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
-            alignItems: "center",
-            gap: "10px",
+            flex: 8,
             width: "100%",
-          }}
-        >
-          <Avatar />
-          <Typography
-            sx={{
-              fontSize: isSmallDev ? "20px" : "35px",
-              fontWeight: "600",
-              fontFamily: "poppins",
-              color: "#1d1d3a",
-            }}
-          >
-            OBJEKTI 1
-          </Typography>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            gap: "10px",
-            width: "100%",
-            justifyContent: "center",
+            height: "100%",
+            justifyContent: "space-between",
+            marginRight: "20px",
           }}
         >
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              gap: isSmallDev ? "5px" : "20px",
+              alignItems: "center",
+              gap: isSmallDev ? "5px" : "10px",
+            }}
+          >
+            <Avatar />{" "}
+            <Typography
+              sx={{
+                fontFamily: "poppins",
+                fontSize: isSmallDev ? "14px" : "35px",
+                fontWeight: "600",
+              }}
+            >
+              OBJEKTI 1
+            </Typography>
+          </Box>
+
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              // gap: "10px",
+              alignItems: "center",
             }}
           >
             <Button
               sx={{
-                width: isSmallDev ? "100%" : isMidDev ? "100px" : "140px",
-                backgroundColor: "white",
-                border: "1px solid #C1AC40",
+                width: isSmallDev ? "100%" : "140px",
+                border: "1px solid #c1ac40",
                 color: "#1D1D3A",
-                borderRadius: "50px",
-                height: isSmallDev ? "40px" : "56px",
+                backgroundColor: "transparent",
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "9px" : "13px",
+                fontWeight: "600",
+                borderRadius: "0px",
+                borderTopLeftRadius: "50px",
+                borderBottomLeftRadius: "50px",
+
+                height: isSmallDev ? "35px" : "45px",
+                fontSize: isSmallDev ? "9px" : "15px",
               }}
             >
               TOP VIEW
             </Button>
-
             <Button
               sx={{
-                width: isSmallDev ? "100%" : isMidDev ? "100px" : "140px",
-                backgroundColor: "#1D1D3A",
-                border: "1px solid #1D1D3A",
+                width: isSmallDev ? "100%" : "140px",
+                border: "1px solid #c1ac40",
                 color: "white",
-                borderRadius: "50px",
-                height: isSmallDev ? "40px" : "56px",
+                backgroundColor: "#1d1d3a",
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "9px" : "13px",
+                fontWeight: "600",
+                borderRadius: "0px",
+                height: isSmallDev ? "35px" : "45px",
+                fontSize: isSmallDev ? "9px" : "15px",
               }}
             >
+              {" "}
               <img
-                style={{
-                  marginRight: "6px",
-                  width: isSmallDev ? "15px" : "30px",
-                }}
                 src="/assets/images/vector.png"
                 alt=""
-              />{" "}
+                style={{
+                  marginRight: "6px",
+                  width: isSmallDev ? "15px" : "25px",
+                }}
+              />
               3D PLAN
             </Button>
-          </Box>
-
-          <Box sx={{ display: "flex", flexDirection: "row" }}>
             <Button
               sx={{
-                width: isSmallDev ? "100%" : isMidDev ? "240px" : "240px",
-                backgroundColor: "white",
-                border: "1px solid #C1AC40",
+                width: isSmallDev ? "100%" : "170px",
+                border: "1px solid #c1ac40",
                 color: "#1D1D3A",
-                height: isSmallDev ? "40px" : "56px",
-                borderRadius: "50px",
+                backgroundColor: "transparent",
                 fontFamily: "poppins",
                 fontWeight: "600",
-                fontSize: isSmallDev ? "12px" : "20px",
-                textTransform: "capitalize",
-                marginRight: isSmallDev ? "2px" : isMidDev ? "2px" : "-50px",
+                borderRadius: "0px",
+                borderTopRightRadius: "50px",
+                borderBottomRightRadius: "50px",
+                height: isSmallDev ? "35px" : "45px",
+                fontSize: isSmallDev ? "9px" : "15px",
               }}
             >
-              <img
-                style={{
-                  marginRight: "6px",
-                  width: isSmallDev ? "15px" : "30px",
-                }}
-                src="/assets/images/parkingicon.png"
-                alt=""
-              />{" "}
-              Parkingu
-            </Button>
-
-            <Button
-              sx={{
-                width: isSmallDev ? "100%" : isMidDev ? "240px" : "240px",
-                backgroundColor: "#1D1D3A",
-                border: "1px solid #1D1D3A",
-                color: "white",
-                height: isSmallDev ? "40px" : "56px",
-                borderRadius: "50px",
-                fontFamily: "poppins",
-                fontWeight: "600",
-                fontSize: isSmallDev ? "12px" : "20px",
-                textTransform: "capitalize",
-              }}
-            >
-              <img
-                style={{
-                  marginRight: "6px",
-                  width: isSmallDev ? "15px" : "30px",
-                }}
-                src="/assets/images/apartmenticon.png"
-                alt=""
-              />
-              Apartmentet
+              APARTAMENTET
             </Button>
           </Box>
         </Box>
+        <Box
+          sx={{
+            display: "flex",
+            flex: 4,
+            width: "100%",
+            height: "100%",
+            justifyContent: "end",
+          }}
+        >
+          <Button
+            sx={{
+              width: isSmallDev ? "232px" : "240px",
+              border: "1px solid #c1ac40",
+              color: "#1D1D3A",
+              backgroundColor: "transparent",
+              fontFamily: "poppins",
+              fontWeight: "600",
+              borderRadius: "50px",
+              height: isSmallDev ? "35px" : "50px",
+              fontSize: isSmallDev ? "12px" : "15px",
+            }}
+          >
+            PARKINGU
+          </Button>
+        </Box>
       </Box>
+
       <Box
         sx={{
           display: "flex",
