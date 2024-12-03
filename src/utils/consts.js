@@ -1,16 +1,16 @@
-export const mainUrl = 'https://lakesideliving-ks.com/projekti/';
+export const mainUrl = 'https://virton.roitiv.com/projekti/';
 // export const BASE_URL = 'http://localhost:8080';
-export const BASE_URL = 'https://srv412786.hstgr.cloud:7129'
+export const BASE_URL = 'https://srv412786.hstgr.cloud:7134'
 export const objectImageUrl = 'images/'
 export const planmetricImageUrl = 'images/planimetrit/'
 // export const BASE_URL = 'http://localhost:8845';
 // export const BASE_URL_JEHONA = 'http://localhost:8845';
 
 export const EURO_SYMBOL = '€';
-export const homepage = `https://lakesideliving-ks.com/projekti/`
+export const homepage = `https://virton.roitiv.com/projekti/`
 export const galleryDir = 'assets/gallery/'
-export const imagePath = `https://lakesideliving-ks.com/projekti/objektetImg/`
-export const pdfPath = `https://lakesideliving-ks.com/projekti/pdf/`
+export const imagePath = `https://virton.roitiv.com/projekti/objektetImg/`
+export const pdfPath = `https://virton.roitiv.com/projekti/pdf/`
 export const vTourPath = `/360/interior`
 
 // export const leftArrowButtonSvg = <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 256 256" xmlSpace="preserve">
