@@ -10,6 +10,7 @@ import SingleApartment from "../components/SingleApartment/SingleApartment";
 import GallerySlider from "../components/common/GallerySlider";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
 import Logo from "../assets/svg/logo";
+import PlanimetricSlides from "../components/filter/PlanimetricSlides";
 
 const images = [
   "/assets/images/galeria1.jpg",
@@ -52,6 +53,10 @@ const SingleApartmentPage = () => {
               borderRadius: "50px",
               height: isSmallDev ? "40px" : "55px",
               fontSize: isSmallDev ? "12px" : "15px",
+              ":hover": {
+                backgroundColor: "#C1AC40",
+                color: "white",
+              },
             }}
           >
             {" "}
@@ -86,7 +91,7 @@ const SingleApartmentPage = () => {
 
           <Box
             sx={{
-              height: isSmallDev ? "100px" : "170px",
+              height: isSmallDev ? "100px" : "120px",
               backgroundColor: "white",
               alignItems: "center",
               justifyContent: "center",
@@ -121,12 +126,13 @@ const SingleApartmentPage = () => {
             fontFamily: "poppins",
             fontSize: isSmallDev ? "40px" : "50px",
             fontWeight: "300",
+            marginBottom: isSmallDev ? "20px" : "0",
           }}
         >
           Apartamentet e <span style={{ fontWeight: "700" }}>ngjajshme</span>
         </Typography>
 
-        <PlanimetriCards />
+        <PlanimetricSlides />
       </Box>
     </Box>
   );
