@@ -31,7 +31,7 @@ const ApartmentsPage = () => {
           display: "flex",
           flexDirection: isSmallDev ? "column" : isMidDev ? "column" : "row",
           width: "100%",
-          marginBottom: "15px",
+          marginBottom: "35px",
         }}
       >
         <Box

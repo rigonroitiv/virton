@@ -29,14 +29,19 @@ const SingleApartment = ( { data } ) => {
             border: "1px solid #C1AC40",
             fontFamily: "poppins",
             fontSize: isSmallDev ? "10px" : "15px",
-            fontWeight: "600",
+            fontWeight: "400",
             color: "#1d1d3a",
             backgroundColor: threedSelected ? '#C1AC40' : "white",
             borderRadius: "50px",
             textTransform: "capitalize",
-            height: isSmallDev ? "40px" : "60px",
+            height: isSmallDev ? "35px" : "40px",
           }}
         >
+          <img
+            style={{ width: "25px", marginRight: "7px" }}
+            src="/assets/images/tile.png"
+            alt=""
+          />
           3D Plan
         </Button>
         <Button
@@ -45,18 +50,18 @@ const SingleApartment = ( { data } ) => {
             border: "1px solid #1d1d3a",
             fontFamily: "poppins",
             fontSize: isSmallDev ? "10px" : "15px",
-            fontWeight: "600",
+            fontWeight: "400",
             color: "white",
             backgroundColor: "#1d1d3a",
             borderRadius: "50px",
             textTransform: "capitalize",
-            height: isSmallDev ? "40px" : "60px",
+            height: isSmallDev ? "35px" : "40px",
           }}
         >
           <img
             src="/assets/images/vector.png"
             alt=""
-            style={{ marginRight: "6px" }}
+            style={{ width: "20px", marginRight: "6px" }}
           />{" "}
           360 Tour
         </Button>
@@ -77,15 +82,13 @@ const SingleApartment = ( { data } ) => {
             flexDirection: "column",
             flex: "5",
             width: "100%",
-            // borderTop: "1px solid #C1AC40",
-            // borderBottom: "1px solid #C1AC40",
-            gap: "10px",
+            gap: "20px",
             padding: isSmallDev
               ? "20px"
               : isMidDev
               ? "20px"
               : "50px 100px 50px 50px",
-            justifyContent: "space-between",
+            justifyContent: "center",
           }}
         >
           <Box
@@ -99,7 +102,7 @@ const SingleApartment = ( { data } ) => {
           >
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -110,7 +113,7 @@ const SingleApartment = ( { data } ) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -130,7 +133,7 @@ const SingleApartment = ( { data } ) => {
           >
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -141,7 +144,7 @@ const SingleApartment = ( { data } ) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -161,7 +164,7 @@ const SingleApartment = ( { data } ) => {
           >
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -172,7 +175,7 @@ const SingleApartment = ( { data } ) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -192,7 +195,7 @@ const SingleApartment = ( { data } ) => {
           >
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -203,7 +206,7 @@ const SingleApartment = ( { data } ) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -223,7 +226,7 @@ const SingleApartment = ( { data } ) => {
           >
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -234,7 +237,7 @@ const SingleApartment = ( { data } ) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -255,7 +258,7 @@ const SingleApartment = ( { data } ) => {
           >
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
@@ -266,7 +269,7 @@ const SingleApartment = ( { data } ) => {
             </Typography>
             <Typography
               sx={{
-                fontSize: isSmallDev ? "25px" : "30px",
+                fontSize: isSmallDev ? "20px" : "25px",
                 fontFamily: "poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -285,11 +288,10 @@ const SingleApartment = ( { data } ) => {
               width: "100%",
               borderTop: "1px solid #c1ac40",
               paddingTop: "30px",
-              gap: "2px",
+              gap: "15px",
               alignItems: "center",
             }}
           >
-            <Avatar />
             <Button
               sx={{
                 width: isSmallDev ? "100%" : isMidDev ? "100px" : "100%",
@@ -300,7 +302,7 @@ const SingleApartment = ( { data } ) => {
                 backgroundColor: "#C1AC40",
                 textTransform: "capitalize",
                 borderRadius: "50px",
-                height: isSmallDev ? "40px" : "60px",
+                height: isSmallDev ? "35px" : "50px",
               }}
             >
               <img
@@ -325,13 +327,16 @@ const SingleApartment = ( { data } ) => {
                 backgroundColor: "#1d1d3a",
                 textTransform: "capitalize",
                 borderRadius: "50px",
-                height: isSmallDev ? "40px" : "60px",
+                height: isSmallDev ? "35px" : "50px",
               }}
             >
               <img
                 src="/assets/images/vector.png"
                 alt=""
-                style={{ marginRight: "7px", width: "25px" }}
+                style={{
+                  marginRight: "7px",
+                  width: isSmallDev ? "20px" : "25px",
+                }}
               />{" "}
               Pyet Per Cmimin
             </Button>
@@ -349,7 +354,12 @@ const SingleApartment = ( { data } ) => {
           }}
         >
           <img
-            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+              padding: isSmallDev ? "20px" : "60px",
+            }}
             src="/assets/images/plani.jpg"
             alt=""
           />
