@@ -145,7 +145,7 @@ const SingleApartmentPage = () => {
           Apartamentet e <span style={{ fontWeight: "700" }}>ngjajshme</span>
         </Typography>
 
-        <PlanimetriCards />
+        <PlanimetricSlides />
       </Box>
     </Box>
   );
