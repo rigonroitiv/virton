@@ -3,10 +3,12 @@ import React, { useState } from "react";
 import ApartmentSvg from "../components/filter/ApartmentSvg";
 import ApartmentsFilter from "../components/filter/ApartmentsFilter";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
+import BuildingSvg from "../components/filter/BuildingSvg";
 
 const ApartmentsPage = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const isMidDev = useMediaQuery("(max-width:1024px)");
+  const [floorPlan, setFloorPlan] = useState(false)
 
   // State to manage active button
   const [activeButton, setActiveButton] = useState(null);
@@ -74,23 +76,26 @@ const ApartmentsPage = () => {
                 icon: "/assets/images/vector.png",
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "50px", right: "0" },
+                action: () => {}
               },
               {
                 text: "Top View",
                 icon: "/assets/images/tile.png",
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "0", right: "0" },
+                action: () => {setFloorPlan(true)}
               },
               {
                 text: "Apartamentet",
                 icon: "/assets/images/floor-plan.png",
                 width: isSmallDev ? "100%" : "170px",
                 borderRadius: { left: "0", right: "50px" },
+                action: () => setFloorPlan(false)
               },
             ].map((button, index) => (
               <Button
                 key={index}
-                onClick={() => handleButtonClick(index)}
+                onClick={button.action}
                 sx={{
                   width: button.width,
                   border: "1px solid #c1ac40",
@@ -158,7 +163,7 @@ const ApartmentsPage = () => {
         }}
       >
         <Box sx={{ display: "flex", flex: 9, width: "100%", height: "100%" }}>
-          <ApartmentSvg />
+          {floorPlan ? <BuildingSvg /> : <ApartmentSvg />}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
           <ApartmentsFilter />
