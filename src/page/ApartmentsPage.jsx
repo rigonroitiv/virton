@@ -30,7 +30,7 @@ const ApartmentsPage = () => {
             width: "100%",
             height: "100%",
             justifyContent: "space-between",
-            marginRight: "20px",
+            // marginRight: "20px",
           }}
         >
           <Box
@@ -68,16 +68,24 @@ const ApartmentsPage = () => {
                 color: "#1D1D3A",
                 backgroundColor: "transparent",
                 fontFamily: "poppins",
-                fontWeight: "600",
+                fontWeight: "400",
                 borderRadius: "0px",
                 borderTopLeftRadius: "50px",
                 borderBottomLeftRadius: "50px",
-
-                height: isSmallDev ? "35px" : "45px",
+                textTransform: "capitalize",
+                height: isSmallDev ? "30px" : "35px",
                 fontSize: isSmallDev ? "9px" : "15px",
               }}
             >
-              TOP VIEW
+              <img
+                src="/assets/images/vector.png"
+                alt=""
+                style={{
+                  marginRight: "6px",
+                  width: isSmallDev ? "15px" : "20px",
+                }}
+              />
+              3D Plan
             </Button>
             <Button
               sx={{
@@ -85,23 +93,21 @@ const ApartmentsPage = () => {
                 border: "1px solid #c1ac40",
                 color: "white",
                 backgroundColor: "#1d1d3a",
+                textTransform: "capitalize",
+
                 fontFamily: "poppins",
-                fontWeight: "600",
+                fontWeight: "400",
                 borderRadius: "0px",
-                height: isSmallDev ? "35px" : "45px",
+                height: isSmallDev ? "30px" : "35px",
                 fontSize: isSmallDev ? "9px" : "15px",
               }}
             >
-              {" "}
               <img
-                src="/assets/images/vector.png"
+                src="/assets/images/tile.svg"
+                style={{ width: "20px", color: "white" }}
                 alt=""
-                style={{
-                  marginRight: "6px",
-                  width: isSmallDev ? "15px" : "25px",
-                }}
-              />
-              3D PLAN
+              />{" "}
+              Top View
             </Button>
             <Button
               sx={{
@@ -109,26 +115,27 @@ const ApartmentsPage = () => {
                 border: "1px solid #c1ac40",
                 color: "#1D1D3A",
                 backgroundColor: "transparent",
+                textTransform: "capitalize",
                 fontFamily: "poppins",
-                fontWeight: "600",
+                fontWeight: "400",
                 borderRadius: "0px",
                 borderTopRightRadius: "50px",
                 borderBottomRightRadius: "50px",
-                height: isSmallDev ? "35px" : "45px",
+                height: isSmallDev ? "30px" : "35px",
                 fontSize: isSmallDev ? "9px" : "15px",
               }}
             >
-              APARTAMENTET
+              Apartamentet
             </Button>
           </Box>
         </Box>
         <Box
           sx={{
             display: "flex",
-            flex: 4,
+            flex: 3,
             width: "100%",
-            height: "100%",
             justifyContent: "end",
+            alignItems: "center",
           }}
         >
           <Button
@@ -140,7 +147,7 @@ const ApartmentsPage = () => {
               fontFamily: "poppins",
               fontWeight: "600",
               borderRadius: "50px",
-              height: isSmallDev ? "35px" : "50px",
+              height: isSmallDev ? "30px" : "35px",
               fontSize: isSmallDev ? "12px" : "15px",
             }}
           >
@@ -158,10 +165,10 @@ const ApartmentsPage = () => {
           gap: "20px",
         }}
       >
-        <Box sx={{ display: "flex", flex: 8, width: "100%", height: "100%" }}>
+        <Box sx={{ display: "flex", flex: 9, width: "100%", height: "100%" }}>
           <ApartmentSvg />
         </Box>
-        <Box sx={{ display: "flex", flex: 4, width: "100%", height: "100%" }}>
+        <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
           <ApartmentsFilter />
         </Box>
       </Box>

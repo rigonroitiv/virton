@@ -79,7 +79,7 @@ const PlanFilter = () => {
           width: "100%",
           display: "flex",
           flexDirection: isSmallDev ? "column" : "row",
-          gap: isSmallDev ? "20px" : "70px",
+          gap: isSmallDev ? "50px" : "70px",
         }}
       >
         <FormControl fullWidth>
@@ -199,7 +199,7 @@ const PlanFilter = () => {
           width: "100%",
           display: "flex",
           flexDirection: isSmallDev ? "column" : "row",
-          gap: isSmallDev ? "20px" : "70px",
+          gap: isSmallDev ? "50px" : "70px",
         }}
       >
         <Box
