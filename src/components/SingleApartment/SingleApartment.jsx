@@ -1,9 +1,10 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 
-const SingleApartment = () => {
+const SingleApartment = ( { data } ) => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
   const isMidDev = useMediaQuery("(max-width: 1024px)");
+  const [threedSelected, setThreedSelected] = useState(false);
 
   return (
     <Box
@@ -22,6 +23,7 @@ const SingleApartment = () => {
         }}
       >
         <Button
+        onClick={() => setThreedSelected(!threedSelected)}
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #C1AC40",
@@ -29,7 +31,7 @@ const SingleApartment = () => {
             fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "600",
             color: "#1d1d3a",
-            backgroundColor: "white",
+            backgroundColor: threedSelected ? '#C1AC40' : "white",
             borderRadius: "50px",
             textTransform: "capitalize",
             height: isSmallDev ? "40px" : "60px",
@@ -37,7 +39,6 @@ const SingleApartment = () => {
         >
           3D Plan
         </Button>
-
         <Button
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
@@ -116,7 +117,7 @@ const SingleApartment = () => {
                 textTransform: "capitalize",
               }}
             >
-              100m2
+              {data?.square}m<sup>2</sup>
             </Typography>
           </Box>
 
@@ -147,7 +148,7 @@ const SingleApartment = () => {
                 textTransform: "capitalize",
               }}
             >
-              2+1
+              {data?.rooms}
             </Typography>
           </Box>
 
@@ -178,7 +179,7 @@ const SingleApartment = () => {
                 textTransform: "capitalize",
               }}
             >
-              6
+              {data?.floorNumber}
             </Typography>
           </Box>
 

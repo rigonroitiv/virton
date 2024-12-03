@@ -5,11 +5,15 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
-import React from "react";
+import React, { useEffect } from "react";
 import SingleApartment from "../components/SingleApartment/SingleApartment";
 import GallerySlider from "../components/common/GallerySlider";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
 import Logo from "../assets/svg/logo";
+import { useDispatch, useSelector } from "react-redux";
+import { getApartmentById } from "../features/apartment/ApartmentAPI";
+import { useNavigate, useParams } from "react-router-dom";
+import { getApartmentDetailModalData } from "../features/apartment/ApartmentSlice";
 
 const images = [
   "/assets/images/galeria1.jpg",
@@ -19,6 +23,16 @@ const images = [
 
 const SingleApartmentPage = () => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const { id } = useParams();
+  const data = useSelector(getApartmentDetailModalData);
+
+  useEffect(() => {
+    if(id) {
+      dispatch(getApartmentById(id))
+    }
+  }, [dispatch, id])
 
   return (
     <Box>
@@ -45,6 +59,7 @@ const SingleApartmentPage = () => {
         </Box>
         <Box>
           <Button
+          onClick={() => navigate(-1)}
             sx={{
               width: isSmallDev ? "60%" : "240px",
               backgroundColor: "white",
@@ -63,7 +78,6 @@ const SingleApartmentPage = () => {
             Kthehu pas
           </Button>
         </Box>
-
         <Box
           sx={{
             display: "flex",
@@ -81,9 +95,8 @@ const SingleApartmentPage = () => {
               color: "#C1AC40",
             }}
           >
-            Apartamenti: <span style={{ color: "white" }}>A10</span>
+            Apartamenti: <span style={{ color: "white" }}>{data?.name}</span>
           </Typography>
-
           <Box
             sx={{
               height: isSmallDev ? "100px" : "170px",
@@ -106,9 +119,9 @@ const SingleApartmentPage = () => {
         </Box>
       </Box>
       <Box sx={{ padding: isSmallDev ? "20px" : "50px" }}>
-        <SingleApartment />
+        <SingleApartment data={data} />
       </Box>
-      <GallerySlider images={images} />
+      <GallerySlider images={data?.imageUrl} />
       <Box
         sx={{
           display: "flex",
@@ -125,7 +138,6 @@ const SingleApartmentPage = () => {
         >
           Apartamentet e <span style={{ fontWeight: "700" }}>ngjajshme</span>
         </Typography>
-
         <PlanimetriCards />
       </Box>
     </Box>

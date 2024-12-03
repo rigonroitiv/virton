@@ -15,7 +15,7 @@ const ClientPage = () => {
       <Routes>
         <Route path="/apartments/:id" element={<ApartmentsPage />} />
         <Route path="/floor-plan-page" element={<FloorplanPage />} />
-        <Route path="/test" element={<SingleApartmentPage />} />
+        <Route path="/apartment/:id" element={<SingleApartmentPage />} />
         <Route path="/building" element={<GeneralBuilding />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />

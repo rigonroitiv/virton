@@ -6,7 +6,8 @@ import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 const GallerySlider = ({ images }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const isSmallDev = useMediaQuery("(max-width: 768px)");
-
+  
+  if(!images) return;
   // Show 3 images per row
   const itemsToShow = isSmallDev ? 1 : 3;
 
