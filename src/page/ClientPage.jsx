@@ -8,6 +8,7 @@ import GeneralBuilding from "./GeneralBuilding";
 import Faq from "./Faq";
 import TermsConditions from "./TermsConditions";
 import PrivacyPolicy from "./PrivacyPolicy";
+import FloorSvg from "../components/floorSvg/FloorSvg";
 
 const ClientPage = () => {
   return (
@@ -20,6 +21,7 @@ const ClientPage = () => {
         <Route path="/faq" element={<Faq />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="/test" element={<FloorSvg />} />
       </Routes>
     </div>
   );
