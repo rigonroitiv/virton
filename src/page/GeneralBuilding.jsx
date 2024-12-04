@@ -9,7 +9,7 @@ const GeneralBuilding = () => {
       sx={{
         width: "100%",
         height: isSmallDev ? "80vh" : "100vh",
-        padding: isSmallDev ? "20px" : "50px",
+        padding: isSmallDev ? "20px" : "150px 50px 50px 50px",
         backgroundColor: "#1d1d3a",
         overflow: "hidden",
       }}

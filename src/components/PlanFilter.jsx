@@ -33,7 +33,7 @@ const PlanFilter = () => {
         flexDirection: "column",
         justifyContent: "center",
         alignItems: "center",
-        padding: isSmallDev ? "50px 20px" : "50px ",
+        padding: isSmallDev ? "50px 20px" : "150px 50px ",
         backgroundColor: "#1D1D3A",
         position: "relative",
         overflow: "hidden",

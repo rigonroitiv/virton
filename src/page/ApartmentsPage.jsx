@@ -25,7 +25,7 @@ const ApartmentsPage = () => {
       sx={{
         width: "100%",
         height: "100%",
-        padding: isSmallDev ? "20px" : isMidDev ? "20px" : "50px",
+        padding: isSmallDev ? "20px" : isMidDev ? "20px" : "150px 50px",
       }}
     >
       <Box
@@ -78,7 +78,7 @@ const ApartmentsPage = () => {
                 icon: "/assets/images/vector.png",
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "50px", right: "0" },
-                action: () => {}
+                action: () => {},
               },
               {
                 text: "Top View",
@@ -86,9 +86,9 @@ const ApartmentsPage = () => {
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "0", right: "0" },
                 action: () => {
-                  setFloorPlan(true)
+                  setFloorPlan(true);
                   setParking(false);
-                }
+                },
               },
               {
                 text: "Apartamentet",
@@ -98,7 +98,7 @@ const ApartmentsPage = () => {
                 action: () => {
                   setFloorPlan(false);
                   setParking(false);
-                }
+                },
               },
             ].map((button, index) => (
               <Button
@@ -172,7 +172,13 @@ const ApartmentsPage = () => {
         }}
       >
         <Box sx={{ display: "flex", flex: 9, width: "100%", height: "100%" }}>
-          {parking ? <ParkingSvg /> : (floorPlan ? <BuildingSvg /> : <ApartmentSvg />)}
+          {parking ? (
+            <ParkingSvg />
+          ) : floorPlan ? (
+            <BuildingSvg />
+          ) : (
+            <ApartmentSvg />
+          )}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
           <ApartmentsFilter />

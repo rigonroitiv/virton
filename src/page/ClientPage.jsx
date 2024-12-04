@@ -9,10 +9,12 @@ import Faq from "./Faq";
 import TermsConditions from "./TermsConditions";
 import PrivacyPolicy from "./PrivacyPolicy";
 import FloorSvg from "../components/floorSvg/FloorSvg";
+import Navbar from "../components/common/Navbar";
 
 const ClientPage = () => {
   return (
     <div>
+      <Navbar />
       <Routes>
         <Route path="/apartments/:id" element={<ApartmentsPage />} />
         <Route path="/floor-plan-page" element={<FloorplanPage />} />
