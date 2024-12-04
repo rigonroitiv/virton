@@ -8,6 +8,9 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
+import Toparrow from "../../assets/svg/Toparrow";
+import Bottomarrow from "../../assets/svg/Bottomarrow";
+import { useTransition, animated } from "@react-spring/web"; // Import for animation
 
 const FloorSvg = () => {
   const totalFloors = 15; // Total number of floors
@@ -57,8 +60,24 @@ const FloorSvg = () => {
     return acc;
   }, {});
 
+  // Transitions for List items with slower and smoother effect
+  const transitions = useTransition(
+    floors.slice(startIndex, startIndex + visibleRange),
+    {
+      from: { opacity: 0, transform: "translateY(20px)" },
+      enter: { opacity: 1, transform: "translateY(0px)" },
+      leave: { opacity: 0, transform: "translateY(-20px)" },
+      config: { tension: 100, friction: 30 }, // Lower tension and higher friction for slower animation
+    }
+  );
+
   return (
-    <Box display="flex" height="100vh" bgcolor="#1D1D3A">
+    <Box
+      sx={{ userSelect: "none" }}
+      display="flex"
+      height="100vh"
+      bgcolor="#1D1D3A"
+    >
       {/* Left Side: Vertical Slider */}
       <Box
         width="12%"
@@ -66,17 +85,18 @@ const FloorSvg = () => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        justifyContent="space-between"
+        justifyContent="center"
         padding={1}
       >
         {/* Scroll Up Button */}
         <Button
-          onClick={scrollUp}
-          disabled={activeFloor === floors[floors.length - 1]} // Disable if no higher floors
+          onClick={scrollDown}
+          disabled={activeFloor === floors[0]} // Disable if no higher floors
           sx={{
-            width: "40px",
-            height: "60px",
-            // marginBottom: "8px",
+            width: "50px",
+            minWidth: "0px",
+            height: "50px",
+            border: "1px solid #c1ac40",
             backgroundColor: "#C1AC40",
             color: "#1D1D3A",
             borderRadius: "50px",
@@ -86,43 +106,51 @@ const FloorSvg = () => {
             },
           }}
         >
-          ↑
+          <Toparrow />
         </Button>
 
-        {/* Floors List */}
+        {/* Floors List with Smooth Transition */}
         <List>
-          {floors.slice(startIndex, startIndex + visibleRange).map((floor) => (
-            <ListItem key={floor} disablePadding>
-              <ListItemButton
-                onClick={() => setActiveFloor(floor)}
-                sx={{
-                  backgroundColor:
-                    activeFloor === floor ? "#C1AC40" : "transparent",
-                  color: activeFloor === floor ? "#1D1D3A" : "#C1AC40",
-                  borderRadius: "4px",
-                  marginBottom: "8px",
-                  fontWeight: activeFloor === floor ? "bold" : "normal",
-                }}
-              >
-                <ListItemText
-                  primary={floor}
-                  primaryTypographyProps={{
-                    align: "center",
+          {transitions((style, floor) => (
+            <animated.div style={style} key={floor}>
+              <ListItem disablePadding>
+                <ListItemButton
+                  onClick={() => setActiveFloor(floor)}
+                  sx={{
+                    backgroundColor:
+                      activeFloor === floor ? "#C1AC40" : "transparent",
+                    color: activeFloor === floor ? "#1D1D3A" : "#C1AC40",
+                    borderRadius: "50px",
+                    minWidth: "0px",
+                    width: "50px",
+                    height: "50px",
+                    marginBottom: "8px",
+                    fontWeight: activeFloor === floor ? "bold" : "normal",
+                    fontFamily: "poppins",
                   }}
-                />
-              </ListItemButton>
-            </ListItem>
+                >
+                  <ListItemText
+                    primary={floor}
+                    primaryTypographyProps={{
+                      align: "center",
+                      color: "white",
+                    }}
+                  />
+                </ListItemButton>
+              </ListItem>
+            </animated.div>
           ))}
         </List>
 
         {/* Scroll Down Button */}
         <Button
-          onClick={scrollDown}
-          disabled={activeFloor === floors[0]} // Disable if no lower floors
+          onClick={scrollUp}
+          disabled={activeFloor === floors[floors.length - 1]} // Disable if no lower floors
           sx={{
-            width: "40px",
-            height: "60px",
-            // marginTop: "8px",
+            width: "50px",
+            minWidth: "0px",
+            height: "50px",
+            border: "1px solid #c1ac40",
             backgroundColor: "#C1AC40",
             color: "#1D1D3A",
             borderRadius: "50px",
@@ -132,7 +160,7 @@ const FloorSvg = () => {
             },
           }}
         >
-          ↓
+          <Bottomarrow />
         </Button>
       </Box>
 
@@ -146,17 +174,47 @@ const FloorSvg = () => {
         backgroundColor="white"
         padding={4}
       >
-        {/* Title */}
-        <Typography
-          variant="h2"
-          gutterBottom
+        <Box
           sx={{
-            color: "#C1AC40",
-            textAlign: "center",
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: "88%",
+            alignItems: "center",
           }}
         >
-          {floorContent[activeFloor].title}
-        </Typography>
+          <Typography
+            variant="h2"
+            gutterBottom
+            sx={{
+              color: "#C1AC40",
+              textAlign: "center",
+              fontFamily: "poppins",
+              fontWeight: "600",
+            }}
+          >
+            {floorContent[activeFloor].title}
+          </Typography>
+
+          {/* Back Button */}
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#C1AC40",
+              color: "#1D1D3A",
+              fontFamily: "poppins",
+              width: "200px",
+              borderRadius: "50px",
+              height: "40px",
+              "&:hover": {
+                backgroundColor: "#1D1D3A",
+                color: "#C1AC40",
+              },
+            }}
+          >
+            KTHEHU
+          </Button>
+        </Box>
 
         {/* Floor Plan Image */}
         <Box
@@ -170,21 +228,6 @@ const FloorSvg = () => {
             marginBottom: "16px",
           }}
         />
-
-        {/* Back Button */}
-        <Button
-          variant="contained"
-          sx={{
-            backgroundColor: "#C1AC40",
-            color: "#1D1D3A",
-            "&:hover": {
-              backgroundColor: "#1D1D3A",
-              color: "#C1AC40",
-            },
-          }}
-        >
-          KTHEHU
-        </Button>
       </Box>
     </Box>
   );
