@@ -9,6 +9,7 @@ import { getFilterState } from "../../features/filter/FilterSlice";
 import { imagePath } from "../../utils/consts";
 import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
+import ApartmentPopup from "../popup/ApartmentPopup";
 
 const maxFloor = 6;
 const minFloor = -2;
@@ -35,9 +36,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
     data: {},
   });
   const [popup, setPopup] = useState({
-    x: 0,
-    y: 0,
-    open: false,
+    anchorEl: null,
     data: {},
   });
   const [limited, setLimited] = useState(false);
@@ -150,16 +149,12 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
                     onMouseEnter={(e) => {
                       setPopup({
                         data: apartment,
-                        open: true,
-                        x: e.clientX + 10,
-                        y: e.clientY + 10,
+                        anchorEl: e.currentTarget
                       });
                     }}
                     onMouseLeave={() => {
                       setPopup({
-                        x: 0,
-                        y: 0,
-                        open: false,
+                        anchorEl: null,
                         data: {},
                       });
                     }}
@@ -246,6 +241,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
       </Box>
       <ContextMenu menu={contextMenu} setMenu={setContextMenu}/>
       <AdmApartmentModal />
+      {popup.anchorEl && <ApartmentPopup anchorEl={popup.anchorEl} data={popup.data} />}
     </Box>
   );
 };

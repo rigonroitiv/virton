@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import { AddLocation, Image, LocationCity, Photo, PictureAsPdf, ThreeDRotation, Tour, ViewInAr } from "@mui/icons-material";
+import { Photo } from "@mui/icons-material";
 import {
   Divider,
   FormControl,
@@ -10,19 +10,17 @@ import {
   FormLabel,
   Grid,
   IconButton,
-  Input,
   InputAdornment,
   Radio,
   RadioGroup,
   TextField,
-  Tooltip,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { imagePath, mainUrl, pdfPath, planmetricImageUrl, vTourPath } from "../../../utils/consts";
+import { imagePath, mainUrl, pdfPath, planmetricImageUrl } from "../../../utils/consts";
 import { getApartmentEditData, getApartmentEditModalState, getApartmentEditStatus, resetStatusAndMsg, setApartmentEditModalState } from "../../../features/apartment/ApartmentEditSlice";
 import { updateApartment } from "../../../features/apartment/ApartmentAPI";
-import axiosInstance from "../../auth/axiosInstance";
+import { getProjectModalState, getProjectModalStatus } from "../../../features/project/ProjectSlice";
 
 const style = {
   position: "absolute",
@@ -36,17 +34,16 @@ const style = {
   p: 2,
 };
 
-function AdmApartmentModal() {
+function AdmProjectModal() {
   
-  const apartmentEditState = useSelector(getApartmentEditModalState);
+  const modalState = useSelector(getProjectModalState);
   const apartmentEditData = useSelector(getApartmentEditData);
   const dispatch = useDispatch();
-  const status = useSelector(getApartmentEditStatus);
+  const status = useSelector(getProjectModalStatus)
   const [apartmentData, setApartmentData] = React.useState({
     id: "",
     rooms: 1,
     isSold: false,
-    isReservated: false,
     floorNumber: 0,
     square: 0,
     name: "",
@@ -58,71 +55,37 @@ function AdmApartmentModal() {
     apartmentId: "",
     balconySquare: 0,
     imgUrl: '',
-    pdfUrl: '',
-    image3dUrl: '',
-    imageUrl: '',
-    vtourUrl: '',
-    apartmentPositionImageUrl: '',
+    pdfUrl: ''
   });
-  const [selectedImagePreview, setSelectedImagePreview] = React.useState(apartmentData.imageUrl);
-
-  function resetApartmentData() {
-    setApartmentData({
-      id: "",
-      rooms: 1,
-      isSold: false,
-      isReservated: false,
-      floorNumber: 0,
-      square: 0,
-      name: "",
-      imageData: null,
-      apartmentNumber: 1,
-      style: "",
-      className: "",
-      path: "",
-      apartmentId: "",
-      balconySquare: 0,
-      imgUrl: '',
-      pdfUrl: '',
-      image3dUrl: '',
-      imageUrl: '',
-      vtourUrl: '',
-      apartmentPositionImageUrl: '',
-      });
-  }
-
   React.useEffect(() => {
     if (apartmentEditData !== null) {
       setApartmentData(apartmentEditData);
-      // let pdfurl = '';
-      // let imgurl = '';
-      // const name = apartmentEditData.planMetric?.name?.split(',')
-      // const url = apartmentEditData.planMetric?.url?.split(',')
-      // for (let index = 0; index < name?.length; index++) {
+      let pdfurl = '';
+      let imgurl = '';
+      const name = apartmentEditData.planMetric?.name?.split(',')
+      const url = apartmentEditData.planMetric?.url?.split(',')
+      for (let index = 0; index < name?.length; index++) {
         
-      //   // if(index < name.length -1 ){
-      //   //   namee += name[index] + ',' + url[index] + ';'
-      //   // }
-      //   // else{
-      //   //   namee += name[index] + ',' + url[index]
-      //   // }
-      //   if(name[index].includes('card')){
-      //     imgurl = url[index].substring(imagePath.length)
-      //   }
-      //   if(name[index].includes('pdf')){
-      //     pdfurl = url[index].substring(pdfPath.length)
-      //   }
-      // }
-      // setApartmentData((prev) => (
-      //   {...prev,
-      //   imgUrl: imgurl,
-      //   pdfUrl: pdfurl,
-      //   imageData: apartmentEditData.imageUrl,
-      //   }
-      // ))           
-    }
-    else {
-      resetApartmentData();
+        // if(index < name.length -1 ){
+        //   namee += name[index] + ',' + url[index] + ';'
+        // }
+        // else{
+        //   namee += name[index] + ',' + url[index]
+        // }
+        if(name[index].includes('card')){
+          imgurl = url[index].substring(imagePath.length)
+        }
+        if(name[index].includes('pdf')){
+          pdfurl = url[index].substring(pdfPath.length)
+        }
+      }
+      setApartmentData((prev) => (
+        {...prev,
+        imgUrl: imgurl,
+        pdfUrl: pdfurl,
+        imageData: apartmentEditData.imageUrl,
+        }
+      ))           
     }
   }, [apartmentEditData]);
 
@@ -170,48 +133,20 @@ function AdmApartmentModal() {
     formData.append("apartmentNumber", apartmentData.apartmentNumber);
     formData.append("style", apartmentData.style);
     formData.append("className", apartmentData.className);
-    formData.append("imageData", apartmentData.imageUrl);
-    formData.append("pdfUrl", apartmentData.pdfUrl);
+    formData.append("imageData", apartmentData.imageData);
     formData.append("path", apartmentData.path);
     formData.append("apartmentId", apartmentData.apartmentId);
     formData.append("balconySquare", apartmentData.balconySquare);
     formData.append("id", apartmentData.id);
     formData.append("planMetricName", imageName);
     formData.append("planMetricUrl", imagePathh);
-    formData.append("image3dUrl", apartmentData.image3dUrl)
-    formData.append("apartmentPositionImageUrl", apartmentData.apartmentPositionImageUrl)
-    formData.append("vTourUrl", apartmentData.vtourUrl);
-    formData.append("isReservated", apartmentData.isReservated);
-    updateHandler(apartmentData.id, formData).then().catch();
+    dispatch(updateApartment({id: apartmentData.id, formData}))
   };
-
-  function updateApartment( id, data ) {
-    return axiosInstance.post(`/api/apartment/update?id=${id}`, data, {
-      headers: {
-        'Content-Type': 'multipart/form-data',
-      }
-    });
-  }
-
-  async function updateHandler( id, data) {
-    try {
-      // const res = await executeRequest(fetchUsersAll);
-        toast.success("Dokumenti u ruajt me sukses!", {
-          position: "top-right",
-        });
-      const res = await updateApartment(id, data);
-    }
-    catch (error) {
-      toast.error("Gabim ne ruajtjen e dokumentit!", {
-        position: "top-right",
-      });
-    }
-  }
   
 
   return (
     <Modal
-      open={apartmentEditState}
+      open={modalState}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
       sx={{
@@ -219,6 +154,7 @@ function AdmApartmentModal() {
           outline: "none",
         },
       }}
+      keepMounted
     >
       <Box sx={style}>
         <Box display={"flex"} gap={1} p={4}>
@@ -231,51 +167,20 @@ function AdmApartmentModal() {
                 }}
                 width={250}
                 height={200}
-                src={`${mainUrl}/${planmetricImageUrl}${selectedImagePreview}`}
+                src={`${mainUrl}${planmetricImageUrl}${apartmentData.imageData}`}
               />
-              <Box
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  gap: 1,
-                }}
-              >
-                <IconButton
-                  onClick={() =>
-                    setSelectedImagePreview(apartmentData.imageUrl)
-                  }
-                >
-                  <Image />
-                </IconButton>
-                <IconButton
-                  onClick={() =>
-                    setSelectedImagePreview(apartmentData.image3dUrl)
-                  }
-                >
-                  <ThreeDRotation />
-                </IconButton>
-                <IconButton
-                  onClick={() =>
-                    setSelectedImagePreview(
-                      apartmentData.apartmentPositionImageUrl
-                    )
-                  }
-                >
-                  <AddLocation />
-                </IconButton>
-              </Box>
             </Box>
             <Box display={"flex"} justifyContent={"center"} mt={2}>
               <TextField
                 size="small"
-                value={apartmentData.imageUrl}
+                value={apartmentData.imageData}
                 onChange={(e) => {
                   setApartmentData({
                     ...apartmentData,
-                    imageUrl: e.currentTarget.value,
+                    imageData: e.currentTarget.value,
                   });
                 }}
-                label="URL e fotos 2D"
+                label="URL e fotos"
                 name="imgUrl"
                 InputProps={{
                   endAdornment: (
@@ -288,59 +193,20 @@ function AdmApartmentModal() {
                 }}
               />
             </Box>
-            <Box
-              maxHeight={130}
-              display={"flex"}
-              flexDirection={"column"}
-              gap={2}
-              height={130}
-              overflow={"auto"}
-            >
+            <Box maxHeight={120} height={100} overflow={"auto"}>
               <TextField
                 size="small"
                 multiline
-                label="URL e fotos 3D"
+                label='Photo URL (Ndaj me ",")'
                 fullWidth
                 sx={{ marginTop: 2 }}
-                value={apartmentData.image3dUrl}
-                name="image3dUrl"
+                value={apartmentData.imgUrl}
+                name="imgUrl"
                 onChange={(e) => {
                   setApartmentData({
                     ...apartmentData,
-                    image3dUrl: e.target.value,
+                    imgUrl: e.target.value,
                   });
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton>
-                        <Photo />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
-                }}
-              />
-              <TextField
-                size="small"
-                multiline
-                label="URL e fotos per orientim"
-                fullWidth
-                value={apartmentData.apartmentPositionImageUrl}
-                name="apartmentPositionImageUrl"
-                onChange={(e) => {
-                  setApartmentData({
-                    ...apartmentData,
-                    apartmentPositionImageUrl: e.target.value,
-                  });
-                }}
-                InputProps={{
-                  endAdornment: (
-                    <InputAdornment position="end">
-                      <IconButton>
-                        <Photo />
-                      </IconButton>
-                    </InputAdornment>
-                  ),
                 }}
               />
             </Box>
@@ -458,13 +324,13 @@ function AdmApartmentModal() {
                   }}
                 />
               </Grid>
-              <Grid item sm={12} md={6}>
+              <Grid item sm={12} md={12}>
                 <FormControl>
                   <FormLabel id="demo-row-radio-buttons-group-label">
                     Disponueshmeria
                   </FormLabel>
                   <RadioGroup
-                    value={apartmentData.isSold ? 'true' : 'false'}
+                    value={apartmentData.isSold}
                     row={true}
                     onChange={(e) => {
                       setApartmentData((prev) => ({
@@ -488,76 +354,11 @@ function AdmApartmentModal() {
                   </RadioGroup>
                 </FormControl>
               </Grid>
-              <Grid item sm={12} md={6}>
-                <FormControl>
-                  <FormLabel id="demo-row-radio-buttons-group-label">
-                    Rezervuar
-                  </FormLabel>
-                  <RadioGroup
-                    value={apartmentData.isReservated ? 'true' : 'false'}
-                    row={true}
-                    onChange={(e) => {
-                      setApartmentData((prev) => ({
-                        ...prev,
-                        isReservated: e.target.value === "true",
-                      }));
-                    }}
-                    aria-labelledby="demo-row-radio-buttons-group-label"
-                    name="row-radio-buttons-group"
-                  >
-                    <FormControlLabel
-                      value="true"
-                      control={<Radio />}
-                      label="PO"
-                    />
-                    <FormControlLabel
-                      value="false"
-                      control={<Radio />}
-                      label="JO"
-                    />
-                  </RadioGroup>
-                </FormControl>
-              </Grid>
-              <Grid item sm={12} md={12}>
-                <TextField
-                  multiline
-                  label="Virtual Tour URL"
-                  fullWidth
-                  size={"small"}
-                  sx={{ marginTop: 2 }}
-                  value={apartmentData.vtourUrl ? apartmentData.vtourUrl : ""}
-                  name="vtourUrl"
-                  onChange={(e) => {
-                    setApartmentData({
-                      ...apartmentData,
-                      vtourUrl: e.target.value,
-                    });
-                  }}
-                  InputProps={{
-                    endAdornment: (
-                      <InputAdornment position="end">
-                        <Tooltip title="Check if Virtual Tour Link exists">
-                          <IconButton
-                            onClick={() =>
-                              window.open(
-                                `${mainUrl}${vTourPath}/${apartmentData.vtourUrl}`,
-                                "_blank"
-                              )
-                            }
-                          >
-                            <ViewInAr />
-                          </IconButton>
-                        </Tooltip>
-                      </InputAdornment>
-                    ),
-                  }}
-                />
-              </Grid>
               <Grid item sm={12} md={12}>
                 <Box maxHeight={120} height={100} overflow={"auto"}>
                   <TextField
                     multiline
-                    label="PDF Url"
+                    label="PDF Emri"
                     fullWidth
                     size={"small"}
                     sx={{ marginTop: 2 }}
@@ -568,24 +369,6 @@ function AdmApartmentModal() {
                         ...apartmentData,
                         pdfUrl: e.target.value,
                       });
-                    }}
-                    InputProps={{
-                      endAdornment: (
-                        <InputAdornment position="end">
-                          <Tooltip title="Check if Pdf Link exists">
-                            <IconButton
-                              onClick={() =>
-                                window.open(
-                                  `${pdfPath}${apartmentData.pdfUrl}`,
-                                  "_blank"
-                                )
-                              }
-                            >
-                              <PictureAsPdf />
-                            </IconButton>
-                          </Tooltip>
-                        </InputAdornment>
-                      ),
                     }}
                   />
                 </Box>
@@ -600,11 +383,7 @@ function AdmApartmentModal() {
           </Button>
           <Button
             onClick={() => {
-              toast.warn("Ndryshimet u anuluan.", {
-                position: "top-right",
-              });
               dispatch(setApartmentEditModalState(false));
-              resetApartmentData();
             }}
             variant="contained"
           >
@@ -616,4 +395,4 @@ function AdmApartmentModal() {
   );
 }
 
-export default AdmApartmentModal
+export default AdmProjectModal
