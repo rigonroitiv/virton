@@ -13,8 +13,6 @@ import Toparrow from "../../assets/svg/Toparrow";
 import Bottomarrow from "../../assets/svg/Bottomarrow";
 import { useTransition, animated } from "@react-spring/web"; // Import for animation
 import {
-  Box,
-  Button,
   Typography,
   List,
   ListItem,
@@ -166,16 +164,20 @@ const BuildingSvg = () => {
         height: "100%",
         // objectFit: "cover",
         position: "relative",
+        display: 'flex',
       }}
     >
       <Box
-        width="12%"
+        width="max-content"
         bgcolor="#1D1D3A"
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
         padding={1}
+        height={'71vh'}
+        position={'absolute'}
+        top={'9%'}
       >
         {/* Scroll Up Button */}
         <Button
@@ -260,9 +262,10 @@ const BuildingSvg = () => {
             opacity: currentIndex === index ? 1 : 0,
             transition: "opacity 0.1s ease-in-out",
             width: "100%",
-            position: "absolute",
             display: "flex",
             justifyContent: "center",
+            position: 'absolute',
+            left: '21%'
           }}
         >
           {/* Buils
@@ -377,55 +380,7 @@ const BuildingSvg = () => {
           </svg>
         </div>
       ))}
-      <Box
-        onClick={handleNext}
-        sx={{
-          position: "absolute",
-          display: "flex",
-          top: "50%",
-          left: 5,
-          cursor: "pointer",
-          width: "45px",
-          height: "45px",
-          backgroundColor: "white",
-          justifyContent: "center",
-          borderRadius: "50px",
-          "&:hover": {
-            backgroundColor: "#1D1D3A",
-            transform: "scale(1.1)",
-          },
-        }}
-      >
-        <img
-          style={{ width: "18px", objectFit: "contain" }}
-          src="/assets/images/leftvirton.png"
-          alt=""
-        />
-      </Box>
-      <Box
-        sx={{
-          position: "absolute",
-          display: "flex",
-          top: "50%",
-          right: 5,
-          cursor: "pointer",
-          width: "45px",
-          height: "45px",
-          backgroundColor: "white",
-          justifyContent: "center",
-          borderRadius: "50px",
-          "&:hover": {
-            backgroundColor: "#1D1D3A",
-            transform: "scale(1.1)",
-          },
-        }}
-      >
-        <img
-          style={{ width: "18px", objectFit: "contain" }}
-          src="/assets/images/rightvirton.png"
-          alt=""
-        />
-      </Box>
+      
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
     </Box>

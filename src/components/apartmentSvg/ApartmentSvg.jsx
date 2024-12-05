@@ -1,5 +1,5 @@
 import { Box, Button, useMediaQuery, useTheme } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
@@ -10,11 +10,6 @@ import { imagePath } from "../../utils/consts";
 import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
 import ApartmentPopup from "../popup/ApartmentPopup";
-
-const maxFloor = 6;
-const minFloor = -2;
-const maxSquare = 720;
-const minSquare = 40;
 
 const ApartmentSvg = ( { sizeRange, floorRange}) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -30,6 +25,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
   // const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
   const [roomRange, setRoomRange] = useState("all");
   const filterState = useSelector(getFilterState);
+  const ref = useRef(null)
   const [contextMenu, setContextMenu] = useState({
     anchorEl: null,
     open: false,
@@ -88,6 +84,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
 
   return (
     <Box
+    ref={ref}
       sx={{
         width: "100%",
         height: "100%",
@@ -147,12 +144,14 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
                     }
                     id={apartment.apartmentId}
                     onMouseEnter={(e) => {
+                      e.preventDefault()
                       setPopup({
                         data: apartment,
                         anchorEl: e.currentTarget
                       });
                     }}
-                    onMouseLeave={() => {
+                    onMouseLeave={(e) => {
+                      e.preventDefault()
                       setPopup({
                         anchorEl: null,
                         data: {},

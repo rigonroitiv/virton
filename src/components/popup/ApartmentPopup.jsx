@@ -4,7 +4,7 @@ import React from "react";
 const ApartmentPopup = ({ anchorEl, setPopupMenu, data }) => {
   const open = new Boolean(anchorEl);
   return (
-    <Popover open={open} anchorEl={anchorEl} sx={{ pointerEvents: "none" }}>
+    <Popover disableScrollLock={true} open={open} anchorEl={anchorEl} sx={{ pointerEvents: "none" }}>
       <Box
         sx={{
           display: "flex",
