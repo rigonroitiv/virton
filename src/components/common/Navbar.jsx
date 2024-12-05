@@ -9,15 +9,17 @@ import {
   ListItemText,
   Typography,
   Box,
+  useMediaQuery,
 } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Drawing from "../../assets/svg/Drawing";
 import Hamburger from "../../assets/svg/Hamburger";
-
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const isSmallDev = useMediaQuery("(max-width: 768px)");
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -30,13 +32,15 @@ const Navbar = () => {
         position="absolute"
         sx={{
           backgroundColor: "rgba(0, 0, 0, 0.5)", // Black overlay with 50% opacity
-          padding: "20px 50px",
+          padding: isSmallDev ? "20px" : "20px 50px",
           boxShadow: "none",
         }}
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Logo */}
-          <img src={''} alt="Virton Logo" style={{ width: "150px" }} />
+          <Link to="/">
+            <img src={""} alt="Virton Logo" style={{ width: "150px" }} />
+          </Link>
           {/* Menu Button */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Typography
@@ -74,17 +78,17 @@ const Navbar = () => {
             backgroundColor: "#121b1d",
             color: "white",
             overflow: "hidden",
-            padding: "0px 50px",
+            padding: isSmallDev ? "20px" : "0px 50px",
           },
         }}
       >
         <Box
           sx={{
-            height: "100%",
+            height: isSmallDev ? "100vh" : "100%",
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: "30px 20px",
+            padding: isSmallDev ? "20px" : "30px 20px",
           }}
         >
           {/* Close Button */}
@@ -118,7 +122,7 @@ const Navbar = () => {
                         paddingTop: "0px",
                         paddingBottom: "0px",
                         "& .MuiListItemText-primary": {
-                          fontSize: "50px",
+                          fontSize: isSmallDev ? "40px" : "50px",
                           fontFamily: "poppins",
                           fontWeight: text === "Rreth Nesh" ? "bold" : "normal",
 
@@ -134,7 +138,13 @@ const Navbar = () => {
               )}
             </List>
 
-            <Box sx={{ position: "absolute", top: "15%", right: "13%" }}>
+            <Box
+              sx={{
+                position: "absolute",
+                top: "15%",
+                right: isSmallDev ? "0%" : "13%",
+              }}
+            >
               <Drawing />
             </Box>
           </Box>
@@ -144,7 +154,7 @@ const Navbar = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
-              gap: "120px",
+              gap: isSmallDev ? "30px" : "120px",
               padding: "20px 20px",
               borderTop: "1px solid #FFFFFF30",
             }}
@@ -154,29 +164,47 @@ const Navbar = () => {
               {" "}
               <Typography
                 variant="body1"
-                sx={{ marginBottom: 1, fontFamily: "poppins" }}
+                sx={{
+                  marginBottom: 1,
+                  fontFamily: "poppins",
+                  fontSize: isSmallDev ? "10px" : "18px",
+                }}
               >
                 {" "}
                 TELEFONONI ZYRËN TONË{" "}
               </Typography>{" "}
               <Typography
                 variant="h6"
-                sx={{ marginBottom: 2, fontFamily: "poppins" }}
+                sx={{
+                  marginBottom: 2,
+                  fontFamily: "poppins",
+                  fontSize: isSmallDev ? "10px" : "18px",
+                }}
               >
                 {" "}
-                +383 44 460 405{" "}
+                +38344460405{" "}
               </Typography>{" "}
             </Box>{" "}
             <Box sx={{ display: "flex", flexDirection: "column" }}>
               {" "}
               <Typography
                 variant="body1"
-                sx={{ marginBottom: 1, fontFamily: "poppins" }}
+                sx={{
+                  marginBottom: 1,
+                  fontFamily: "poppins",
+                  fontSize: isSmallDev ? "10px" : "18px",
+                }}
               >
                 {" "}
                 DËRGO NJË MESAZH{" "}
               </Typography>{" "}
-              <Typography variant="h6" style={{ fontFamily: "poppins" }}>
+              <Typography
+                variant="h6"
+                style={{
+                  fontFamily: "poppins",
+                  fontSize: isSmallDev ? "10px" : "18px",
+                }}
+              >
                 info@virtoninvest.com
               </Typography>{" "}
             </Box>{" "}
