@@ -225,55 +225,6 @@ className="ft0"
 
         </div>
       ))}
-      <Box
-        onClick={handleNext}
-        sx={{
-          position: "absolute",
-          display: "flex",
-          top: "50%",
-          left: 5,
-          cursor: "pointer",
-          width: "45px",
-          height: "45px",
-          backgroundColor: "white",
-          justifyContent: "center",
-          borderRadius: "50px",
-          "&:hover": {
-            backgroundColor: "#1D1D3A",
-            transform: "scale(1.1)",
-          },
-        }}
-      >
-        <img
-          style={{ width: "18px", objectFit: "contain" }}
-          src="/assets/images/leftvirton.png"
-          alt=""
-        />
-      </Box>
-      <Box
-        sx={{
-          position: "absolute",
-          display: "flex",
-          top: "50%",
-          right: 5,
-          cursor: "pointer",
-          width: "45px",
-          height: "45px",
-          backgroundColor: "white",
-          justifyContent: "center",
-          borderRadius: "50px",
-          "&:hover": {
-            backgroundColor: "#1D1D3A",
-            transform: "scale(1.1)",
-          },
-        }}
-      >
-        <img
-          style={{ width: "18px", objectFit: "contain" }}
-          src="/assets/images/rightvirton.png"
-          alt=""
-        />
-      </Box>
       <ContextMenu menu={contextMenu} setMenu={setContextMenu}/>
       <AdmApartmentModal />
     </Box>
