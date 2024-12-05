@@ -34,7 +34,14 @@ const ApartmentsPage = () => {
       sx={{
         width: "100%",
         height: "100%",
-        padding: isSmallDev ? "20px" : isMidDev ? "20px" : "150px 50px",
+        padding:
+          floorPlan && !parking
+            ? "150px 0" // No padding for BuildingSvg
+            : isSmallDev
+            ? "20px"
+            : isMidDev
+            ? "20px"
+            : "150px 50px",
       }}
     >
       <Box

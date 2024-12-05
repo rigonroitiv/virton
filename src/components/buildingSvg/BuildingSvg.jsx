@@ -173,11 +173,11 @@ const BuildingSvg = () => {
         display="flex"
         flexDirection="column"
         alignItems="center"
-        justifyContent="center"
+        justifyContent="space-around"
         padding={1}
-        height={"71vh"}
+        height={"100%"}
         position={"absolute"}
-        top={"10%"}
+        // top={"10%"}
       >
         {/* Scroll Up Button */}
         <Button
@@ -213,9 +213,9 @@ const BuildingSvg = () => {
                     color: activeFloor === floor ? "#1D1D3A" : "#C1AC40",
                     borderRadius: "50px",
                     minWidth: "0px",
-                    width: "50px",
-                    height: "50px",
-                    marginBottom: "8px",
+                    width: "60px",
+                    height: "60px",
+                    marginBottom: "20px",
                     fontWeight: activeFloor === floor ? "bold" : "normal",
                     fontFamily: "poppins",
                   }}
@@ -265,7 +265,7 @@ const BuildingSvg = () => {
             display: "flex",
             justifyContent: "center",
             position: "absolute",
-            left: "21%",
+            left: "25%",
           }}
         >
           {/* Buils
