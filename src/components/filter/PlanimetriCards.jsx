@@ -9,13 +9,13 @@ import {
   useMediaQuery,
   IconButton,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { forwardRef, useState } from "react";
 import { planimetrite } from "../../utils/server";
 import Logo from "../../assets/svg/logo";
 import SingleViewIcon from "@mui/icons-material/ViewAgenda"; // Icon for single card view
 import GridViewIcon from "@mui/icons-material/ViewModule"; // Icon for grid view
 
-const PlanimetriCards = () => {
+const PlanimetriCards = forwardRef((props, ref) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const isMidDev = useMediaQuery("(max-width:1024px)");
   const [columns, setColumns] = useState(2); // Default to 2 columns for mobile
@@ -25,6 +25,7 @@ const PlanimetriCards = () => {
 
   return (
     <Box
+    ref={ref}
       sx={{
         flexGrow: 1,
         backgroundColor: "white",
@@ -231,6 +232,6 @@ const PlanimetriCards = () => {
       </Grid>
     </Box>
   );
-};
+});
 
 export default PlanimetriCards;

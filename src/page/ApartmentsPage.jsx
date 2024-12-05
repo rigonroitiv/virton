@@ -1,9 +1,9 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from "@mui/material";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import ApartmentSvg from "../components/apartmentSvg/ApartmentSvg";
 import ApartmentsFilter from "../components/filter/ApartmentsFilter";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
-// import BuildingSvg from "../components/buildingSvg/BuildingSvg";
+import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import ParkingSvg from "../components/parking/ParkingSvg";
 
 const minFloor = 1;
@@ -16,6 +16,7 @@ const ApartmentsPage = () => {
   const isMidDev = useMediaQuery("(max-width:1024px)");
   const [floorPlan, setFloorPlan] = useState(false);
   const [parking, setParking] = useState(false);
+  const apartmentCardsRef = useRef();
 
   const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
   const [squareRange, setSquareRange] = useState([minSquare, maxSquare]);
@@ -107,8 +108,9 @@ const ApartmentsPage = () => {
                 width: isSmallDev ? "100%" : "170px",
                 borderRadius: { left: "0", right: "50px" },
                 action: () => {
-                  setFloorPlan(false);
-                  setParking(false);
+                  if (apartmentCardsRef && apartmentCardsRef.current) {
+                    apartmentCardsRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                  }
                 },
               },
             ].map((button, index) => (
@@ -185,12 +187,12 @@ const ApartmentsPage = () => {
         <Box sx={{ display: "flex", flex: 9, width: "100%", height: "100%" }}>
           {parking ? (
             <ParkingSvg />
-          ) : floorPlan ? null : ( // <BuildingSvg />
+          ) : floorPlan ? <BuildingSvg /> : (  
             <ApartmentSvg sizeRange={squareRange} floorRange={floorRange} />
           )}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
-          <ApartmentsFilter
+          {!floorPlan && <ApartmentsFilter
             maxFloor={maxFloor}
             minFloor={minFloor}
             maxSquare={maxSquare}
@@ -199,11 +201,11 @@ const ApartmentsPage = () => {
             setSquareSquare={setSquareRange}
             squareRange={squareRange}
             floorRange={floorRange}
-          />
+          />}
         </Box>
       </Box>
 
-      <PlanimetriCards />
+      <PlanimetriCards ref={apartmentCardsRef}/>
     </Box>
   );
 };

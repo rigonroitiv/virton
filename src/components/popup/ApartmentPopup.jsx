@@ -5,9 +5,10 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data }) => {
   const open = new Boolean(anchorEl);
   return (
     <Popover
+      disableScrollLock={true}
       open={open}
       anchorEl={anchorEl}
-      sx={{ pointerEvents: "none", borderRadius: "15px" }}
+      sx={{ pointerEvents: "none" }}
     >
       <Box
         sx={{
