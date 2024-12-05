@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import ApartmentSvg from "../components/apartmentSvg/ApartmentSvg";
 import ApartmentsFilter from "../components/filter/ApartmentsFilter";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
-import BuildingSvg from "../components/buildingSvg/BuildingSvg";
+// import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import ParkingSvg from "../components/parking/ParkingSvg";
 
 const minFloor = 1;
@@ -18,7 +18,7 @@ const ApartmentsPage = () => {
   const [parking, setParking] = useState(false);
 
   const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
-  const [squareRange, setSquareRange] = useState([minSquare, maxSquare])
+  const [squareRange, setSquareRange] = useState([minSquare, maxSquare]);
 
   // State to manage active button
   const [activeButton, setActiveButton] = useState(null);
@@ -185,22 +185,20 @@ const ApartmentsPage = () => {
         <Box sx={{ display: "flex", flex: 9, width: "100%", height: "100%" }}>
           {parking ? (
             <ParkingSvg />
-          ) : floorPlan ? (
-            <BuildingSvg />
-          ) : (
-            <ApartmentSvg sizeRange={squareRange} floorRange={floorRange}/>
+          ) : floorPlan ? null : ( // <BuildingSvg />
+            <ApartmentSvg sizeRange={squareRange} floorRange={floorRange} />
           )}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
-          <ApartmentsFilter 
-          maxFloor={maxFloor}
-          minFloor={minFloor}
-          maxSquare={maxSquare}
-          minSquare={minSquare}
-          setFloorRange={setFloorRange}
-          setSquareSquare={setSquareRange}
-          squareRange={squareRange}
-          floorRange={floorRange}
+          <ApartmentsFilter
+            maxFloor={maxFloor}
+            minFloor={minFloor}
+            maxSquare={maxSquare}
+            minSquare={minSquare}
+            setFloorRange={setFloorRange}
+            setSquareSquare={setSquareRange}
+            squareRange={squareRange}
+            floorRange={floorRange}
           />
         </Box>
       </Box>
