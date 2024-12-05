@@ -164,20 +164,20 @@ const BuildingSvg = () => {
         height: "100%",
         // objectFit: "cover",
         position: "relative",
-        display: 'flex',
+        display: "flex",
       }}
     >
       <Box
-        width="max-content"
+        width="20%"
         bgcolor="#1D1D3A"
         display="flex"
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
         padding={1}
-        height={'71vh'}
-        position={'absolute'}
-        top={'9%'}
+        height={"71vh"}
+        position={"absolute"}
+        top={"10%"}
       >
         {/* Scroll Up Button */}
         <Button
@@ -264,8 +264,8 @@ const BuildingSvg = () => {
             width: "100%",
             display: "flex",
             justifyContent: "center",
-            position: 'absolute',
-            left: '21%'
+            position: "absolute",
+            left: "21%",
           }}
         >
           {/* Buils
@@ -380,7 +380,7 @@ const BuildingSvg = () => {
           </svg>
         </div>
       ))}
-      
+
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
     </Box>

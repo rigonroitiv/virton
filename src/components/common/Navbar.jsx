@@ -31,7 +31,7 @@ const Navbar = () => {
       <AppBar
         position="absolute"
         sx={{
-          backgroundColor: "rgba(0, 0, 0, 0.5)", // Black overlay with 50% opacity
+          backgroundColor: "#1d1d3a", // Black overlay with 50% opacity
           padding: isSmallDev ? "20px" : "20px 50px",
           boxShadow: "none",
         }}
@@ -42,6 +42,36 @@ const Navbar = () => {
             <img src={""} alt="Virton Logo" style={{ width: "150px" }} />
           </Link>
           {/* Menu Button */}
+
+          <Box sx={{ display: "flex", flexDirection: "row", gap: "15px" }}>
+            <Typography
+              sx={{
+                fontFamily: "poppins",
+                fontSize: "18px",
+                fontWeight: "400",
+              }}
+            >
+              Apartamentet
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "poppins",
+                fontSize: "18px",
+                fontWeight: "400",
+              }}
+            >
+              Afarizmi
+            </Typography>
+            <Typography
+              sx={{
+                fontFamily: "poppins",
+                fontSize: "18px",
+                fontWeight: "400",
+              }}
+            >
+              Parkingjet
+            </Typography>
+          </Box>
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Typography
               variant="body1"

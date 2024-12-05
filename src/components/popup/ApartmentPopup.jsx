@@ -23,26 +23,96 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data }) => {
           backgroundColor: "#1d1d3a",
         }}
       >
-        <Typography
-          sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
         >
-          {data.name}{" "}
-        </Typography>
-        <Typography
-          sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+          <Typography
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: "400",
+              color: "white",
+              fontSize: "25px",
+            }}
+          >
+            {data.name}{" "}
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
         >
-          {data.square}
-        </Typography>
-        <Typography
-          sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+          <Typography
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: "600",
+              color: "white",
+              fontSize: "14px",
+            }}
+          >
+            Siperfaqja
+          </Typography>
+          <Typography
+            sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+          >
+            {data.square}m2
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
         >
-          {data.floorNumber}
-        </Typography>
-        <Typography
-          sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+          <Typography
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: "600",
+              color: "white",
+              fontSize: "14px",
+            }}
+          >
+            Kati
+          </Typography>
+          <Typography
+            sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+          >
+            {data.floorNumber}
+          </Typography>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+          }}
         >
-          {data.rooms}
-        </Typography>
+          <Typography
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: "600",
+              color: "white",
+              fontSize: "14px",
+            }}
+          >
+            Dhoma
+          </Typography>
+          <Typography
+            sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+          >
+            {data.rooms}
+          </Typography>
+        </Box>
 
         <Box
           sx={{
