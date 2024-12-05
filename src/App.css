@@ -51,3 +51,24 @@
     stroke-width: 1px;
     stroke: white;
 }
+
+.ft0 {
+    fill: transparent;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s ease 0s;
+    opacity: 0.5;
+    stroke: #fff;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    stroke-width: 1px;
+    outline: none;
+    width: 100%;
+}
+
+.ft0:hover {
+    fill: #1D1D3A;
+    opacity: 0.6;
+
+}

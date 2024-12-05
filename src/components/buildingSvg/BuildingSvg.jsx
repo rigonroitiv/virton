@@ -109,7 +109,7 @@ const BuildingSvg = () => {
             justifyContent: "center",
           }}
         >
-          Buils
+          {/* Buils
           <svg
             width={"100%"}
             height={"100%"}
@@ -192,7 +192,37 @@ const BuildingSvg = () => {
                 );
               }
             })}
-          </svg>
+          </svg> */}
+          <svg
+   x="0px"
+   y="0px"
+   viewBox="0 0 1920 1080"
+   xmlSpace="preserve"
+   xmlnsXlink="http://www.w3.org/1999/xlink"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlnsSvg="http://www.w3.org/2000/svg">
+<image
+   width="1920"
+   height="1080"
+   xlinkHref={`${imagePath}a1-f1.jpg`}>
+</image>
+<path
+className="ft0"
+   d="M 11,58 H 648 V 526 H 11 Z" />
+<path
+className="ft0"
+   d="m 648,58 h 643 V 526 H 648 Z" />
+<path
+className="ft0"
+   d="m 1291,58 h 613 v 468 h -613 z" />
+<path
+className="ft0"
+   d="M 1112,999 V 775 h 105 V 625 h 155 v -99 h 532 v 473 z" />
+<path
+className="ft0"
+   d="M 11,526 V 999 H 917 V 823 H 814 V 624 H 554 v -98 z" />
+</svg>
+
         </div>
       ))}
       <Box

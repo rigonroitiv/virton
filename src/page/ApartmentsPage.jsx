@@ -86,7 +86,10 @@ const ApartmentsPage = () => {
                 icon: "/assets/images/vector.png",
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "50px", right: "0" },
-                action: () => {},
+                action: () => {
+                  setFloorPlan(false);
+                  setParking(false);
+                },
               },
               {
                 text: "Top View",
