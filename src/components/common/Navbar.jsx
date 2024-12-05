@@ -14,7 +14,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Drawing from "../../assets/svg/Drawing";
 import Hamburger from "../../assets/svg/Hamburger";
-import virtonLogo from "/assets/images/virtonlogo.png";
+
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -36,7 +36,7 @@ const Navbar = () => {
       >
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Logo */}
-          <img src={virtonLogo} alt="Virton Logo" style={{ width: "150px" }} />
+          <img src={''} alt="Virton Logo" style={{ width: "150px" }} />
           {/* Menu Button */}
           <Box sx={{ display: "flex", alignItems: "center" }}>
             <Typography

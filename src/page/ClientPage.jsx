@@ -19,7 +19,7 @@ const ClientPage = () => {
         <Route path="/apartments/:id" element={<ApartmentsPage />} />
         <Route path="/floor-plan-page" element={<FloorplanPage />} />
         <Route path="/apartment/:id" element={<SingleApartmentPage />} />
-        <Route path="/building" element={<GeneralBuilding />} />
+        <Route path="/" element={<GeneralBuilding />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/terms-conditions" element={<TermsConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />

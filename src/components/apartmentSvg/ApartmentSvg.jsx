@@ -15,7 +15,7 @@ const minFloor = -2;
 const maxSquare = 720;
 const minSquare = 40;
 
-const ApartmentSvg = () => {
+const ApartmentSvg = ( { sizeRange, floorRange}) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -25,8 +25,8 @@ const ApartmentSvg = () => {
   const wishListItemCount = useSelector(getWishlistCount);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-  const [sizeRange, setSizeRange] = useState([minSquare, maxSquare]);
-  const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
+  // const [sizeRange, setSizeRange] = useState([minSquare, maxSquare]);
+  // const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
   const [roomRange, setRoomRange] = useState("all");
   const filterState = useSelector(getFilterState);
   const [contextMenu, setContextMenu] = useState({

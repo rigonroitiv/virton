@@ -6,11 +6,19 @@ import PlanimetriCards from "../components/filter/PlanimetriCards";
 import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import ParkingSvg from "../components/parking/ParkingSvg";
 
+const minFloor = 1;
+const maxFloor = 9;
+const minSquare = 40;
+const maxSquare = 150;
+
 const ApartmentsPage = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const isMidDev = useMediaQuery("(max-width:1024px)");
   const [floorPlan, setFloorPlan] = useState(false);
   const [parking, setParking] = useState(false);
+
+  const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
+  const [squareRange, setSquareRange] = useState([minSquare, maxSquare])
 
   // State to manage active button
   const [activeButton, setActiveButton] = useState(null);
@@ -177,11 +185,20 @@ const ApartmentsPage = () => {
           ) : floorPlan ? (
             <BuildingSvg />
           ) : (
-            <ApartmentSvg />
+            <ApartmentSvg sizeRange={squareRange} floorRange={floorRange}/>
           )}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
-          <ApartmentsFilter />
+          <ApartmentsFilter 
+          maxFloor={maxFloor}
+          minFloor={minFloor}
+          maxSquare={maxSquare}
+          minSquare={minSquare}
+          setFloorRange={setFloorRange}
+          setSquareSquare={setSquareRange}
+          squareRange={squareRange}
+          floorRange={floorRange}
+          />
         </Box>
       </Box>
 

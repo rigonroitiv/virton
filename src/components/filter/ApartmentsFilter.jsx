@@ -2,8 +2,25 @@ import { Box, Button, Slider, Typography, useMediaQuery } from "@mui/material";
 import React from "react";
 import Logo from "../../assets/svg/logo";
 
-const ApartmentsFilter = () => {
+const ApartmentsFilter = ( { 
+  minFloor,
+  maxFloor,
+  minSquare,
+  maxSquare,
+  floorRange,
+  setFloorRange,
+  squareRange,
+  setSquareSquare,
+} ) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+
+  const handleSizeChange = (event, newSizeRange) => {
+    setSquareSquare(newSizeRange);
+  };
+
+  const handleFloorChange = (event, newFloorRange) => {
+    setFloorRange(newFloorRange);
+  };
 
   return (
     <Box
@@ -146,8 +163,11 @@ const ApartmentsFilter = () => {
         </Typography>
 
         <Slider
-          defaultValue={50}
           aria-label="Default"
+          min={minSquare}
+          max={maxSquare}
+          value={squareRange}
+          onChange={handleSizeChange}
           valueLabelDisplay="auto"
           sx={{
             color: "#C1AC40", // Sets the line color
@@ -226,7 +246,10 @@ const ApartmentsFilter = () => {
         </Typography>
 
         <Slider
-          defaultValue={50}
+          min={minFloor}
+          max={maxFloor}
+          value={floorRange}
+          onChange={handleFloorChange}
           aria-label="Default"
           valueLabelDisplay="auto"
           sx={{

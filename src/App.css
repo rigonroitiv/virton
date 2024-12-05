@@ -1,5 +1,6 @@
 .st0 {
-    fill: transparent;
+    /* fill: transparent; */
+    fill: #1D1D3A;
     cursor: pointer;
     outline: none;
     transition: all 0.4s ease 0s;
