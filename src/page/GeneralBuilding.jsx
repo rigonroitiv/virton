@@ -93,10 +93,12 @@ const GeneralBuilding = () => {
       sx={{
         width: "100%",
         height: isSmallDev ? "100vh" : "100vh",
-        padding: isSmallDev ? "370px 20px" : "0",
+        padding: isSmallDev ? "370px 20px" : "0px 50px 0px 50px",
         backgroundColor: "#1d1d3a",
         overflow: "hidden",
         position: "relative",
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       {/* <img
@@ -116,10 +118,11 @@ const GeneralBuilding = () => {
         if (currentInx === item.id) {
           return (
             <svg
-              viewBox="0 0 1440 810"
+              viewBox="0 0 1440 710"
               xmlnsXlink="http://www.w3.org/1999/xlink"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsSvg="http://www.w3.org/2000/svg"
+              style={{ borderRadius: "15px" }}
             >
               <image
                 height={item.height}
