@@ -41,9 +41,10 @@ const Notes = () => {
     };
 
     return (
-        <Grid container spacing={8} overflow={'auto'} p={1} pb={2} height={'100%'}>
+        <Box>
+            <Grid container spacing={5} p={1}>
             {notes.map((note, index) => (
-                <Grid item xs={12} sm={6} md={4} key={index} height={'350px'}>
+                <Grid item xs={12} sm={6} md={4} key={index} height={'350px'} width={'100%'}>
                     <Paper elevation={3} style={{ padding: '1rem', height: '100%', position: 'relative' }}>
                         <Typography textAlign={'center'} variant="h6">{note.title}</Typography>
                         <Divider sx={{mt: 1}}/>
@@ -87,6 +88,7 @@ const Notes = () => {
                 </Paper>
             </Grid>
         </Grid>
+        </Box>
     );
 };
 

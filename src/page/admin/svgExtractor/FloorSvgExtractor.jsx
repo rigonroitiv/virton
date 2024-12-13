@@ -6,7 +6,7 @@ import { tokenConfig } from '../../../features/auth/AuthSlice';
 import { BASE_URL } from '../../../utils/consts';
 import 'react-toastify/dist/ReactToastify.css';
 
-const SvgExtractor = ( { show } ) => {
+const FloorSvgExtractor = ( { show } ) => {
   const [svgCode, setSvgCode] = useState('');
   const[elementIndex, setElementIndex] = useState(0);
   const [selectedTags, setSelectedTags] = useState(['', ''])
@@ -209,7 +209,7 @@ const handleCheckboxChange = (e) => {
   return (
     <div style={{ display: !show ? "block" : "none", padding: 10, }}>
       <ToastContainer />
-      <h2 style={{paddingTop: '80px'}}>Shto Apartamentet</h2>
+      <h2 style={{paddingTop: '80px'}}>Shto Apartmentet e Katit</h2>
       <div style={{ display: "flex", gap: 20 }}>
         <div>
           <textarea
@@ -498,4 +498,4 @@ const handleCheckboxChange = (e) => {
   );
 }
 
-export default SvgExtractor;
+export default FloorSvgExtractor;

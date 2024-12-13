@@ -211,7 +211,7 @@ const ApartmentsPage = () => {
           )}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
-          {!floorPlan && (
+          {/* {!floorPlan && (
             <ApartmentsFilter
               maxFloor={maxFloor}
               minFloor={minFloor}
@@ -222,7 +222,17 @@ const ApartmentsPage = () => {
               squareRange={squareRange}
               floorRange={floorRange}
             />
-          )}
+          )} */}
+          <ApartmentsFilter
+              maxFloor={maxFloor}
+              minFloor={minFloor}
+              maxSquare={maxSquare}
+              minSquare={minSquare}
+              setFloorRange={setFloorRange}
+              setSquareSquare={setSquareRange}
+              squareRange={squareRange}
+              floorRange={floorRange}
+            />
         </Box>
       </Box>
 

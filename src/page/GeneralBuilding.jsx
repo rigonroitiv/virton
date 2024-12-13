@@ -6,8 +6,8 @@ import { imagePath } from "../utils/consts";
 
 const object = [
   {
-    id: 1,
-    position: 1,
+    id: 4,
+    position: 4,
     href: "/apartments/a",
     imageUrl: `${imagePath}03.jpg`,
     height: "3376",
@@ -21,8 +21,8 @@ const object = [
     ],
   },
   {
-    id: 2,
-    position: 2,
+    id: 3,
+    position: 3,
     href: "/apartments/a",
     imageUrl: `${imagePath}04.jpg`,
     height: "3376",
@@ -36,8 +36,8 @@ const object = [
     ],
   },
   {
-    id: 3,
-    position: 3,
+    id: 2,
+    position: 2,
     href: "/apartments/a",
     imageUrl: `${imagePath}03.jpg`,
     height: "3376",
@@ -51,8 +51,8 @@ const object = [
     ],
   },
   {
-    id: 4,
-    position: 4,
+    id: 1,
+    position: 1,
     href: "/apartments/a",
     imageUrl: `${imagePath}02.jpg`,
     height: "3376",
