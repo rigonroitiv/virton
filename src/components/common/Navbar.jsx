@@ -15,7 +15,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Drawing from "../../assets/svg/Drawing";
 import Hamburger from "../../assets/svg/Hamburger";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -24,6 +24,8 @@ const Navbar = () => {
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
+
+  const navigate = useNavigate();
 
   return (
     <>
@@ -43,55 +45,70 @@ const Navbar = () => {
           </Link>
           {/* Menu Button */}
 
-          <Box sx={{ display: "flex", flexDirection: "row", gap: "15px" }}>
-            <Typography
-              sx={{
-                fontFamily: "poppins",
-                fontSize: "18px",
-                fontWeight: "400",
-              }}
-            >
-              Apartamentet
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: "poppins",
-                fontSize: "18px",
-                fontWeight: "400",
-              }}
-            >
-              Afarizmi
-            </Typography>
-            <Typography
-              sx={{
-                fontFamily: "poppins",
-                fontSize: "18px",
-                fontWeight: "400",
-              }}
-            >
-              Parkingjet
-            </Typography>
-          </Box>
-          <Box sx={{ display: "flex", alignItems: "center" }}>
-            <Typography
-              variant="body1"
-              sx={{
-                color: "white",
-                marginRight: 1,
-                fontFamily: "poppins",
-                fontSize: "20px",
-              }}
-            >
-              Menu
-            </Typography>
-            <IconButton
-              edge="end"
-              color="inherit"
-              onClick={toggleDrawer}
-              aria-label="menu"
-            >
-              <Hamburger />
-            </IconButton>
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              gap: "15px",
+            }}
+          >
+            <Box sx={{ display: "flex", flexDirection: "row", gap: "15px" }}>
+              <Typography
+                sx={{
+                  fontFamily: "poppins",
+                  fontSize: "18px",
+                  fontWeight: "400",
+                  cursor: "pointer",
+                }}
+                onClick={() => navigate("/")}
+              >
+                Apartamentet
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: "poppins",
+                  fontSize: "18px",
+                  fontWeight: "400",
+                  cursor: "pointer",
+                }}
+                onClick={() => navigate("/afarizmi")}
+              >
+                Afarizmi
+              </Typography>
+              <Typography
+                sx={{
+                  fontFamily: "poppins",
+                  fontSize: "18px",
+                  fontWeight: "400",
+                  cursor: "pointer",
+                }}
+                onClick={() => navigate("/parking")}
+              >
+                Parkingjet
+              </Typography>
+            </Box>
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Typography
+                variant="body1"
+                sx={{
+                  color: "white",
+                  marginRight: 1,
+                  fontFamily: "poppins",
+                  fontSize: "18px",
+                }}
+              >
+                Menu
+              </Typography>
+              <IconButton
+                edge="end"
+                color="inherit"
+                onClick={toggleDrawer}
+                aria-label="menu"
+              >
+                <Hamburger />
+              </IconButton>
+            </Box>
           </Box>
         </Toolbar>
       </AppBar>
@@ -143,29 +160,36 @@ const Navbar = () => {
           {/* Menu Items */}
           <Box>
             <List>
-              {["Ballina", "Rreth Nesh", "Gallery", "Projects", "Kontakt"].map(
-                (text) => (
-                  <ListItem button key={text} sx={{ paddingTop: "0" }}>
-                    <ListItemText
-                      primary={text}
-                      sx={{
-                        paddingTop: "0px",
-                        paddingBottom: "0px",
-                        "& .MuiListItemText-primary": {
-                          fontSize: isSmallDev ? "40px" : "50px",
-                          fontFamily: "poppins",
-                          fontWeight: text === "Rreth Nesh" ? "bold" : "normal",
+              {[
+                "Ballina",
+                "Rreth Nesh",
+                "Gallery",
+                "Projects",
+                "Kontakt",
+                "Apartamentet",
+                "Afarizmi",
+                "Parkingjet",
+              ].map((text) => (
+                <ListItem button key={text} sx={{ paddingTop: "0" }}>
+                  <ListItemText
+                    primary={text}
+                    sx={{
+                      paddingTop: "0px",
+                      paddingBottom: "0px",
+                      "& .MuiListItemText-primary": {
+                        fontSize: isSmallDev ? "25px" : "30px",
+                        fontFamily: "poppins",
+                        fontWeight: text === "Rreth Nesh" ? "bold" : "normal",
 
-                          color:
-                            text === "Rreth Nesh"
-                              ? "white"
-                              : "rgba(255,255,255,0.7)",
-                        },
-                      }}
-                    />
-                  </ListItem>
-                )
-              )}
+                        color:
+                          text === "Rreth Nesh"
+                            ? "white"
+                            : "rgba(255,255,255,0.7)",
+                      },
+                    }}
+                  />
+                </ListItem>
+              ))}
             </List>
 
             <Box
