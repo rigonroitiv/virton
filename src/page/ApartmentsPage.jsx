@@ -140,7 +140,7 @@ const ApartmentsPage = () => {
             ].map((button, index) => (
               <Button
                 key={index}
-                onClick={button.action}
+                onClick={() => handleButtonClick(index)}
                 sx={{
                   width: button.width,
                   border: "1px solid #c1ac40",
