@@ -25,8 +25,9 @@ const ApartmentsPage = () => {
   const [activeButton, setActiveButton] = useState(null);
 
   // Handler for button click
-  const handleButtonClick = (buttonIndex) => {
+  const handleButtonClick = (buttonIndex, action) => {
     setActiveButton(buttonIndex);
+    action();
   };
 
   return (
@@ -140,7 +141,7 @@ const ApartmentsPage = () => {
             ].map((button, index) => (
               <Button
                 key={index}
-                onClick={() => handleButtonClick(index)}
+                onClick={() => handleButtonClick(index, button.action)}
                 sx={{
                   width: button.width,
                   border: "1px solid #c1ac40",
@@ -218,7 +219,7 @@ const ApartmentsPage = () => {
           )}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
-          {/* {!floorPlan && (
+          {!floorPlan && (
             <ApartmentsFilter
               maxFloor={maxFloor}
               minFloor={minFloor}
@@ -229,17 +230,7 @@ const ApartmentsPage = () => {
               squareRange={squareRange}
               floorRange={floorRange}
             />
-          )} */}
-          <ApartmentsFilter
-              maxFloor={maxFloor}
-              minFloor={minFloor}
-              maxSquare={maxSquare}
-              minSquare={minSquare}
-              setFloorRange={setFloorRange}
-              setSquareSquare={setSquareRange}
-              squareRange={squareRange}
-              floorRange={floorRange}
-            />
+          )}
         </Box>
       </Box>
 
