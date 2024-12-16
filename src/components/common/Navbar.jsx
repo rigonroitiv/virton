@@ -47,7 +47,7 @@ const Navbar = () => {
         position="absolute"
         sx={{
           backgroundColor: "#1d1d3a", // Black overlay with 50% opacity
-          padding: isSmallDev ? "20px" : "20px 50px",
+          padding: isSmallDev ? "20px" : "20px 20px",
           boxShadow: "none",
         }}
       >
