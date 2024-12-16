@@ -1,10 +1,11 @@
-import { Box, Button, Grid, Modal, TextField } from '@mui/material';
+import { Box, Button, Grid, IconButton, Modal, TextField } from '@mui/material';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getGalleryModalApartmentId, getGalleryModalState, setGalleryModalData } from '../../../features/apartment/ApartmentEditSlice';
 import axios from 'axios';
 import { BASE_URL } from '../../../utils/consts';
 import { toast } from 'react-toastify';
+import { Close, Save } from '@mui/icons-material';
 
 const AdmApartmentGallery = () => {
     const dispatch = useDispatch();
@@ -71,8 +72,11 @@ const AdmApartmentGallery = () => {
           }}
         >
           <Grid container spacing={2}>
-            <Grid item xs={12}>
+            <Grid item xs={12} display={'flex'} justifyContent={'space-between'}>
               <h1>Gallery</h1>
+              <IconButton onClick={() => handleClose()}>
+                <Close />
+              </IconButton>
             </Grid>
             <Grid item xs={12}>
               <TextField
@@ -102,8 +106,9 @@ const AdmApartmentGallery = () => {
               <Button variant='contained' onClick={() => handleFields('inc')}>+</Button>
               <Button variant='contained' onClick={() => handleFields('dec')}>-</Button>
             </Grid>
-            <Grid item xs={12}>
-            <Button sx={{mt: 1}} variant='contained' fullWidth onClick={() => handleSave()}>Save</Button>
+            <Grid item xs={12} display={'flex'} justifyContent={'space-between'} gap={2}>
+            <Button startIcon={<Save />} sx={{mt: 1}} variant='contained' fullWidth onClick={() => handleSave()}>Save</Button>
+            <Button startIcon={<Close />} sx={{mt: 1}} variant='contained' fullWidth onClick={() => handleClose()}>Close</Button>
               </Grid>
           </Grid>
         </Box>

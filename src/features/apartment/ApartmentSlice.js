@@ -45,6 +45,9 @@ const ApartmentSlice = createSlice({
         setApartmentIdModalApartmentId(state, action) {
             state.apartmentIdModalApartmentId = action.payload;
         },
+        updateBuildingData(state, action) {
+            state.apartmentSvgData = action.payload;
+        },
     },
     extraReducers: (builder) => {
         builder
@@ -129,7 +132,8 @@ export const {
     resetStatusAndMsg,
     setApartmentIdModalState,
     setApartmentIdModalId,
-    setApartmentIdModalApartmentId
+    setApartmentIdModalApartmentId,
+    updateBuildingData
 
 } = ApartmentSlice.actions;
 

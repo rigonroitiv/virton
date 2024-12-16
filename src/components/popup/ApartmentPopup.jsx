@@ -8,7 +8,13 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data }) => {
       disableScrollLock={true}
       open={open}
       anchorEl={anchorEl}
+      anchorOrigin={{
+        horizontal: "right",
+        vertical: 'top'
+      }}
+      
       sx={{ pointerEvents: "none" }}
+      slotProps={{paper: {sx: {borderRadius: '15px', overflow: 'hidden'}}}}
     >
       <Box
         sx={{

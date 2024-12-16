@@ -11,7 +11,6 @@ import {
   Box,
   useMediaQuery,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
 import Drawing from "../../assets/svg/Drawing";
 import Hamburger from "../../assets/svg/Hamburger";
@@ -41,7 +40,7 @@ const Navbar = () => {
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Logo */}
           <Link to="/">
-            <img src={""} alt="Virton Logo" style={{ width: "150px" }} />
+            <img src={"/projektet/assets/images/virtonlogo.png"} alt="Virton Logo" style={{ width: "150px" }} />
           </Link>
           {/* Menu Button */}
 

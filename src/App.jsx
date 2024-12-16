@@ -6,6 +6,8 @@ import AdminPage from "./page/admin/AdminPage";
 import SvgExtractor from "./page/svgExtractor/SvgExtractor";
 import { AuthProvider } from "./components/auth/AuthProvider";
 import { ToastContainer } from "react-toastify";
+import FloorSvgExtractor from "./page/admin/svgExtractor/FLoorSvgExtractor";
+import FloorBuildingSvgExtractor from "./page/admin/svgExtractor/FloorBuildingSvgExtractor";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
         <Routes>
           <Route path="/*" element={<ClientPage />} />
           <Route path="/svg-extrator" element={<SvgExtractor />} />
+          <Route path="/fsvg-extrator" element={<FloorSvgExtractor />} />
+          <Route path="/fbsvg-extrator" element={<FloorBuildingSvgExtractor />} />
           <Route path="/admin/*" element={
             <AuthProvider>
               <AdminPage />
