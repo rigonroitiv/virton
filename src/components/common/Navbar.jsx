@@ -20,6 +20,20 @@ const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const isSmallDev = useMediaQuery("(max-width: 768px)");
 
+  const navItems = [
+    { text: "Ballina", href: "https://virtoninvest.com" },
+    { text: "Rreth Nesh", href: "https://virtoninvest.com/about/" },
+    { text: "Gallery", href: "https://virtoninvest.com/projects/" },
+    {
+      text: "Projects",
+      href: "https://virtoninvest.com/portfolio/river-residence/",
+    },
+    { text: "Kontakt", href: "https://virtoninvest.com/contact/" },
+    { text: "Apartamentet", href: "/apartments" },
+    { text: "Afarizmi", href: "/services" },
+    { text: "Parkingjet", href: "/parking" },
+  ];
+
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
   };
@@ -40,7 +54,11 @@ const Navbar = () => {
         <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
           {/* Logo */}
           <Link to="/">
-            <img src={"/projektet/assets/images/virtonlogo.png"} alt="Virton Logo" style={{ width: "150px" }} />
+            <img
+              src={"/projektet/assets/images/virtonlogo.png"}
+              alt="Virton Logo"
+              style={{ width: "150px" }}
+            />
           </Link>
           {/* Menu Button */}
 
@@ -159,34 +177,29 @@ const Navbar = () => {
           {/* Menu Items */}
           <Box>
             <List>
-              {[
-                "Ballina",
-                "Rreth Nesh",
-                "Gallery",
-                "Projects",
-                "Kontakt",
-                "Apartamentet",
-                "Afarizmi",
-                "Parkingjet",
-              ].map((text) => (
+              {navItems.map(({ text, href }) => (
                 <ListItem button key={text} sx={{ paddingTop: "0" }}>
-                  <ListItemText
-                    primary={text}
-                    sx={{
-                      paddingTop: "0px",
-                      paddingBottom: "0px",
-                      "& .MuiListItemText-primary": {
-                        fontSize: isSmallDev ? "25px" : "30px",
-                        fontFamily: "poppins",
-                        fontWeight: text === "Rreth Nesh" ? "bold" : "normal",
-
-                        color:
-                          text === "Rreth Nesh"
-                            ? "white"
-                            : "rgba(255,255,255,0.7)",
-                      },
-                    }}
-                  />
+                  <a
+                    href={href}
+                    style={{ textDecoration: "none", width: "100%" }}
+                  >
+                    <ListItemText
+                      primary={text}
+                      sx={{
+                        paddingTop: "0px",
+                        paddingBottom: "0px",
+                        "& .MuiListItemText-primary": {
+                          fontSize: isSmallDev ? "25px" : "30px",
+                          fontFamily: "poppins",
+                          fontWeight: text === "Rreth Nesh" ? "bold" : "normal",
+                          color:
+                            text === "Rreth Nesh"
+                              ? "white"
+                              : "rgba(255,255,255,0.7)",
+                        },
+                      }}
+                    />
+                  </a>
                 </ListItem>
               ))}
             </List>
