@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
 import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
 import { getWishlistCount } from "../../features/wishList/WishlistSlice";
-import { getFilterState } from "../../features/filter/FilterSlice";
+import { getFilterState, getRegularFloorFilter, getRegularRoomFilter, getRegularSquareFilter } from "../../features/filter/FilterSlice";
 import { imagePath } from "../../utils/consts";
 import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
@@ -25,6 +25,9 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
   // const [sizeRange, setSizeRange] = useState([minSquare, maxSquare]);
   // const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
   const [roomRange, setRoomRange] = useState("all");
+  const squareFilter = useSelector(getRegularSquareFilter);
+  const floorFilter = useSelector(getRegularFloorFilter);
+  const roomFilter = useSelector(getRegularRoomFilter)
   const filterState = useSelector(getFilterState);
   const [contextMenu, setContextMenu] = useState({
     anchorEl: null,
@@ -137,12 +140,12 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
                         d={apartment.path}
                         onContextMenu={(e) => handleContextMenu(e, apartment)}
                         className={
-                          parseInt(apartment.floorNumber) >= floorRange[0] &&
-                          parseInt(apartment.floorNumber) <= floorRange[1] &&
-                          (roomRange.includes(apartment.rooms) ||
-                            roomRange.includes("all")) &&
-                          parseInt(apartment.square) >= sizeRange[0] &&
-                          parseInt(apartment.square) <= sizeRange[1]
+                          parseInt(apartment.floorNumber) >= floorFilter.startVal &&
+                          parseInt(apartment.floorNumber) <= floorFilter.endVal &&
+                          (roomFilter.includes(apartment.rooms) ||
+                            roomFilter.includes("all")) &&
+                          parseInt(apartment.square) >= squareFilter.startVal &&
+                          parseInt(apartment.square) <= squareFilter.endVal
                             ? apartment.isSold
                               ? "st1"
                               : filterState
@@ -169,12 +172,12 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
                         }}
                         onClick={() => {
                           if (
-                            parseInt(apartment.floorNumber) >= floorRange[0] &&
-                            parseInt(apartment.floorNumber) <= floorRange[1] &&
-                            (roomRange.includes(apartment.rooms) ||
-                              roomRange.includes("all")) &&
-                            parseInt(apartment.square) >= sizeRange[0] &&
-                            parseInt(apartment.square) <= sizeRange[1] &&
+                            parseInt(apartment.floorNumber) >= floorFilter.startVal &&
+                            parseInt(apartment.floorNumber) <= floorFilter.endVal &&
+                            (roomFilter.includes(apartment.rooms) ||
+                              roomFilter.includes("all")) &&
+                            parseInt(apartment.square) >= squareFilter.startVal &&
+                            parseInt(apartment.square) <= squareFilter.endVal &&
                             !apartment.isSold
                           ) {
                             navigate(`/apartment/${apartment.id}`);
