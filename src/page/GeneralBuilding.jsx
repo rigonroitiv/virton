@@ -178,7 +178,7 @@ const GeneralBuilding = () => {
               {item.points.map((point) => (
                 <path
                   onClick={() => navigate(point.href)}
-                  className="st0"
+                  className="g1"
                   d={point.d}
                 />
               ))}

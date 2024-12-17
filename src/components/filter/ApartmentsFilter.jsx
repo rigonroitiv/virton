@@ -1,8 +1,15 @@
-import { Box, Button, Slider, Typography, useMediaQuery } from "@mui/material";
+import {
+  Box,
+  Button,
+  Slider,
+  TextField,
+  Typography,
+  useMediaQuery,
+} from "@mui/material";
 import React from "react";
 import Logo from "../../assets/svg/logo";
 
-const ApartmentsFilter = ( { 
+const ApartmentsFilter = ({
   minFloor,
   maxFloor,
   minSquare,
@@ -11,7 +18,7 @@ const ApartmentsFilter = ( {
   setFloorRange,
   squareRange,
   setSquareSquare,
-} ) => {
+}) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
 
   const handleSizeChange = (event, newSizeRange) => {
@@ -195,33 +202,43 @@ const ApartmentsFilter = ( {
             gap: "8px",
           }}
         >
-          <Button
-            sx={{
+          <input
+            placeholder="prej"
+            style={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
-              width: "max-content",
+              width: "30%",
+              height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
               fontFamily: "poppins",
             }}
-          >
-            Content
-          </Button>
+          ></input>
 
-          <Button
+          <TextField
+            variant="normal"
+            placeholder="Deri"
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
-              width: "max-content",
+              width: "30%",
+              height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
               fontFamily: "poppins",
+
+              "& .MuiInputBase-input": {
+                textAlign: "center", // Horizontally center text
+                lineHeight: "normal", // Vertically center the text
+              },
+              "& .MuiInputBase-input::placeholder": {
+                textAlign: "center", // Horizontally center placeholder text
+                lineHeight: "normal", // Vertically center placeholder text
+              },
             }}
-          >
-            Content
-          </Button>
+          />
         </Box>
       </Box>
 
@@ -278,33 +295,33 @@ const ApartmentsFilter = ( {
             gap: "8px",
           }}
         >
-          <Button
-            sx={{
+          <input
+            style={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
-              width: "max-content",
+              width: "30%",
+              height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
               fontFamily: "poppins",
+              zIndex: 99,
             }}
-          >
-            Content
-          </Button>
+          ></input>
 
-          <Button
-            sx={{
+          <input
+            style={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
-              width: "max-content",
+              width: "30%",
+              height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
               fontFamily: "poppins",
+              zIndex: 99,
             }}
-          >
-            Content
-          </Button>
+          ></input>
         </Box>
       </Box>
 
