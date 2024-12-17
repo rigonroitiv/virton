@@ -20,6 +20,7 @@ const FloorBuildingSvgExtractor = ( { show } ) => {
       className: "",
       style: "",
       floorId: null,
+      floorNumber: '',
       apartmentDTO: [],
       maxFloor: 0,
       buildingSide: 0,
@@ -123,12 +124,15 @@ const FloorBuildingSvgExtractor = ( { show } ) => {
       className: extractedElements.className,
       style: extractedElements.style,
       maxFloor: extractedElements.maxFloor,
+      floorId: extractedElements.floorId,
+      floorNumber: extractedElements.floorNumber,
       buildingName: extractedElements.buildingName,
       buildingNumber: extractedElements.buildingNumber,
       buildingSide: extractedElements.buildingSide,
+      apartmentDTO: extractedElements.apartmentDTO
     };
       const responseWrapper = (dataa) =>
-      axios.post(`${BASE_URL}/api/building/floor/create`, dataa);
+      axios.post(`${BASE_URL}/api/apartment/create/floor`, dataa);
       toast.promise(responseWrapper(data), {
         pending: 'Kërkesa juaj është duke u procesuar!',
         success: 'Dokumenti u ruajt me sukses',
@@ -332,6 +336,20 @@ const handleCheckboxChange = (e) => {
               />
             </label>
             <label style={{ display: "flex", flexDirection: "column" }}>
+              ID e Katit
+              <input
+                onChange={(e) => {
+                  setExtractedElements({
+                    ...extractedElements,
+                    floorId: e.currentTarget.value,
+                  });
+                }}
+                value={extractedElements.floorId}
+                type="text"
+                name="floorId"
+              />
+            </label>
+            <label style={{ display: "flex", flexDirection: "column" }}>
               Nr. Baneses
               <input
                 onChange={(e) => {
@@ -421,12 +439,12 @@ const handleCheckboxChange = (e) => {
                 onChange={(e) => {
                   setExtractedElements({
                     ...extractedElements,
-                    floorId: Number.parseFloat(e.currentTarget.value),
+                    floorNumber: e.currentTarget.value,
                   });
                 }}
-                value={extractedElements.floorId}
+                value={extractedElements.floorNumber}
                 type="text"
-                name="numriKatit"
+                name="floorNumber"
               />
             </label>
             

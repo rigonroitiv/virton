@@ -5,6 +5,7 @@ import ApartmentsFilter from "../components/filter/ApartmentsFilter";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
 import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import ParkingSvg from "../components/parking/ParkingSvg";
+import FloorSvg from "../components/floorSvg/FloorSvg";
 
 const minFloor = 1;
 const maxFloor = 9;
@@ -15,7 +16,8 @@ const ApartmentsPage = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const isMidDev = useMediaQuery("(max-width:1024px)");
   const [floorPlan, setFloorPlan] = useState(false);
-  const [parking, setParking] = useState(false);
+  const [floorId, setFloorId] = useState(null)
+  const [buildingFloor, setBuildingFloor] = useState(false);
   const apartmentCardsRef = useRef();
 
   const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
@@ -35,9 +37,8 @@ const ApartmentsPage = () => {
         width: "100%",
         height: "100%",
         padding:
-          floorPlan && !parking
-            ? "150px 0" // No padding for BuildingSvg
-            : isSmallDev
+          
+             isSmallDev
             ? "20px"
             : isMidDev
             ? "20px"
@@ -109,8 +110,8 @@ const ApartmentsPage = () => {
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "50px", right: "0" },
                 action: () => {
+                  setBuildingFloor(false);
                   setFloorPlan(false);
-                  setParking(false);
                 },
               },
               {
@@ -119,8 +120,8 @@ const ApartmentsPage = () => {
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "0", right: "0" },
                 action: () => {
-                  setFloorPlan(true);
-                  setParking(false);
+                  setBuildingFloor(true);
+                  setFloorPlan(false);
                 },
               },
               {
@@ -181,7 +182,7 @@ const ApartmentsPage = () => {
           }}
         >
           <Button
-            onClick={() => setParking(true)}
+            onClick={() => {}}
             sx={{
               width: isSmallDev ? "232px" : "240px",
               border: "1px solid #c1ac40",
@@ -209,10 +210,10 @@ const ApartmentsPage = () => {
         }}
       >
         <Box sx={{ display: "flex", flex: 9, width: "100%", height: "100%" }}>
-          {parking ? (
-            <ParkingSvg />
-          ) : floorPlan ? (
-            <BuildingSvg />
+          {floorPlan ? (
+            <FloorSvg floorId={floorId}/>
+          ) : buildingFloor ? (
+            <BuildingSvg setFloorId={setFloorId} setFloorPlan={setFloorPlan} />
           ) : (
             <ApartmentSvg sizeRange={squareRange} floorRange={floorRange} />
           )}
@@ -230,7 +231,7 @@ const ApartmentsPage = () => {
               floorRange={floorRange}
             />
           )} */}
-          <ApartmentsFilter
+          {!floorPlan && <ApartmentsFilter
               maxFloor={maxFloor}
               minFloor={minFloor}
               maxSquare={maxSquare}
@@ -239,7 +240,7 @@ const ApartmentsPage = () => {
               setSquareSquare={setSquareRange}
               squareRange={squareRange}
               floorRange={floorRange}
-            />
+            />}
         </Box>
       </Box>
 

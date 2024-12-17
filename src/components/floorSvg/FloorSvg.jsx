@@ -2,7 +2,7 @@ import { Box, Button, useMediaQuery, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
+import { getAllApartmentsByFloorId, getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
 import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
 import { getWishlistCount } from "../../features/wishList/WishlistSlice";
 import { getFilterState } from "../../features/filter/FilterSlice";
@@ -25,12 +25,11 @@ const minFloor = -2;
 const maxSquare = 720;
 const minSquare = 40;
 
-const BuildingSvg = () => {
+const FloorSvg = ( { floorId}) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
-  const { id } = useParams();
   const buildingData = useSelector(getAllApartmentSvgData);
   const wishListItemCount = useSelector(getWishlistCount);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -53,10 +52,10 @@ const BuildingSvg = () => {
   const [limited, setLimited] = useState(false);
 
   useEffect(() => {
-    if (id) {
-      dispatch(getObjectSvgDataAll(id));
+    if (floorId) {
+      dispatch(getAllApartmentsByFloorId(floorId));
     }
-  }, [dispatch, id]);
+  }, [dispatch, floorId]);
 
   // useEffect(() => {
   //   dispatch(getWishlistDataFromStorage());
@@ -254,12 +253,10 @@ const BuildingSvg = () => {
           <Bottomarrow />
         </Button>
       </Box>
-      {buildingData?.map((building, index) => (
-        <div
-          key={building.buildingName}
+      <div
+          key={buildingData?.buildingName}
           style={{
-            height: index === currentIndex ? getSvgHeight() : "0px",
-            opacity: currentIndex === index ? 1 : 0,
+            height: getSvgHeight(),
             transition: "opacity 0.1s ease-in-out",
             width: "100%",
             display: "flex",
@@ -366,7 +363,7 @@ const BuildingSvg = () => {
               height="1080"
               xlinkHref={`${imagePath}a1-f1.jpg`}
             ></image>
-            <path className="ft0" d="M 11,58 H 648 V 526 H 11 Z" />
+            {/* <path className="ft0" d="M 11,58 H 648 V 526 H 11 Z" />
             <path className="ft0" d="m 648,58 h 643 V 526 H 648 Z" />
             <path className="ft0" d="m 1291,58 h 613 v 468 h -613 z" />
             <path
@@ -376,14 +373,16 @@ const BuildingSvg = () => {
             <path
               className="ft0"
               d="M 11,526 V 999 H 917 V 823 H 814 V 624 H 554 v -98 z"
-            />
+            /> */}
+            {buildingData?.apartmentDTO?.map((apartment) => {
+              return <path className={apartment.isSold ? 'st1' : "ft0"} d={apartment.path}/>
+            })}
           </svg>
         </div>
-      ))}
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
     </Box>
   );
 };
 
-export default BuildingSvg;
+export default FloorSvg;

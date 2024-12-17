@@ -17,7 +17,7 @@ const minFloor = -2;
 const maxSquare = 720;
 const minSquare = 40;
 
-const BuildingSvg = ( { }) => {
+const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -106,7 +106,6 @@ const BuildingSvg = ( { }) => {
       }}
     >
       {dataForSelection?.map((building, index) => {
-        console.log(building)
         return (
           <div
             key={building.buildingName}
@@ -162,17 +161,22 @@ const BuildingSvg = ( { }) => {
                         });
                       }}
                       onClick={() => {
-                        if (
-                          parseInt(apartment.floorNumber) >= floorRange[0] &&
-                          parseInt(apartment.floorNumber) <= floorRange[1] &&
-                          (roomRange.includes(apartment.rooms) ||
-                            roomRange.includes("all")) &&
-                          parseInt(apartment.square) >= sizeRange[0] &&
-                          parseInt(apartment.square) <= sizeRange[1] &&
-                          !apartment.isSold
-                        ) {
-                          navigate(`/apartment/${apartment.id}`);
-                        }
+                        // if (
+                        //   parseInt(apartment.floorNumber) >= floorRange[0] &&
+                        //   parseInt(apartment.floorNumber) <= floorRange[1] &&
+                        //   (roomRange.includes(apartment.rooms) ||
+                        //     roomRange.includes("all")) &&
+                        //   parseInt(apartment.square) >= sizeRange[0] &&
+                        //   parseInt(apartment.square) <= sizeRange[1] &&
+                        //   !apartment.isSold
+                        // ) {
+                        //   setFloorId(apartment.floorNumber);
+                        //   console.log(apartment.floorNumber);
+                        //   setFloorPlan(true)
+                        // }
+                        setFloorId(apartment.id);
+                          console.log(apartment.floorNumber);
+                          setFloorPlan(true)
                       }}
                     />
                   );
@@ -184,7 +188,11 @@ const BuildingSvg = ( { }) => {
                       points={apartment.path}
                       className={"st0"}
                       id={apartment.apartmentId}
-                      onClick={() => navigate(`/apartment/${apartment.id}`)}
+                      onClick={() => {
+                        setFloorId(apartment.id);
+                        setFloorPlan(true);
+                        console.log(apartment.floorNumber);
+                      }}
                     />
                   );
                 }

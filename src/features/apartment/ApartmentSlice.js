@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchApartmentAllData, fetchApartmentsAll, fetchApartmentsAllOrderByApartmentId, getApartmentById, getApartmentsSvgDataAll, getObjectSvgDataAll } from "./ApartmentAPI";
+import { fetchApartmentAllData, fetchApartmentsAll, fetchApartmentsAllOrderByApartmentId, getAllApartmentsByFloorId, getApartmentById, getApartmentsSvgDataAll, getObjectSvgDataAll } from "./ApartmentAPI";
 
 const initialState = {
     apartmentUrlParamId: '',
@@ -88,6 +88,21 @@ const ApartmentSlice = createSlice({
                     state.status = 'rejected';
                     state.msg = action.payload;
                })
+
+               // getApartmentsSvgDataAll
+                .addCase(getAllApartmentsByFloorId.pending , (state) => {
+                    state.status = 'pending';
+                    })
+                .addCase(getAllApartmentsByFloorId.fulfilled , (state, action) => {
+                        state.status = 'success';
+                        state.apartmentSvgData = action.payload;
+                })
+                .addCase(getAllApartmentsByFloorId.rejected , (state, action) => {
+                        state.status = 'rejected';
+                        state.msg = action.payload;
+                })
+
+
                .addCase(fetchApartmentAllData.pending , (state) => {  
                     state.status = 'pending';
                })

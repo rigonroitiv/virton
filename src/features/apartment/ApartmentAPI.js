@@ -17,6 +17,18 @@ export const getObjectSvgDataAll = createAsyncThunk(
     }
 );
 
+export const getAllApartmentsByFloorId = createAsyncThunk(
+    'ObjectsSlice/getAllApartmentsByFloorId',
+    async(id, { rejectWithValue }) => {
+        try {
+           const res = await axios.get(`${urlObjects}/getbyfloor?id=${id}`);
+           return res.data; 
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
 export const getApartmentsSvgDataAll = createAsyncThunk(
     'ObjectsSlice/get/all',
     async(a, { rejectWithValue }) => {
