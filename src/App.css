@@ -72,3 +72,23 @@
     opacity: 0.6;
 
 }
+
+.g1{
+    fill: white;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.4s ease 0s;
+    opacity: 0.2;
+    stroke: #1d1d3a;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    stroke-width: 3px;
+    outline: none;
+    width: 100%;
+}
+
+.g1:hover{
+    fill: #1D1D3A;
+    opacity: 0.6;
+}
