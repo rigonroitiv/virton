@@ -2,12 +2,13 @@ import {
   Box,
   Button,
   Slider,
-  TextField,
   Typography,
   useMediaQuery,
 } from "@mui/material";
 import React from "react";
 import Logo from "../../assets/svg/logo";
+import { useDispatch } from "react-redux";
+import { handleFilterState } from "../../features/filter/FilterSlice";
 
 const ApartmentsFilter = ({
   minFloor,
@@ -20,6 +21,7 @@ const ApartmentsFilter = ({
   setSquareSquare,
 }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+  const dispatch = useDispatch();
 
   const handleSizeChange = (event, newSizeRange) => {
     setSquareSquare(newSizeRange);
@@ -203,6 +205,7 @@ const ApartmentsFilter = ({
           }}
         >
           <input
+            className="filter-input"
             placeholder="prej"
             style={{
               border: "1px solid #C1AC40",
@@ -213,13 +216,14 @@ const ApartmentsFilter = ({
               height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
               fontFamily: "poppins",
+              padding: '8px'
             }}
-          ></input>
+          />
 
-          <TextField
-            variant="normal"
-            placeholder="Deri"
-            sx={{
+          <input
+            placeholder="deri"
+            className="filter-input"
+            style={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
@@ -228,15 +232,7 @@ const ApartmentsFilter = ({
               height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
               fontFamily: "poppins",
-
-              "& .MuiInputBase-input": {
-                textAlign: "center", // Horizontally center text
-                lineHeight: "normal", // Vertically center the text
-              },
-              "& .MuiInputBase-input::placeholder": {
-                textAlign: "center", // Horizontally center placeholder text
-                lineHeight: "normal", // Vertically center placeholder text
-              },
+              padding: '8px'
             }}
           />
         </Box>
@@ -296,6 +292,8 @@ const ApartmentsFilter = ({
           }}
         >
           <input
+          className="filter-input"
+          placeholder="prej"
             style={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
@@ -306,10 +304,13 @@ const ApartmentsFilter = ({
               borderRadius: "50px",
               fontFamily: "poppins",
               zIndex: 99,
+              padding: '8px'
             }}
           ></input>
 
           <input
+          className="filter-input"
+          placeholder="deri"
             style={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
@@ -320,6 +321,7 @@ const ApartmentsFilter = ({
               borderRadius: "50px",
               fontFamily: "poppins",
               zIndex: 99,
+              padding: '8px'
             }}
           ></input>
         </Box>
@@ -336,6 +338,9 @@ const ApartmentsFilter = ({
         }}
       >
         <Button
+        onClick={() => {
+          dispatch(handleFilterState(false))
+        }}
           sx={{
             border: "1px solid #C1AC40",
             backgroundColor: "transparent",
@@ -350,6 +355,9 @@ const ApartmentsFilter = ({
         </Button>
 
         <Button
+        onClick={() => {
+          dispatch(handleFilterState(true))
+        }}
           sx={{
             border: "1px solid #C1AC40",
             backgroundColor: "#C1AC40",

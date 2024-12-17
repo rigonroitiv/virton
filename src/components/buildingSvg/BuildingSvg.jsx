@@ -32,7 +32,6 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
   const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
   const [roomRange, setRoomRange] = useState("all");
   const filterState = useSelector(getFilterState);
-  const ref = useRef(null)
   const [contextMenu, setContextMenu] = useState({
     anchorEl: null,
     open: false,
@@ -41,6 +40,7 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
   const [popup, setPopup] = useState({
     anchorEl: null,
     data: {},
+    open: true
   });
   const [limited, setLimited] = useState(false);
 
@@ -97,7 +97,6 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
 
   return (
     <Box
-    ref={ref}
       sx={{
         width: "100%",
         height: "100%",
@@ -150,14 +149,16 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
                         e.preventDefault()
                         setPopup({
                           data: apartment,
-                          anchorEl: e.currentTarget
+                          anchorEl: e.currentTarget,
+                          open: true
                         });
                       }}
                       onMouseLeave={(e) => {
-                        e.preventDefault()
+                        e.preventDefault();
                         setPopup({
                           anchorEl: null,
                           data: {},
+                          open: false
                         });
                       }}
                       onClick={() => {
@@ -203,7 +204,7 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
       })}
       <ContextMenu menu={contextMenu} setMenu={setContextMenu}/>
       <AdmApartmentModal />
-      {popup.anchorEl && <ApartmentPopup anchorEl={popup.anchorEl} data={popup.data} />}
+      {popup.anchorEl && <ApartmentPopup anchorEl={popup.anchorEl} data={popup.data} open={popup.open}/>}
     </Box>
   );
 };

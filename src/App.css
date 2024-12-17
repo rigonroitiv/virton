@@ -92,3 +92,7 @@
     fill: #1D1D3A;
     opacity: 0.6;
 }
+
+.filter-input::placeholder{
+    color: white
+}

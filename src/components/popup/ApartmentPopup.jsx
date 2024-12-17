@@ -1,20 +1,53 @@
-import { Box, Popover, Typography } from "@mui/material";
-import React from "react";
+import { Box, Typography } from "@mui/material";
+import React, { useEffect, useState } from "react";
 
-const ApartmentPopup = ({ anchorEl, setPopupMenu, data }) => {
-  const open = new Boolean(anchorEl);
+const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+
+  useEffect(() => {
+    const updatePosition = () => {
+      if (anchorEl && open) {
+        const rect = anchorEl.getBoundingClientRect();
+        const componentHeight = 250; 
+        const windowHeight = window.innerHeight;
+
+        const calculatedTop = rect.top; 
+        const calculatedLeft = rect.right;
+
+        const isOverflowing = calculatedTop + componentHeight > windowHeight;
+        const adjustedTop = isOverflowing ? windowHeight - componentHeight : calculatedTop;
+
+        setPosition({
+          top: adjustedTop,
+          left: calculatedLeft,
+        });
+      }
+    };
+
+    updatePosition();
+
+    window.addEventListener("scroll", updatePosition);
+
+    return () => {
+      window.removeEventListener("scroll", updatePosition);
+    };
+  }, [anchorEl, open]); 
+
+  if (!open) {
+    return null;
+  }
+
   return (
-    <Popover
-      disableScrollLock={true}
-      open={open}
-      anchorEl={anchorEl}
-      anchorOrigin={{
-        horizontal: "right",
-        vertical: 'top'
+    <div
+      style={{
+        position: 'fixed', 
+        pointerEvents: 'none', 
+        top: position.top + 2 + 'px', 
+        left: position.left + 2 + 'px',
+        boxShadow: '0px 4px 6px rgba(0, 0, 0, 0.1)',
+        borderRadius: '5px',
+        zIndex: 1000,
       }}
-      
-      sx={{ pointerEvents: "none" }}
-      slotProps={{paper: {sx: {borderRadius: '15px', overflow: 'hidden'}}}}
     >
       <Box
         sx={{
@@ -44,7 +77,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data }) => {
               fontSize: "25px",
             }}
           >
-            {data.name}{" "}
+            {data.name}
           </Typography>
         </Box>
 
@@ -144,7 +177,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data }) => {
           </svg>
         </Box>
       </Box>
-    </Popover>
+    </div>
   );
 };
 

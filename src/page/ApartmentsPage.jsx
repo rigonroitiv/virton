@@ -18,17 +18,17 @@ const ApartmentsPage = () => {
   const [floorPlan, setFloorPlan] = useState(false);
   const [floorId, setFloorId] = useState(null)
   const [buildingFloor, setBuildingFloor] = useState(false);
-  const apartmentCardsRef = useRef();
+  const apartmentRef = useRef(null)
 
   const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
   const [squareRange, setSquareRange] = useState([minSquare, maxSquare]);
-
-  // State to manage active button
   const [activeButton, setActiveButton] = useState(null);
 
-  // Handler for button click
+  
   const handleButtonClick = (buttonIndex, action) => {
-    setActiveButton(buttonIndex);
+    if(buttonIndex < 2) {
+      setActiveButton(buttonIndex);
+    }
     action();
   };
 
@@ -37,6 +37,7 @@ const ApartmentsPage = () => {
       sx={{
         width: "100%",
         height: "100%",
+        overflow: 'auto',
         padding:
           
              isSmallDev
@@ -131,18 +132,17 @@ const ApartmentsPage = () => {
                 width: isSmallDev ? "100%" : "170px",
                 borderRadius: { left: "0", right: "50px" },
                 action: () => {
-                  if (apartmentCardsRef && apartmentCardsRef.current) {
-                    apartmentCardsRef.current.scrollIntoView({
-                      behavior: "smooth",
-                      block: "start",
-                    });
+                  if(apartmentRef && apartmentRef.current) {
+                    apartmentRef.current.scrollIntoView()
                   }
                 },
               },
             ].map((button, index) => (
               <Button
+              tabIndex={-1}
                 key={index}
-                onClick={() => handleButtonClick(index, button.action)}
+                onClick={(e) => {
+                  handleButtonClick(index, button.action)}}
                 sx={{
                   width: button.width,
                   border: "1px solid #c1ac40",
@@ -190,6 +190,7 @@ const ApartmentsPage = () => {
               color: "#1D1D3A",
               backgroundColor: "transparent",
               fontFamily: "poppins",
+              visibility: 'hidden',
               fontWeight: "600",
               borderRadius: "50px",
               height: isSmallDev ? "30px" : "35px",
@@ -220,18 +221,6 @@ const ApartmentsPage = () => {
           )}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
-          {!floorPlan && (
-            <ApartmentsFilter
-              maxFloor={maxFloor}
-              minFloor={minFloor}
-              maxSquare={maxSquare}
-              minSquare={minSquare}
-              setFloorRange={setFloorRange}
-              setSquareSquare={setSquareRange}
-              squareRange={squareRange}
-              floorRange={floorRange}
-            />
-          )} */}
           {!floorPlan && <ApartmentsFilter
               maxFloor={maxFloor}
               minFloor={minFloor}
@@ -245,7 +234,7 @@ const ApartmentsPage = () => {
         </Box>
       </Box>
 
-      <PlanimetriCards ref={apartmentCardsRef} />
+      <PlanimetriCards  ref={apartmentRef}/>
     </Box>
   );
 };

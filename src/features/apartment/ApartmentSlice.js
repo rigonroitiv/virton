@@ -6,6 +6,7 @@ const initialState = {
     apartmentDetailModalState: false,
     apartmentDetailModalData: {},
     apartmentSvgData: [],
+    floorSvgData: [],
     apartmentAndBuildingData: [],
     status: 'idle',
     msg: '',
@@ -95,7 +96,7 @@ const ApartmentSlice = createSlice({
                     })
                 .addCase(getAllApartmentsByFloorId.fulfilled , (state, action) => {
                         state.status = 'success';
-                        state.apartmentSvgData = action.payload;
+                        state.floorSvgData = action.payload;
                 })
                 .addCase(getAllApartmentsByFloorId.rejected , (state, action) => {
                         state.status = 'rejected';
@@ -156,6 +157,7 @@ export const getApartmentUrlParamId = (state) => state.ApartmentSlice.apartmentU
 export const getApartmentDetailModalState = (state) => state.ApartmentSlice.apartmentDetailModalState;
 export const getApartmentDetailModalData = (state) => state.ApartmentSlice.apartmentDetailModalData;
 export const getAllApartmentSvgData = (state) => state.ApartmentSlice.apartmentSvgData;
+export const getAllFloorSvgData = (state) => state.ApartmentSlice.floorSvgData;
 export const getAllBuildingAndApartmentsData = (state) => state.ApartmentSlice.apartmentAndBuildingData;
 export const getApartmentStatus = (state) => state.ApartmentSlice.status;
 export const getApartmentIdModalState = (state) => state.ApartmentSlice.apartmentIdModalState;

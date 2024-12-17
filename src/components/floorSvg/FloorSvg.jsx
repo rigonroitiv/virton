@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getAllApartmentsByFloorId, getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
-import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
+import { getAllApartmentSvgData, getAllFloorSvgData } from "../../features/apartment/ApartmentSlice";
 import { getWishlistCount } from "../../features/wishList/WishlistSlice";
 import { getFilterState } from "../../features/filter/FilterSlice";
 import { imagePath } from "../../utils/consts";
@@ -30,7 +30,7 @@ const FloorSvg = ( { floorId}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
-  const buildingData = useSelector(getAllApartmentSvgData);
+  const buildingData = useSelector(getAllFloorSvgData);
   const wishListItemCount = useSelector(getWishlistCount);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -152,7 +152,7 @@ const FloorSvg = ( { floorId}) => {
       from: { opacity: 0, transform: "translateY(20px)" },
       enter: { opacity: 1, transform: "translateY(0px)" },
       leave: { opacity: 0, transform: "translateY(-20px)" },
-      config: { tension: 100, friction: 30 }, // Lower tension and higher friction for slower animation
+      config: { tension: 0, friction: 0 }, // Lower tension and higher friction for slower animation
     }
   );
 
@@ -173,9 +173,11 @@ const FloorSvg = ( { floorId}) => {
         flexDirection="column"
         alignItems="center"
         justifyContent="center"
-        padding={1}
+        padding={0}
         height={"71vh"}
+        maxHeight={"71vh"}
         position={"absolute"}
+        overflow={'hidden'}
         top={"10%"}
       >
         {/* Scroll Up Button */}
@@ -262,7 +264,7 @@ const FloorSvg = ( { floorId}) => {
             display: "flex",
             justifyContent: "center",
             position: "absolute",
-            left: "21%",
+            left: "28%",
           }}
         >
           {/* Buils
