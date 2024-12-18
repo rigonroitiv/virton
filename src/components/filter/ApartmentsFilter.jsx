@@ -13,8 +13,8 @@ import { handleFilterState, setRegularFloorFilter, setRegularRoomFilter, setRegu
 
 const minFloor = 1;
 const maxFloor = 9;
-const minSquare = 40;
-const maxSquare = 150;
+const minSquare = 40.0;
+const maxSquare = 150.0;
 
 const ApartmentsFilter = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -243,6 +243,7 @@ const ApartmentsFilter = () => {
         <Slider
           aria-label="Default"
           min={minSquare}
+          step={0.1}
           max={maxSquare}
           value={squareRange}
           onChange={handleSizeChange}
@@ -274,6 +275,12 @@ const ApartmentsFilter = () => {
           }}
         >
           <input
+          value={squareRange[0]}
+          onChange={(e) => {
+            if(parseFloat(e.currentTarget.value)) {
+              setSquareRange([parseFloat(e.currentTarget.value), squareRange[1]])
+              }
+          }}
             className="filter-input"
             placeholder="prej"
             style={{
@@ -291,6 +298,12 @@ const ApartmentsFilter = () => {
 
           <input
             placeholder="deri"
+            onChange={(e) => {
+              if(parseFloat(e.currentTarget.value)) {
+                setSquareRange([squareRange[0], parseFloat(e.currentTarget.value)])
+                }
+            }}
+            value={squareRange[1]}
             className="filter-input"
             style={{
               border: "1px solid #C1AC40",
