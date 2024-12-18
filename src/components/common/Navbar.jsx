@@ -51,13 +51,19 @@ const Navbar = () => {
           boxShadow: "none",
         }}
       >
-        <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Toolbar
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
           {/* Logo */}
           <Link to="/">
             <img
               src={"/projektet/assets/images/virtonlogo.png"}
               alt="Virton Logo"
-              style={{ width: "150px" }}
+              style={{ width: isSmallDev ? "100px" : "150px" }}
             />
           </Link>
           {/* Menu Button */}
@@ -70,7 +76,13 @@ const Navbar = () => {
               gap: "15px",
             }}
           >
-            <Box sx={{ display: "flex", flexDirection: "row", gap: "15px" }}>
+            <Box
+              sx={{
+                display: isSmallDev ? "none" : "flex",
+                flexDirection: "row",
+                gap: "15px",
+              }}
+            >
               <Typography
                 sx={{
                   fontFamily: "poppins",
@@ -142,7 +154,7 @@ const Navbar = () => {
             backgroundColor: "#121b1d",
             color: "white",
             overflow: "hidden",
-            padding: isSmallDev ? "20px" : "0px 50px",
+            padding: isSmallDev ? "20px" : "0px 30px",
           },
         }}
       >
@@ -152,7 +164,7 @@ const Navbar = () => {
             display: "flex",
             flexDirection: "column",
             justifyContent: "space-between",
-            padding: isSmallDev ? "20px" : "30px 20px",
+            padding: isSmallDev ? "20px" : "30px 0px",
           }}
         >
           {/* Close Button */}

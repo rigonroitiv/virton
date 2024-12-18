@@ -167,7 +167,9 @@ const GeneralBuilding = () => {
               xmlnsXlink="http://www.w3.org/1999/xlink"
               xmlns="http://www.w3.org/2000/svg"
               xmlnsSvg="http://www.w3.org/2000/svg"
-              style={{ borderRadius: "15px" }}
+              style={{
+                borderRadius: "15px",
+              }}
             >
               <image
                 height={item.height}
