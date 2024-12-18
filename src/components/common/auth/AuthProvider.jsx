@@ -1,10 +1,19 @@
-import { Box, Button, CircularProgress, createTheme, FormControl, Grid, TextField, Typography } from '@mui/material';
-import axios from 'axios';
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { BASE_URL } from '../../utils/consts';
-import CryptoJS, { SHA1 } from 'crypto-js';
-import { toast } from 'react-toastify';
+import {
+  Box,
+  Button,
+  CircularProgress,
+  createTheme,
+  FormControl,
+  Grid,
+  TextField,
+  Typography,
+} from "@mui/material";
+import axios from "axios";
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
+import { BASE_URL } from "../../utils/consts";
+import CryptoJS, { SHA1 } from "crypto-js";
+import { toast } from "react-toastify";
 
 const loginUrl = `${BASE_URL}/api/auth/login`;
 const authorizeUrl = `${BASE_URL}/api/auth/authorize`;
@@ -20,8 +29,8 @@ export const AuthProvider = ({ children, hide = false }) => {
 
   const [isLoggedIn, setIsLoggedIn] = useState(null);
   const [role, setRole] = useState(null);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
 
   const sendAuthRequest = (url, method, data) => {
     return axios({
@@ -29,15 +38,18 @@ export const AuthProvider = ({ children, hide = false }) => {
       url: `${BASE_URL}${url}`,
       data: data,
       headers: {
-        'Authorization': `Bearer ${getAccessToken()}`
-      }
+        Authorization: `Bearer ${getAccessToken()}`,
+      },
     });
   };
 
   function getSession() {
-    const encSessionData = localStorage.getItem('session');
+    const encSessionData = localStorage.getItem("session");
     if (encSessionData) {
-      const decSessionData = CryptoJS.AES.decrypt(encSessionData, secretKey).toString(CryptoJS.enc.Utf8);
+      const decSessionData = CryptoJS.AES.decrypt(
+        encSessionData,
+        secretKey
+      ).toString(CryptoJS.enc.Utf8);
       return decSessionData;
     }
     return null;
@@ -45,62 +57,69 @@ export const AuthProvider = ({ children, hide = false }) => {
 
   const generateAuthHeader = () => {
     return {
-      'Authorization': `Bearer ${getAccessToken()}`
+      Authorization: `Bearer ${getAccessToken()}`,
     };
   };
 
   function setSession(sessionData) {
-    console.log(secretKey)
-    const encSessionData = CryptoJS.AES.encrypt(sessionData, secretKey).toString();
-    localStorage.setItem('session', encSessionData);
+    console.log(secretKey);
+    const encSessionData = CryptoJS.AES.encrypt(
+      sessionData,
+      secretKey
+    ).toString();
+    localStorage.setItem("session", encSessionData);
   }
 
   const login = ({ username, password, rememberMe = false }) => {
     // Implement your login logic here
-    axios.get(`${loginUrl}?username=${username}&password=${SHA1(password).toString()}&rememberMe=${rememberMe}`)
-      .then(response => {
+    axios
+      .get(
+        `${loginUrl}?username=${username}&password=${SHA1(
+          password
+        ).toString()}&rememberMe=${rememberMe}`
+      )
+      .then((response) => {
         if (response.status === 200) {
           setSession(JSON.stringify(response.data));
           setIsLoggedIn(true);
           setRole(response.data.role);
-          navigate('/admin/dashboard');
+          navigate("/admin/dashboard");
         }
-      }).catch((e) => {
-        if (e.response?.status === 408 && e.response?.data === ('500err')) {
-          toast.error('This account does not exist.');
+      })
+      .catch((e) => {
+        if (e.response?.status === 408 && e.response?.data === "500err") {
+          toast.error("This account does not exist.");
           setIsLoggedIn(false);
           removeSession();
-          navigate('/admin/login');
+          navigate("/admin/login");
         }
-        if (e.response?.status === 408 && e.response?.data === ('502err')) {
-          toast.error('Account Locked! Too many attempts.');
+        if (e.response?.status === 408 && e.response?.data === "502err") {
+          toast.error("Account Locked! Too many attempts.");
           setIsLoggedIn(false);
           removeSession();
-          navigate('/admin/login');
+          navigate("/admin/login");
         }
-        if (e.response?.status === 408 && e.response?.data === ('503err')) {
-          toast.error('This account is not active.');
+        if (e.response?.status === 408 && e.response?.data === "503err") {
+          toast.error("This account is not active.");
           setIsLoggedIn(false);
           removeSession();
-          navigate('/admin/login');
+          navigate("/admin/login");
         }
-        if (e.response?.status === 408 && e.response?.data === ('504err')) {
-          toast.error('This account is locked.');
+        if (e.response?.status === 408 && e.response?.data === "504err") {
+          toast.error("This account is locked.");
           setIsLoggedIn(false);
           removeSession();
-          navigate('/admin/login');
-        }
-        else {
+          navigate("/admin/login");
+        } else {
           setIsLoggedIn(false);
-          navigate('/admin/login');
+          navigate("/admin/login");
         }
-      }
-      );
+      });
   };
 
   function removeSession() {
-    localStorage.removeItem('session');
-  };
+    localStorage.removeItem("session");
+  }
 
   function getAccessToken() {
     const session = getSession();
@@ -108,7 +127,7 @@ export const AuthProvider = ({ children, hide = false }) => {
       return JSON.parse(session).access_token;
     }
     return null;
-  };
+  }
 
   function getRefreshToken() {
     const session = getSession();
@@ -116,27 +135,28 @@ export const AuthProvider = ({ children, hide = false }) => {
       return JSON.parse(session).refresh_token;
     }
     return null;
-  };
+  }
 
   function refreshAccessToken() {
     const refreshToken = getRefreshToken();
     if (!refreshToken) {
       return;
     }
-    axios.post(`${BASE_URL}/api/auth/refresh`, { refresh_token: refreshToken })
-      .then(response => {
+    axios
+      .post(`${BASE_URL}/api/auth/refresh`, { refresh_token: refreshToken })
+      .then((response) => {
         if (response.status === 200) {
           const session = JSON.parse(getSession());
           session.access_token = response.data.access_token;
           setSession(JSON.stringify(session));
         }
-      }).catch(() => {
+      })
+      .catch(() => {
         setIsLoggedIn(false);
         removeSession();
-        navigate('/login');
-      }
-      );
-  };
+        navigate("/login");
+      });
+  }
 
   useEffect(() => {
     // Authorize user on initial render
@@ -149,13 +169,13 @@ export const AuthProvider = ({ children, hide = false }) => {
       return JSON.parse(session).role;
     }
     return null;
-  }
+  };
 
   const logout = () => {
     // Implement your logout logic here
     setIsLoggedIn(false);
     removeSession();
-    navigate('/login'); // Redirect to login page on logout
+    navigate("/login"); // Redirect to login page on logout
   };
 
   const authorize = () => {
@@ -164,33 +184,37 @@ export const AuthProvider = ({ children, hide = false }) => {
       removeSession();
       return;
     }
-    axios.get(`${authorizeUrl}`, {
-      headers: {
-        'Authorization': `Bearer ${getAccessToken()}`
-      }
-    }).then(response => {
-      if (response.status === 200) {
-        if (response.data.authorized) {
-          setIsLoggedIn(true);
-        }
-        else {
+    axios
+      .get(`${authorizeUrl}`, {
+        headers: {
+          Authorization: `Bearer ${getAccessToken()}`,
+        },
+      })
+      .then((response) => {
+        if (response.status === 200) {
+          if (response.data.authorized) {
+            setIsLoggedIn(true);
+          } else {
+            setIsLoggedIn(false);
+            removeSession();
+          }
+        } else {
           setIsLoggedIn(false);
           removeSession();
         }
-      } else {
-        setIsLoggedIn(false);
-        removeSession();
-      }
-    }).catch((e) => {
-      if (e.response?.status === 403 && e.response?.data.startsWith('User')) {
-        toast.error(e.response?.data || 'An error occurred. Please try again later.');
-        setIsLoggedIn(false);
-        removeSession();
-      } else {
-        toast.error('An error occurred. Please try again later.');
-        setIsLoggedIn('neterr');
-      }
-    });
+      })
+      .catch((e) => {
+        if (e.response?.status === 403 && e.response?.data.startsWith("User")) {
+          toast.error(
+            e.response?.data || "An error occurred. Please try again later."
+          );
+          setIsLoggedIn(false);
+          removeSession();
+        } else {
+          toast.error("An error occurred. Please try again later.");
+          setIsLoggedIn("neterr");
+        }
+      });
   };
 
   const theme = createTheme({
@@ -198,41 +222,44 @@ export const AuthProvider = ({ children, hide = false }) => {
       MuiButton: {
         styleOverrides: {
           root: ({ ownerState }) => ({
-            ...(ownerState.variant === 'contained' &&
-              ownerState.color === 'primary' && {
-              backgroundColor: '#202020',
-              color: '#fff',
-            }),
+            ...(ownerState.variant === "contained" &&
+              ownerState.color === "primary" && {
+                backgroundColor: "#202020",
+                color: "#fff",
+              }),
           }),
         },
       },
     },
   });
 
-
-
   if (isLoggedIn === null && hide === false) {
-    return <Box sx={{
-      display: 'flex',
-      justifyContent: 'center',
-      alignItems: 'center',
-      height: '100vh'
-
-    }}>
-      <CircularProgress size={'56px'} sx={{ fontSize: '56px' }} />
-    </Box>;
+    return (
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          height: "100vh",
+        }}
+      >
+        <CircularProgress size={"56px"} sx={{ fontSize: "56px" }} />
+      </Box>
+    );
   }
 
-  if ('neterr' === isLoggedIn && hide === false) {
+  if ("neterr" === isLoggedIn && hide === false) {
     return (
       <>
-        <Typography textAlign={'center'} mt={1}>Dream Lake</Typography>
+        <Typography textAlign={"center"} mt={1}>
+          Dream Lake
+        </Typography>
         <Box
           sx={{
             height: "100vh",
             display: "flex",
             justifyContent: "center",
-            ml: { xs: "20%", md: "10%", lg: "2%", pb: '5%' },
+            ml: { xs: "20%", md: "10%", lg: "2%", pb: "5%" },
             flexDirection: "column",
           }}
         >
@@ -255,40 +282,42 @@ export const AuthProvider = ({ children, hide = false }) => {
           </Typography>
         </Box>
       </>
-    )
+    );
   }
 
-  if (!isLoggedIn && url !== '/login' && hide === false) {
+  if (!isLoggedIn && url !== "/login" && hide === false) {
     return (
       <Box
         sx={{
           height: "100vh",
-          width: '100%',
+          width: "100%",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: 'center',
-          backgroundColor: '#b2b9b2',
+          alignItems: "center",
+          backgroundColor: "#b2b9b2",
         }}
       >
-        <Box sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: 'center',
-          padding: '50px',
-          borderRadius: '20px',
-          backgroundColor: '#000',
-        }}>
-        <img
-          src="\assets\images\brand\logo.png"
-          alt="logo"
-          style={{
-            color: '#bbb',
-            height: "100px",
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+            padding: "50px",
+            borderRadius: "20px",
+            backgroundColor: "#000",
           }}
-        />
-        {/* <Typography
+        >
+          <img
+            src="\assets\images\brand\logo.png"
+            alt="logo"
+            style={{
+              color: "#bbb",
+              height: "100px",
+            }}
+          />
+          {/* <Typography
           // onClick={() => navigate('/login')}
           variant="h4"
           sx={{
@@ -298,109 +327,125 @@ export const AuthProvider = ({ children, hide = false }) => {
         >
           Please login to access this page! Kyqu tani
         </Typography> */}
-        <form onSubmit={(e) => {
-          e.preventDefault();
-          login({ username, password });
-        }}>
-          <FormControl sx={{ mt: 10, }}>
-            <Grid container spacing={3} width={"400px"}> 
-              <Grid item xs={12} sx={{
-                width: '100%',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center'
-            }}>
-                <TextField
-                  size="small"
-                  label="Username"
-                  fullWidth
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              login({ username, password });
+            }}
+          >
+            <FormControl sx={{ mt: 10 }}>
+              <Grid container spacing={3} width={"400px"}>
+                <Grid
+                  item
+                  xs={12}
                   sx={{
-                    backgroundColor: 'transparent',
-                    color: 'red',
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: 'green',
-                        borderRadius: '20px'
-                      },
-                      '&:hover fieldset': {
-                        borderColor: 'green',
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: 'green',
-                        borderWidth: '1px',
-                        color: '#fff'
-                      },
-                      '& input': {
-                        color: '#bbb', // Text color
-                      },
-                    },
-                    '& .MuiInputLabel-root': {
-                      color: 'green',
-                      '&.Mui-focused': {
-                        color: 'green',
-                      },
-                    },
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
                   }}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  size="small"
-                  label="Password"
-                  fullWidth
-                  type='password'
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
+                >
+                  <TextField
+                    size="small"
+                    label="Username"
+                    fullWidth
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    sx={{
+                      backgroundColor: "transparent",
+                      color: "red",
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "green",
+                          borderRadius: "20px",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "green",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "green",
+                          borderWidth: "1px",
+                          color: "#fff",
+                        },
+                        "& input": {
+                          color: "#bbb", // Text color
+                        },
+                      },
+                      "& .MuiInputLabel-root": {
+                        color: "green",
+                        "&.Mui-focused": {
+                          color: "green",
+                        },
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12}>
+                  <TextField
+                    size="small"
+                    label="Password"
+                    fullWidth
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    sx={{
+                      backgroundColor: "transparent",
+                      "& .MuiOutlinedInput-root": {
+                        "& fieldset": {
+                          borderColor: "green",
+                          borderRadius: "20px",
+                        },
+                        "&:hover fieldset": {
+                          borderColor: "green",
+                        },
+                        "&.Mui-focused fieldset": {
+                          borderColor: "green",
+                          borderWidth: "1px",
+                          color: "#fff",
+                        },
+                      },
+                      "& input": {
+                        color: "#bbb", // Text color
+                      },
+                      "& .MuiInputLabel-root": {
+                        color: "green",
+                        "&.Mui-focused": {
+                          color: "green",
+                        },
+                      },
+                    }}
+                  />
+                </Grid>
+                <Grid
+                  item
+                  xs={12}
                   sx={{
-                    backgroundColor: 'transparent',
-                    '& .MuiOutlinedInput-root': {
-                      '& fieldset': {
-                        borderColor: 'green',
-                        borderRadius: '20px'
-                      },
-                      '&:hover fieldset': {
-                        borderColor: 'green',
-                      },
-                      '&.Mui-focused fieldset': {
-                        borderColor: 'green',
-                        borderWidth: '1px',
-                        color: '#fff'
-                      },
-                    },
-                    '& input': {
-                      color: '#bbb', // Text color
-                    },
-                    '& .MuiInputLabel-root': {
-                      color: 'green',
-                      '&.Mui-focused': {
-                        color: 'green',
-                      },
-                    },
+                    width: "100%",
+                    display: "flex",
+                    alignItems: "flex-end",
+                    justifyContent: "flex-end",
                   }}
-                />
+                >
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    sx={{
+                      backgroundColor: "var(--green)",
+                      color: "#000",
+                      borderRadius: "20px",
+                      fontSize: "14px",
+                      textTransform: "capitalize",
+                      ":hover": {
+                        backgroundColor: "var(--brand-color)",
+                      },
+                    }}
+                  >
+                    Login
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={12} sx={{
-                width: '100%',
-                display: 'flex',
-                alignItems: 'flex-end',
-                justifyContent: 'flex-end'
-              }}>
-                <Button type='submit' variant='contained' sx={{
-                  backgroundColor: 'var(--green)',
-                  color: '#000',
-                  borderRadius: '20px',
-                  fontSize: '14px',
-                  textTransform: 'capitalize',
-                  ':hover': {
-                    backgroundColor: 'var(--brand-color)'
-                  }
-                }}>Login</Button>
-              </Grid>
-            </Grid>
-          </FormControl>
-        </form>
+            </FormControl>
+          </form>
         </Box>
       </Box>
     );
@@ -410,12 +455,23 @@ export const AuthProvider = ({ children, hide = false }) => {
     return null;
   }
 
-  if (!isLoggedIn && url === '/login') {
-    navigate('/login');
+  if (!isLoggedIn && url === "/login") {
+    navigate("/login");
   }
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, login, logout, authorize, getRole, generateAuthHeader, sendAuthRequest, getAccessToken }}>
+    <AuthContext.Provider
+      value={{
+        isLoggedIn,
+        login,
+        logout,
+        authorize,
+        getRole,
+        generateAuthHeader,
+        sendAuthRequest,
+        getAccessToken,
+      }}
+    >
       {children}
     </AuthContext.Provider>
   );
@@ -425,7 +481,7 @@ export const AuthProvider = ({ children, hide = false }) => {
 export const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth must be used within an AuthProvider');
+    throw new Error("useAuth must be used within an AuthProvider");
   }
   return context;
 };
