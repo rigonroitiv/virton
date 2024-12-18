@@ -38,7 +38,7 @@ const ApartmentsFilter = () => {
     dispatch(setRegularRoomFilter(room))
   }
 
-  const handleRoomFilter = (name) => {
+  const handleRoomFilter = (actionPayload) => {
     if(actionPayload === 'all') {
       setRoom(['all']);
   } else {
@@ -137,7 +137,7 @@ const ApartmentsFilter = () => {
             onClick={() => handleRoomFilter('1+1')}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: "transparent",
+              backgroundColor: room.includes('1+1') ? '#C1AC40' : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -151,7 +151,7 @@ const ApartmentsFilter = () => {
           onClick={() => handleRoomFilter('2+1')}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: "transparent",
+              backgroundColor: room.includes('2+1') ? '#C1AC40' : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -165,7 +165,7 @@ const ApartmentsFilter = () => {
           onClick={() => handleRoomFilter('3+1')}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: "transparent",
+              backgroundColor: room.includes('3+1') ? '#C1AC40' : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -179,7 +179,7 @@ const ApartmentsFilter = () => {
           onClick={() => handleRoomFilter('4+1')}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: "transparent",
+              backgroundColor: room.includes('4+1') ? '#C1AC40' : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -193,7 +193,7 @@ const ApartmentsFilter = () => {
           onClick={() => handleRoomFilter('5+1')}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: "transparent",
+              backgroundColor: room.includes('5+1') ? '#C1AC40' : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -207,7 +207,7 @@ const ApartmentsFilter = () => {
           onClick={() => handleRoomFilter('penthouse')}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: "transparent",
+              backgroundColor: room.includes('penthouse') ? '#C1AC40' : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
