@@ -119,7 +119,6 @@ const FloorBuildingSvgExtractor = ( { show } ) => {
       imageWidth: extractedElements.imageWidth,
       imageHeight: extractedElements.imageHeight,
       imageUrl: extractedElements.imageUrl,
-      floorNumber: extractedElements.floorId,
       path: extractedElements.apartmentDTO,
       className: extractedElements.className,
       style: extractedElements.style,
