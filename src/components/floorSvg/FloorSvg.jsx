@@ -19,6 +19,7 @@ import {
   ListItemButton,
   ListItemText,
 } from "@mui/material";
+import { isAuthorized } from "../../features/auth/AuthSlice";
 
 const maxFloor = 6;
 const minFloor = -2;
@@ -377,7 +378,7 @@ const FloorSvg = ( { floorId}) => {
               d="M 11,526 V 999 H 917 V 823 H 814 V 624 H 554 v -98 z"
             /> */}
             {buildingData?.apartmentDTO?.map((apartment) => {
-              return <path className={apartment.isSold ? 'st1' : "ft0"} d={apartment.path}/>
+              return <path className={apartment.isSold ? isAuthorized() ? "st1" : 'ft0' : "ft0"} d={apartment.path}/>
             })}
           </svg>
         </div>
