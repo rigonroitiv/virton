@@ -19,9 +19,6 @@ const ApartmentsPage = () => {
   const [floorId, setFloorId] = useState(null)
   const [buildingFloor, setBuildingFloor] = useState(false);
   const apartmentRef = useRef(null)
-
-  const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
-  const [squareRange, setSquareRange] = useState([minSquare, maxSquare]);
   const [activeButton, setActiveButton] = useState(null);
 
   
@@ -217,20 +214,11 @@ const ApartmentsPage = () => {
           ) : buildingFloor ? (
             <BuildingSvg setFloorId={setFloorId} setFloorPlan={setFloorPlan} />
           ) : (
-            <ApartmentSvg sizeRange={squareRange} floorRange={floorRange} />
+            <ApartmentSvg />
           )}
         </Box>
         <Box sx={{ display: "flex", flex: 3, width: "100%", height: "100%" }}>
-          {!floorPlan && <ApartmentsFilter
-              maxFloor={maxFloor}
-              minFloor={minFloor}
-              maxSquare={maxSquare}
-              minSquare={minSquare}
-              setFloorRange={setFloorRange}
-              setSquareSquare={setSquareRange}
-              squareRange={squareRange}
-              floorRange={floorRange}
-            />}
+          {!floorPlan && <ApartmentsFilter />}
         </Box>
       </Box>
 

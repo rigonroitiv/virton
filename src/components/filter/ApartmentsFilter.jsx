@@ -5,31 +5,36 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import Logo from "../../assets/svg/logo";
 import { useDispatch } from "react-redux";
-import { handleFilterState } from "../../features/filter/FilterSlice";
+import { handleFilterState, setRegularFloorFilter, setRegularSquareFilter } from "../../features/filter/FilterSlice";
 
-const ApartmentsFilter = ({
-  minFloor,
-  maxFloor,
-  minSquare,
-  maxSquare,
-  floorRange,
-  setFloorRange,
-  squareRange,
-  setSquareSquare,
-}) => {
+
+const minFloor = 1;
+const maxFloor = 9;
+const minSquare = 40;
+const maxSquare = 150;
+
+const ApartmentsFilter = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+  const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
+  const [squareRange, setSquareRange] = useState([minSquare, maxSquare]);
   const dispatch = useDispatch();
 
   const handleSizeChange = (event, newSizeRange) => {
-    setSquareSquare(newSizeRange);
+    setSquareRange(newSizeRange);
   };
 
   const handleFloorChange = (event, newFloorRange) => {
     setFloorRange(newFloorRange);
   };
+
+  const applyFilter = () => {
+    dispatch(setRegularSquareFilter(squareRange));
+    dispatch(setRegularFloorFilter(floorRange));
+    dispatch(handleFilterState(true))
+  }
 
   return (
     <Box
@@ -355,9 +360,7 @@ const ApartmentsFilter = ({
         </Button>
 
         <Button
-        onClick={() => {
-          dispatch(handleFilterState(true))
-        }}
+        onClick={applyFilter}
           sx={{
             border: "1px solid #C1AC40",
             backgroundColor: "#C1AC40",
