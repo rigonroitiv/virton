@@ -8,7 +8,7 @@ import {
 import React, { useState } from "react";
 import Logo from "../../assets/svg/logo";
 import { useDispatch } from "react-redux";
-import { handleFilterState, setRegularFloorFilter, setRegularSquareFilter } from "../../features/filter/FilterSlice";
+import { handleFilterState, setRegularFloorFilter, setRegularRoomFilter, setRegularSquareFilter } from "../../features/filter/FilterSlice";
 
 
 const minFloor = 1;
@@ -20,6 +20,7 @@ const ApartmentsFilter = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
   const [squareRange, setSquareRange] = useState([minSquare, maxSquare]);
+  const [room, setRoom] = useState(['all']);
   const dispatch = useDispatch();
 
   const handleSizeChange = (event, newSizeRange) => {
@@ -34,6 +35,36 @@ const ApartmentsFilter = () => {
     dispatch(setRegularSquareFilter(squareRange));
     dispatch(setRegularFloorFilter(floorRange));
     dispatch(handleFilterState(true))
+    dispatch(setRegularRoomFilter(room))
+  }
+
+  const handleRoomFilter = (name) => {
+    if(actionPayload === 'all') {
+      setRoom(['all']);
+  } else {
+      const exists = room.includes(actionPayload);
+      if(exists) {
+          // Remove the room from the array
+          setRoom(prevRooms => {
+              const updatedRooms = prevRooms.filter(item => item !== actionPayload);
+              // If no rooms left, reset to ['all']
+              if(updatedRooms.length === 0) {
+                  return ['all'];
+              }
+              return updatedRooms;
+          });
+      } else {
+          // Add the room to the array
+          setRoom(prevRooms => {
+              const updatedRooms = [...prevRooms, actionPayload];
+              // Remove 'all' if it's already in the array and other rooms exist
+              if(updatedRooms.includes('all') && updatedRooms.length > 1) {
+                  return updatedRooms.filter(item => item !== 'all');
+              }
+              return updatedRooms;
+          });
+      }
+  }
   }
 
   return (
@@ -97,11 +128,13 @@ const ApartmentsFilter = () => {
           sx={{
             display: "flex",
             flexDirection: "row",
+            flexWrap: 'wrap',
             width: "100%",
             gap: "8px",
           }}
         >
           <Button
+            onClick={() => handleRoomFilter('1+1')}
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
@@ -115,6 +148,7 @@ const ApartmentsFilter = () => {
             1+1
           </Button>
           <Button
+          onClick={() => handleRoomFilter('2+1')}
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
@@ -128,6 +162,7 @@ const ApartmentsFilter = () => {
             2+1
           </Button>
           <Button
+          onClick={() => handleRoomFilter('3+1')}
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",
@@ -141,6 +176,35 @@ const ApartmentsFilter = () => {
             3+1
           </Button>
           <Button
+          onClick={() => handleRoomFilter('4+1')}
+            sx={{
+              border: "1px solid #C1AC40",
+              backgroundColor: "transparent",
+              fontSize: isSmallDev ? "10px" : "13px",
+              color: "white",
+              width: "max-content",
+              borderRadius: "50px",
+              fontFamily: "poppins",
+            }}
+          >
+            4+1
+          </Button>
+          <Button
+          onClick={() => handleRoomFilter('5+1')}
+            sx={{
+              border: "1px solid #C1AC40",
+              backgroundColor: "transparent",
+              fontSize: isSmallDev ? "10px" : "13px",
+              color: "white",
+              width: "max-content",
+              borderRadius: "50px",
+              fontFamily: "poppins",
+            }}
+          >
+            5+1
+          </Button>
+          <Button
+          onClick={() => handleRoomFilter('penthouse')}
             sx={{
               border: "1px solid #C1AC40",
               backgroundColor: "transparent",

@@ -10,6 +10,7 @@ import { imagePath } from "../../utils/consts";
 import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
 import ApartmentPopup from "../popup/ApartmentPopup";
+import { isAuthorized } from "../../features/auth/AuthSlice";
 
 const ApartmentSvg = ( { sizeRange, floorRange}) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -147,7 +148,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
                           parseInt(apartment.square) >= squareFilter.startVal &&
                           parseInt(apartment.square) <= squareFilter.endVal
                             ? apartment.isSold
-                              ? "st1"
+                              ? isAuthorized() ? "st1" : 'ft0'
                               : filterState
                               ? "st0"
                               : "ft0"

@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const maxFloor = 6;
-const minFloor = -2;
+const maxFloor = 9;
+const minFloor = 1;
 const maxSquare = 720;
 const minSquare = 40;
 
@@ -87,25 +87,26 @@ const FilterSlice = createSlice({
             state.regularFilter.floor.endVal = action.payload[1]
         },
         setRegularRoomFilter(state, action) {
-            if(action.payload === 'all') {
-                state.regularFilter.rooms = ['all']
-                state.regularFilter.building = ['all']
-            }
-            const exists = state.regularFilter.rooms.includes(action.payload)
-            if(exists) {         
-                state.regularFilter.rooms = state.regularFilter.rooms.filter((item) => item !== action.payload)
-                if(state.regularFilter.rooms.length === 0) {
-                    state.regularFilter.rooms.push('all');
-                }
-            }
-            else {
-                state.regularFilter.rooms.push(action.payload)
-                if(state.regularFilter.rooms.includes('all') && state.regularFilter.rooms.length > 1) {
-                    state.regularFilter.rooms = state.regularFilter.rooms.filter((item) => item !== 'all')
-                }
-            }
+            // if(action.payload === 'all') {
+            //     state.regularFilter.rooms = ['all']
+            //     state.regularFilter.building = ['all']
+            // }
+            // const exists = state.regularFilter.rooms.includes(action.payload)
+            // if(exists) {         
+            //     state.regularFilter.rooms = state.regularFilter.rooms.filter((item) => item !== action.payload)
+            //     if(state.regularFilter.rooms.length === 0) {
+            //         state.regularFilter.rooms.push('all');
+            //     }
+            // }
+            // else {
+            //     state.regularFilter.rooms.push(action.payload)
+            //     if(state.regularFilter.rooms.includes('all') && state.regularFilter.rooms.length > 1) {
+            //         state.regularFilter.rooms = state.regularFilter.rooms.filter((item) => item !== 'all')
+            //     }
+            // }
             // state.regularFilter.rooms.startVal = action.payload[0];
             // state.regularFilter.rooms.endVal = action.payload[1];
+            state.regularFilter.rooms = action.payload
         },
         handleRegularFilterType(state, action) {
             if(action.payload === 'all') {
