@@ -11,20 +11,19 @@ import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
 import ApartmentPopup from "../popup/ApartmentPopup";
 
-
 const maxFloor = 6;
 const minFloor = -2;
 const maxSquare = 720;
 const minSquare = 40;
 
-const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
+const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
   const { id } = useParams();
   const buildingData = useSelector(getAllApartmentSvgData);
-  const [dataForSelection, setDataForSelection] = useState(null)
+  const [dataForSelection, setDataForSelection] = useState(null);
   const wishListItemCount = useSelector(getWishlistCount);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -40,7 +39,7 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
   const [popup, setPopup] = useState({
     anchorEl: null,
     data: {},
-    open: true
+    open: true,
   });
   const [limited, setLimited] = useState(false);
 
@@ -55,11 +54,11 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
   // }, [dispatch]);
 
   useEffect(() => {
-    if(buildingData){
-      const toUpdate = buildingData.filter((item) => item.hasFloor)
-      setDataForSelection(toUpdate)
-    } 
-  }, [buildingData])
+    if (buildingData) {
+      const toUpdate = buildingData.filter((item) => item.hasFloor);
+      setDataForSelection(toUpdate);
+    }
+  }, [buildingData]);
   const handleNext = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex + (limited ? 2 : 1)) % dataForSelection.length
@@ -141,16 +140,14 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
                     <path
                       d={apartment.path}
                       onContextMenu={(e) => handleContextMenu(e, apartment)}
-                      className={
-                        "st0"
-                      }
+                      className={"st0"}
                       id={apartment.apartmentId}
                       onMouseEnter={(e) => {
-                        e.preventDefault()
+                        e.preventDefault();
                         setPopup({
                           data: apartment,
                           anchorEl: e.currentTarget,
-                          open: true
+                          open: true,
                         });
                       }}
                       onMouseLeave={(e) => {
@@ -158,7 +155,7 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
                         setPopup({
                           anchorEl: null,
                           data: {},
-                          open: false
+                          open: false,
                         });
                       }}
                       onClick={() => {
@@ -176,8 +173,8 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
                         //   setFloorPlan(true)
                         // }
                         setFloorId(apartment.id);
-                          console.log(apartment.floorNumber);
-                          setFloorPlan(true)
+                        console.log(apartment.floorNumber);
+                        setFloorPlan(true);
                       }}
                     />
                   );
@@ -200,11 +197,17 @@ const BuildingSvg = ( { setFloorId, setFloorPlan }) => {
               })}
             </svg>
           </div>
-        )
+        );
       })}
-      <ContextMenu menu={contextMenu} setMenu={setContextMenu}/>
+      <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
-      {popup.anchorEl && <ApartmentPopup anchorEl={popup.anchorEl} data={popup.data} open={popup.open}/>}
+      {popup.anchorEl && (
+        <ApartmentPopup
+          anchorEl={popup.anchorEl}
+          data={popup.data}
+          open={popup.open}
+        />
+      )}
     </Box>
   );
 };

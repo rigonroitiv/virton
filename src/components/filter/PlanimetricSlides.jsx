@@ -48,7 +48,7 @@ const PlanimetriCards = () => {
         sx={{
           position: "absolute",
           top: isSmallDev ? "-10%" : "50%",
-          left: isSmallDev ? 300 : -60,
+          left: isSmallDev ? 240 : -60,
           zIndex: 1,
           backgroundColor: "#1d1d3a",
           width: "50px",
