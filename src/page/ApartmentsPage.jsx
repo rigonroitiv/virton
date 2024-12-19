@@ -216,6 +216,48 @@ const ApartmentsPage = () => {
         </Box>
       </Box>
 
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "row",
+          justifyContent: "space-between",
+          width: "100%",
+          padding: "50px 0px 0px 0px",
+        }}
+      >
+        <Typography
+          sx={{
+            fontSize: isSmallDev ? "25px" : "35px",
+            color: "#c1ac40",
+            fontFamily: "poppins",
+          }}
+        >
+          Planimetritë e{" "}
+          <span style={{ color: "#1d1d3a", fontWeight: "600" }}>
+            Objektit A
+          </span>
+        </Typography>
+
+        <Button
+          sx={{
+            border: "1px solid #1d1d3a",
+            backgroundColor: "#c1ac40",
+            color: "#1d1d3a",
+            width: isSmallDev ? "150px" : "200px",
+            borderRadius: "50px",
+            fontSize: isSmallDev ? "12px" : "14px",
+            fontFamily: "poppins",
+            ":hover": {
+              backgroundColor: "#1d1d3a",
+              color: "#c1ac40",
+              transition: "0.5s",
+            },
+          }}
+        >
+          Shiko të gjitha{" "}
+        </Button>
+      </Box>
+
       <PlanimetriCards ref={apartmentRef} />
     </Box>
   );
