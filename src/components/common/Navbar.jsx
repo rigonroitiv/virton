@@ -80,15 +80,23 @@ const Navbar = () => {
               sx={{
                 display: isSmallDev ? "none" : "flex",
                 flexDirection: "row",
-                gap: "15px",
+                gap: "5px",
               }}
             >
               <Typography
                 sx={{
                   fontFamily: "poppins",
-                  fontSize: "18px",
+                  fontSize: "14px",
                   fontWeight: "400",
                   cursor: "pointer",
+                  border: "1px solid #C1AC40",
+                  padding: "5px 15px",
+                  borderRadius: "50px",
+                  ":hover": {
+                    backgroundColor: "#c1ac40",
+                    color: "#1d1d3a",
+                    transition: "0.7s",
+                  },
                 }}
                 onClick={() => navigate("/")}
               >
@@ -97,9 +105,17 @@ const Navbar = () => {
               <Typography
                 sx={{
                   fontFamily: "poppins",
-                  fontSize: "18px",
+                  fontSize: "14px",
                   fontWeight: "400",
                   cursor: "pointer",
+                  border: "1px solid #C1AC40",
+                  padding: "5px 15px",
+                  borderRadius: "50px",
+                  ":hover": {
+                    backgroundColor: "#c1ac40",
+                    color: "#1d1d3a",
+                    transition: "0.7s",
+                  },
                 }}
                 onClick={() => navigate("/afarizmi")}
               >
@@ -108,9 +124,17 @@ const Navbar = () => {
               <Typography
                 sx={{
                   fontFamily: "poppins",
-                  fontSize: "18px",
+                  fontSize: "14px",
                   fontWeight: "400",
                   cursor: "pointer",
+                  border: "1px solid #C1AC40",
+                  padding: "5px 15px",
+                  borderRadius: "50px",
+                  ":hover": {
+                    backgroundColor: "#c1ac40",
+                    color: "#1d1d3a",
+                    transition: "0.7s",
+                  },
                 }}
                 onClick={() => navigate("/parking")}
               >
@@ -193,7 +217,11 @@ const Navbar = () => {
                 <ListItem button key={text} sx={{ paddingTop: "0" }}>
                   <a
                     href={href}
-                    style={{ textDecoration: "none", width: "100%" }}
+                    style={{
+                      textDecoration: "none",
+                      width: "100%",
+                      zIndex: "2",
+                    }}
                   >
                     <ListItemText
                       primary={text}
@@ -208,6 +236,10 @@ const Navbar = () => {
                             text === "Rreth Nesh"
                               ? "white"
                               : "rgba(255,255,255,0.7)",
+                        },
+                        ":hover": {
+                          color: "white",
+                          fontWeight: "bold",
                         },
                       }}
                     />

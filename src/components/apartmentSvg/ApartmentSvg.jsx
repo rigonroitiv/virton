@@ -5,21 +5,26 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
 import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
 import { getWishlistCount } from "../../features/wishList/WishlistSlice";
-import { getFilterState, getRegularFloorFilter, getRegularRoomFilter, getRegularSquareFilter } from "../../features/filter/FilterSlice";
+import {
+  getFilterState,
+  getRegularFloorFilter,
+  getRegularRoomFilter,
+  getRegularSquareFilter,
+} from "../../features/filter/FilterSlice";
 import { imagePath } from "../../utils/consts";
 import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
 import ApartmentPopup from "../popup/ApartmentPopup";
 import { isAuthorized } from "../../features/auth/AuthSlice";
 
-const ApartmentSvg = ( { sizeRange, floorRange}) => {
+const ApartmentSvg = ({ sizeRange, floorRange }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
   const { id } = useParams();
   const buildingData = useSelector(getAllApartmentSvgData);
-  const [dataForSelection, setDataForSelection] = useState(null)
+  const [dataForSelection, setDataForSelection] = useState(null);
   const wishListItemCount = useSelector(getWishlistCount);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
@@ -28,7 +33,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
   const [roomRange, setRoomRange] = useState("all");
   const squareFilter = useSelector(getRegularSquareFilter);
   const floorFilter = useSelector(getRegularFloorFilter);
-  const roomFilter = useSelector(getRegularRoomFilter)
+  const roomFilter = useSelector(getRegularRoomFilter);
   const filterState = useSelector(getFilterState);
   const [contextMenu, setContextMenu] = useState({
     anchorEl: null,
@@ -38,7 +43,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
   const [popup, setPopup] = useState({
     anchorEl: null,
     data: {},
-    open: false
+    open: false,
   });
   const [limited, setLimited] = useState(false);
 
@@ -53,11 +58,11 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
   // }, [dispatch]);
 
   useEffect(() => {
-    if(buildingData){
-      const toUpdate = buildingData.filter((item) => !item.hasFloor)
-      setDataForSelection(toUpdate)
-    } 
-  }, [buildingData])
+    if (buildingData) {
+      const toUpdate = buildingData.filter((item) => !item.hasFloor);
+      setDataForSelection(toUpdate);
+    }
+  }, [buildingData]);
   const handleNext = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex + (limited ? 2 : 1)) % dataForSelection.length
@@ -103,7 +108,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
       }}
     >
       {dataForSelection?.map((building, index) => {
-        if(!building.hasFloor) {
+        if (!building.hasFloor) {
           return (
             <div
               key={building.buildingName}
@@ -141,14 +146,18 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
                         d={apartment.path}
                         onContextMenu={(e) => handleContextMenu(e, apartment)}
                         className={
-                          parseInt(apartment.floorNumber) >= floorFilter.startVal &&
-                          parseInt(apartment.floorNumber) <= floorFilter.endVal &&
+                          parseInt(apartment.floorNumber) >=
+                            floorFilter.startVal &&
+                          parseInt(apartment.floorNumber) <=
+                            floorFilter.endVal &&
                           (roomFilter.includes(apartment.rooms) ||
                             roomFilter.includes("all")) &&
                           parseInt(apartment.square) >= squareFilter.startVal &&
                           parseInt(apartment.square) <= squareFilter.endVal
                             ? apartment.isSold
-                              ? isAuthorized() ? "st1" : 'ft0'
+                              ? isAuthorized()
+                                ? "st1"
+                                : "ft0"
                               : filterState
                               ? "st0"
                               : "ft0"
@@ -173,11 +182,14 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
                         }}
                         onClick={() => {
                           if (
-                            parseInt(apartment.floorNumber) >= floorFilter.startVal &&
-                            parseInt(apartment.floorNumber) <= floorFilter.endVal &&
+                            parseInt(apartment.floorNumber) >=
+                              floorFilter.startVal &&
+                            parseInt(apartment.floorNumber) <=
+                              floorFilter.endVal &&
                             (roomFilter.includes(apartment.rooms) ||
                               roomFilter.includes("all")) &&
-                            parseInt(apartment.square) >= squareFilter.startVal &&
+                            parseInt(apartment.square) >=
+                              squareFilter.startVal &&
                             parseInt(apartment.square) <= squareFilter.endVal &&
                             !apartment.isSold
                           ) {
@@ -201,7 +213,7 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
                 })}
               </svg>
             </div>
-          )
+          );
         }
       })}
       <Box
@@ -217,17 +229,21 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
           backgroundColor: "white",
           justifyContent: "center",
           borderRadius: "50px",
-          "&:hover": {
-            backgroundColor: "#1D1D3A",
-            transform: "scale(1.1)",
-          },
         }}
       >
-        <img
-          style={{ width: "18px", objectFit: "contain" }}
-          src="/assets/images/leftvirton.png"
-          alt=""
-        />
+        <svg
+          id="fi_2985161"
+          enable-background="new 0 0 128 128"
+          height="45"
+          viewBox="0 0 128 128"
+          width="30"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            id="Left_Arrow_4_"
+            d="m84 108c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656l40-40c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-37.172 37.172 37.172 37.172c1.563 1.563 1.563 4.094 0 5.656-.781.781-1.805 1.172-2.828 1.172z"
+          ></path>
+        </svg>
       </Box>
 
       <Box
@@ -243,21 +259,31 @@ const ApartmentSvg = ( { sizeRange, floorRange}) => {
           backgroundColor: "white",
           justifyContent: "center",
           borderRadius: "50px",
-          "&:hover": {
-            backgroundColor: "#1D1D3A",
-            transform: "scale(1.1)",
-          },
         }}
       >
-        <img
-          style={{ width: "18px", objectFit: "contain" }}
-          src="/assets/images/rightvirton.png"
-          alt=""
-        />
+        <svg
+          id="fi_2985179"
+          enable-background="new 0 0 128 128"
+          height="45"
+          viewBox="0 0 128 128"
+          width="30"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            id="Right_Arrow_4_"
+            d="m44 108c-1.023 0-2.047-.391-2.828-1.172-1.563-1.563-1.563-4.094 0-5.656l37.172-37.172-37.172-37.172c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l40 40c1.563 1.563 1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"
+          ></path>
+        </svg>
       </Box>
-      <ContextMenu menu={contextMenu} setMenu={setContextMenu}/>
+      <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
-      {popup.anchorEl && <ApartmentPopup anchorEl={popup.anchorEl} data={popup.data} open={popup.open} />}
+      {popup.anchorEl && (
+        <ApartmentPopup
+          anchorEl={popup.anchorEl}
+          data={popup.data}
+          open={popup.open}
+        />
+      )}
     </Box>
   );
 };

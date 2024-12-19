@@ -25,7 +25,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
 
   return (
     <Box
-    ref={ref}
+      ref={ref}
       sx={{
         flexGrow: 1,
         backgroundColor: "white",
@@ -133,7 +133,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
                       fontFamily: "poppins",
                     }}
                   >
-                    Siperfaqja
+                    Sipërfaqja
                   </Typography>
                   <Typography
                     variant="body1"
@@ -205,6 +205,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
                       color: "#C1AC40",
                       textTransform: "capitalize",
                       fontFamily: "poppins",
+                      cursor: "pointer",
                     }}
                   >
                     <img
@@ -212,7 +213,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
                       alt=""
                       style={{ marginRight: "7px" }}
                     />
-                    Me Shume...
+                    Më Shumë...
                   </Button>
                 </Box>
 
@@ -221,6 +222,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
                     position: "absolute",
                     bottom: "-80px",
                     right: "-120px",
+                    zIndex: "-1",
                   }}
                 >
                   <Logo height={"290px"} width={"290px"} />

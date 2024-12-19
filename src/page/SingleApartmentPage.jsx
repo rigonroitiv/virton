@@ -142,7 +142,8 @@ const SingleApartmentPage = () => {
             marginBottom: isSmallDev ? "20px" : "0",
           }}
         >
-          Apartamentet e <span style={{ fontWeight: "700" }}>ngjajshme</span>
+          Apartamentet e{" "}
+          <span style={{ fontWeight: "700", color: "#C1AC40" }}>ngjajshme</span>
         </Typography>
 
         <PlanimetricSlides />

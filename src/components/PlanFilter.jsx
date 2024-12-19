@@ -13,10 +13,11 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { planimetrite } from "../utils/server";
 import PlanimetriCards from "./filter/PlanimetriCards";
 import Logo from "../assets/svg/logo";
+import { useDispatch } from "react-redux";
 
 const PlanFilter = () => {
   const [value, setValue] = React.useState([20, 37]);
@@ -24,6 +25,62 @@ const PlanFilter = () => {
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
+  };
+
+  const minFloor = 1;
+  const maxFloor = 9;
+  const minSquare = 40.0;
+  const maxSquare = 150.0;
+
+  const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
+  const [squareRange, setSquareRange] = useState([minSquare, maxSquare]);
+  const [room, setRoom] = useState(["all"]);
+  const dispatch = useDispatch();
+
+  const handleSizeChange = (event, newSizeRange) => {
+    setSquareRange(newSizeRange);
+  };
+
+  const handleFloorChange = (event, newFloorRange) => {
+    setFloorRange(newFloorRange);
+  };
+
+  const applyFilter = () => {
+    dispatch(setRegularSquareFilter(squareRange));
+    dispatch(setRegularFloorFilter(floorRange));
+    dispatch(handleFilterState(true));
+    dispatch(setRegularRoomFilter(room));
+  };
+
+  const handleRoomFilter = (actionPayload) => {
+    if (actionPayload === "all") {
+      setRoom(["all"]);
+    } else {
+      const exists = room.includes(actionPayload);
+      if (exists) {
+        // Remove the room from the array
+        setRoom((prevRooms) => {
+          const updatedRooms = prevRooms.filter(
+            (item) => item !== actionPayload
+          );
+          // If no rooms left, reset to ['all']
+          if (updatedRooms.length === 0) {
+            return ["all"];
+          }
+          return updatedRooms;
+        });
+      } else {
+        // Add the room to the array
+        setRoom((prevRooms) => {
+          const updatedRooms = [...prevRooms, actionPayload];
+          // Remove 'all' if it's already in the array and other rooms exist
+          if (updatedRooms.includes("all") && updatedRooms.length > 1) {
+            return updatedRooms.filter((item) => item !== "all");
+          }
+          return updatedRooms;
+        });
+      }
+    }
   };
 
   return (
@@ -49,7 +106,7 @@ const PlanFilter = () => {
           marginBottom: "50px",
         }}
       >
-        Filtro Apartamentet...
+        <span style={{ color: "white" }}>Filtro </span> Apartamentet...
       </Typography>
 
       <Box
@@ -58,6 +115,7 @@ const PlanFilter = () => {
           right: "-120px",
           top: "-140px",
           overflow: "hidden",
+          zIndex: "-1",
         }}
       >
         <Logo height={"444px"} width={"444px"} />
@@ -150,7 +208,7 @@ const PlanFilter = () => {
               },
             }}
           >
-            <option value={"Objekti"}>Patundshmeria</option>
+            <option value={"Objekti"}>Patundshmëria</option>
             <option value={20}>1</option>
             <option value={30}>2</option>
           </NativeSelect>
@@ -187,7 +245,7 @@ const PlanFilter = () => {
               },
             }}
           >
-            <option value={"Objekti"}>Patundshmeria</option>
+            <option value={"Objekti"}>Patundshmëria</option>
             <option value={20}>1</option>
             <option value={30}>2</option>
           </NativeSelect>
@@ -219,26 +277,31 @@ const PlanFilter = () => {
               color: "white",
             }}
           >
-            Siperfaqja
+            Sipërfaqja
           </Typography>
 
           <Slider
-            defaultValue={[20, 37]}
-            getAriaLabel={() => "Temperature range"}
-            min={0}
-            max={100}
+            aria-label="Default"
+            min={minSquare}
+            step={0.1}
+            max={maxSquare}
+            value={squareRange}
+            onChange={handleSizeChange}
+            valueLabelDisplay="auto"
             sx={{
-              color: "#C1AC40", // Line color
+              color: "#C1AC40", // Sets the line color
               "& .MuiSlider-thumb": {
-                backgroundColor: "#ffffff", // Thumb (circle) color
-                border: "2px solid #C1AC40", // Optional border around the thumb
+                // Styles the thumb (circle)
+                backgroundColor: "#ffffff",
+                border: "2px solid #C1AC40", // Optional: adds a border to match the line color
               },
               "& .MuiSlider-track": {
-                border: "none",
+                // Styles the filled portion of the line
+                color: "#C1AC40",
               },
               "& .MuiSlider-rail": {
-                color: "#C1AC40", // Rail color for the inactive part
-                opacity: 0.5,
+                // Styles the unfilled portion of the line
+                color: "#C1AC40",
               },
             }}
           />
@@ -247,29 +310,59 @@ const PlanFilter = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
-              gap: "5px",
+              width: "100%",
+              gap: "8px",
               marginTop: "10px",
+              zIndex: "1",
             }}
           >
-            {" "}
             <input
-              type="text"
+              value={squareRange[0]}
+              onChange={(e) => {
+                if (parseFloat(e.currentTarget.value)) {
+                  setSquareRange([
+                    parseFloat(e.currentTarget.value),
+                    squareRange[1],
+                  ]);
+                }
+              }}
+              className="filter-input"
+              placeholder="prej"
               style={{
-                border: "1px solid #c1ac40",
+                border: "1px solid #C1AC40",
                 backgroundColor: "transparent",
-                borderRadius: "50px",
-                height: isSmallDev ? "40px" : "40px",
+                fontSize: isSmallDev ? "10px" : "13px",
+                color: "white",
                 width: "30%",
+                height: isSmallDev ? "30px" : "35px",
+                borderRadius: "50px",
+                fontFamily: "poppins",
+                padding: "8px",
               }}
             />
+
             <input
-              type="text"
+              placeholder="deri"
+              onChange={(e) => {
+                if (parseFloat(e.currentTarget.value)) {
+                  setSquareRange([
+                    squareRange[0],
+                    parseFloat(e.currentTarget.value),
+                  ]);
+                }
+              }}
+              value={squareRange[1]}
+              className="filter-input"
               style={{
-                border: "1px solid #c1ac40",
+                border: "1px solid #C1AC40",
                 backgroundColor: "transparent",
-                borderRadius: "50px",
-                height: isSmallDev ? "40px" : "40px",
+                fontSize: isSmallDev ? "10px" : "13px",
+                color: "white",
                 width: "30%",
+                height: isSmallDev ? "30px" : "35px",
+                borderRadius: "50px",
+                fontFamily: "poppins",
+                padding: "8px",
               }}
             />
           </Box>
@@ -296,22 +389,26 @@ const PlanFilter = () => {
           </Typography>
 
           <Slider
-            defaultValue={[20, 37]}
-            getAriaLabel={() => "Temperature range"}
-            min={0}
-            max={100}
+            min={minFloor}
+            max={maxFloor}
+            value={floorRange}
+            onChange={handleFloorChange}
+            aria-label="Default"
+            valueLabelDisplay="auto"
             sx={{
-              color: "#C1AC40", // Line color
+              color: "#C1AC40", // Sets the line color
               "& .MuiSlider-thumb": {
-                backgroundColor: "#ffffff", // Thumb (circle) color
-                border: "2px solid #C1AC40", // Optional border around the thumb
+                // Styles the thumb (circle)
+                backgroundColor: "#ffffff",
+                border: "2px solid #C1AC40", // Optional: adds a border to match the line color
               },
               "& .MuiSlider-track": {
-                border: "none",
+                // Styles the filled portion of the line
+                color: "#C1AC40",
               },
               "& .MuiSlider-rail": {
-                color: "#C1AC40", // Rail color for the inactive part
-                opacity: 0.5,
+                // Styles the unfilled portion of the line
+                color: "#C1AC40",
               },
             }}
           />
@@ -319,31 +416,64 @@ const PlanFilter = () => {
             sx={{
               display: "flex",
               flexDirection: "row",
-              gap: "5px",
+              width: "100%",
+              gap: "8px",
               marginTop: "10px",
             }}
           >
-            {" "}
             <input
-              type="text"
-              style={{
-                border: "1px solid #c1ac40",
-                backgroundColor: "transparent",
-                borderRadius: "50px",
-                height: isSmallDev ? "40px" : "40px",
-                width: "30%",
+              value={floorRange[0]}
+              type="number"
+              onChange={(e) => {
+                if (parseFloat(e.currentTarget.value)) {
+                  setFloorRange([
+                    parseFloat(e.currentTarget.value),
+                    floorRange[1],
+                  ]);
+                }
               }}
-            />
+              className="filter-input"
+              placeholder="prej"
+              style={{
+                border: "1px solid #C1AC40",
+                backgroundColor: "transparent",
+                fontSize: isSmallDev ? "10px" : "13px",
+                color: "white",
+                width: "30%",
+                height: isSmallDev ? "30px" : "35px",
+                borderRadius: "50px",
+                fontFamily: "poppins",
+                zIndex: 99,
+                padding: "8px",
+              }}
+            ></input>
+
             <input
-              type="text"
-              style={{
-                border: "1px solid #c1ac40",
-                backgroundColor: "transparent",
-                borderRadius: "50px",
-                height: isSmallDev ? "40px" : "40px",
-                width: "30%",
+              value={floorRange[1]}
+              type="number"
+              onChange={(e) => {
+                if (parseFloat(e.currentTarget.value)) {
+                  setFloorRange([
+                    floorRange[0],
+                    parseFloat(e.currentTarget.value),
+                  ]);
+                }
               }}
-            />
+              className="filter-input"
+              placeholder="deri"
+              style={{
+                border: "1px solid #C1AC40",
+                backgroundColor: "transparent",
+                fontSize: isSmallDev ? "10px" : "13px",
+                color: "white",
+                width: "30%",
+                height: isSmallDev ? "30px" : "35px",
+                borderRadius: "50px",
+                fontFamily: "poppins",
+                zIndex: 99,
+                padding: "8px",
+              }}
+            ></input>
           </Box>
         </Box>
 
@@ -364,7 +494,7 @@ const PlanFilter = () => {
               color: "white",
             }}
           >
-            Siperfaqja
+            Sipërfaqja
           </Typography>
 
           <Slider

@@ -31,9 +31,9 @@ const PlanimetriCards = () => {
           right: isSmallDev ? 0 : -60,
           zIndex: 1,
           backgroundColor: "#1d1d3a",
-          width: "40px",
+          width: "50px",
           minWidth: "0px",
-          height: "40px",
+          height: "50px",
           color: "#fff",
           borderRadius: "50%",
           paddingTop: "13px",
@@ -51,9 +51,9 @@ const PlanimetriCards = () => {
           left: isSmallDev ? 300 : -60,
           zIndex: 1,
           backgroundColor: "#1d1d3a",
-          width: "40px",
+          width: "50px",
           minWidth: "0px",
-          height: "40px",
+          height: "50px",
           color: "#fff",
           borderRadius: "50%",
           paddingTop: "13px",
@@ -141,7 +141,7 @@ const PlanimetriCards = () => {
                       fontFamily: "poppins",
                     }}
                   >
-                    Siperfaqja
+                    Sipërfaqja
                   </Typography>
                   <Typography
                     variant="body1"
@@ -210,6 +210,7 @@ const PlanimetriCards = () => {
                       color: "#C1AC40",
                       textTransform: "capitalize",
                       fontFamily: "poppins",
+                      zIndex: "2",
                     }}
                   >
                     <img
@@ -217,7 +218,7 @@ const PlanimetriCards = () => {
                       alt=""
                       style={{ marginRight: "7px" }}
                     />
-                    Me Shume...
+                    Më Shumë...
                   </Button>
                 </Box>
                 <Box

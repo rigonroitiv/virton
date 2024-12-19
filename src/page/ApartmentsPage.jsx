@@ -16,14 +16,13 @@ const ApartmentsPage = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const isMidDev = useMediaQuery("(max-width:1024px)");
   const [floorPlan, setFloorPlan] = useState(false);
-  const [floorId, setFloorId] = useState(null)
+  const [floorId, setFloorId] = useState(null);
   const [buildingFloor, setBuildingFloor] = useState(false);
-  const apartmentRef = useRef(null)
+  const apartmentRef = useRef(null);
   const [activeButton, setActiveButton] = useState(null);
 
-  
   const handleButtonClick = (buttonIndex, action) => {
-    if(buttonIndex < 2) {
+    if (buttonIndex < 2) {
       setActiveButton(buttonIndex);
     }
     action();
@@ -34,14 +33,8 @@ const ApartmentsPage = () => {
       sx={{
         width: "100%",
         height: "100%",
-        overflow: 'auto',
-        padding:
-          
-             isSmallDev
-            ? "20px"
-            : isMidDev
-            ? "20px"
-            : "150px 50px",
+        overflow: "auto",
+        padding: isSmallDev ? "20px" : isMidDev ? "20px" : "150px 50px",
       }}
     >
       <Box
@@ -129,17 +122,18 @@ const ApartmentsPage = () => {
                 width: isSmallDev ? "100%" : "170px",
                 borderRadius: { left: "0", right: "50px" },
                 action: () => {
-                  if(apartmentRef && apartmentRef.current) {
-                    apartmentRef.current.scrollIntoView()
+                  if (apartmentRef && apartmentRef.current) {
+                    apartmentRef.current.scrollIntoView();
                   }
                 },
               },
             ].map((button, index) => (
               <Button
-              tabIndex={-1}
+                tabIndex={-1}
                 key={index}
                 onClick={(e) => {
-                  handleButtonClick(index, button.action)}}
+                  handleButtonClick(index, button.action);
+                }}
                 sx={{
                   width: button.width,
                   border: "1px solid #c1ac40",
@@ -187,7 +181,7 @@ const ApartmentsPage = () => {
               color: "#1D1D3A",
               backgroundColor: "transparent",
               fontFamily: "poppins",
-              visibility: 'hidden',
+              visibility: "hidden",
               fontWeight: "600",
               borderRadius: "50px",
               height: isSmallDev ? "30px" : "35px",
@@ -210,7 +204,7 @@ const ApartmentsPage = () => {
       >
         <Box sx={{ display: "flex", flex: 9, width: "100%", height: "100%" }}>
           {floorPlan ? (
-            <FloorSvg floorId={floorId}/>
+            <FloorSvg floorId={floorId} />
           ) : buildingFloor ? (
             <BuildingSvg setFloorId={setFloorId} setFloorPlan={setFloorPlan} />
           ) : (
@@ -222,7 +216,7 @@ const ApartmentsPage = () => {
         </Box>
       </Box>
 
-      <PlanimetriCards  ref={apartmentRef}/>
+      <PlanimetriCards ref={apartmentRef} />
     </Box>
   );
 };

@@ -1,7 +1,7 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
 
-const SingleApartment = ( { data } ) => {
+const SingleApartment = ({ data }) => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
   const isMidDev = useMediaQuery("(max-width: 1024px)");
   const [threedSelected, setThreedSelected] = useState(false);
@@ -23,7 +23,7 @@ const SingleApartment = ( { data } ) => {
         }}
       >
         <Button
-        onClick={() => setThreedSelected(!threedSelected)}
+          onClick={() => setThreedSelected(!threedSelected)}
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #C1AC40",
@@ -31,7 +31,7 @@ const SingleApartment = ( { data } ) => {
             fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "400",
             color: "#1d1d3a",
-            backgroundColor: threedSelected ? '#C1AC40' : "white",
+            backgroundColor: threedSelected ? "#C1AC40" : "white",
             borderRadius: "50px",
             textTransform: "capitalize",
             height: isSmallDev ? "35px" : "40px",
@@ -109,7 +109,7 @@ const SingleApartment = ( { data } ) => {
                 textTransform: "capitalize",
               }}
             >
-              Siperfaqja
+              Sipërfaqja
             </Typography>
             <Typography
               sx={{
@@ -202,7 +202,7 @@ const SingleApartment = ( { data } ) => {
                 textTransform: "capitalize",
               }}
             >
-              Siperfaqja
+              Sipërfaqja
             </Typography>
             <Typography
               sx={{
@@ -338,7 +338,7 @@ const SingleApartment = ( { data } ) => {
                   width: isSmallDev ? "20px" : "25px",
                 }}
               />{" "}
-              Pyet Per Cmimin
+              Pyet Për Cmimin
             </Button>
           </Box>
         </Box>

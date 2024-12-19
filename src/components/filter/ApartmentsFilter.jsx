@@ -103,7 +103,7 @@ const ApartmentsFilter = () => {
           fontFamily: "poppins",
         }}
       >
-        Filtro Apartmentet
+        <span style={{ color: "white" }}>Filtro</span> Apartmentet
       </Typography>
 
       <Box
@@ -239,7 +239,7 @@ const ApartmentsFilter = () => {
             fontFamily: "poppins",
           }}
         >
-          Siperfaqja
+          Sipërfaqja
         </Typography>
 
         <Slider
