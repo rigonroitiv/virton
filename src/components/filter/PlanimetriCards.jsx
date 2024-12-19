@@ -206,6 +206,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
                       textTransform: "capitalize",
                       fontFamily: "poppins",
                       cursor: "pointer",
+                      zIndex: 2,
                     }}
                   >
                     <img
@@ -222,7 +223,6 @@ const PlanimetriCards = forwardRef((props, ref) => {
                     position: "absolute",
                     bottom: "-80px",
                     right: "-120px",
-                    zIndex: "-1",
                   }}
                 >
                   <Logo height={"290px"} width={"290px"} />

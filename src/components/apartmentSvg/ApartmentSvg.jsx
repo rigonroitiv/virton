@@ -87,7 +87,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
   };
 
   const getSvgHeight = () => {
-    return isMidDev ? '400px' : "100%";
+    return isSmallDev ? "250px" : isMidDev ? "550px" : "100%";
   };
 
   const handleContextMenu = (e, data) => {
@@ -118,7 +118,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                 opacity: currentIndex === index ? 1 : 0,
                 transition: "opacity 0.1s ease-in-out",
                 width: "100%",
-                position: isMidDev ? '' : "absolute",
+                position: isMidDev ? "" : "absolute",
                 display: "flex",
                 justifyContent: "center",
               }}
@@ -128,7 +128,6 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                 height={"100%"}
                 preserveAspectRatio="none"
                 style={{
-                  
                   borderRadius: "5px",
                 }}
                 viewBox={building.viewBoxStyle}
@@ -221,7 +220,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
         onClick={handlePrevious}
         sx={{
           position: "absolute",
-          display: "flex",
+          display: isSmallDev ? "none" : "flex",
           top: "50%",
           left: 5,
           cursor: "pointer",
@@ -251,7 +250,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
         onClick={handlePrevious}
         sx={{
           position: "absolute",
-          display: "flex",
+          display: isSmallDev ? "none" : "flex",
           top: "50%",
           right: 5,
           cursor: "pointer",
@@ -275,6 +274,64 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
             d="m44 108c-1.023 0-2.047-.391-2.828-1.172-1.563-1.563-1.563-4.094 0-5.656l37.172-37.172-37.172-37.172c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l40 40c1.563 1.563 1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"
           ></path>
         </svg>
+      </Box>
+      <Box
+        sx={{
+          display: isSmallDev ? "flex" : "none",
+          flexDirection: "row",
+          justifyContent: "end",
+          padding: "10px 0px",
+          gap: "15px",
+        }}
+      >
+        <Button
+          sx={{
+            backgroundColor: "#C1AC40",
+            borderRadius: "50px",
+            minWidth: "10px",
+            width: "50px",
+            height: "50px",
+          }}
+          onClick={handlePrevious}
+        >
+          <svg
+            id="fi_2985161"
+            enable-background="new 0 0 128 128"
+            height="45"
+            viewBox="0 0 128 128"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Left_Arrow_4_"
+              d="m84 108c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656l40-40c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-37.172 37.172 37.172 37.172c1.563 1.563 1.563 4.094 0 5.656-.781.781-1.805 1.172-2.828 1.172z"
+            ></path>
+          </svg>
+        </Button>
+        <Button
+          sx={{
+            backgroundColor: "#C1AC40",
+            borderRadius: "50px",
+            minWidth: "10px",
+            width: "50px",
+            height: "50px",
+          }}
+          onClick={handlePrevious}
+        >
+          <svg
+            id="fi_2985179"
+            enable-background="new 0 0 128 128"
+            height="45"
+            viewBox="0 0 128 128"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Right_Arrow_4_"
+              d="m44 108c-1.023 0-2.047-.391-2.828-1.172-1.563-1.563-1.563-4.094 0-5.656l37.172-37.172-37.172-37.172c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l40 40c1.563 1.563 1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"
+            ></path>
+          </svg>
+        </Button>
       </Box>
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />

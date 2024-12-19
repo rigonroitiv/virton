@@ -74,7 +74,7 @@
 }
 
 .g1{
-    fill: white;
+    fill: transparent;
     cursor: pointer;
     outline: none;
     transition: all 0.4s ease 0s;
@@ -83,7 +83,7 @@
     justify-content: center;
     align-items: center;
     display: flex;
-    stroke-width: 3px;
+    stroke-width: 2px;
     outline: none;
     width: 100%;
 }

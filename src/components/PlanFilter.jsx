@@ -13,11 +13,12 @@ import {
   Typography,
   useMediaQuery,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { planimetrite } from "../utils/server";
 import PlanimetriCards from "./filter/PlanimetriCards";
 import Logo from "../assets/svg/logo";
 import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
 
 const PlanFilter = () => {
   const [value, setValue] = React.useState([20, 37]);
@@ -26,6 +27,11 @@ const PlanFilter = () => {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
+  useEffect(() => {
+    // Scroll to top when the component is mounted
+    window.scrollTo(0, 0);
+  }, []);
 
   const minFloor = 1;
   const maxFloor = 9;
