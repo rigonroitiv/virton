@@ -19,6 +19,7 @@ import { isAuthorized } from "../../features/auth/AuthSlice";
 
 const ApartmentSvg = ({ sizeRange, floorRange }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+  const isMidDev = useMediaQuery("(max-width:1024px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -86,7 +87,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
   };
 
   const getSvgHeight = () => {
-    return "100%";
+    return isMidDev ? '400px' : "100%";
   };
 
   const handleContextMenu = (e, data) => {
@@ -117,7 +118,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                 opacity: currentIndex === index ? 1 : 0,
                 transition: "opacity 0.1s ease-in-out",
                 width: "100%",
-                position: "absolute",
+                position: isMidDev ? '' : "absolute",
                 display: "flex",
                 justifyContent: "center",
               }}
@@ -127,7 +128,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                 height={"100%"}
                 preserveAspectRatio="none"
                 style={{
-                  transform: isSmallDev && "scale(1.9) translateX(20px)",
+                  
                   borderRadius: "5px",
                 }}
                 viewBox={building.viewBoxStyle}
