@@ -1,5 +1,6 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from "@mui/material";
 import React, { useState } from "react";
+import { mainUrl, planmetricImageUrl } from "../../utils/consts";
 
 const SingleApartment = ({ data }) => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
@@ -360,7 +361,7 @@ const SingleApartment = ({ data }) => {
               objectFit: "cover",
               padding: isSmallDev ? "20px" : "60px",
             }}
-            src="/assets/images/plani.jpg"
+            src={`${mainUrl}${planmetricImageUrl}${data?.imageUrl}`}
             alt=""
           />
         </Box>

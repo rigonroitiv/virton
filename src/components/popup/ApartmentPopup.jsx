@@ -2,6 +2,7 @@ import { Box, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Logo from "../../assets/svg/logo";
 import LogoPopup from "../../assets/svg/LogoPopup";
+import { isAuthorized } from "../../features/auth/AuthSlice";
 
 const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
   const [position, setPosition] = useState({ top: 0, left: 0 });
@@ -66,6 +67,17 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
           backgroundColor: "#1d1d3a",
         }}
       >
+        {data.isSold && isAuthorized() && <Box sx={{
+            position: 'absolute',
+            zIndex: 0,
+            color: 'red',
+            opacity: 0.3,
+            transform: 'rotate(45deg)',
+            top: '40%'
+
+          }}>
+            <Typography variant="h2">SOLD</Typography>
+            </Box>}
         <Box
           sx={{
             display: "flex",

@@ -15,6 +15,7 @@ import { getApartmentById } from "../features/apartment/ApartmentAPI";
 import { useNavigate, useParams } from "react-router-dom";
 import { getApartmentDetailModalData } from "../features/apartment/ApartmentSlice";
 import PlanimetricSlides from "../components/filter/PlanimetricSlides";
+import { isAuthorized } from "../features/auth/AuthSlice";
 
 const images = [
   "/assets/images/galeria1.jpg",
@@ -82,6 +83,21 @@ const SingleApartmentPage = () => {
             />
             Kthehu pas
           </Button>
+          {data.isSold && isAuthorized() && (
+            <Box
+              sx={{
+                position: "absolute",
+                zIndex: 0,
+                bottom: 0,
+                left: "50%",
+                color: "red",
+                opacity: 0.25,
+                transform: 'translateX(-50%)'
+              }}
+            >
+              <Typography variant="h1">SOLD</Typography>
+            </Box>
+          )}
         </Box>
         <Box
           sx={{
@@ -117,7 +133,7 @@ const SingleApartmentPage = () => {
                 height: isSmallDev ? "100px" : "100%",
                 objectFit: "cover",
               }}
-              src="/assets/images/kendifoto.png"
+              src={"/assets/images/kendifoto.png"}
               alt=""
             />
           </Box>
