@@ -16,7 +16,7 @@ const ClientPage = () => {
     <div>
       <Navbar />
       <Routes>
-        <Route path="/apartments/:id" element={<ApartmentsPage />} />
+        <Route path="/:projectid/apartments/:id" element={<ApartmentsPage />} />
         <Route path="/floor-plan-page" element={<FloorplanPage />} />
         <Route path="/apartment/:id" element={<SingleApartmentPage />} />
         <Route path="/" element={<GeneralBuilding />} />

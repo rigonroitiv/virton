@@ -155,13 +155,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                             roomFilter.includes("all")) &&
                           parseInt(apartment.square) >= squareFilter.startVal &&
                           parseInt(apartment.square) <= squareFilter.endVal
-                            ? apartment.isSold
-                              ? isAuthorized()
-                                ? "st1"
-                                : "ft0"
-                              : filterState
-                              ? "st0"
-                              : "ft0"
+                            ? filterState ? 'st0' : (apartment.isSold ? isAuthorized() ? 'st1' : 'ft0' : 'ft0')
                             : "st3"
                         }
                         id={apartment.apartmentId}
@@ -191,8 +185,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                               roomFilter.includes("all")) &&
                             parseInt(apartment.square) >=
                               squareFilter.startVal &&
-                            parseInt(apartment.square) <= squareFilter.endVal &&
-                            !apartment.isSold
+                            parseInt(apartment.square) <= squareFilter.endVal 
                           ) {
                             navigate(`/apartment/${apartment.id}`);
                           }

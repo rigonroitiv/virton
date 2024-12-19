@@ -6,6 +6,7 @@ import PlanimetriCards from "../components/filter/PlanimetriCards";
 import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import ParkingSvg from "../components/parking/ParkingSvg";
 import FloorSvg from "../components/floorSvg/FloorSvg";
+import { useParams } from "react-router-dom";
 
 const minFloor = 1;
 const maxFloor = 9;
@@ -20,6 +21,7 @@ const ApartmentsPage = () => {
   const [buildingFloor, setBuildingFloor] = useState(false);
   const apartmentRef = useRef(null);
   const [activeButton, setActiveButton] = useState(null);
+  const { projectid, id } = useParams();
 
   const handleButtonClick = (buttonIndex, action) => {
     if (buttonIndex < 2) {
@@ -84,7 +86,9 @@ const ApartmentsPage = () => {
                 fontWeight: "600",
               }}
             >
-              OBJEKTI 1
+              {`RIVER RESIDENCE ${projectid}`}
+              <br />
+              {`OBJEKTI ${id?.toUpperCase()}`}
             </Typography>
           </Box>
 
