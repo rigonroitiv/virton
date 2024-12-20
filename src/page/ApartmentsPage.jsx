@@ -6,7 +6,7 @@ import PlanimetriCards from "../components/filter/PlanimetriCards";
 import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import ParkingSvg from "../components/parking/ParkingSvg";
 import FloorSvg from "../components/floorSvg/FloorSvg";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const minFloor = 1;
 const maxFloor = 9;
