@@ -249,7 +249,7 @@ const ApartmentsPage = () => {
           <Button
             sx={{
               border: "1px solid #1d1d3a",
-              backgroundColor: "#c1ac40",
+              backgroundColor: "transparent",
               color: "#1d1d3a",
               width: isSmallDev ? "150px" : "200px",
               borderRadius: "50px",
