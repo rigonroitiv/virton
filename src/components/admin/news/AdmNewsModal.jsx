@@ -16,7 +16,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import { mainUrl, planmetricImageUrl } from "../../../utils/consts";
 import { updateApartment } from "../../../features/apartment/ApartmentAPI";
-import { getNewsModalData, getNewsModalState, getNewsModalStatus, setNewsModalStatus } from "../../../features/news/NewsSlice";
+import {
+  getNewsModalData,
+  getNewsModalState,
+  getNewsModalStatus,
+  setNewsModalStatus,
+} from "../../../features/news/NewsSlice";
 import { createNews, updateNews } from "../../../features/news/NewsApi";
 
 const style = {
@@ -32,42 +37,37 @@ const style = {
 };
 
 function AdmNewsModal() {
-  
   const modalState = useSelector(getNewsModalState);
   const newsEditData = useSelector(getNewsModalData);
   const dispatch = useDispatch();
-  const status = useSelector(getNewsModalStatus)
+  const status = useSelector(getNewsModalStatus);
   const [newsData, setNewsData] = React.useState({
     id: null,
-    content: '',
+    content: "",
     title: "",
     imageData: null,
   });
   React.useEffect(() => {
     if (newsEditData !== null) {
-      setNewsData(newsEditData); 
+      setNewsData(newsEditData);
     }
   }, [newsEditData]);
 
   React.useEffect(() => {
-    if (status === 'updateApartment_success') {
-      toast.success(
-        'Dokumenti u ruaj me sukses', {
-          position: 'top-right',
-          onClose: () => {
-            //dispatch(getAllApartmentsById(buildId))
-          }
-        }
-      )
+    if (status === "updateApartment_success") {
+      toast.success("Dokumenti u ruaj me sukses", {
+        position: "top-right",
+        onClose: () => {
+          //dispatch(getAllApartmentsById(buildId))
+        },
+      });
       dispatch(setApartmentEditModalState(false));
       dispatch(resetStatusAndMsg());
     }
-    if (status === 'updateApartment_rejected') {
-      toast.error(
-        'Gabim ne ruajtjen e dokumentit', {
-          position: 'top-right',
-        }
-      );
+    if (status === "updateApartment_rejected") {
+      toast.error("Gabim ne ruajtjen e dokumentit", {
+        position: "top-right",
+      });
       dispatch(resetStatusAndMsg());
     }
   }, [status]);
@@ -78,7 +78,7 @@ function AdmNewsModal() {
       toast.error("Foto eshte shume e madhe");
       return;
     }
-    if(file.type !== 'image/jpeg' && file.type !== 'image/png') {
+    if (file.type !== "image/jpeg" && file.type !== "image/png") {
       toast.error("Formati i fotos nuk eshte i pranueshem");
       return;
     }
@@ -94,19 +94,17 @@ function AdmNewsModal() {
     formData.append("rooms", newsData.rooms);
     formData.append("isSold", newsData.isSold);
 
-    if(newsData.id) {
+    if (newsData.id) {
       formData.append("id", newsData.id);
       dispatch(updateNews(formData));
-    }
-    else {
+    } else {
       dispatch(createNews(formData));
     }
   };
-  
 
   return (
     <Modal
-      keepMounted 
+      keepMounted
       open={modalState}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
@@ -127,12 +125,22 @@ function AdmNewsModal() {
                 }}
                 width={250}
                 height={200}
-                src={newsData.imageData ? URL.createObjectURL(newsData.imageData) : ''}
+                src={
+                  newsData.imageData
+                    ? URL.createObjectURL(newsData.imageData)
+                    : ""
+                }
               />
             </Box>
             <Box display={"flex"} justifyContent={"center"} mt={2}>
-              <input onChange={handleFileChange} accept="image/*" multiple={false} 
-                id="contained-button-file" style={{display: 'none'}} type="file" />
+              <input
+                onChange={handleFileChange}
+                accept="image/*"
+                multiple={false}
+                id="contained-button-file"
+                style={{ display: "none" }}
+                type="file"
+              />
               <label htmlFor="contained-button-file">ss</label>
             </Box>
           </Box>
@@ -228,4 +236,4 @@ function AdmNewsModal() {
   );
 }
 
-export default AdmNewsModal
+export default AdmNewsModal;
