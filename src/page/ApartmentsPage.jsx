@@ -254,7 +254,7 @@ const ApartmentsPage = () => {
               width: isSmallDev ? "150px" : "200px",
               borderRadius: "50px",
               fontSize: isSmallDev ? "10px" : "14px",
-              height: isSmallDev ? "25px" : "45px",
+              height: isSmallDev ? "35px" : "45px",
               fontFamily: "poppins",
               ":hover": {
                 backgroundColor: "#1d1d3a",
