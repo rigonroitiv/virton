@@ -2,7 +2,16 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import { AddLocation, Image, LocationCity, Photo, PictureAsPdf, ThreeDRotation, Tour, ViewInAr } from "@mui/icons-material";
+import {
+  AddLocation,
+  Image,
+  LocationCity,
+  Photo,
+  PictureAsPdf,
+  ThreeDRotation,
+  Tour,
+  ViewInAr,
+} from "@mui/icons-material";
 import {
   Divider,
   FormControl,
@@ -19,8 +28,20 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { imagePath, mainUrl, pdfPath, planmetricImageUrl, vTourPath } from "../../../utils/consts";
-import { getApartmentEditData, getApartmentEditModalState, getApartmentEditStatus, resetStatusAndMsg, setApartmentEditModalState } from "../../../features/apartment/ApartmentEditSlice";
+import {
+  imagePath,
+  mainUrl,
+  pdfPath,
+  planmetricImageUrl,
+  vTourPath,
+} from "../../../utils/consts";
+import {
+  getApartmentEditData,
+  getApartmentEditModalState,
+  getApartmentEditStatus,
+  resetStatusAndMsg,
+  setApartmentEditModalState,
+} from "../../../features/apartment/ApartmentEditSlice";
 import { updateApartment } from "../../../features/apartment/ApartmentAPI";
 import axiosInstance from "../../auth/axiosInstance";
 
@@ -37,7 +58,6 @@ const style = {
 };
 
 function AdmApartmentModal() {
-  
   const apartmentEditState = useSelector(getApartmentEditModalState);
   const apartmentEditData = useSelector(getApartmentEditData);
   const dispatch = useDispatch();
@@ -57,14 +77,16 @@ function AdmApartmentModal() {
     path: "",
     apartmentId: "",
     balconySquare: 0,
-    imgUrl: '',
-    pdfUrl: '',
-    image3dUrl: '',
-    imageUrl: '',
-    vtourUrl: '',
-    apartmentPositionImageUrl: '',
+    imgUrl: "",
+    pdfUrl: "",
+    image3dUrl: "",
+    imageUrl: "",
+    vtourUrl: "",
+    apartmentPositionImageUrl: "",
   });
-  const [selectedImagePreview, setSelectedImagePreview] = React.useState(apartmentData.imageUrl);
+  const [selectedImagePreview, setSelectedImagePreview] = React.useState(
+    apartmentData.imageUrl
+  );
 
   function resetApartmentData() {
     setApartmentData({
@@ -82,13 +104,13 @@ function AdmApartmentModal() {
       path: "",
       apartmentId: "",
       balconySquare: 0,
-      imgUrl: '',
-      pdfUrl: '',
-      image3dUrl: '',
-      imageUrl: '',
-      vtourUrl: '',
-      apartmentPositionImageUrl: '',
-      });
+      imgUrl: "",
+      pdfUrl: "",
+      image3dUrl: "",
+      imageUrl: "",
+      vtourUrl: "",
+      apartmentPositionImageUrl: "",
+    });
   }
 
   React.useEffect(() => {
@@ -99,7 +121,7 @@ function AdmApartmentModal() {
       // const name = apartmentEditData.planMetric?.name?.split(',')
       // const url = apartmentEditData.planMetric?.url?.split(',')
       // for (let index = 0; index < name?.length; index++) {
-        
+
       //   // if(index < name.length -1 ){
       //   //   namee += name[index] + ',' + url[index] + ';'
       //   // }
@@ -119,48 +141,46 @@ function AdmApartmentModal() {
       //   pdfUrl: pdfurl,
       //   imageData: apartmentEditData.imageUrl,
       //   }
-      // ))           
-    }
-    else {
+      // ))
+    } else {
       resetApartmentData();
     }
   }, [apartmentEditData]);
 
   React.useEffect(() => {
-    if (status === 'updateApartment_success') {
-      toast.success(
-        'Dokumenti u ruaj me sukses', {
-          position: 'top-right',
-          onClose: () => {
-            //dispatch(getAllApartmentsById(buildId))
-          }
-        }
-      )
+    if (status === "updateApartment_success") {
+      toast.success("Dokumenti u ruaj me sukses", {
+        position: "top-right",
+        onClose: () => {
+          //dispatch(getAllApartmentsById(buildId))
+        },
+      });
       dispatch(setApartmentEditModalState(false));
       dispatch(resetStatusAndMsg());
     }
-    if (status === 'updateApartment_rejected') {
-      toast.error(
-        'Gabim ne ruajtjen e dokumentit', {
-          position: 'top-right',
-        }
-      );
+    if (status === "updateApartment_rejected") {
+      toast.error("Gabim ne ruajtjen e dokumentit", {
+        position: "top-right",
+      });
       dispatch(resetStatusAndMsg());
     }
   }, [status]);
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    let imageName = []
-    let imagePathh = []
+    let imageName = [];
+    let imagePathh = [];
     // const imagePaths = apartmentData.imgUrl?.split(';')
     // imagePaths?.forEach((item) => {
     //   const data = item.split(',')
     //   imageName.push(data[0])
     //   imagePath.push(data[1])
     // })
-    imageName.push('card', 'pdf')
-    imagePathh.push(`${imagePath}${apartmentData.imgUrl}`, `${pdfPath}${apartmentData.pdfUrl}`)
+    imageName.push("card", "pdf");
+    imagePathh.push(
+      `${imagePath}${apartmentData.imgUrl}`,
+      `${pdfPath}${apartmentData.pdfUrl}`
+    );
     const formData = new FormData();
     formData.append("rooms", apartmentData.rooms);
     formData.append("isSold", apartmentData.isSold);
@@ -178,36 +198,37 @@ function AdmApartmentModal() {
     formData.append("id", apartmentData.id);
     formData.append("planMetricName", imageName);
     formData.append("planMetricUrl", imagePathh);
-    formData.append("image3dUrl", apartmentData.image3dUrl)
-    formData.append("apartmentPositionImageUrl", apartmentData.apartmentPositionImageUrl)
+    formData.append("image3dUrl", apartmentData.image3dUrl);
+    formData.append(
+      "apartmentPositionImageUrl",
+      apartmentData.apartmentPositionImageUrl
+    );
     formData.append("vTourUrl", apartmentData.vtourUrl);
     formData.append("isReservated", apartmentData.isReservated);
     updateHandler(apartmentData.id, formData).then().catch();
   };
 
-  function updateApartment( id, data ) {
+  function updateApartment(id, data) {
     return axiosInstance.post(`/api/apartment/update?id=${id}`, data, {
       headers: {
-        'Content-Type': 'multipart/form-data',
-      }
+        "Content-Type": "multipart/form-data",
+      },
     });
   }
 
-  async function updateHandler( id, data) {
+  async function updateHandler(id, data) {
     try {
       // const res = await executeRequest(fetchUsersAll);
-        toast.success("Dokumenti u ruajt me sukses!", {
-          position: "top-right",
-        });
+      toast.success("Dokumenti u ruajt me sukses!", {
+        position: "top-right",
+      });
       const res = await updateApartment(id, data);
-    }
-    catch (error) {
+    } catch (error) {
       toast.error("Gabim ne ruajtjen e dokumentit!", {
         position: "top-right",
       });
     }
   }
-  
 
   return (
     <Modal
@@ -464,7 +485,7 @@ function AdmApartmentModal() {
                     Disponueshmeria
                   </FormLabel>
                   <RadioGroup
-                    value={apartmentData.isSold ? 'true' : 'false'}
+                    value={apartmentData.isSold ? "true" : "false"}
                     row={true}
                     onChange={(e) => {
                       setApartmentData((prev) => ({
@@ -494,7 +515,7 @@ function AdmApartmentModal() {
                     Rezervuar
                   </FormLabel>
                   <RadioGroup
-                    value={apartmentData.isReservated ? 'true' : 'false'}
+                    value={apartmentData.isReservated ? "true" : "false"}
                     row={true}
                     onChange={(e) => {
                       setApartmentData((prev) => ({
@@ -595,7 +616,16 @@ function AdmApartmentModal() {
         </Box>
 
         <Box display={"flex"} gap={2}>
-          <Button variant="contained" onClick={handleSubmit}>
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: "#1d1d3a",
+              ":hover": {
+                backgroundColor: "#c1ac40",
+              },
+            }}
+            onClick={handleSubmit}
+          >
             Ruaj
           </Button>
           <Button
@@ -607,6 +637,12 @@ function AdmApartmentModal() {
               resetApartmentData();
             }}
             variant="contained"
+            sx={{
+              backgroundColor: "#1d1d3a",
+              ":hover": {
+                backgroundColor: "#c1ac40",
+              },
+            }}
           >
             Anulo
           </Button>
@@ -616,4 +652,4 @@ function AdmApartmentModal() {
   );
 }
 
-export default AdmApartmentModal
+export default AdmApartmentModal;

@@ -6,7 +6,7 @@ import PlanimetriCards from "../components/filter/PlanimetriCards";
 import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import ParkingSvg from "../components/parking/ParkingSvg";
 import FloorSvg from "../components/floorSvg/FloorSvg";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const minFloor = 1;
 const maxFloor = 9;
@@ -249,7 +249,7 @@ const ApartmentsPage = () => {
           <Button
             sx={{
               border: "1px solid #1d1d3a",
-              backgroundColor: "#c1ac40",
+              backgroundColor: "transparent",
               color: "#1d1d3a",
               width: isSmallDev ? "150px" : "200px",
               borderRadius: "50px",

@@ -92,7 +92,7 @@ const SingleApartmentPage = () => {
                 left: "50%",
                 color: "red",
                 opacity: 0.25,
-                transform: 'translateX(-50%)'
+                transform: "translateX(-50%)",
               }}
             >
               <Typography variant="h1">SOLD</Typography>
@@ -142,7 +142,12 @@ const SingleApartmentPage = () => {
       <Box sx={{ padding: isSmallDev ? "20px" : "50px" }}>
         <SingleApartment data={data} />
       </Box>
-      <GallerySlider images={data?.imageUrl} />
+      <GallerySlider
+        images={[
+          "./assets/images/galeria1.jpg",
+          "./assets/images/galeria3.jpg",
+        ]}
+      />
       <Box
         sx={{
           display: "flex",
