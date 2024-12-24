@@ -24,6 +24,7 @@ const SvgExtractor = ( { show } ) => {
       buildingSide: 0,
       buildingName: '',
       buildingNumber: 0,
+      neighborhood: '',
     }
   );
 
@@ -125,6 +126,7 @@ const SvgExtractor = ( { show } ) => {
       buildingName: extractedElements.buildingName,
       buildingNr: extractedElements.buildingNumber,
       buildingSide: extractedElements.buildingSide,
+      neighborhood: extractedElements.neighborhood,
     };
       const responseWrapper = (dataa) =>
       axios.post(`${BASE_URL}/api/apartment/create/list`, dataa);
@@ -412,6 +414,20 @@ const handleCheckboxChange = (e) => {
                 value={extractedElements.imageUrl}
                 type="text"
                 name="urlImg"
+              />
+            </label>
+            <label style={{ display: "flex", flexDirection: "column" }}>
+              Projekti (Lagja)
+              <input
+                onChange={(e) => {
+                  setExtractedElements({
+                    ...extractedElements,
+                    neighborhood: e.currentTarget.value,
+                  });
+                }}
+                value={extractedElements.neighborhood}
+                type="text"
+                name="neighborhood"
               />
             </label>
             <label style={{ display: "flex", flexDirection: "column" }}>
