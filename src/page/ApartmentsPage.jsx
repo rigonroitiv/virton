@@ -7,6 +7,7 @@ import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import ParkingSvg from "../components/parking/ParkingSvg";
 import FloorSvg from "../components/floorSvg/FloorSvg";
 import { Link, useParams } from "react-router-dom";
+import AdmApartmentIdModal from "../components/admin/apartments/AdmApartmentIdModal";
 
 const minFloor = 1;
 const maxFloor = 9;
@@ -267,7 +268,7 @@ const ApartmentsPage = () => {
           </Button>
         </Link>
       </Box>
-
+      <AdmApartmentIdModal />
       <PlanimetriCards ref={apartmentRef} />
     </Box>
   );
