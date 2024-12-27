@@ -36,7 +36,7 @@ const ApartmentsPage = () => {
         width: "100%",
         height: "100%",
         overflow: "auto",
-        padding: isSmallDev ? "20px" : isMidDev ? "20px" : "150px 50px",
+        padding: isSmallDev ? "100px 20px" : isMidDev ? "20px" : "150px 50px",
       }}
     >
       <Box
@@ -61,6 +61,7 @@ const ApartmentsPage = () => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
+              justifyContent: "space-between",
               gap: isSmallDev ? "5px" : "10px",
             }}
           >
@@ -84,7 +85,7 @@ const ApartmentsPage = () => {
             <Typography
               sx={{
                 fontFamily: "poppins",
-                fontSize: isSmallDev ? "14px" : "35px",
+                fontSize: isSmallDev ? "10px" : "30px",
                 fontWeight: "600",
               }}
             >
@@ -99,6 +100,7 @@ const ApartmentsPage = () => {
               display: "flex",
               flexDirection: "row",
               alignItems: "center",
+              width: isSmallDev ? "70%" : "100",
             }}
           >
             {[
