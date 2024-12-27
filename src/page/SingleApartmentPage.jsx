@@ -158,7 +158,7 @@ const SingleApartmentPage = () => {
         <Typography
           sx={{
             fontFamily: "poppins",
-            fontSize: isSmallDev ? "40px" : "50px",
+            fontSize: isSmallDev ? "30px" : "50px",
             fontWeight: "300",
             marginBottom: isSmallDev ? "20px" : "0",
           }}
