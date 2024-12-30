@@ -87,7 +87,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
   };
 
   const getSvgHeight = () => {
-    return isSmallDev ? "250px" : isMidDev ? "550px" : "100%";
+    return isSmallDev ? "auto" : isMidDev ? "auto" : "100%";
   };
 
   const handleContextMenu = (e, data) => {
@@ -104,7 +104,6 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
       sx={{
         width: "100%",
         height: "100%",
-        // objectFit: "cover",
         position: "relative",
       }}
     >
@@ -120,7 +119,6 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                 width: "100%",
                 position: isMidDev ? "" : "absolute",
                 display: "flex",
-                justifyContent: "center",
               }}
             >
               <svg
@@ -138,6 +136,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                   width={building.imgWidth}
                   height={building.imgHeight}
                   transform={building.imgTransform}
+                  objectFit="cover"
                 />
                 {building?.apartmentList?.map((apartment) => {
                   if (apartment.pointsType === "path") {
@@ -154,7 +153,13 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                             roomFilter.includes("all")) &&
                           parseInt(apartment.square) >= squareFilter.startVal &&
                           parseInt(apartment.square) <= squareFilter.endVal
-                            ? filterState ? 'st0' : (apartment.isSold ? isAuthorized() ? 'st1' : 'ft0' : 'ft0')
+                            ? filterState
+                              ? "st0"
+                              : apartment.isSold
+                              ? isAuthorized()
+                                ? "st1"
+                                : "ft0"
+                              : "ft0"
                             : "st3"
                         }
                         id={apartment.apartmentId}
@@ -184,7 +189,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                               roomFilter.includes("all")) &&
                             parseInt(apartment.square) >=
                               squareFilter.startVal &&
-                            parseInt(apartment.square) <= squareFilter.endVal 
+                            parseInt(apartment.square) <= squareFilter.endVal
                           ) {
                             navigate(`/apartment/${apartment.id}`);
                           }

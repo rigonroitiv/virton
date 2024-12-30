@@ -242,7 +242,7 @@ const GeneralBuilding = () => {
     <Box
       sx={{
         width: "100%",
-        height: isSmallDev ? "100vh" : "100vh",
+        height: "100vh",
         padding: isSmallDev ? "370px 20px" : "0px 50px 0px 50px",
         backgroundColor: "#1d1d3a",
         overflow: "hidden",
@@ -269,7 +269,7 @@ const GeneralBuilding = () => {
             if (currentInx === item.id) {
               return (
                 <svg
-                  viewBox="0 0 1440 710"
+                  viewBox="0 0 1920 1080"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsSvg="http://www.w3.org/2000/svg"
@@ -278,10 +278,13 @@ const GeneralBuilding = () => {
                   }}
                 >
                   <image
-                    height={item.height}
-                    width={item.width}
+                    // height={item.height}
+                    // width={item.width}
+                    height="100%"
+                    width="100%"
                     transform={item.transform}
                     xlinkHref={item.imageUrl}
+                    style={{ objectFit: "contain" }}
                   />
                   {item.points.map((point) => (
                     <path
@@ -301,7 +304,7 @@ const GeneralBuilding = () => {
             if (currentInx === item.id) {
               return (
                 <svg
-                  viewBox="0 0 1440 710"
+                  viewBox="0 0 1920 1080"
                   xmlnsXlink="http://www.w3.org/1999/xlink"
                   xmlns="http://www.w3.org/2000/svg"
                   xmlnsSvg="http://www.w3.org/2000/svg"
@@ -310,10 +313,13 @@ const GeneralBuilding = () => {
                   }}
                 >
                   <image
-                    height={item.height}
-                    width={item.width}
+                    // height={item.height}
+                    // width={item.width}
+                    height="100%"
+                    width="100%"
                     transform={item.transform}
                     xlinkHref={item.imageUrl}
+                    style={{ objectFit: "contain" }}
                   />
                   {item.points.map((point) => (
                     <path

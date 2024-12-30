@@ -124,6 +124,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
               style={{
                 transform: isSmallDev && "scale(1.9) translateX(20px)",
                 borderRadius: "5px",
+                objectFit: "cover ",
               }}
               viewBox={building.viewBoxStyle}
             >
@@ -133,6 +134,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
                 width={building.imgWidth}
                 height={building.imgHeight}
                 transform={building.imgTransform}
+                style={{ objectFit: "cover" }}
               />
               {building?.floorList?.map((apartment) => {
                 if (apartment.pointsType === "path") {
