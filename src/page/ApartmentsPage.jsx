@@ -37,7 +37,11 @@ const ApartmentsPage = () => {
         width: "100%",
         height: "100%",
         overflow: "auto",
-        padding: isSmallDev ? "100px 20px" : isMidDev ? "20px" : "150px 50px",
+        padding: isSmallDev
+          ? "120px 20px"
+          : isMidDev
+          ? "150px 20px"
+          : "150px 50px",
       }}
     >
       <Box
