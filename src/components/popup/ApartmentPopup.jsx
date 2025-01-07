@@ -62,22 +62,25 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
           width: "200px",
           height: "250px",
           padding: "20px",
-          border: "3px solid #C1AC40",
+          border: "1px solid #C1AC40",
           borderRadius: "15px",
           backgroundColor: "#1d1d3a",
         }}
       >
-        {data.isSold && isAuthorized() && <Box sx={{
-            position: 'absolute',
-            zIndex: 0,
-            color: 'red',
-            opacity: 0.3,
-            transform: 'rotate(45deg)',
-            top: '40%'
-
-          }}>
+        {data.isSold && isAuthorized() && (
+          <Box
+            sx={{
+              position: "absolute",
+              zIndex: 0,
+              color: "red",
+              opacity: 0.3,
+              transform: "rotate(45deg)",
+              top: "40%",
+            }}
+          >
             <Typography variant="h2">SOLD</Typography>
-            </Box>}
+          </Box>
+        )}
         <Box
           sx={{
             display: "flex",
@@ -115,7 +118,12 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
             Sipërfaqja
           </Typography>
           <Typography
-            sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: "400",
+              color: "white",
+              fontSize: "14px",
+            }}
           >
             {data.square}m2
           </Typography>
@@ -139,7 +147,12 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
             Kati
           </Typography>
           <Typography
-            sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: "400",
+              color: "white",
+              fontSize: "14px",
+            }}
           >
             {data.floorNumber}
           </Typography>
@@ -163,7 +176,12 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
             Dhoma
           </Typography>
           <Typography
-            sx={{ fontFamily: "poppins", fontWeight: "400", color: "white" }}
+            sx={{
+              fontFamily: "poppins",
+              fontWeight: "400",
+              color: "white",
+              fontSize: "14px",
+            }}
           >
             {data.rooms}
           </Typography>

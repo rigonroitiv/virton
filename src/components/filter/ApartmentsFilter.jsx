@@ -84,7 +84,7 @@ const ApartmentsFilter = () => {
         overflow: "hidden",
       }}
     >
-      <Box sx={{ position: "absolute", top: "-120px", right: "-120px" }}>
+      <Box sx={{ position: "absolute", top: "-140px", right: "-120px" }}>
         {" "}
         <Logo height={"350px"} width={"350px"} />
       </Box>
