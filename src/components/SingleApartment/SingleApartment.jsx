@@ -13,6 +13,7 @@ const SingleApartment = ({ data }) => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
+        padding: "50px 0px",
       }}
     >
       <Box
@@ -203,7 +204,7 @@ const SingleApartment = ({ data }) => {
                 textTransform: "capitalize",
               }}
             >
-              Sipërfaqja
+              Terasa
             </Typography>
             <Typography
               sx={{
@@ -214,7 +215,7 @@ const SingleApartment = ({ data }) => {
                 textTransform: "capitalize",
               }}
             >
-              100m2
+              {data?.balconySquare}
             </Typography>
           </Box>
 
@@ -234,7 +235,7 @@ const SingleApartment = ({ data }) => {
                 textTransform: "capitalize",
               }}
             >
-              Tipi
+              Objekti
             </Typography>
             <Typography
               sx={{
@@ -245,39 +246,7 @@ const SingleApartment = ({ data }) => {
                 textTransform: "capitalize",
               }}
             >
-              2+1
-            </Typography>
-          </Box>
-
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "row",
-              justifyContent: "space-between",
-              paddingBottom: "30px",
-            }}
-          >
-            <Typography
-              sx={{
-                fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "poppins",
-                fontWeight: "400",
-                color: "#1d1d3a",
-                textTransform: "capitalize",
-              }}
-            >
-              Kati
-            </Typography>
-            <Typography
-              sx={{
-                fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "poppins",
-                fontWeight: "600",
-                color: "#1d1d3a",
-                textTransform: "capitalize",
-              }}
-            >
-              6
+              {data?.object}
             </Typography>
           </Box>
 
