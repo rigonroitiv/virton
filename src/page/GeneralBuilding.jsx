@@ -9,25 +9,25 @@ const object1 = [
     id: 4,
     position: 4,
     href: "/apartments/22",
-    imageUrl: `${imagePath}03.jpg`,
+    imageUrl: `${imagePath}04.jpg`,
     height: "3376",
     width: "6000",
-    transform: "scale(.24)",
+    transform: "translate(0 -.09) scale(.32)",
     points: [
       {
-        d: "m 697.5,673.5 103,-63 6,-188 -185,-116 -107,50 14,181 z",
+        d: "m 570.5,615.75 -22.72,-185.97 134.66,-60.67 115.78,73.55 -70.44,35.12 1.12,31.54 -16.01,7.9 17.22,218.22 z",
         href: "/1/apartments/3",
       },
       {
-        d: "m 417.5,448.5 -24,-196 120,-47 19.76,12.67 33.24,-12.67 35,21 v 20 l 38,21 2,52 -20,-13 -107,50 14,181 z",
+        d: "m 893.56,854.67 291.55,-175.11 9.78,-251.12 -113.78,-59.33 -176.89,75.78 -50.66,-29.33 -55.34,27.1 -70.44,35.12 1.12,31.54 -16.01,7.9 17.22,218.22 z",
         href: "/1/apartments/3",
       },
       {
-        d: "m 922.5,472.5 81,-49 16,-134 -142,-71 -83,39 -5,132 z",
+        d: "m 1080.28,271.61 112,-53.83 198.16,89.78 -32,261.77 -173.33,110.23 9.78,-251.12 -113.78,-59.33 -4.55,1.95 z",
         href: "/1/apartments/3",
       },
       {
-        d: "m 566.93,205.5 164.57,-65 69.28,32.5 30.72,-12.5 48,25 -2,33 -83,39 -5,132 -32,-19 -20.11,8.66 -96.32,-60.39 -1.57,-51.27 -38,-21 v -20 z",
+        d: "m 972.78,142.61 -111.5,45.67 6.16,220.5 53.53,28.94 155.59,-66.66 3.72,-99.45 94.52,-45.43 z",
         href: "/1/apartments/3",
       },
     ],
@@ -263,65 +263,61 @@ const GeneralBuilding = () => {
           overflow: "auto",
         }}
       /> */}
-      {id === '1'
-        && object1.map((item) => {
-            if (currentInx === item.id) {
-              return (
-                <svg
-                  viewBox="0 0 1440 710"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsSvg="http://www.w3.org/2000/svg"
-                  style={{
-                    borderRadius: "15px",
-                  }}
-                >
-                  <image
-                    height={item.height}
-                    width={item.width}
-                    transform={item.transform}
-                    xlinkHref={item.imageUrl}
+      {id === "1" &&
+        object1.map((item) => {
+          if (currentInx === item.id) {
+            return (
+              <svg
+                viewBox="0 0 1440 710"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsSvg="http://www.w3.org/2000/svg"
+                style={{
+                  borderRadius: "15px",
+                }}
+              >
+                <image
+                  height={item.height}
+                  width={item.width}
+                  transform={item.transform}
+                  xlinkHref={item.imageUrl}
+                />
+                {item.points.map((point) => (
+                  <path
+                    onClick={() => navigate(point.href)}
+                    className="g1"
+                    d={point.d}
                   />
-                  {item.points.map((point) => (
-                    <path
-                      onClick={() => navigate(point.href)}
-                      className="g1"
-                      d={point.d}
-                    />
-                  ))}
-                </svg>
-              );
-            }
-          })
-        }
-      {id === '2'
-        && object2.map((item) => {
-            if (currentInx === item.id) {
-              return (
-                <svg
-                  viewBox="0 0 1920 1080"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsSvg="http://www.w3.org/2000/svg"
-                  style={{
-                    borderRadius: "15px",
-                  }}
-                >
-                  <image
-                    transform={item.transform}
-                    xlinkHref={item.imageUrl}
+                ))}
+              </svg>
+            );
+          }
+        })}
+      {id === "2" &&
+        object2.map((item) => {
+          if (currentInx === item.id) {
+            return (
+              <svg
+                viewBox="0 0 1920 1080"
+                xmlnsXlink="http://www.w3.org/1999/xlink"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlnsSvg="http://www.w3.org/2000/svg"
+                style={{
+                  borderRadius: "15px",
+                }}
+              >
+                <image transform={item.transform} xlinkHref={item.imageUrl} />
+                {item.points.map((point) => (
+                  <path
+                    onClick={() => navigate(point.href)}
+                    className="g1"
+                    d={point.d}
                   />
-                  {item.points.map((point) => (
-                    <path
-                      onClick={() => navigate(point.href)}
-                      className="g1"
-                      d={point.d}
-                    />
-                  ))}
-                </svg>
-              );
-            }
-          })}
+                ))}
+              </svg>
+            );
+          }
+        })}
       <IconButton
         onClick={handlePrev}
         sx={{
