@@ -208,6 +208,13 @@ const PlanimetriCards = forwardRef((props, ref) => {
                       fontFamily: "poppins",
                       cursor: "pointer",
                       zIndex: 2,
+                      border: "1px solid #c1ac40",
+                      borderRadius: "50px",
+                      ":hover": {
+                        backgroundColor: "#c1ac40",
+                        color: "#1d1d3a",
+                        transition: "0.7s",
+                      },
                     }}
                   >
                     <img
@@ -222,8 +229,8 @@ const PlanimetriCards = forwardRef((props, ref) => {
                 <Box
                   sx={{
                     position: "absolute",
-                    bottom: "-80px",
-                    right: "-120px",
+                    bottom: "-100px",
+                    left: "-140px",
                     zIndex: "1",
                   }}
                 >

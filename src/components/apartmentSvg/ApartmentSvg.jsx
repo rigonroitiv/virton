@@ -16,6 +16,7 @@ import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
 import ApartmentPopup from "../popup/ApartmentPopup";
 import { isAuthorized } from "../../features/auth/AuthSlice";
+import ApartmentsFilter from "../filter/ApartmentsFilter";
 
 const ApartmentSvg = ({ sizeRange, floorRange }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -87,7 +88,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
   };
 
   const getSvgHeight = () => {
-    return isSmallDev ? "auto" : isMidDev ? "auto" : "100%";
+    return isSmallDev ? "auto" : isMidDev ? "auto" : "auto";
   };
 
   const handleContextMenu = (e, data) => {
