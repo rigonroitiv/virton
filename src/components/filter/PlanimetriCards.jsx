@@ -14,6 +14,9 @@ import { planimetrite } from "../../utils/server";
 import Logo from "../../assets/svg/logo";
 import SingleViewIcon from "@mui/icons-material/ViewAgenda"; // Icon for single card view
 import GridViewIcon from "@mui/icons-material/ViewModule"; // Icon for grid view
+import { useSelector } from "react-redux";
+import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
+import { mainUrl, planmetricImageUrl } from "../../utils/consts";
 
 const PlanimetriCards = forwardRef((props, ref) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -22,6 +25,8 @@ const PlanimetriCards = forwardRef((props, ref) => {
 
   const handleSingleView = () => setColumns(1);
   const handleGridView = () => setColumns(2);
+  const buildingData = useSelector(getAllApartmentSvgData);
+  const data = buildingData?.map(item => item.apartmentList).flat();
 
   return (
     <Box
@@ -76,7 +81,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
         spacing={isSmallDev ? 1 : isMidDev ? 2 : 5}
         justifyContent="center"
       >
-        {planimetrite.map((property) => (
+        {data?.map((property) => (
           <Grid
             item
             xs={isSmallDev ? 12 / columns : 3} // Adjust dynamically for mobile, 3 (4 cards) for desktop
@@ -104,8 +109,8 @@ const PlanimetriCards = forwardRef((props, ref) => {
                   borderRadius: "5px",
                 }}
                 height={isSmallDev ? (columns === 1 ? "300" : "200") : "300"}
-                image={property.image}
-                alt={`${property.tipi} image`}
+                image={`${mainUrl}${planmetricImageUrl}${property.imageUrl}`}
+                alt={`${property.rooms} image`}
               />
               <CardContent
                 sx={{
@@ -140,7 +145,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
                     variant="body1"
                     sx={{ color: "white", fontFamily: "poppins" }}
                   >
-                    {property.siperfaqja}
+                    {property.square}
                   </Typography>
                 </Box>
 
@@ -165,7 +170,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
                     variant="body1"
                     sx={{ color: "white", fontFamily: "poppins" }}
                   >
-                    {property.tipi}
+                    {property.rooms}
                   </Typography>
                 </Box>
 
@@ -189,7 +194,7 @@ const PlanimetriCards = forwardRef((props, ref) => {
                     variant="body1"
                     sx={{ color: "white", fontFamily: "poppins" }}
                   >
-                    {property.kati}
+                    {property.floorNumber}
                   </Typography>
                 </Box>
 
@@ -246,3 +251,4 @@ const PlanimetriCards = forwardRef((props, ref) => {
 });
 
 export default PlanimetriCards;
+
