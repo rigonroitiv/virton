@@ -94,9 +94,9 @@ const ApartmentsPage = () => {
                 fontWeight: "600",
               }}
             >
-              {`RIVER RESIDENCE ${projectid}`}
-              <br />
-              {`OBJEKTI ${id?.toUpperCase()}`}
+              {/* {`RIVER RESIDENCE ${projectid}`} */}
+              {/* <br /> */}
+              {`Hyrja ${id?.toUpperCase()}`}
             </Typography>
           </Box>
 

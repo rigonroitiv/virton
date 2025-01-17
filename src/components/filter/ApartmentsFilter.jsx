@@ -10,7 +10,7 @@ import {
 } from "../../features/filter/FilterSlice";
 
 const minFloor = 1;
-const maxFloor = 9;
+const maxFloor = 14;
 const minSquare = 40.0;
 const maxSquare = 150.0;
 
