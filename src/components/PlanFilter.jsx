@@ -19,14 +19,15 @@ import PlanimetriCards from "./filter/PlanimetriCards";
 import Logo from "../assets/svg/logo";
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
+import {
+  handleFilterState,
+  setRegularFloorFilter,
+  setRegularRoomFilter,
+  setRegularSquareFilter,
+} from "../features/filter/FilterSlice";
 
 const PlanFilter = () => {
-  const [value, setValue] = React.useState([20, 37]);
   const isSmallDev = useMediaQuery("(max-width: 768px)");
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
 
   useEffect(() => {
     // Scroll to top when the component is mounted
@@ -34,7 +35,7 @@ const PlanFilter = () => {
   }, []);
 
   const minFloor = 1;
-  const maxFloor = 9;
+  const maxFloor = 14;
   const minSquare = 40.0;
   const maxSquare = 150.0;
 
@@ -158,28 +159,61 @@ const PlanFilter = () => {
             }}
           ></InputLabel>
           <NativeSelect
-            defaultValue={"Objekti"}
+            defaultValue="Objekti"
             inputProps={{
               name: "age",
               id: "uncontrolled-native",
             }}
             sx={{
               "&:before": {
-                borderBottom: "2px solid #C1AC40", // Normal underline color
+                borderBottom: "2px solid #c1ac40",
               },
               "&:after": {
-                borderBottom: "2px solid #C1AC40", // Focused underline color
+                borderBottom: "2px solid #c1ac40",
               },
               "& .MuiNativeSelect-select": {
-                color: "white ", // Option text color
-                fontFamily: "poppins",
-                fontSize: "20px",
+                color: "#c1ac40",
+                fontFamily: "Poppins, sans-serif",
+                fontSize: "18px",
+                backgroundColor: "#1d1d3a",
+                padding: "8px 12px",
+                borderRadius: "4px",
+              },
+              "& .MuiNativeSelect-icon": {
+                color: "#c1ac40",
+              },
+              "& .MuiNativeSelect-root": {
+                backgroundColor: "#1d1d3a",
+              },
+              "& .MuiList-root": {
+                backgroundColor: "#1d1d3a",
+                border: "1px solid #c1ac40",
+                borderRadius: "4px",
+              },
+              "& .MuiListItem-root": {
+                color: "#c1ac40",
+                "&:hover": {
+                  backgroundColor: "#c1ac40",
+                  color: "#1d1d3a",
+                },
               },
             }}
           >
-            <option value={"Objekti"}>Objekti</option>
-            <option value={20}>1</option>
-            <option value={30}>2</option>
+            <option value="" disabled style={{ color: "#c1ac40" }}>
+              Objekti
+            </option>
+            <option value="ABC" style={{ color: "#1d1d3a" }}>
+              ABC
+            </option>
+            <option value="B" style={{ color: "#1d1d3a" }}>
+              B
+            </option>
+            <option value="C" style={{ color: "#1d1d3a" }}>
+              C
+            </option>
+            <option value="D" style={{ color: "#1d1d3a" }}>
+              D
+            </option>
           </NativeSelect>
         </FormControl>
 
@@ -195,28 +229,40 @@ const PlanFilter = () => {
             }}
           ></InputLabel>
           <NativeSelect
-            defaultValue={"Objekti"}
+            defaultValue="Objekti"
             inputProps={{
               name: "age",
               id: "uncontrolled-native",
             }}
             sx={{
               "&:before": {
-                borderBottom: "2px solid #C1AC40", // Normal underline color
+                borderBottom: "2px solid #c1ac40", // Underline color
               },
               "&:after": {
-                borderBottom: "2px solid #C1AC40", // Focused underline color
+                borderBottom: "2px solid #c1ac40", // Focused underline color
               },
               "& .MuiNativeSelect-select": {
-                color: "white", // Option text color
-                fontFamily: "poppins",
+                color: "#c1ac40", // Selected option text color
+                fontFamily: "Poppins, sans-serif",
                 fontSize: "20px",
+                backgroundColor: "#1d1d3a", // Background color
+                padding: "8px 12px", // Padding for better readability
+                borderRadius: "4px", // Rounded corners
+              },
+              "& .MuiNativeSelect-icon": {
+                color: "#c1ac40", // Dropdown icon color
               },
             }}
           >
-            <option value={"Objekti"}>Patundshmëria</option>
-            <option value={20}>1</option>
-            <option value={30}>2</option>
+            <option value="Objekti" style={{ color: "#c1ac40" }}>
+              Patundshmëria
+            </option>
+            <option value={20} style={{ color: "#1d1d3a" }}>
+              1
+            </option>
+            <option value={30} style={{ color: "#1d1d3a" }}>
+              2
+            </option>
           </NativeSelect>
         </FormControl>
 
@@ -232,28 +278,40 @@ const PlanFilter = () => {
             }}
           ></InputLabel>
           <NativeSelect
-            defaultValue={"Objekti"}
+            defaultValue="Objekti"
             inputProps={{
               name: "age",
               id: "uncontrolled-native",
             }}
             sx={{
               "&:before": {
-                borderBottom: "2px solid #C1AC40", // Normal underline color
+                borderBottom: "2px solid #c1ac40", // Underline color
               },
               "&:after": {
-                borderBottom: "2px solid #C1AC40", // Focused underline color
+                borderBottom: "2px solid #c1ac40", // Focused underline color
               },
               "& .MuiNativeSelect-select": {
-                color: "white", // Option text color
-                fontFamily: "poppins",
+                color: "#c1ac40", // Selected option text color
+                fontFamily: "Poppins, sans-serif",
                 fontSize: "20px",
+                backgroundColor: "#1d1d3a", // Background color
+                padding: "8px 12px", // Padding for better readability
+                borderRadius: "4px", // Rounded corners
+              },
+              "& .MuiNativeSelect-icon": {
+                color: "#c1ac40", // Dropdown icon color
               },
             }}
           >
-            <option value={"Objekti"}>Patundshmëria</option>
-            <option value={20}>1</option>
-            <option value={30}>2</option>
+            <option value="Objekti" style={{ color: "#c1ac40" }}>
+              Patundshmëria
+            </option>
+            <option value={20} style={{ color: "#1d1d3a" }}>
+              1
+            </option>
+            <option value={30} style={{ color: "#1d1d3a" }}>
+              2
+            </option>
           </NativeSelect>
         </FormControl>
       </Box>
@@ -500,29 +558,125 @@ const PlanFilter = () => {
               color: "white",
             }}
           >
-            Sipërfaqja
+            Tipi
           </Typography>
 
-          <Slider
-            defaultValue={[20, 37]}
-            getAriaLabel={() => "Temperature range"}
-            min={0}
-            max={100}
+          <Box
             sx={{
-              color: "#C1AC40", // Line color
-              "& .MuiSlider-thumb": {
-                backgroundColor: "#ffffff", // Thumb (circle) color
-                border: "2px solid #C1AC40", // Optional border around the thumb
-              },
-              "& .MuiSlider-track": {
-                border: "none",
-              },
-              "& .MuiSlider-rail": {
-                color: "#C1AC40", // Rail color for the inactive part
-                opacity: 0.5,
-              },
+              display: "flex",
+              flexDirection: "column",
+              width: "100%",
+              gap: "20px",
             }}
-          />
+          >
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                width: "100%",
+                gap: "8px",
+                marginTop: "10px",
+              }}
+            >
+              <Button
+                onClick={() => handleRoomFilter("1+1")}
+                sx={{
+                  border: "1px solid #C1AC40",
+                  backgroundColor: room.includes("1+1")
+                    ? "#C1AC40"
+                    : "transparent",
+                  fontSize: isSmallDev ? "10px" : "13px",
+                  color: "white",
+                  width: "max-content",
+                  borderRadius: "50px",
+                  fontFamily: "poppins",
+                }}
+              >
+                1+1
+              </Button>
+              <Button
+                onClick={() => handleRoomFilter("2+1")}
+                sx={{
+                  border: "1px solid #C1AC40",
+                  backgroundColor: room.includes("2+1")
+                    ? "#C1AC40"
+                    : "transparent",
+                  fontSize: isSmallDev ? "10px" : "13px",
+                  color: "white",
+                  width: "max-content",
+                  borderRadius: "50px",
+                  fontFamily: "poppins",
+                }}
+              >
+                2+1
+              </Button>
+              <Button
+                onClick={() => handleRoomFilter("3+1")}
+                sx={{
+                  border: "1px solid #C1AC40",
+                  backgroundColor: room.includes("3+1")
+                    ? "#C1AC40"
+                    : "transparent",
+                  fontSize: isSmallDev ? "10px" : "13px",
+                  color: "white",
+                  width: "max-content",
+                  borderRadius: "50px",
+                  fontFamily: "poppins",
+                }}
+              >
+                3+1
+              </Button>
+              <Button
+                onClick={() => handleRoomFilter("4+1")}
+                sx={{
+                  border: "1px solid #C1AC40",
+                  backgroundColor: room.includes("4+1")
+                    ? "#C1AC40"
+                    : "transparent",
+                  fontSize: isSmallDev ? "10px" : "13px",
+                  color: "white",
+                  width: "max-content",
+                  borderRadius: "50px",
+                  fontFamily: "poppins",
+                }}
+              >
+                4+1
+              </Button>
+              <Button
+                onClick={() => handleRoomFilter("5+1")}
+                sx={{
+                  border: "1px solid #C1AC40",
+                  backgroundColor: room.includes("5+1")
+                    ? "#C1AC40"
+                    : "transparent",
+                  fontSize: isSmallDev ? "10px" : "13px",
+                  color: "white",
+                  width: "max-content",
+                  borderRadius: "50px",
+                  fontFamily: "poppins",
+                }}
+              >
+                5+1
+              </Button>
+              <Button
+                onClick={() => handleRoomFilter("penthouse")}
+                sx={{
+                  border: "1px solid #C1AC40",
+                  backgroundColor: room.includes("penthouse")
+                    ? "#C1AC40"
+                    : "transparent",
+                  fontSize: isSmallDev ? "10px" : "13px",
+                  color: "white",
+                  width: "max-content",
+                  borderRadius: "50px",
+                  fontFamily: "poppins",
+                }}
+              >
+                Penthouse
+              </Button>
+            </Box>
+          </Box>
         </Box>
       </Box>
 
@@ -552,6 +706,7 @@ const PlanFilter = () => {
         </Button>
 
         <Button
+          onClick={applyFilter}
           sx={{
             backgroundColor: "#C1AC40",
             border: "1px solid #C1AC40",
