@@ -103,7 +103,7 @@ const GallerySlider = ({ images }) => {
           sx={{
             display: "flex",
             transition: "transform 0.5s ease",
-            transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`,
+            transform: `translateX(-${currentIndex / (100 % itemsToShow)}%)`,
             gap: "10px",
             width: `${images.length * (100 / itemsToShow)}%`, // Adjust container width for all items
           }}

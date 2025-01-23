@@ -13,6 +13,7 @@ import { planimetrite } from "../../utils/server";
 import Logo from "../../assets/svg/logo";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import "./pslides.css";
 
 const PlanimetriCards = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
