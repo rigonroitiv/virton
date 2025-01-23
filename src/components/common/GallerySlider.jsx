@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Box, IconButton, Typography, useMediaQuery } from "@mui/material";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
@@ -12,12 +12,16 @@ const GallerySlider = ({ images }) => {
   const itemsToShow = isSmallDev ? 1 : 3;
 
   const handleNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % (images.length * 3));
   };
+
+  useEffect(() => {
+    console.log(currentIndex * (100 / itemsToShow));
+  }, [currentIndex]);
 
   const handlePrev = () => {
     setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+      prevIndex === 0 ? images.length * 3 - 1 : prevIndex - 1
     );
   };
 
@@ -103,9 +107,9 @@ const GallerySlider = ({ images }) => {
           sx={{
             display: "flex",
             transition: "transform 0.5s ease",
-            transform: `translateX(-${currentIndex / (100 % itemsToShow)}%)`,
+            transform: `translateX(-${currentIndex * (100 / itemsToShow)}%)`,
             gap: "10px",
-            width: `${images.length * (100 / itemsToShow)}%`, // Adjust container width for all items
+            width: `${images.length * 3 * (100 / itemsToShow)}%`, // Adjust container width for all items
           }}
         >
           {/* Duplicate images to create an infinite loop effect */}
