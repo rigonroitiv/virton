@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"
 
-const maxFloor = 9;
+const maxFloor = 14;
 const minFloor = 1;
 const maxSquare = 720;
 const minSquare = 40;
@@ -11,7 +11,7 @@ const initialState = {
         rooms:['all'],
         floor: {
             startVal: 1,
-            endVal: 6,
+            endVal: 14,
         },
         square: {
             startVal: 40,

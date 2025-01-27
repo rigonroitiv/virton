@@ -11,8 +11,8 @@ import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
 import ApartmentPopup from "../popup/ApartmentPopup";
 
-const maxFloor = 6;
-const minFloor = -2;
+const maxFloor = 14;
+const minFloor = 1;
 const maxSquare = 720;
 const minSquare = 40;
 

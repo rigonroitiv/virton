@@ -2,8 +2,14 @@ import { Box, Button, useMediaQuery, useTheme } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { getAllApartmentsByFloorId, getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
-import { getAllApartmentSvgData, getAllFloorSvgData } from "../../features/apartment/ApartmentSlice";
+import {
+  getAllApartmentsByFloorId,
+  getObjectSvgDataAll,
+} from "../../features/apartment/ApartmentAPI";
+import {
+  getAllApartmentSvgData,
+  getAllFloorSvgData,
+} from "../../features/apartment/ApartmentSlice";
 import { getWishlistCount } from "../../features/wishList/WishlistSlice";
 import { getFilterState } from "../../features/filter/FilterSlice";
 import { imagePath } from "../../utils/consts";
@@ -21,12 +27,12 @@ import {
 } from "@mui/material";
 import { isAuthorized } from "../../features/auth/AuthSlice";
 
-const maxFloor = 6;
-const minFloor = -2;
+const maxFloor = 14;
+const minFloor = 1;
 const maxSquare = 720;
 const minSquare = 40;
 
-const FloorSvg = ( { floorId}) => {
+const FloorSvg = ({ floorId }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -178,7 +184,7 @@ const FloorSvg = ( { floorId}) => {
         height={"71vh"}
         maxHeight={"71vh"}
         position={"absolute"}
-        overflow={'hidden'}
+        overflow={"hidden"}
         top={"10%"}
       >
         {/* Scroll Up Button */}
@@ -257,18 +263,18 @@ const FloorSvg = ( { floorId}) => {
         </Button>
       </Box>
       <div
-          key={buildingData?.buildingName}
-          style={{
-            height: getSvgHeight(),
-            transition: "opacity 0.1s ease-in-out",
-            width: "100%",
-            display: "flex",
-            justifyContent: "center",
-            position: "absolute",
-            left: "28%",
-          }}
-        >
-          {/* Buils
+        key={buildingData?.buildingName}
+        style={{
+          height: getSvgHeight(),
+          transition: "opacity 0.1s ease-in-out",
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          position: "absolute",
+          left: "28%",
+        }}
+      >
+        {/* Buils
           <svg
             width={"100%"}
             height={"100%"}
@@ -352,21 +358,21 @@ const FloorSvg = ( { floorId}) => {
               }
             })}
           </svg> */}
-          <svg
-            x="0px"
-            y="0px"
-            viewBox="0 0 1920 1080"
-            xmlSpace="preserve"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsSvg="http://www.w3.org/2000/svg"
-          >
-            <image
-              width="1920"
-              height="1080"
-              xlinkHref={`${imagePath}a1-f1.jpg`}
-            ></image>
-            {/* <path className="ft0" d="M 11,58 H 648 V 526 H 11 Z" />
+        <svg
+          x="0px"
+          y="0px"
+          viewBox="0 0 1920 1080"
+          xmlSpace="preserve"
+          xmlnsXlink="http://www.w3.org/1999/xlink"
+          xmlns="http://www.w3.org/2000/svg"
+          xmlnsSvg="http://www.w3.org/2000/svg"
+        >
+          <image
+            width="1920"
+            height="1080"
+            xlinkHref={`${imagePath}a1-f1.jpg`}
+          ></image>
+          {/* <path className="ft0" d="M 11,58 H 648 V 526 H 11 Z" />
             <path className="ft0" d="m 648,58 h 643 V 526 H 648 Z" />
             <path className="ft0" d="m 1291,58 h 613 v 468 h -613 z" />
             <path
@@ -377,11 +383,18 @@ const FloorSvg = ( { floorId}) => {
               className="ft0"
               d="M 11,526 V 999 H 917 V 823 H 814 V 624 H 554 v -98 z"
             /> */}
-            {buildingData?.apartmentDTO?.map((apartment) => {
-              return <path className={apartment.isSold ? isAuthorized() ? "st1" : 'ft0' : "ft0"} d={apartment.path}/>
-            })}
-          </svg>
-        </div>
+          {buildingData?.apartmentDTO?.map((apartment) => {
+            return (
+              <path
+                className={
+                  apartment.isSold ? (isAuthorized() ? "st1" : "ft0") : "ft0"
+                }
+                d={apartment.path}
+              />
+            );
+          })}
+        </svg>
+      </div>
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
     </Box>

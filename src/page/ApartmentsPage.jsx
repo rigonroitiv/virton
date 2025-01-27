@@ -10,7 +10,7 @@ import { Link, useParams } from "react-router-dom";
 import AdmApartmentIdModal from "../components/admin/apartments/AdmApartmentIdModal";
 
 const minFloor = 1;
-const maxFloor = 9;
+const maxFloor = 14;
 const minSquare = 40;
 const maxSquare = 150;
 
