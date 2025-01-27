@@ -1,3 +1,11 @@
+*{
+    font-family: "Syne", serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+
+
 .st0 {
     /* fill: transparent; */
     fill: #1D1D3A;

@@ -76,7 +76,7 @@ const ApartmentsFilter = () => {
         height: "100%",
         justifyContent: "space-between",
         alignItems: "start",
-        fontFamily: "poppins",
+        fontFamily: "Syne",
         padding: isSmallDev ? "20px" : "30px",
         backgroundColor: "#1D1D3A",
         borderRadius: "5px",
@@ -100,7 +100,7 @@ const ApartmentsFilter = () => {
           fontSize: isSmallDev ? "20px" : "30px",
           marginBottom: "20px",
           fontWeight: "600",
-          fontFamily: "poppins",
+          fontFamily: "Syne",
         }}
       >
         <span style={{ color: "white" }}>Filtro</span> Apartmentet
@@ -119,7 +119,7 @@ const ApartmentsFilter = () => {
             fontSize: isSmallDev ? "14px" : "20px",
             color: "white",
             fontWeight: "600",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Tipi
@@ -142,7 +142,7 @@ const ApartmentsFilter = () => {
               color: "white",
               width: "max-content",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
             }}
           >
             1+1
@@ -156,7 +156,7 @@ const ApartmentsFilter = () => {
               color: "white",
               width: "max-content",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
             }}
           >
             2+1
@@ -170,7 +170,7 @@ const ApartmentsFilter = () => {
               color: "white",
               width: "max-content",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
             }}
           >
             3+1
@@ -184,7 +184,7 @@ const ApartmentsFilter = () => {
               color: "white",
               width: "max-content",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
             }}
           >
             4+1
@@ -198,7 +198,7 @@ const ApartmentsFilter = () => {
               color: "white",
               width: "max-content",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
             }}
           >
             5+1
@@ -214,7 +214,7 @@ const ApartmentsFilter = () => {
               color: "white",
               width: "max-content",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
             }}
           >
             Penthouse
@@ -236,7 +236,7 @@ const ApartmentsFilter = () => {
             fontSize: isSmallDev ? "14px" : "20px",
             color: "white",
             fontWeight: "600",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Sipërfaqja
@@ -296,7 +296,7 @@ const ApartmentsFilter = () => {
               width: "30%",
               height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               padding: "8px",
             }}
           />
@@ -321,7 +321,7 @@ const ApartmentsFilter = () => {
               width: "30%",
               height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               padding: "8px",
             }}
           />
@@ -342,7 +342,7 @@ const ApartmentsFilter = () => {
             fontSize: isSmallDev ? "14px" : "20px",
             color: "white",
             fontWeight: "600",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Kati
@@ -402,7 +402,7 @@ const ApartmentsFilter = () => {
               width: "30%",
               height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               zIndex: 99,
               padding: "8px",
             }}
@@ -429,7 +429,7 @@ const ApartmentsFilter = () => {
               width: "30%",
               height: isSmallDev ? "30px" : "35px",
               borderRadius: "50px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               zIndex: 99,
               padding: "8px",
             }}
@@ -457,7 +457,7 @@ const ApartmentsFilter = () => {
             color: "white",
             width: isSmallDev ? "35%" : "140px",
             borderRadius: "50px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             height: isSmallDev ? "30px" : "35px",
           }}
         >
@@ -472,7 +472,7 @@ const ApartmentsFilter = () => {
             color: "white",
             width: isSmallDev ? "35%" : "140px",
             borderRadius: "50px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             height: isSmallDev ? "30px" : "35px",
           }}
         >

@@ -85,7 +85,7 @@ const Navbar = () => {
             >
               <Typography
                 sx={{
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontSize: "14px",
                   fontWeight: "400",
                   cursor: "pointer",
@@ -104,7 +104,7 @@ const Navbar = () => {
               </Typography>
               <Typography
                 sx={{
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontSize: "14px",
                   fontWeight: "400",
                   cursor: "pointer",
@@ -123,7 +123,7 @@ const Navbar = () => {
               </Typography>
               <Typography
                 sx={{
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontSize: "14px",
                   fontWeight: "400",
                   cursor: "pointer",
@@ -147,7 +147,7 @@ const Navbar = () => {
                 sx={{
                   color: "white",
                   marginRight: 1,
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontSize: "18px",
                 }}
               >
@@ -230,7 +230,7 @@ const Navbar = () => {
                         paddingBottom: "0px",
                         "& .MuiListItemText-primary": {
                           fontSize: isSmallDev ? "25px" : "30px",
-                          fontFamily: "poppins",
+                          fontFamily: "Syne",
                           fontWeight: text === "Rreth Nesh" ? "bold" : "normal",
                           color:
                             text === "Rreth Nesh"
@@ -276,7 +276,7 @@ const Navbar = () => {
                 variant="body1"
                 sx={{
                   marginBottom: 1,
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontSize: isSmallDev ? "10px" : "18px",
                 }}
               >
@@ -287,7 +287,7 @@ const Navbar = () => {
                 variant="h6"
                 sx={{
                   marginBottom: 2,
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontSize: isSmallDev ? "10px" : "18px",
                 }}
               >
@@ -301,7 +301,7 @@ const Navbar = () => {
                 variant="body1"
                 sx={{
                   marginBottom: 1,
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontSize: isSmallDev ? "10px" : "18px",
                 }}
               >
@@ -311,7 +311,7 @@ const Navbar = () => {
               <Typography
                 variant="h6"
                 style={{
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontSize: isSmallDev ? "10px" : "18px",
                 }}
               >

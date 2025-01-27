@@ -105,7 +105,7 @@ const PlanFilter = () => {
     >
       <Typography
         sx={{
-          fontFamily: "poppins",
+          fontFamily: "Syne",
           width: "100%",
           fontSize: isSmallDev ? "40px" : "70px",
           fontWeight: "600",
@@ -173,7 +173,7 @@ const PlanFilter = () => {
               },
               "& .MuiNativeSelect-select": {
                 color: "#c1ac40",
-                fontFamily: "Poppins, sans-serif",
+                fontFamily: "Syne, sans-serif",
                 fontSize: "18px",
                 backgroundColor: "#1d1d3a",
                 padding: "8px 12px",
@@ -243,7 +243,7 @@ const PlanFilter = () => {
               },
               "& .MuiNativeSelect-select": {
                 color: "#c1ac40", // Selected option text color
-                fontFamily: "Poppins, sans-serif",
+                fontFamily: "Syne",
                 fontSize: "20px",
                 backgroundColor: "#1d1d3a", // Background color
                 padding: "8px 12px", // Padding for better readability
@@ -292,7 +292,7 @@ const PlanFilter = () => {
               },
               "& .MuiNativeSelect-select": {
                 color: "#c1ac40", // Selected option text color
-                fontFamily: "Poppins, sans-serif",
+                fontFamily: "Syne, sans-serif",
                 fontSize: "20px",
                 backgroundColor: "#1d1d3a", // Background color
                 padding: "8px 12px", // Padding for better readability
@@ -337,7 +337,7 @@ const PlanFilter = () => {
             sx={{
               fontSize: "20px",
               fontWeight: "600",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               color: "white",
             }}
           >
@@ -400,7 +400,7 @@ const PlanFilter = () => {
                 width: "30%",
                 height: isSmallDev ? "30px" : "35px",
                 borderRadius: "50px",
-                fontFamily: "poppins",
+                fontFamily: "Syne",
                 padding: "8px",
               }}
             />
@@ -425,7 +425,7 @@ const PlanFilter = () => {
                 width: "30%",
                 height: isSmallDev ? "30px" : "35px",
                 borderRadius: "50px",
-                fontFamily: "poppins",
+                fontFamily: "Syne",
                 padding: "8px",
               }}
             />
@@ -445,7 +445,7 @@ const PlanFilter = () => {
             sx={{
               fontSize: "20px",
               fontWeight: "600",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               color: "white",
             }}
           >
@@ -506,7 +506,7 @@ const PlanFilter = () => {
                 width: "30%",
                 height: isSmallDev ? "30px" : "35px",
                 borderRadius: "50px",
-                fontFamily: "poppins",
+                fontFamily: "Syne",
                 zIndex: 99,
                 padding: "8px",
               }}
@@ -533,7 +533,7 @@ const PlanFilter = () => {
                 width: "30%",
                 height: isSmallDev ? "30px" : "35px",
                 borderRadius: "50px",
-                fontFamily: "poppins",
+                fontFamily: "Syne",
                 zIndex: 99,
                 padding: "8px",
               }}
@@ -554,7 +554,7 @@ const PlanFilter = () => {
             sx={{
               fontSize: "20px",
               fontWeight: "600",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               color: "white",
             }}
           >
@@ -590,7 +590,7 @@ const PlanFilter = () => {
                   color: "white",
                   width: "max-content",
                   borderRadius: "50px",
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                 }}
               >
                 1+1
@@ -606,7 +606,7 @@ const PlanFilter = () => {
                   color: "white",
                   width: "max-content",
                   borderRadius: "50px",
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                 }}
               >
                 2+1
@@ -622,7 +622,7 @@ const PlanFilter = () => {
                   color: "white",
                   width: "max-content",
                   borderRadius: "50px",
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                 }}
               >
                 3+1
@@ -638,7 +638,7 @@ const PlanFilter = () => {
                   color: "white",
                   width: "max-content",
                   borderRadius: "50px",
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                 }}
               >
                 4+1
@@ -654,7 +654,7 @@ const PlanFilter = () => {
                   color: "white",
                   width: "max-content",
                   borderRadius: "50px",
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                 }}
               >
                 5+1
@@ -670,7 +670,7 @@ const PlanFilter = () => {
                   color: "white",
                   width: "max-content",
                   borderRadius: "50px",
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                 }}
               >
                 Penthouse
@@ -696,7 +696,7 @@ const PlanFilter = () => {
             backgroundColor: "transparent",
             border: "1px solid #C1AC40",
             borderRadius: "20px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             fontSize: "15px",
             color: "white",
             width: isSmallDev ? "40%" : "150px",
@@ -712,7 +712,7 @@ const PlanFilter = () => {
             border: "1px solid #C1AC40",
             borderRadius: "20px",
             color: "white",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             fontSize: "15px",
             width: isSmallDev ? "40%" : "150px",
           }}

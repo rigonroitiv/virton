@@ -139,14 +139,14 @@ const PlanimetriCards = () => {
                       fontSize: "15px",
                       color: "#C1AC40",
                       fontWeight: "400",
-                      fontFamily: "poppins",
+                      fontFamily: "Syne",
                     }}
                   >
                     Sipërfaqja
                   </Typography>
                   <Typography
                     variant="body1"
-                    sx={{ color: "white", fontFamily: "poppins" }}
+                    sx={{ color: "white", fontFamily: "Syne" }}
                   >
                     {property.siperfaqja}
                   </Typography>
@@ -163,14 +163,14 @@ const PlanimetriCards = () => {
                       fontSize: "15px",
                       color: "#C1AC40",
                       fontWeight: "400",
-                      fontFamily: "poppins",
+                      fontFamily: "Syne",
                     }}
                   >
                     Tipi
                   </Typography>
                   <Typography
                     variant="body1"
-                    sx={{ color: "white", fontFamily: "poppins" }}
+                    sx={{ color: "white", fontFamily: "Syne" }}
                   >
                     {property.tipi}
                   </Typography>
@@ -186,14 +186,14 @@ const PlanimetriCards = () => {
                       fontSize: "15px",
                       color: "#C1AC40",
                       fontWeight: "400",
-                      fontFamily: "poppins",
+                      fontFamily: "Syne",
                     }}
                   >
                     Kati
                   </Typography>
                   <Typography
                     variant="body1"
-                    sx={{ color: "white", fontFamily: "poppins" }}
+                    sx={{ color: "white", fontFamily: "Syne" }}
                   >
                     {property.kati}
                   </Typography>
@@ -210,7 +210,7 @@ const PlanimetriCards = () => {
                     sx={{
                       color: "#C1AC40",
                       textTransform: "capitalize",
-                      fontFamily: "poppins",
+                      fontFamily: "Syne",
                       zIndex: "2",
                       border: "1px solid #c1ac40",
                       borderRadius: "50px",

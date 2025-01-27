@@ -28,7 +28,7 @@ const TermsConditions = () => {
           sx={{
             fontSize: isSmallDev ? "35px" : "50px",
             color: "white",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Kushtet dhe Rregullat
@@ -46,7 +46,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           1. Qëllimi i dokumentit
@@ -55,7 +55,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ky dokument përcakton kushtet dhe rregullat për përdorimin e
@@ -66,7 +66,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -76,7 +76,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Përdorimi i shërbimeve tona nënkupton pranimin e kushteve të
@@ -87,7 +87,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -97,7 +97,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ne nuk mbajmë përgjegjësi për dëmet që mund të shkaktohen nga
@@ -108,7 +108,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -118,7 +118,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Të gjitha materialet dhe përmbajtjet janë pronë e kompanisë sonë dhe
@@ -129,7 +129,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -139,7 +139,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ne rezervojmë të drejtën për të ndryshuar këto kushte në çdo kohë, pa
@@ -150,7 +150,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -160,7 +160,7 @@ const TermsConditions = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Për çdo pyetje ose çështje, ju lutemi na kontaktoni përmes detajeve të

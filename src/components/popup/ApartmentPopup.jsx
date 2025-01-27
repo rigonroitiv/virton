@@ -90,7 +90,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
         >
           <Typography
             sx={{
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               fontWeight: "400",
               color: "white",
               fontSize: "25px",
@@ -109,7 +109,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
         >
           <Typography
             sx={{
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               fontWeight: "600",
               color: "white",
               fontSize: "14px",
@@ -119,7 +119,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
           </Typography>
           <Typography
             sx={{
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               fontWeight: "400",
               color: "white",
               fontSize: "14px",
@@ -138,7 +138,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
         >
           <Typography
             sx={{
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               fontWeight: "600",
               color: "white",
               fontSize: "14px",
@@ -148,7 +148,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
           </Typography>
           <Typography
             sx={{
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               fontWeight: "400",
               color: "white",
               fontSize: "14px",
@@ -167,7 +167,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
         >
           <Typography
             sx={{
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               fontWeight: "600",
               color: "white",
               fontSize: "14px",
@@ -177,7 +177,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
           </Typography>
           <Typography
             sx={{
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               fontWeight: "400",
               color: "white",
               fontSize: "14px",

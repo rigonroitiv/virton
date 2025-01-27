@@ -52,7 +52,7 @@ const GallerySlider = ({ images }) => {
           variant="h4"
           color="#C1AC40"
           sx={{
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             fontWeight: "600",
             fontSize: isSmallDev ? "40px" : "50px",
           }}

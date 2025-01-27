@@ -28,7 +28,7 @@ const Faq = () => {
           sx={{
             fontSize: isSmallDev ? "35px" : "50px",
             color: "white",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           FAQ
@@ -46,7 +46,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           1. Kush jemi ne?
@@ -55,7 +55,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ne jemi Virton, një kompani e dedikuar për ndërtimin e apartamenteve
@@ -66,7 +66,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -76,7 +76,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ofrojmë ndërtimin e apartamenteve moderne dhe të qëndrueshme, të
@@ -87,7 +87,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -97,7 +97,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Zyra jonë kryesore ndodhet në Podujevë, Kosovë, dhe operojmë në të
@@ -108,7 +108,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -118,7 +118,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Me një fokus në cilësi dhe inovacion, ne sigurojmë që çdo projekt të
@@ -129,7 +129,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -139,7 +139,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Po, ne ofrojmë mbështetje të plotë pas shitjes për çdo klient, duke
@@ -150,7 +150,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -160,7 +160,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Kohëzgjatja e projekteve tona ndryshon në varësi të kompleksitetit,
@@ -171,7 +171,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -181,7 +181,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Mund të na kontaktoni përmes telefonit, email-it, ose të na vizitoni
@@ -192,7 +192,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -202,7 +202,7 @@ const Faq = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Po, bashkëpunojmë me kompani të tjera për të siguruar cilësi dhe

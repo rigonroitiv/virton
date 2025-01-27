@@ -89,7 +89,7 @@ const ApartmentsPage = () => {
 
             <Typography
               sx={{
-                fontFamily: "poppins",
+                fontFamily: "Syne",
                 fontSize: isSmallDev ? "10px" : "30px",
                 fontWeight: "600",
               }}
@@ -152,7 +152,7 @@ const ApartmentsPage = () => {
                   border: "1px solid #c1ac40",
                   color: activeButton === index ? "white" : "#1D1D3A",
                   backgroundColor: activeButton === index ? "#1D1D3A" : "white",
-                  fontFamily: "poppins",
+                  fontFamily: "Syne",
                   fontWeight: "400",
                   borderRadius: "0px",
                   borderTopLeftRadius: button.borderRadius.left,
@@ -193,7 +193,7 @@ const ApartmentsPage = () => {
               border: "1px solid #c1ac40",
               color: "#1D1D3A",
               backgroundColor: "transparent",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               visibility: "hidden",
               fontWeight: "600",
               borderRadius: "50px",
@@ -243,7 +243,7 @@ const ApartmentsPage = () => {
           sx={{
             fontSize: isSmallDev ? "25px" : "35px",
             color: "#c1ac40",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Planimetritë e{" "}
@@ -262,7 +262,7 @@ const ApartmentsPage = () => {
               borderRadius: "50px",
               fontSize: isSmallDev ? "10px" : "14px",
               height: isSmallDev ? "35px" : "45px",
-              fontFamily: "poppins",
+              fontFamily: "Syne",
               ":hover": {
                 backgroundColor: "#1d1d3a",
                 color: "#c1ac40",

@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
           sx={{
             fontSize: isSmallDev ? "35px" : "50px",
             color: "white",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Politika e Privatësisë
@@ -46,7 +46,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           1. Mbledhja e informacionit
@@ -55,7 +55,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ne mbledhim informacione personale kur ju regjistroheni, vendosni një
@@ -67,7 +67,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -77,7 +77,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Informacioni i mbledhur përdoret për të përmirësuar përvojën tuaj, për
@@ -89,7 +89,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -99,7 +99,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ne përdorim masa të sigurta për të mbrojtur të dhënat tuaja personale
@@ -110,7 +110,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -120,7 +120,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ne nuk ndajmë informacionin tuaj personal me palët e treta, përveç
@@ -132,7 +132,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -142,7 +142,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Faqja jonë përdor cookies për të analizuar trafikun dhe për të
@@ -153,7 +153,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -163,7 +163,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ju keni të drejtë të aksesoni, modifikoni ose fshini informacionet
@@ -174,7 +174,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -184,7 +184,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Ne rezervojmë të drejtën për të përditësuar këtë politikë në çdo kohë
@@ -196,7 +196,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "25px" : "35px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
             marginTop: "20px",
           }}
         >
@@ -206,7 +206,7 @@ const PrivacyPolicy = () => {
           style={{
             color: "white",
             fontSize: isSmallDev ? "14px" : "18px",
-            fontFamily: "poppins",
+            fontFamily: "Syne",
           }}
         >
           Për çdo pyetje lidhur me politikën e privatësisë, ju lutemi na
