@@ -11,9 +11,9 @@ import FloorBuildingSvgExtractor from "./page/admin/svgExtractor/FloorBuildingSv
 
 function App() {
   return (
-    // <React.Suspense fallback={<div>Loading...</div>}>
-    //   <ToastContainer />
-    <>
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <ToastContainer />
+
       <Router>
         <Routes>
           <Route path="/" element={<ClientPage />} />
@@ -33,8 +33,7 @@ function App() {
           />
         </Routes>
       </Router>
-    </>
-    // </React.Suspense>
+    </React.Suspense>
   );
 }
 
