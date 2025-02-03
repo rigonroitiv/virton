@@ -35,6 +35,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Notes from "../../components/admin/notes/Notes";
 import Login from "../../components/auth/Login";
 import AdmRequestPage from "./requests/AdmRequestPage";
+import AdmSalesPage from "./sales/AdmSalesPage";
 
 const AdminPage = () => {
   const [open, setOpen] = React.useState(true);
@@ -145,7 +146,7 @@ const AdminPage = () => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding sx={{ height: "40px" }}>
-            <ListItemButton onClick={() => navigate("d")}>
+            <ListItemButton onClick={() => navigate("sales")}>
               <ListItemIcon>
                 <Receipt sx={{ color: "#c1ac40" }} />
               </ListItemIcon>
@@ -201,6 +202,7 @@ const AdminPage = () => {
           <Route path="/garage" element={<AdminParkinPage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/requests" element={<AdmRequestPage />} />
+          <Route path="/sales" element={<AdmSalesPage />} />
         </Routes>
       </Box>
     </Box>
