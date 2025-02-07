@@ -19,6 +19,13 @@ const style = {
 
 const AdmPaymentModal = ({ open, onClose, sale }) => {
   const [value, setValue] = useState(null);
+
+  const handleChange = (event) => {
+    // Allow only numeric values
+    const numericValue = event.target.value.replace(/\D/g, ""); // Remove non-numeric characters
+    setValue(numericValue);
+  };
+
   const addNewKesti = () => {
     axiosInstance
       .put(`${BASE_URL}/api/v1/sales?id=${sale.id}&paid=${value}`)
@@ -63,7 +70,14 @@ const AdmPaymentModal = ({ open, onClose, sale }) => {
             value={value}
             size="medium"
             label="Kesti radhes"
-            onChange={(e) => setValue(e.currentTarget.value)}
+            type="number"
+            onChange={(e) => {
+              let newValue = e.target.value;
+
+              if (/^[1-9]\d*$/.test(newValue) || newValue === "") {
+                setValue(newValue);
+              }
+            }}
           />
 
           <Box
