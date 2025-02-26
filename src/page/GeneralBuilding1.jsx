@@ -16,23 +16,22 @@ const object1 = [
     points: [
       {
         d: "m1207.11,468.44l-9.33-79.56,39.56-110.22h117.78l3.11,13.33,86.67.44,17.33-27.11h173.78l45.33,101.56-13.33,9.56,98.22,248.89-18.22,12,26.22,56.89-133.33,52s-331.11,5.33-331.11,3.56-19.11-106.22-19.11-106.22l52.44-60.44,142.89-.61-30.83-112.33-248.06-1.72Z",
-        type: 'path',
+        type: "path",
         href: "/1",
       },
       {
         d: "161.33 509.33 366.17 360.33 420.67 405.83 606.33 263.67 580 206.5 736.5 92 818 140.67 833.17 238.83 869.17 261.5 880.33 251.5 1063.5 366.67 1045.67 483 984.67 551 789.33 409.17 742.17 452 746.67 462.17 716.83 489.17 719.17 492.17 660.83 546.5 658.17 544.5 594.17 604.17 587.83 599.67 525.83 657.67 522.17 654.83 472.67 701.17 432.83 701.17 431.33 709.67 245 592.33 161.33 509.33",
-        type: 'polygon',
+        type: "polygon",
         href: "/2",
       },
       {
         d: "m397.11,836.22l34.22-126.56,1.5-8.5s260.17-.17,260.17-1.5,7-49.33,7-49.33l582.33-1.67s25,143,25,144.33-86.67,62.67-86.67,62.67h-242.33v-17.67s-236.67,3-236.67,3l-2.67,30.33h-244l-97.89-35.11Z",
-        type: 'path',
+        type: "path",
         href: "/1/apartments/abc",
       },
     ],
   },
 ];
-
 
 const GeneralBuilding = () => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
@@ -82,45 +81,45 @@ const GeneralBuilding = () => {
         }}
       /> */}
       {object1.map((item) => {
-            return (
-                <svg
-                  viewBox="0 0 1920 1080"
-                  xmlnsXlink="http://www.w3.org/1999/xlink"
-                  xmlns="http://www.w3.org/2000/svg"
-                  xmlnsSvg="http://www.w3.org/2000/svg"
-                  style={{
-                    borderRadius: "15px",
-                  }}
-                >
-                  <image
-                    height={item.height}
-                    width={item.width}
-                    transform={item.transform}
-                    xlinkHref={item.imageUrl}
+        return (
+          <svg
+            viewBox="0 0 1920 1080"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsSvg="http://www.w3.org/2000/svg"
+            style={{
+              borderRadius: "15px",
+            }}
+          >
+            <image
+              height={item.height}
+              width={item.width}
+              transform={item.transform}
+              xlinkHref={item.imageUrl}
+            />
+            {item.points.map((point) => {
+              if (point.type === "path") {
+                return (
+                  <path
+                    onClick={() => navigate(point.href)}
+                    className="g1"
+                    d={point.d}
                   />
-                  {item.points.map((point) => {
-                    if(point.type === 'path') {
-                        return (
-                            <path
-                      onClick={() => navigate(point.href)}
-                      className="g1"
-                      d={point.d}
-                    />
-                        )
-                    }
-                    if(point.type === 'polygon') {
-                        return <polygon
-                        onClick={() => navigate(point.href)}
-                        className="g1"
-                        points={point.d}
-                      />
-                    }
-                  }
-                  )}
-                </svg>
-              );
-          })
-        }
+                );
+              }
+              if (point.type === "polygon") {
+                return (
+                  <polygon
+                    onClick={() => navigate(point.href)}
+                    className="g1"
+                    points={point.d}
+                  />
+                );
+              }
+            })}
+          </svg>
+        );
+      })}
 
       <IconButton
         onClick={handlePrev}
