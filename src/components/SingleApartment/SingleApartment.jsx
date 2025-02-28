@@ -47,9 +47,9 @@ const SingleApartment = ({ data }) => {
           3D Plan
         </Button>
         <Button
-        onClick={() => {
-          window.open(data?.vtourUrl, "_blank");
-        }}
+          onClick={() => {
+            window.open(data?.vtourUrl, "_blank");
+          }}
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #1d1d3a",
