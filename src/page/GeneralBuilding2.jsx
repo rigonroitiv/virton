@@ -141,8 +141,8 @@ const object2 = [
     ],
   },
   {
-    id: 2,
-    position: 2,
+    id: 3,
+    position: 3,
     imageUrl: `${imagePath}02-2.jpg`,
     height: "3840",
     width: "2160",
@@ -193,8 +193,8 @@ const object2 = [
     ],
   },
   {
-    id: 4,
-    position: 4,
+    id: 2,
+    position: 2,
     imageUrl: `${imagePath}04-2.jpg`,
     height: "3840",
     width: "2160",

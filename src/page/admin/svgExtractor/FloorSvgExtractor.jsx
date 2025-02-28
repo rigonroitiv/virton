@@ -118,17 +118,19 @@ const FloorSvgExtractor = ( { show } ) => {
       imageWidth: extractedElements.imageWidth,
       imageHeight: extractedElements.imageHeight,
       imageUrl: extractedElements.imageUrl,
-      floorNumber: extractedElements.floorId,
-      apartmentDTO: extractedElements.apartmentDTO,
+      path: extractedElements.apartmentDTO,
       className: extractedElements.className,
       style: extractedElements.style,
       maxFloor: extractedElements.maxFloor,
+      floorId: extractedElements.floorId,
+      floorNumber: extractedElements.floorNumber,
       buildingName: extractedElements.buildingName,
-      buildingNr: extractedElements.buildingNumber,
+      buildingNumber: extractedElements.buildingNumber,
       buildingSide: extractedElements.buildingSide,
+      apartmentDTO: extractedElements.apartmentDTO
     };
       const responseWrapper = (dataa) =>
-      axios.post(`${BASE_URL}/api/apartment/create/list`, dataa);
+      axios.post(`${BASE_URL}/api/building/floor/create`, dataa);
       toast.promise(responseWrapper(data), {
         pending: 'Kërkesa juaj është duke u procesuar!',
         success: 'Dokumenti u ruajt me sukses',

@@ -6,7 +6,7 @@ import AdminPage from "./page/admin/AdminPage";
 import SvgExtractor from "./page/svgExtractor/SvgExtractor";
 import { AuthProvider } from "./components/auth/AuthProvider";
 import { ToastContainer } from "react-toastify";
-import FloorSvgExtractor from "./page/admin/svgExtractor/FLoorSvgExtractor";
+import FloorSvgExtractor from "./page/admin/svgExtractor/FloorSvgExtractor";
 import FloorBuildingSvgExtractor from "./page/admin/svgExtractor/FloorBuildingSvgExtractor";
 
 function App() {

@@ -275,7 +275,7 @@ const ApartmentsPage = () => {
         </Link>
       </Box>
       <AdmApartmentIdModal />
-      <PlanimetriCards ref={apartmentRef} />
+      <PlanimetriCards ref={apartmentRef} single={true} />
     </Box>
   );
 };
