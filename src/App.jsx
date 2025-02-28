@@ -16,7 +16,7 @@ function App() {
 
       <Router>
         <Routes>
-          <Route path="/" element={<ClientPage />} />
+          <Route path="*" element={<ClientPage />} />
           <Route path="/svg-extrator" element={<SvgExtractor />} />
           <Route path="/fsvg-extrator" element={<FloorSvgExtractor />} />
           <Route
