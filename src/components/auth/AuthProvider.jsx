@@ -428,13 +428,15 @@ export const AuthProvider = ({ children, hide = false }) => {
                     type="submit"
                     variant="contained"
                     sx={{
-                      backgroundColor: "var(--green)",
+                      backgroundColor: "#C1AC40",
                       color: "#000",
                       borderRadius: "20px",
                       fontSize: "14px",
                       textTransform: "capitalize",
                       ":hover": {
                         backgroundColor: "var(--brand-color)",
+                        color: "#C1AC40",
+                        border: "1px solid #C1AC40",
                       },
                     }}
                   >

@@ -13,17 +13,24 @@ function App() {
   return (
     <React.Suspense fallback={<div>Loading...</div>}>
       <ToastContainer />
+
       <Router>
         <Routes>
-          <Route path="/*" element={<ClientPage />} />
+          <Route path="/" element={<ClientPage />} />
           <Route path="/svg-extrator" element={<SvgExtractor />} />
           <Route path="/fsvg-extrator" element={<FloorSvgExtractor />} />
-          <Route path="/fbsvg-extrator" element={<FloorBuildingSvgExtractor />} />
-          <Route path="/admin/*" element={
-            <AuthProvider>
-              <AdminPage />
-            </AuthProvider>
-          } />
+          <Route
+            path="/fbsvg-extrator"
+            element={<FloorBuildingSvgExtractor />}
+          />
+          <Route
+            path="/admin/*"
+            element={
+              <AuthProvider>
+                <AdminPage />
+              </AuthProvider>
+            }
+          />
         </Routes>
       </Router>
     </React.Suspense>
