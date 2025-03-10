@@ -29,7 +29,7 @@ const SingleApartment = ({ data }) => {
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #C1AC40",
-            fontFamily: "Syne",
+            fontFamily: "Poppins",
             fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "400",
             color: "#1d1d3a",
@@ -53,7 +53,7 @@ const SingleApartment = ({ data }) => {
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #1d1d3a",
-            fontFamily: "Syne",
+            fontFamily: "Poppins",
             fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "400",
             color: "white",
@@ -108,7 +108,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -119,7 +119,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -139,7 +139,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -150,7 +150,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -170,7 +170,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -181,7 +181,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -201,7 +201,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -212,7 +212,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -232,7 +232,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "400",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -243,7 +243,7 @@ const SingleApartment = ({ data }) => {
             <Typography
               sx={{
                 fontSize: isSmallDev ? "20px" : "25px",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 textTransform: "capitalize",
@@ -268,7 +268,7 @@ const SingleApartment = ({ data }) => {
             <Button
               sx={{
                 width: isSmallDev ? "100%" : isMidDev ? "100px" : "100%",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontSize: isSmallDev ? "10px" : isMidDev ? "15px" : "20px",
                 fontWeight: "600",
                 color: "#1d1d3a",
@@ -292,7 +292,7 @@ const SingleApartment = ({ data }) => {
             <Button
               sx={{
                 width: isSmallDev ? "100%" : isMidDev ? "100px" : "100%",
-                fontFamily: "Syne",
+                fontFamily: "Poppins",
                 fontSize: isSmallDev ? "10px" : isMidDev ? "15px" : "20px",
 
                 fontWeight: "600",

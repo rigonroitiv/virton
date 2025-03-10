@@ -67,7 +67,7 @@ const SingleApartmentPage = () => {
               backgroundColor: "white",
               color: "#1d1d3a",
               borderRadius: "50px",
-              fontFamily: "Syne",
+              fontFamily: "Poppins",
               height: isSmallDev ? "40px" : "55px",
               fontSize: isSmallDev ? "12px" : "15px",
               ":hover": {
@@ -111,7 +111,7 @@ const SingleApartmentPage = () => {
         >
           <Typography
             sx={{
-              fontFamily: "Syne",
+              fontFamily: "Poppins",
               fontWeight: "600",
               fontSize: isSmallDev ? "30px" : "70px",
               color: "#C1AC40",
@@ -158,7 +158,7 @@ const SingleApartmentPage = () => {
       >
         <Typography
           sx={{
-            fontFamily: "Syne",
+            fontFamily: "Poppins",
             fontSize: isSmallDev ? "30px" : "50px",
             fontWeight: "300",
             marginBottom: isSmallDev ? "20px" : "0",

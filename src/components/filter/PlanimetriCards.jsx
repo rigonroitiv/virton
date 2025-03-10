@@ -16,7 +16,11 @@ import GridViewIcon from "@mui/icons-material/ViewModule"; // Icon for grid view
 import { useDispatch, useSelector } from "react-redux";
 import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
 import { mainUrl, planmetricImageUrl } from "../../utils/consts";
-import { getRegularFloorFilter, getRegularRoomFilter, getRegularSquareFilter } from "../../features/filter/FilterSlice";
+import {
+  getRegularFloorFilter,
+  getRegularRoomFilter,
+  getRegularSquareFilter,
+} from "../../features/filter/FilterSlice";
 import { fetchApartmentsAll } from "../../features/apartment/ApartmentAPI";
 
 const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
@@ -27,16 +31,17 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   const squareFilter = useSelector(getRegularSquareFilter);
   const roomFilter = useSelector(getRegularRoomFilter);
   const [data, setData] = useState();
-  const floorFilter = useSelector(getRegularFloorFilter); 
+  const floorFilter = useSelector(getRegularFloorFilter);
   const buildingData = useSelector(getAllApartmentSvgData);
 
   const handleSingleView = () => setColumns(1);
   const handleGridView = () => setColumns(2);
 
-  
   const fetchData = () => {
     if (single) {
-      const dataToUpdate = buildingData?.map((item) => item.apartmentList).flat();
+      const dataToUpdate = buildingData
+        ?.map((item) => item.apartmentList)
+        .flat();
       setData(dataToUpdate); // Set the flattened data when 'single' is true
     } else {
       dispatch(fetchApartmentsAll()); // Fetch apartments if 'single' is false
@@ -109,11 +114,14 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
         justifyContent="center"
       >
         {data?.map((property) => {
-          if((squareFilter.startVal <= parseFloat(property.square) && squareFilter.endVal >= parseFloat(property.square)) &&
-            (roomFilter.includes(property.rooms) || roomFilter.includes('all')) &&
-            (floorFilter.startVal <= parseInt(property.floorNumber) && floorFilter.endVal >= parseInt(property.floorNumber))
+          if (
+            squareFilter.startVal <= parseFloat(property.square) &&
+            squareFilter.endVal >= parseFloat(property.square) &&
+            (roomFilter.includes(property.rooms) ||
+              roomFilter.includes("all")) &&
+            floorFilter.startVal <= parseInt(property.floorNumber) &&
+            floorFilter.endVal >= parseInt(property.floorNumber)
           ) {
-
             return (
               <Grid
                 item
@@ -141,7 +149,9 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                       padding: "15px",
                       borderRadius: "5px",
                     }}
-                    height={isSmallDev ? (columns === 1 ? "300" : "200") : "300"}
+                    height={
+                      isSmallDev ? (columns === 1 ? "300" : "200") : "300"
+                    }
                     image={`${mainUrl}${planmetricImageUrl}${property.imageUrl}`}
                     alt={`${property.rooms} image`}
                   />
@@ -169,19 +179,19 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                           fontSize: "15px",
                           color: "#C1AC40",
                           fontWeight: "400",
-                          fontFamily: "Syne",
+                          fontFamily: "Poppins",
                         }}
                       >
                         Sipërfaqja
                       </Typography>
                       <Typography
                         variant="body1"
-                        sx={{ color: "white", fontFamily: "Syne" }}
+                        sx={{ color: "white", fontFamily: "Poppins" }}
                       >
                         {property.square}
                       </Typography>
                     </Box>
-    
+
                     <Box
                       display="flex"
                       flexDirection="row"
@@ -194,19 +204,19 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                           fontSize: "15px",
                           color: "#C1AC40",
                           fontWeight: "400",
-                          fontFamily: "Syne",
+                          fontFamily: "Poppins",
                         }}
                       >
                         Tipi
                       </Typography>
                       <Typography
                         variant="body1"
-                        sx={{ color: "white", fontFamily: "Syne" }}
+                        sx={{ color: "white", fontFamily: "Poppins" }}
                       >
                         {property.rooms}
                       </Typography>
                     </Box>
-    
+
                     <Box
                       display="flex"
                       flexDirection="row"
@@ -218,19 +228,19 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                           fontSize: "15px",
                           color: "#C1AC40",
                           fontWeight: "400",
-                          fontFamily: "Syne",
+                          fontFamily: "Poppins",
                         }}
                       >
                         Kati
                       </Typography>
                       <Typography
                         variant="body1"
-                        sx={{ color: "white", fontFamily: "Syne" }}
+                        sx={{ color: "white", fontFamily: "Poppins" }}
                       >
                         {property.floorNumber}
                       </Typography>
                     </Box>
-    
+
                     <Box
                       sx={{
                         display: "flex",
@@ -243,7 +253,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                         sx={{
                           color: "#C1AC40",
                           textTransform: "capitalize",
-                          fontFamily: "Syne",
+                          fontFamily: "Poppins",
                           cursor: "pointer",
                           zIndex: 2,
                           border: "1px solid #c1ac40",
@@ -263,7 +273,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                         Më Shumë...
                       </Button>
                     </Box>
-    
+
                     <Box
                       sx={{
                         position: "absolute",
@@ -277,7 +287,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                   </CardContent>
                 </Card>
               </Grid>
-            )
+            );
           }
         })}
       </Grid>
