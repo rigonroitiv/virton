@@ -48,15 +48,15 @@ const ParkingSvg = () => {
   // }, [dispatch, id]);
 
   useEffect(() => {
-    axios.get(`${BASE_URL}/api/v1/parking?id=parking`).then(
-      res => setParkingData(res.data)
-    ).catch(err => console.log(err))
+    axios
+      .get(`${BASE_URL}/api/v1/parking?id=parking`)
+      .then((res) => setParkingData(res.data))
+      .catch((err) => console.log(err));
   }, []);
 
   // useEffect(() => {
   //   dispatch(getWishlistDataFromStorage());
   // }, [dispatch]);
-
 
   const handleNext = () => {
     setCurrentIndex(
@@ -71,8 +71,6 @@ const ParkingSvg = () => {
         dataForSelection.length
     ); //1
   };
-
- 
 
   const getSvgHeight = () => {
     return isSmallDev ? "auto" : isMidDev ? "auto" : "auto";
@@ -93,7 +91,8 @@ const ParkingSvg = () => {
         width: "100%",
         height: "100%",
         position: "relative",
-        pt: 13
+        pt: 13,
+        overflow: isSmallDev ? "auto" : "",
       }}
     >
       {parkingData?.map((building, index) => {
@@ -104,14 +103,16 @@ const ParkingSvg = () => {
               height: index === currentIndex ? getSvgHeight() : "0px",
               opacity: currentIndex === index ? 1 : 0,
               transition: "opacity 0.1s ease-in-out",
-              width: "100%",
+              width: isSmallDev ? "200%" : "100%",
               position: isMidDev ? "" : "absolute",
               display: "flex",
+              overflow: "hidden",
             }}
           >
             <svg
-              width={"100%"}
+              width={isSmallDev ? "200%" : "100%"}
               height={"100%"}
+              objectFit="cover"
               preserveAspectRatio="none"
               style={{
                 borderRadius: "5px",
@@ -133,12 +134,15 @@ const ParkingSvg = () => {
                       d={apartment.path}
                       onContextMenu={(e) => handleContextMenu(e, apartment)}
                       className={
-                        
-                          apartment.isSold
-                            ? isAuthorized()
-                              ? "st1"
-                              : "ft0"
-                            : apartment.isRent ? 'parking-rent' : apartment.isReserved ? 'parking-reserved' : "ft0"
+                        apartment.isSold
+                          ? isAuthorized()
+                            ? "st1"
+                            : "ft0"
+                          : apartment.isRent
+                          ? "parking-rent"
+                          : apartment.isReserved
+                          ? "parking-reserved"
+                          : "ft0"
                       }
                       id={apartment.apartmentId}
                       onMouseEnter={(e) => {
@@ -179,123 +183,7 @@ const ParkingSvg = () => {
           </div>
         );
       })}
-      <Box
-        onClick={handlePrevious}
-        sx={{
-          position: "absolute",
-          display: isSmallDev ? "none" : "flex",
-          top: "50%",
-          left: 5,
-          cursor: "pointer",
-          width: "45px",
-          height: "45px",
-          backgroundColor: "white",
-          justifyContent: "center",
-          borderRadius: "50px",
-        }}
-      >
-        <svg
-          id="fi_2985161"
-          enable-background="new 0 0 128 128"
-          height="45"
-          viewBox="0 0 128 128"
-          width="30"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            id="Left_Arrow_4_"
-            d="m84 108c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656l40-40c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-37.172 37.172 37.172 37.172c1.563 1.563 1.563 4.094 0 5.656-.781.781-1.805 1.172-2.828 1.172z"
-          ></path>
-        </svg>
-      </Box>
 
-      <Box
-        onClick={handlePrevious}
-        sx={{
-          position: "absolute",
-          display: isSmallDev ? "none" : "flex",
-          top: "50%",
-          right: 5,
-          cursor: "pointer",
-          width: "45px",
-          height: "45px",
-          backgroundColor: "white",
-          justifyContent: "center",
-          borderRadius: "50px",
-        }}
-      >
-        <svg
-          id="fi_2985179"
-          enable-background="new 0 0 128 128"
-          height="45"
-          viewBox="0 0 128 128"
-          width="30"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            id="Right_Arrow_4_"
-            d="m44 108c-1.023 0-2.047-.391-2.828-1.172-1.563-1.563-1.563-4.094 0-5.656l37.172-37.172-37.172-37.172c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l40 40c1.563 1.563 1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"
-          ></path>
-        </svg>
-      </Box>
-      <Box
-        sx={{
-          display: isSmallDev ? "flex" : "none",
-          flexDirection: "row",
-          justifyContent: "end",
-          padding: "10px 0px",
-          gap: "15px",
-        }}
-      >
-        <Button
-          sx={{
-            backgroundColor: "#C1AC40",
-            borderRadius: "50px",
-            minWidth: "10px",
-            width: "50px",
-            height: "50px",
-          }}
-          onClick={handlePrevious}
-        >
-          <svg
-            id="fi_2985161"
-            enable-background="new 0 0 128 128"
-            height="45"
-            viewBox="0 0 128 128"
-            width="30"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              id="Left_Arrow_4_"
-              d="m84 108c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656l40-40c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-37.172 37.172 37.172 37.172c1.563 1.563 1.563 4.094 0 5.656-.781.781-1.805 1.172-2.828 1.172z"
-            ></path>
-          </svg>
-        </Button>
-        <Button
-          sx={{
-            backgroundColor: "#C1AC40",
-            borderRadius: "50px",
-            minWidth: "10px",
-            width: "50px",
-            height: "50px",
-          }}
-          onClick={handlePrevious}
-        >
-          <svg
-            id="fi_2985179"
-            enable-background="new 0 0 128 128"
-            height="45"
-            viewBox="0 0 128 128"
-            width="30"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              id="Right_Arrow_4_"
-              d="m44 108c-1.023 0-2.047-.391-2.828-1.172-1.563-1.563-1.563-4.094 0-5.656l37.172-37.172-37.172-37.172c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l40 40c1.563 1.563 1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"
-            ></path>
-          </svg>
-        </Button>
-      </Box>
       <ContextMenuParking menu={contextMenu} setMenu={setContextMenu} />
       <AdmParkingModal />
       {popup.anchorEl && (

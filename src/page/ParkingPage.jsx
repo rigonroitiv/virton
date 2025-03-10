@@ -1,46 +1,57 @@
-import React from 'react'
-import ParkingSvg from '../components/parking/ParkingSvg'
-import { Box, Typography } from '@mui/material'
+import React from "react";
+import ParkingSvg from "../components/parking/ParkingSvg";
+import { Box, Typography, useMediaQuery } from "@mui/material";
 
 const ParkingPage = () => {
+  const isSmallDev = useMediaQuery("(max-width:768px)");
+
   return (
     <div>
-        <ParkingSvg />
-        <Box sx={{
-            position: 'fixed',
-            left: 5,
-            top: '20%'
-        }}>
-            <Box sx={{display: 'flex', gap: '3px'}}>
-                <Box sx={{
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50px',
-                    bgcolor: '#8b0000'
-                }}></Box>
-                <Typography>Shitur</Typography>
-            </Box>
-            <Box sx={{display: 'flex', gap: '3px'}}>
-                <Box sx={{
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50px',
-                    bgcolor: '#ff5e00'
-                }}></Box>
-                <Typography>Rezervuar</Typography>
-            </Box>
-            <Box sx={{display: 'flex', gap: '3px'}}>
-                <Box sx={{
-                    width: '20px',
-                    height: '20px',
-                    borderRadius: '50px',
-                    bgcolor: '#fffb00'
-                }}></Box>
-                <Typography>Me qera</Typography>
-            </Box>
+      <ParkingSvg />
+      <Box
+        sx={{
+          position: "fixed",
+          left: 5,
+          top: isSmallDev ? "" : "20%",
+          bottom: isSmallDev ? "20%" : "",
+        }}
+      >
+        <Box sx={{ display: "flex", gap: "3px" }}>
+          <Box
+            sx={{
+              width: "20px",
+              height: "20px",
+              borderRadius: "50px",
+              bgcolor: "red",
+            }}
+          ></Box>
+          <Typography>E Shitur</Typography>
         </Box>
+        <Box sx={{ display: "flex", gap: "3px" }}>
+          <Box
+            sx={{
+              width: "20px",
+              height: "20px",
+              borderRadius: "50px",
+              bgcolor: "#1d1d3a",
+            }}
+          ></Box>
+          <Typography>E Rezervuar</Typography>
+        </Box>
+        <Box sx={{ display: "flex", gap: "3px" }}>
+          <Box
+            sx={{
+              width: "20px",
+              height: "20px",
+              borderRadius: "50px",
+              bgcolor: "#C1AC40",
+            }}
+          ></Box>
+          <Typography>E lire</Typography>
+        </Box>
+      </Box>
     </div>
-  )
-}
+  );
+};
 
-export default ParkingPage
+export default ParkingPage;
