@@ -45,6 +45,8 @@ const AdminPage = () => {
       sx={{
         display: "flex",
         width: "100%",
+        maxWidth: "100%",
+        overflow: 'hidden',
         height: "100vh",
       }}
     >

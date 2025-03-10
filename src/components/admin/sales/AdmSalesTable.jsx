@@ -71,11 +71,11 @@ const AdmSalesTable = () => {
   };
 
   return (
-    <Box mt={2}>
+    <Box mt={2} sx={{ maxWidth: '100%', overflow: 'hidden'}}>
       <Box sx={{display: 'flex', gap: 1}}>
         {folder.map((item, inx) => {
           return (
-            <Box sx={{
+            <Box onClick={() => setSelectedFolder(item)} sx={{
               display: 'flex',
               alignItems: 'center',
               gap: 2,
@@ -95,10 +95,14 @@ const AdmSalesTable = () => {
           )
         })}
       </Box>
-      <TableContainer style={{ overflow: "auto", marginTop: "15px" }}>
-        <Table stickyHeader>
-          <TableHead>
-            <TableRow>
+      <TableContainer sx={{ overflow: "auto", marginTop: "15px",  }}>
+        <Table stickyHeader sx={{maxWidth: '100%', overflow: 'auto'}}>
+          <TableHead >
+            <TableRow sx={{
+              '> *': {
+                
+              }
+            }}>
               <TableCell sx={{ bgcolor: "#1d1d3a", color: "white" }}>
                 Nr
               </TableCell>
@@ -156,123 +160,125 @@ const AdmSalesTable = () => {
             {salesData.map((item, index) => {
               const isExpanded = expandedRows[index] || false;
 
-              return (
-                <React.Fragment key={index}>
-                  <TableRow>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {index + 1}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {item.clientName}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {item.apartmentName}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {item.total}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {moment(item.createdAt).format("DD-MM-yyyy")}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {item.paid}
-                      {EURO_SYMBOL}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                      {item.remainingAmount}
-                      {EURO_SYMBOL}
-                    </TableCell>
-                    <TableCell sx={{ p: 0, pl: "5px", py: "5px", display: 'flex' }}>
-                      <IconButton
-                        onClick={() => handleOpenModal(item)}
-                        color="primary"
-                        size="small"
+              if(item.building === selectedFolder) {
+                return (
+                  <React.Fragment key={index}>
+                    <TableRow>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {index + 1}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.clientName}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.apartmentName}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.refNr}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.lrpNr}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.parkingNumber}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.parkingPrice}{EURO_SYMBOL}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.warehouseNumber}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.warehouseSquare}m<sup>2</sup>
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.warehousePricePerSquare}{EURO_SYMBOL}/m<sup>2</sup>
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.warehouseTotalPrice}{EURO_SYMBOL}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.total}{EURO_SYMBOL}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {moment(item.createdAt).format("DD-MM-yyyy")}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.paid}
+                        {EURO_SYMBOL}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
+                        {item.remainingAmount}
+                        {EURO_SYMBOL}
+                      </TableCell>
+                      <TableCell sx={{ p: 0, pl: "5px", py: "5px", display: 'flex' }}>
+                        <IconButton
+                          onClick={() => handleOpenModal(item)}
+                          color="primary"
+                          size="small"
+                        >
+                          <Paid />
+                        </IconButton>
+                        <IconButton
+                          onClick={() => {
+                            dispatch(setApartmentEditModalState(true));
+                          }}
+                          color="warning"
+                          size="small"
+                        >
+                          <Edit />
+                        </IconButton>
+                        <IconButton color="error" size="small">
+                          <DeleteForever />
+                        </IconButton>
+                        <IconButton onClick={() => toggleRow(index)} size="small">
+                          {isExpanded ? <ExpandLess /> : <ExpandMore />}
+                        </IconButton>
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableCell
+                        style={{ paddingBottom: 0, paddingTop: 0 }}
+                        colSpan={9}
                       >
-                        <Paid />
-                      </IconButton>
-                      <IconButton
-                        onClick={() => {
-                          dispatch(setApartmentEditModalState(true));
-                        }}
-                        color="warning"
-                        size="small"
-                      >
-                        <Edit />
-                      </IconButton>
-                      <IconButton color="error" size="small">
-                        <DeleteForever />
-                      </IconButton>
-                      <IconButton onClick={() => toggleRow(index)} size="small">
-                        {isExpanded ? <ExpandLess /> : <ExpandMore />}
-                      </IconButton>
-                    </TableCell>
-                  </TableRow>
-                  <TableRow>
-                    <TableCell
-                      style={{ paddingBottom: 0, paddingTop: 0 }}
-                      colSpan={9}
-                    >
-                      <Collapse in={isExpanded} timeout="auto" unmountOnExit>
-                        {item?.payments
-                          .slice()
-                          .sort(
-                            (a, b) => new Date(a.paidAt) - new Date(b.paidAt)
-                          )
-                          .map((payment, idx) => (
-                            <TableRow key={idx}>
-                              <TableCell colSpan={4}>
-                                <p style={{ textWrap: "nowrap" }}>
-                                  Kesti : {idx + 1}
-                                </p>
-                              </TableCell>
-                              <TableCell colSpan={4}>
-                                <p style={{ textWrap: "nowrap" }}>
-                                  Shuma e paguar: {payment.amount}
-                                  {EURO_SYMBOL}
-                                </p>
-                              </TableCell>
-                              <TableCell colSpan={4}>
-                                <p style={{ textWrap: "nowrap" }}>
-                                  Data e pageses:{" "}
-                                  {moment(payment.paidAt).format(
-                                    "DD-MM-yyyy HH:mm:ss"
-                                  )}
-                                </p>
-                              </TableCell>
-                            </TableRow>
-                          ))}
-                      </Collapse>
-                    </TableCell>
-                  </TableRow>
-                </React.Fragment>
-              );
+                        <Collapse in={isExpanded} timeout="auto" unmountOnExit>
+                          {item?.payments
+                            .slice()
+                            .sort(
+                              (a, b) => new Date(a.paidAt) - new Date(b.paidAt)
+                            )
+                            .map((payment, idx) => (
+                              <TableRow key={idx}>
+                                <TableCell colSpan={4}>
+                                  <p style={{ textWrap: "nowrap" }}>
+                                    Kesti : {idx + 1}
+                                  </p>
+                                </TableCell>
+                                <TableCell colSpan={4}>
+                                  <p style={{ textWrap: "nowrap" }}>
+                                    Shuma e paguar: {payment.amount}
+                                    {EURO_SYMBOL}
+                                  </p>
+                                </TableCell>
+                                <TableCell colSpan={4}>
+                                  <p style={{ textWrap: "nowrap" }}>
+                                    Data e pageses:{" "}
+                                    {moment(payment.paidAt).format(
+                                      "DD-MM-yyyy HH:mm:ss"
+                                    )}
+                                  </p>
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                        </Collapse>
+                      </TableCell>
+                    </TableRow>
+                  </React.Fragment>
+                );
+              }
             })}
           </TableBody>
           <AdmPaymentModal

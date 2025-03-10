@@ -17,9 +17,10 @@ import {
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { imagePath, mainUrl, pdfPath, planmetricImageUrl } from "../../../utils/consts";
+import { BASE_URL, imagePath, mainUrl, pdfPath, planmetricImageUrl } from "../../../utils/consts";
 import { getApartmentEditData, getApartmentEditModalState, getApartmentEditStatus, resetStatusAndMsg, setApartmentEditModalState } from "../../../features/apartment/ApartmentEditSlice";
 import { updateApartment } from "../../../features/apartment/ApartmentAPI";
+import axios from "axios";
 
 const style = {
   position: "absolute",
@@ -43,6 +44,8 @@ function AdmParkingModal() {
     id: "",
     rooms: 1,
     isSold: false,
+    isReserved: false,
+    object: '',
     floorNumber: 0,
     square: 0,
     name: "",
@@ -55,7 +58,8 @@ function AdmParkingModal() {
     balconySquare: 0,
     imgUrl: '',
     pdfUrl: '',
-    vtourUrl: ''
+    vtourUrl: '',
+    description: ''
   });
   const [selectedImagePreview, setSelectedImagePreview] = React.useState(
       apartmentData.imgUrl
@@ -134,16 +138,20 @@ function AdmParkingModal() {
     formData.append("square", apartmentData.square);
     formData.append("name", apartmentData.name);
     formData.append("apartmentNumber", apartmentData.apartmentNumber);
-    formData.append("style", apartmentData.style);
+    formData.append("isReserved", apartmentData.isReserved);
     formData.append("className", apartmentData.className);
-    formData.append("imageData", apartmentData.imageData);
+    formData.append("imageUrl", apartmentData.imgUrl);
     formData.append("path", apartmentData.path);
     formData.append("apartmentId", apartmentData.apartmentId);
     formData.append("balconySquare", apartmentData.balconySquare);
     formData.append("id", apartmentData.id);
     formData.append("planMetricName", imageName);
     formData.append("planMetricUrl", imagePathh);
-    dispatch(updateApartment({id: apartmentData.id, formData}))
+    axios.put(`${BASE_URL}/api/v1/parking`, formData).then(
+      res => {
+        toast.success('U ruajt')
+      }
+    )
   };
   
 
@@ -160,7 +168,7 @@ function AdmParkingModal() {
     >
       <Box sx={style}>
         <Box display={"flex"} gap={1} p={4}>
-        <Box flex={2}>
+          <Box flex={2}>
             <Box>
               <img
                 style={{
@@ -179,9 +187,7 @@ function AdmParkingModal() {
                 }}
               >
                 <IconButton
-                  onClick={() =>
-                    setSelectedImagePreview(apartmentData.imgUrl)
-                  }
+                  onClick={() => setSelectedImagePreview(apartmentData.imgUrl)}
                 >
                   <Image />
                 </IconButton>
@@ -310,36 +316,6 @@ function AdmParkingModal() {
                 <TextField
                   fullWidth
                   size="small"
-                  name="floorNumber"
-                  value={apartmentData.floorNumber}
-                  onChange={(e) => {
-                    setApartmentData((prev) => ({
-                      ...prev,
-                      floorNumber: e.target.value,
-                    }));
-                  }}
-                  label="Kati"
-                />
-              </Grid>
-              <Grid item sm={12} md={6}>
-                <TextField
-                  fullWidth
-                  size="small"
-                  name="rooms"
-                  value={apartmentData.rooms}
-                  onChange={(e) => {
-                    setApartmentData((prev) => ({
-                      ...prev,
-                      rooms: e.target.value,
-                    }));
-                  }}
-                  label="Numri i dhomave"
-                />
-              </Grid>
-              <Grid item sm={12} md={6}>
-                <TextField
-                  fullWidth
-                  size="small"
                   name="name"
                   value={apartmentData.name}
                   onChange={(e) => {
@@ -348,19 +324,19 @@ function AdmParkingModal() {
                       name: e.target.value,
                     }));
                   }}
-                  label="Emri baneses"
+                  label="Emri Parkingut"
                 />
               </Grid>
               <Grid item sm={12} md={6}>
                 <TextField
                   fullWidth
                   size="small"
-                  name="apartmentNumber"
-                  value={apartmentData.apartmentNumber}
+                  name="object"
+                  value={apartmentData.object}
                   onChange={(e) => {
                     setApartmentData((prev) => ({
                       ...prev,
-                      apartmentNumber: e.target.value,
+                      object: e.target.value,
                     }));
                   }}
                   label="Objekti"
@@ -369,24 +345,9 @@ function AdmParkingModal() {
               <Grid item sm={12} md={6}>
                 <TextField
                   fullWidth
-                  size="small"
-                  name="balconySquare"
-                  value={apartmentData.balconySquare}
-                  onChange={(e) => {
-                    setApartmentData((prev) => ({
-                      ...prev,
-                      balconySquare: e.target.value,
-                    }));
-                  }}
-                  label="Terasa m2"
-                />
-              </Grid>
-              <Grid item sm={12} md={12} lg={12} xl={12}>
-                <TextField
-                  fullWidth
                   size={"small"}
                   name="apartmentId"
-                  label="ID e Apartamentit"
+                  label="ID e Parkingut"
                   value={apartmentData.apartmentId}
                   onChange={(e) => {
                     setApartmentData((prev) => ({
@@ -432,12 +393,12 @@ function AdmParkingModal() {
                     Reservuar
                   </FormLabel>
                   <RadioGroup
-                    value={apartmentData.isSold}
+                    value={apartmentData.isReserved}
                     row={true}
                     onChange={(e) => {
                       setApartmentData((prev) => ({
                         ...prev,
-                        isSold: e.target.value,
+                        isReserved: e.target.value,
                       }));
                     }}
                     aria-labelledby="demo-row-radio-buttons-group-label"
@@ -457,7 +418,7 @@ function AdmParkingModal() {
                 </FormControl>
               </Grid>
               <Grid item sm={12} md={12}>
-              <TextField
+                <TextField
                   fullWidth
                   size={"small"}
                   label="PDF Emri"
@@ -472,7 +433,7 @@ function AdmParkingModal() {
                 />
               </Grid>
               <Grid item sm={12} md={12}>
-              <TextField
+                <TextField
                   fullWidth
                   size={"small"}
                   label="Virtual Tour URL"
@@ -482,6 +443,23 @@ function AdmParkingModal() {
                     setApartmentData({
                       ...apartmentData,
                       vtourUrl: e.target.value,
+                    });
+                  }}
+                />
+              </Grid>
+              <Grid item sm={12} md={12}>
+                <TextField
+                  fullWidth
+                  multiline
+                  rows={5}
+                  size={"small"}
+                  label="Përshkrimi"
+                  value={apartmentData.description}
+                  name="notes"
+                  onChange={(e) => {
+                    setApartmentData({
+                      ...apartmentData,
+                      description: e.target.value,
                     });
                   }}
                 />

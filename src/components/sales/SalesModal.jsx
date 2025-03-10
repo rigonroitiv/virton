@@ -106,6 +106,16 @@ console.log(apartmentData)
               </Grid>
               <Grid item xs={12} md={6} lg={4}>
                 <TextField
+                  defaultValue={apartmentData?.apartmentNumber}
+                  fullWidth
+                  size="small"
+                  type="text"
+                  name='building'
+                  label="Llamella"
+                />
+              </Grid>
+              <Grid item xs={12} md={6} lg={4}>
+                <TextField
                   defaultValue={apartmentData?.square}
                   fullWidth
                   size="small"

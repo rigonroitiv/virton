@@ -13,6 +13,7 @@ const AdmSalesPage = () => {
         maxHeight: "100%",
         bgcolor: "white",
         borderRadius: "10px",
+        width: '100%',
         p: 1.5,
       }}
     >
