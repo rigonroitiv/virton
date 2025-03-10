@@ -95,12 +95,12 @@ const AdmSalesTable = () => {
           )
         })}
       </Box>
-      <TableContainer sx={{ overflow: "auto", marginTop: "15px",  }}>
-        <Table stickyHeader sx={{maxWidth: '100%', overflow: 'auto'}}>
+      <TableContainer sx={{ overflow: "auto", marginTop: "15px", maxWidth: '90%'  }}>
+        <Table stickyHeader sx={{maxWidth: '70%', overflow: 'auto'}}>
           <TableHead >
             <TableRow sx={{
               '> *': {
-                
+                textWrap: 'nowrap'
               }
             }}>
               <TableCell sx={{ bgcolor: "#1d1d3a", color: "white" }}>
