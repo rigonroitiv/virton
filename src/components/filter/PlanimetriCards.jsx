@@ -22,6 +22,7 @@ import {
   getRegularSquareFilter,
 } from "../../features/filter/FilterSlice";
 import { fetchApartmentsAll } from "../../features/apartment/ApartmentAPI";
+import { useNavigate } from "react-router-dom";
 
 const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   const dispatch = useDispatch();
@@ -33,6 +34,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   const [data, setData] = useState();
   const floorFilter = useSelector(getRegularFloorFilter);
   const buildingData = useSelector(getAllApartmentSvgData);
+  const navigate = useNavigate();
 
   const handleSingleView = () => setColumns(1);
   const handleGridView = () => setColumns(2);
@@ -250,6 +252,9 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                       }}
                     >
                       <Button
+                        onClick={() => {
+                          navigate(`/apartment/${property.id}`);
+                        }}
                         sx={{
                           color: "#C1AC40",
                           textTransform: "capitalize",

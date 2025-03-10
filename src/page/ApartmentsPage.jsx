@@ -5,7 +5,7 @@ import ApartmentsFilter from "../components/filter/ApartmentsFilter";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
 import BuildingSvg from "../components/buildingSvg/BuildingSvg";
 import FloorSvg from "../components/floorSvg/FloorSvg";
-import { Link, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import AdmApartmentIdModal from "../components/admin/apartments/AdmApartmentIdModal";
 import SalesModal from "../components/sales/SalesModal";
 
@@ -18,6 +18,12 @@ const ApartmentsPage = () => {
   const apartmentRef = useRef(null);
   const [activeButton, setActiveButton] = useState(null);
   const { projectid, id } = useParams();
+
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1); // This will go back one page in the history stack
+  };
 
   const handleButtonClick = (buttonIndex, action) => {
     if (buttonIndex < 2) {
@@ -65,7 +71,7 @@ const ApartmentsPage = () => {
               gap: isSmallDev ? "5px" : "10px",
             }}
           >
-            <Link to="/#">
+            <Link onClick={goBack}>
               <svg
                 width="45"
                 height="45"

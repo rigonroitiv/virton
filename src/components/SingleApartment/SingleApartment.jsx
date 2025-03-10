@@ -1,11 +1,15 @@
 import { Avatar, Box, Button, Typography, useMediaQuery } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { mainUrl, planmetricImageUrl } from "../../utils/consts";
 
 const SingleApartment = ({ data }) => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
   const isMidDev = useMediaQuery("(max-width: 1024px)");
   const [threedSelected, setThreedSelected] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Scrolls to the top when the component mounts
+  }, []);
 
   return (
     <Box
@@ -24,6 +28,27 @@ const SingleApartment = ({ data }) => {
           gap: "15px",
         }}
       >
+        <Button
+          sx={{
+            width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
+            border: "1px solid #C1AC40",
+            fontFamily: "Poppins",
+            fontSize: isSmallDev ? "10px" : "15px",
+            fontWeight: "400",
+            color: "#1d1d3a",
+            backgroundColor: "white",
+            borderRadius: "50px",
+            textTransform: "capitalize",
+            height: isSmallDev ? "35px" : "40px",
+          }}
+        >
+          <img
+            style={{ width: "25px", marginRight: "7px" }}
+            src="/assets/images/tile.png"
+            alt=""
+          />
+          2D Plan
+        </Button>
         <Button
           onClick={() => setThreedSelected(!threedSelected)}
           sx={{
