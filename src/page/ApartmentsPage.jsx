@@ -4,15 +4,10 @@ import ApartmentSvg from "../components/apartmentSvg/ApartmentSvg";
 import ApartmentsFilter from "../components/filter/ApartmentsFilter";
 import PlanimetriCards from "../components/filter/PlanimetriCards";
 import BuildingSvg from "../components/buildingSvg/BuildingSvg";
-import ParkingSvg from "../components/parking/ParkingSvg";
 import FloorSvg from "../components/floorSvg/FloorSvg";
 import { Link, useParams } from "react-router-dom";
 import AdmApartmentIdModal from "../components/admin/apartments/AdmApartmentIdModal";
-
-const minFloor = 1;
-const maxFloor = 14;
-const minSquare = 40;
-const maxSquare = 150;
+import SalesModal from "../components/sales/SalesModal";
 
 const ApartmentsPage = () => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -275,6 +270,7 @@ const ApartmentsPage = () => {
         </Link>
       </Box>
       <AdmApartmentIdModal />
+      
       <PlanimetriCards ref={apartmentRef} single={true} />
     </Box>
   );

@@ -1,5 +1,5 @@
 import { Popover } from '@mui/material'
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Divider from '@mui/material/Divider';
 import Paper from '@mui/material/Paper';
 import MenuList from '@mui/material/MenuList';
@@ -13,9 +13,11 @@ import { toast } from 'react-toastify';
 import { setApartmentEditData, setApartmentEditModalState } from '../../../features/apartment/ApartmentEditSlice';
 import { updateIsSold } from '../../../features/apartment/ApartmentAPI';
 import { setApartmentIdModalApartmentId, setApartmentIdModalId, setApartmentIdModalState } from '../../../features/apartment/ApartmentSlice';
+import SalesModal from '../../sales/SalesModal';
 
 const ContextMenu = ({ menu, setMenu }) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const [salesModalOpen, setSalesModalOpen] = useState(false);
     const status = null
     const handleClose = () => {
         setMenu((prev) => ({
@@ -49,7 +51,8 @@ const ContextMenu = ({ menu, setMenu }) => {
   // if(!isAuthorized()) return
 
   return (
-    <Popover
+    <div>
+      <Popover
       open={menu?.open}
       anchorEl={menu?.anchorEl}
       onClose={handleClose}
@@ -121,6 +124,11 @@ const ContextMenu = ({ menu, setMenu }) => {
         //     dispatch(handleLoginModalState(true) )
         //   }         
         // }}
+        onClick={() => {
+          setSalesModalOpen(true)
+          
+        }
+        }
         >
           <ListItemIcon>
             <SupportAgent fontSize="small" />
@@ -139,6 +147,8 @@ const ContextMenu = ({ menu, setMenu }) => {
       </MenuList>
     </Paper>
     </Popover>
+    <SalesModal open={salesModalOpen} handleClose={() => setSalesModalOpen(false)} apartmentData={menu?.data}/>
+    </div>
   );
 }
 

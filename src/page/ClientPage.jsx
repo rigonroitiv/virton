@@ -11,6 +11,7 @@ import FloorSvg from "../components/floorSvg/FloorSvg";
 import Navbar from "../components/common/Navbar";
 import GeneralBuilding2 from "./GeneralBuilding2";
 import GeneralBuilding from "./GeneralBuilding1";
+import ParkingPage from "./ParkingPage";
 
 const ClientPage = () => {
   return (
@@ -26,6 +27,7 @@ const ClientPage = () => {
         <Route path="/terms-conditions" element={<TermsConditions />} />
         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="/test" element={<FloorSvg />} />
+        <Route path="/parking" element={<ParkingPage />} />
       </Routes>
     </div>
   );

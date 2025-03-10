@@ -17,6 +17,7 @@ import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
 import ApartmentPopup from "../popup/ApartmentPopup";
 import { isAuthorized } from "../../features/auth/AuthSlice";
 import ApartmentsFilter from "../filter/ApartmentsFilter";
+import SalesModal from "../sales/SalesModal";
 
 const ApartmentSvg = ({ sizeRange, floorRange }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
@@ -37,6 +38,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
   const floorFilter = useSelector(getRegularFloorFilter);
   const roomFilter = useSelector(getRegularRoomFilter);
   const filterState = useSelector(getFilterState);
+  
   const [contextMenu, setContextMenu] = useState({
     anchorEl: null,
     open: false,
