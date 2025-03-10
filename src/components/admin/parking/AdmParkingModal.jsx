@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Modal from "@mui/material/Modal";
-import { Photo } from "@mui/icons-material";
+import { AddLocation, Image, Photo, ThreeDRotation } from "@mui/icons-material";
 import {
   Divider,
   FormControl,
@@ -54,37 +54,41 @@ function AdmParkingModal() {
     apartmentId: "",
     balconySquare: 0,
     imgUrl: '',
-    pdfUrl: ''
+    pdfUrl: '',
+    vtourUrl: ''
   });
+  const [selectedImagePreview, setSelectedImagePreview] = React.useState(
+      apartmentData.imgUrl
+    );
   React.useEffect(() => {
     if (apartmentEditData !== null) {
       setApartmentData(apartmentEditData);
-      let pdfurl = '';
-      let imgurl = '';
-      const name = apartmentEditData.planMetric?.name?.split(',')
-      const url = apartmentEditData.planMetric?.url?.split(',')
-      for (let index = 0; index < name?.length; index++) {
+      // let pdfurl = '';
+      // let imgurl = '';
+      // const name = apartmentEditData.planMetric?.name?.split(',')
+      // const url = apartmentEditData.planMetric?.url?.split(',')
+      // for (let index = 0; index < name?.length; index++) {
         
-        // if(index < name.length -1 ){
-        //   namee += name[index] + ',' + url[index] + ';'
-        // }
-        // else{
-        //   namee += name[index] + ',' + url[index]
-        // }
-        if(name[index].includes('card')){
-          imgurl = url[index].substring(imagePath.length)
-        }
-        if(name[index].includes('pdf')){
-          pdfurl = url[index].substring(pdfPath.length)
-        }
-      }
-      setApartmentData((prev) => (
-        {...prev,
-        imgUrl: imgurl,
-        pdfUrl: pdfurl,
-        imageData: apartmentEditData.imageUrl,
-        }
-      ))           
+      //   // if(index < name.length -1 ){
+      //   //   namee += name[index] + ',' + url[index] + ';'
+      //   // }
+      //   // else{
+      //   //   namee += name[index] + ',' + url[index]
+      //   // }
+      //   if(name[index].includes('card')){
+      //     imgurl = url[index].substring(imagePath.length)
+      //   }
+      //   if(name[index].includes('pdf')){
+      //     pdfurl = url[index].substring(pdfPath.length)
+      //   }
+      // }
+      // setApartmentData((prev) => (
+      //   {...prev,
+      //   imgUrl: imgurl,
+      //   pdfUrl: pdfurl,
+      //   imageData: apartmentEditData.imageUrl,
+      //   }
+      // ))           
     }
   }, [apartmentEditData]);
 
@@ -156,7 +160,7 @@ function AdmParkingModal() {
     >
       <Box sx={style}>
         <Box display={"flex"} gap={1} p={4}>
-          <Box flex={2}>
+        <Box flex={2}>
             <Box>
               <img
                 style={{
@@ -165,20 +169,51 @@ function AdmParkingModal() {
                 }}
                 width={250}
                 height={200}
-                src={`${mainUrl}${planmetricImageUrl}${apartmentData.imageData}`}
+                src={`${mainUrl}/${planmetricImageUrl}${selectedImagePreview}`}
               />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  gap: 1,
+                }}
+              >
+                <IconButton
+                  onClick={() =>
+                    setSelectedImagePreview(apartmentData.imgUrl)
+                  }
+                >
+                  <Image />
+                </IconButton>
+                <IconButton
+                  onClick={() =>
+                    setSelectedImagePreview(apartmentData.image3dUrl)
+                  }
+                >
+                  <ThreeDRotation />
+                </IconButton>
+                <IconButton
+                  onClick={() =>
+                    setSelectedImagePreview(
+                      apartmentData.apartmentPositionImageUrl
+                    )
+                  }
+                >
+                  <AddLocation />
+                </IconButton>
+              </Box>
             </Box>
             <Box display={"flex"} justifyContent={"center"} mt={2}>
               <TextField
                 size="small"
-                value={apartmentData.imageData}
+                value={apartmentData.imageUrl}
                 onChange={(e) => {
                   setApartmentData({
                     ...apartmentData,
-                    imageData: e.currentTarget.value,
+                    imageUrl: e.currentTarget.value,
                   });
                 }}
-                label="URL e fotos"
+                label="URL e fotos 2D"
                 name="imgUrl"
                 InputProps={{
                   endAdornment: (
@@ -191,20 +226,59 @@ function AdmParkingModal() {
                 }}
               />
             </Box>
-            <Box maxHeight={120} height={100} overflow={"auto"}>
+            <Box
+              maxHeight={130}
+              display={"flex"}
+              flexDirection={"column"}
+              gap={2}
+              height={130}
+              overflow={"auto"}
+            >
               <TextField
                 size="small"
                 multiline
-                label='Photo URL (Ndaj me ",")'
+                label="URL e fotos 3D"
                 fullWidth
                 sx={{ marginTop: 2 }}
-                value={apartmentData.imgUrl}
-                name="imgUrl"
+                value={apartmentData.image3dUrl}
+                name="image3dUrl"
                 onChange={(e) => {
                   setApartmentData({
                     ...apartmentData,
-                    imgUrl: e.target.value,
+                    image3dUrl: e.target.value,
                   });
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton>
+                        <Photo />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
+              />
+              <TextField
+                size="small"
+                multiline
+                label="URL e fotos per orientim"
+                fullWidth
+                value={apartmentData.apartmentPositionImageUrl}
+                name="apartmentPositionImageUrl"
+                onChange={(e) => {
+                  setApartmentData({
+                    ...apartmentData,
+                    apartmentPositionImageUrl: e.target.value,
+                  });
+                }}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton>
+                        <Photo />
+                      </IconButton>
+                    </InputAdornment>
+                  ),
                 }}
               />
             </Box>
@@ -322,7 +396,7 @@ function AdmParkingModal() {
                   }}
                 />
               </Grid>
-              <Grid item sm={12} md={12}>
+              <Grid item sm={12} md={6}>
                 <FormControl>
                   <FormLabel id="demo-row-radio-buttons-group-label">
                     Disponueshmeria
@@ -352,24 +426,65 @@ function AdmParkingModal() {
                   </RadioGroup>
                 </FormControl>
               </Grid>
-              <Grid item sm={12} md={12}>
-                <Box maxHeight={120} height={100} overflow={"auto"}>
-                  <TextField
-                    multiline
-                    label="PDF Emri"
-                    fullWidth
-                    size={"small"}
-                    sx={{ marginTop: 2 }}
-                    value={apartmentData.pdfUrl}
-                    name="pdfUrl"
+              <Grid item sm={12} md={6}>
+                <FormControl>
+                  <FormLabel id="demo-row-radio-buttons-group-label">
+                    Reservuar
+                  </FormLabel>
+                  <RadioGroup
+                    value={apartmentData.isSold}
+                    row={true}
                     onChange={(e) => {
-                      setApartmentData({
-                        ...apartmentData,
-                        pdfUrl: e.target.value,
-                      });
+                      setApartmentData((prev) => ({
+                        ...prev,
+                        isSold: e.target.value,
+                      }));
                     }}
-                  />
-                </Box>
+                    aria-labelledby="demo-row-radio-buttons-group-label"
+                    name="row-radio-buttons-group"
+                  >
+                    <FormControlLabel
+                      value={true}
+                      control={<Radio />}
+                      label="PO"
+                    />
+                    <FormControlLabel
+                      value={false}
+                      control={<Radio />}
+                      label="JO"
+                    />
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
+              <Grid item sm={12} md={12}>
+              <TextField
+                  fullWidth
+                  size={"small"}
+                  label="PDF Emri"
+                  value={apartmentData.pdfUrl}
+                  name="pdfUrl"
+                  onChange={(e) => {
+                    setApartmentData({
+                      ...apartmentData,
+                      pdfUrl: e.target.value,
+                    });
+                  }}
+                />
+              </Grid>
+              <Grid item sm={12} md={12}>
+              <TextField
+                  fullWidth
+                  size={"small"}
+                  label="Virtual Tour URL"
+                  value={apartmentData.vtourUrl}
+                  name="vtourUrl"
+                  onChange={(e) => {
+                    setApartmentData({
+                      ...apartmentData,
+                      vtourUrl: e.target.value,
+                    });
+                  }}
+                />
               </Grid>
             </Grid>
           </Box>
