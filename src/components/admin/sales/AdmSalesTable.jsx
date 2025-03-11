@@ -29,14 +29,7 @@ import AdmPaymentModal from "./AdmPaymentModal";
 
 const apiPath = "/api/v1/sales";
 
-const folder = [
-  'A',
-  'B',
-  'C',
-  'DE',
-  'F',
-  'ABC',
-]
+const folder = ["A", "B", "C", "DE", "F", "ABC"];
 const AdmSalesTable = () => {
   const dispatch = useDispatch();
   const [salesData, setSalesData] = useState([]);
@@ -45,7 +38,7 @@ const AdmSalesTable = () => {
   const [error, setError] = useState(null);
   const [expandedRows, setExpandedRows] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedFolder, setSelectedFolder] = useState('A');
+  const [selectedFolder, setSelectedFolder] = useState("A");
 
   const handleOpenModal = (saleItem) => {
     setSelectedSale(saleItem);
@@ -71,38 +64,50 @@ const AdmSalesTable = () => {
   };
 
   return (
-    <Box mt={2} sx={{ maxWidth: '100%', overflow: 'hidden'}}>
-      <Box sx={{display: 'flex', gap: 1}}>
+    <Box mt={2} sx={{ width: "100%", maxWidth: "100%", overflow: "hidden" }}>
+      <Box sx={{ display: "flex", gap: 1 }}>
         {folder.map((item, inx) => {
           return (
-            <Box onClick={() => setSelectedFolder(item)} sx={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 2,
-              p: 1,
-              border: '1px solid #DDD',
-              borderRadius: '12px',
-              px: 2,
-              cursor: 'pointer',
-              bgcolor: selectedFolder === item ? 'lightgray' : 'transparent',
-              ":hover": {
-                bgcolor: 'lightgray'
-              }
-            }}>
-              <Folder fontSize="small" sx={{color: 'orange'}}/>
+            <Box
+              onClick={() => setSelectedFolder(item)}
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+                p: 1,
+                border: "1px solid #DDD",
+                borderRadius: "12px",
+                px: 2,
+                cursor: "pointer",
+                bgcolor: selectedFolder === item ? "lightgray" : "transparent",
+                ":hover": {
+                  bgcolor: "lightgray",
+                },
+              }}
+            >
+              <Folder fontSize="small" sx={{ color: "orange" }} />
               <Typography variant="caption">Objekti {item}</Typography>
             </Box>
-          )
+          );
         })}
       </Box>
-      <TableContainer sx={{ overflow: "auto", marginTop: "15px", maxWidth: '90%'  }}>
-        <Table stickyHeader sx={{maxWidth: '70%', overflow: 'auto'}}>
-          <TableHead >
-            <TableRow sx={{
-              '> *': {
-                textWrap: 'nowrap'
-              }
-            }}>
+      <TableContainer
+        sx={{
+          overflowX: "auto",
+          marginTop: "15px",
+          maxWidth: "53%",
+          display: "block",
+        }}
+      >
+        <Table stickyHeader sx={{ minWidth: "2500px", overflow: "auto" }}>
+          <TableHead>
+            <TableRow
+              sx={{
+                "> *": {
+                  textWrap: "nowrap",
+                },
+              }}
+            >
               <TableCell sx={{ bgcolor: "#1d1d3a", color: "white" }}>
                 Nr
               </TableCell>
@@ -160,7 +165,7 @@ const AdmSalesTable = () => {
             {salesData.map((item, index) => {
               const isExpanded = expandedRows[index] || false;
 
-              if(item.building === selectedFolder) {
+              if (item.building === selectedFolder) {
                 return (
                   <React.Fragment key={index}>
                     <TableRow>
@@ -186,7 +191,8 @@ const AdmSalesTable = () => {
                         {item.parkingNumber}
                       </TableCell>
                       <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                        {item.parkingPrice}{EURO_SYMBOL}
+                        {item.parkingPrice}
+                        {EURO_SYMBOL}
                       </TableCell>
                       <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
                         {item.warehouseNumber}
@@ -195,13 +201,16 @@ const AdmSalesTable = () => {
                         {item.warehouseSquare}m<sup>2</sup>
                       </TableCell>
                       <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                        {item.warehousePricePerSquare}{EURO_SYMBOL}/m<sup>2</sup>
+                        {item.warehousePricePerSquare}
+                        {EURO_SYMBOL}/m<sup>2</sup>
                       </TableCell>
                       <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                        {item.warehouseTotalPrice}{EURO_SYMBOL}
+                        {item.warehouseTotalPrice}
+                        {EURO_SYMBOL}
                       </TableCell>
                       <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
-                        {item.total}{EURO_SYMBOL}
+                        {item.total}
+                        {EURO_SYMBOL}
                       </TableCell>
                       <TableCell sx={{ p: 0, pl: "5px", py: "5px" }}>
                         {moment(item.createdAt).format("DD-MM-yyyy")}
@@ -214,7 +223,9 @@ const AdmSalesTable = () => {
                         {item.remainingAmount}
                         {EURO_SYMBOL}
                       </TableCell>
-                      <TableCell sx={{ p: 0, pl: "5px", py: "5px", display: 'flex' }}>
+                      <TableCell
+                        sx={{ p: 0, pl: "5px", py: "5px", display: "flex" }}
+                      >
                         <IconButton
                           onClick={() => handleOpenModal(item)}
                           color="primary"
@@ -234,7 +245,10 @@ const AdmSalesTable = () => {
                         <IconButton color="error" size="small">
                           <DeleteForever />
                         </IconButton>
-                        <IconButton onClick={() => toggleRow(index)} size="small">
+                        <IconButton
+                          onClick={() => toggleRow(index)}
+                          size="small"
+                        >
                           {isExpanded ? <ExpandLess /> : <ExpandMore />}
                         </IconButton>
                       </TableCell>
