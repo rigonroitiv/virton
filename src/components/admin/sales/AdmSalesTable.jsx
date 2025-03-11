@@ -95,11 +95,11 @@ const AdmSalesTable = () => {
         sx={{
           overflowX: "auto",
           marginTop: "15px",
-          maxWidth: "53%",
+          maxWidth: "77%",
           display: "block",
         }}
       >
-        <Table stickyHeader sx={{ minWidth: "2500px", overflow: "auto" }}>
+        <Table stickyHeader sx={{ minWidth: "1000px", overflow: "auto" }}>
           <TableHead>
             <TableRow
               sx={{

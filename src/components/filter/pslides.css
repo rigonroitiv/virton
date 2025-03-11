@@ -1,3 +1,42 @@
 .slick-prev:hover, .slick-prev:focus, .slick-next:hover, .slick-next:focus{
     background-color: #C1AC40;
 }
+
+/* Style the navigation buttons */
+.swiper-button-next,
+.swiper-button-prev {
+  background-color: #1d1d3a; /* Background color */
+  color: #fff; /* Icon color */
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background-color: #c1ac40; /* Hover effect */
+}
+
+/* Change the arrow color */
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  font-size: 20px; /* Adjust size */
+  color: white; /* Adjust arrow color */
+}
+
+/* Position adjustments */
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .swiper-button-prev {
+    left: 0;
+  }
+  .swiper-button-next {
+    right: 0;
+  }
+}

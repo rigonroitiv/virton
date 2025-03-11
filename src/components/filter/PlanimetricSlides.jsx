@@ -1,5 +1,19 @@
-import React from "react";
-import Slider from "react-slick";
+import React, { forwardRef, useEffect, useState } from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { mainUrl, planmetricImageUrl } from "../../utils/consts";
+import {
+  getRegularFloorFilter,
+  getRegularRoomFilter,
+  getRegularSquareFilter,
+} from "../../features/filter/FilterSlice";
+import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchApartmentsAll } from "../../features/apartment/ApartmentAPI";
+
 import {
   Box,
   Card,
@@ -11,76 +25,44 @@ import {
 } from "@mui/material";
 import { planimetrite } from "../../utils/server";
 import Logo from "../../assets/svg/logo";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
 import "./pslides.css";
+import { useNavigate } from "react-router-dom";
 
-const PlanimetriCards = () => {
+const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
 
-  const settings = {
-    dots: true, // Display navigation dots
-    infinite: true, // Infinite scrolling
-    speed: 800, // Transition speed
-    slidesToShow: isSmallDev ? 1 : 4, // Show 1 card on mobile, 4 on desktop
-    slidesToScroll: 1, // Scroll one card at a time
-    nextArrow: (
-      <Button
-        sx={{
-          position: "absolute",
-          top: isSmallDev ? "-10%" : "50%",
-          right: isSmallDev ? 0 : -60,
-          zIndex: 1,
-          backgroundColor: "#1d1d3a",
-          width: "50px",
-          minWidth: "0px",
-          height: "50px",
-          color: "#fff",
-          borderRadius: "50%",
-          paddingTop: "13px",
-          "&:hover": {
-            backgroundColor: "#C1AC40",
-          },
-        }}
-      ></Button>
-    ),
-    prevArrow: (
-      <Button
-        sx={{
-          position: "absolute",
-          top: isSmallDev ? "-10%" : "50%",
-          left: isSmallDev ? 240 : -60,
-          zIndex: 1,
-          backgroundColor: "#1d1d3a",
-          width: "50px",
-          minWidth: "0px",
-          height: "50px",
-          color: "#fff",
-          borderRadius: "50%",
-          paddingTop: "13px",
-          "&:hover": {
-            backgroundColor: "#C1AC40",
-          },
-        }}
-      ></Button>
-    ),
-    responsive: [
-      {
-        breakpoint: 1024, // Tablet view
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 768, // Mobile view
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
+  const dispatch = useDispatch();
+  const squareFilter = useSelector(getRegularSquareFilter);
+  const roomFilter = useSelector(getRegularRoomFilter);
+  const [data, setData] = useState();
+  const floorFilter = useSelector(getRegularFloorFilter);
+  const [columns, setColumns] = useState(2); // Default to 2 columns for mobile
+
+  const buildingData = useSelector(getAllApartmentSvgData);
+  const navigate = useNavigate();
+
+  const fetchData = () => {
+    if (single) {
+      const dataToUpdate = buildingData
+        ?.map((item) => item.apartmentList)
+        .flat();
+      setData(dataToUpdate); // Set the flattened data when 'single' is true
+    } else {
+      dispatch(fetchApartmentsAll()); // Fetch apartments if 'single' is false
+    }
   };
+
+  // First useEffect to handle the 'single' prop and fetching data
+  useEffect(() => {
+    fetchData(); // Trigger fetchData whenever 'single' prop changes
+  }, [single, buildingData]); // Also depend on buildingData to account for changes
+
+  // Second useEffect to update 'data' when buildingData changes
+  useEffect(() => {
+    if (!single) {
+      setData(buildingData); // If not 'single', set the data to buildingData
+    }
+  }, [buildingData, single]);
 
   return (
     <Box
@@ -90,9 +72,18 @@ const PlanimetriCards = () => {
         padding: isSmallDev ? "0px" : "0px 30px",
       }}
     >
-      <Slider {...settings}>
-        {planimetrite.map((property) => (
-          <Box key={property.id} sx={{ padding: "0 10px" }}>
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={10}
+        slidesPerView={isSmallDev ? 1 : 4}
+        navigation
+        // breakpoints={{
+        //   1024: { slidesPerView: 2, slidesPerGroup: 1 },
+        //   768: { slidesPerView: 1, slidesPerGroup: 1 },
+        // }}
+      >
+        {data?.map((property) => (
+          <SwiperSlide key={property.id}>
             <Card
               sx={{
                 width: "100%",
@@ -112,9 +103,9 @@ const PlanimetriCards = () => {
                   padding: "15px",
                   borderRadius: "5px",
                 }}
-                height="300"
-                image={property.image}
-                alt={`${property.tipi} image`}
+                height={isSmallDev ? (columns === 1 ? "300" : "200") : "300"}
+                image={`${mainUrl}${planmetricImageUrl}${property.imageUrl}`}
+                alt={`${property.rooms} image`}
               />
               <CardContent
                 sx={{
@@ -148,7 +139,7 @@ const PlanimetriCards = () => {
                     variant="body1"
                     sx={{ color: "white", fontFamily: "Poppins" }}
                   >
-                    {property.siperfaqja}
+                    {property.square}
                   </Typography>
                 </Box>
                 <Box
@@ -172,7 +163,7 @@ const PlanimetriCards = () => {
                     variant="body1"
                     sx={{ color: "white", fontFamily: "Poppins" }}
                   >
-                    {property.tipi}
+                    {property.rooms}
                   </Typography>
                 </Box>
                 <Box
@@ -195,7 +186,7 @@ const PlanimetriCards = () => {
                     variant="body1"
                     sx={{ color: "white", fontFamily: "Poppins" }}
                   >
-                    {property.kati}
+                    {property.floorNumber}
                   </Typography>
                 </Box>
                 <Box
@@ -207,6 +198,9 @@ const PlanimetriCards = () => {
                   }}
                 >
                   <Button
+                    onClick={() => {
+                      navigate(`/apartment/${property.id}`);
+                    }}
                     sx={{
                       color: "#C1AC40",
                       textTransform: "capitalize",
@@ -225,7 +219,7 @@ const PlanimetriCards = () => {
                       src="/assets/images/vector.png"
                       alt=""
                       style={{ marginRight: "7px" }}
-                    />
+                    />{" "}
                     Më Shumë...
                   </Button>
                 </Box>
@@ -240,11 +234,11 @@ const PlanimetriCards = () => {
                 </Box>
               </CardContent>
             </Card>
-          </Box>
+          </SwiperSlide>
         ))}
-      </Slider>
+      </Swiper>
     </Box>
   );
-};
+});
 
 export default PlanimetriCards;
