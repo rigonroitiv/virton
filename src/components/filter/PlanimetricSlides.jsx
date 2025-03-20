@@ -12,7 +12,7 @@ import {
 } from "../../features/filter/FilterSlice";
 import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchApartmentsAll } from "../../features/apartment/ApartmentAPI";
+import { fetchApartmentsAll, getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
 
 import {
   Box,
@@ -28,41 +28,32 @@ import Logo from "../../assets/svg/logo";
 import "./pslides.css";
 import { useNavigate } from "react-router-dom";
 
-const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
+const PlanimetricSlides = ( { building } ) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
-
   const dispatch = useDispatch();
-  const squareFilter = useSelector(getRegularSquareFilter);
-  const roomFilter = useSelector(getRegularRoomFilter);
   const [data, setData] = useState();
-  const floorFilter = useSelector(getRegularFloorFilter);
   const [columns, setColumns] = useState(2); // Default to 2 columns for mobile
 
   const buildingData = useSelector(getAllApartmentSvgData);
   const navigate = useNavigate();
 
-  const fetchData = () => {
-    if (single) {
-      const dataToUpdate = buildingData
-        ?.map((item) => item.apartmentList)
-        .flat();
-      setData(dataToUpdate); // Set the flattened data when 'single' is true
-    } else {
-      dispatch(fetchApartmentsAll()); // Fetch apartments if 'single' is false
-    }
-  };
 
   // First useEffect to handle the 'single' prop and fetching data
   useEffect(() => {
-    fetchData(); // Trigger fetchData whenever 'single' prop changes
-  }, [single, buildingData]); // Also depend on buildingData to account for changes
+    if(building)
+    dispatch(getObjectSvgDataAll(building))
+  }, [dispatch, building]); // Also depend on buildingData to account for changes
+  
+  const a = buildingData?.map((it) => {
+    return it.apartmentList?.map((apartment) => {
+      return {
+        square: apartment.square,
+        rooms: apartment.rooms,
 
-  // Second useEffect to update 'data' when buildingData changes
-  useEffect(() => {
-    if (!single) {
-      setData(buildingData); // If not 'single', set the data to buildingData
-    }
-  }, [buildingData, single]);
+      }
+    })
+  });
+  
 
   return (
     <Box
@@ -239,6 +230,6 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
       </Swiper>
     </Box>
   );
-});
+};
 
-export default PlanimetriCards;
+export default PlanimetricSlides;

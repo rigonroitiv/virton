@@ -117,12 +117,12 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
       >
         {data?.map((property) => {
           if (
-            squareFilter.startVal <= parseFloat(property.square) &&
-            squareFilter.endVal >= parseFloat(property.square) &&
-            (roomFilter.includes(property.rooms) ||
+            squareFilter.startVal <= parseFloat(property?.square) &&
+            squareFilter.endVal >= parseFloat(property?.square) &&
+            (roomFilter.includes(property?.rooms) ||
               roomFilter.includes("all")) &&
-            floorFilter.startVal <= parseInt(property.floorNumber) &&
-            floorFilter.endVal >= parseInt(property.floorNumber)
+            floorFilter.startVal <= parseInt(property?.floorNumber) &&
+            floorFilter.endVal >= parseInt(property?.floorNumber)
           ) {
             return (
               <Grid

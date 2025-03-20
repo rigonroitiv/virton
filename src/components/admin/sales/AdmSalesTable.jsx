@@ -29,7 +29,8 @@ import AdmPaymentModal from "./AdmPaymentModal";
 
 const apiPath = "/api/v1/sales";
 
-const folder = ["A", "B", "C", "DE", "F", "ABC"];
+const folder = {'River 1': ["A", "B", "C", 'D'], 'River 2': ["DE", "F", "ABC", 'G']};
+const projectFolder = ['River 1', 'River 2'];
 const AdmSalesTable = () => {
   const dispatch = useDispatch();
   const [salesData, setSalesData] = useState([]);
@@ -38,7 +39,8 @@ const AdmSalesTable = () => {
   const [error, setError] = useState(null);
   const [expandedRows, setExpandedRows] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [selectedFolder, setSelectedFolder] = useState("A");
+  const [selectedProjectFolder, setSelectedProjectFolder] = useState('River 1')
+  const [selectedFolder, setSelectedFolder] = useState();
 
   const handleOpenModal = (saleItem) => {
     setSelectedSale(saleItem);
@@ -65,8 +67,36 @@ const AdmSalesTable = () => {
 
   return (
     <Box mt={2} sx={{ width: "100%", maxWidth: "100%", overflow: "hidden" }}>
-      <Box sx={{ display: "flex", gap: 1 }}>
-        {folder.map((item, inx) => {
+      <Box
+        sx={{
+          display: "flex",
+          gap: 1,
+          mt: 4,
+        }}
+      >
+        {projectFolder.map((it) => <Box
+        onClick={() => setSelectedProjectFolder(it)}
+          sx={{
+            display: "flex",
+            p: 2,
+            px: 5,
+            gap: 1,
+            alignItems: "center",
+            border: "1px solid #DDD",
+            borderRadius: "18px",
+            bgcolor: it===selectedProjectFolder ? '#DDD' :'white',
+            cursor: "pointer",
+            ":hover": {
+              bgcolor: "#DDD",
+            },
+          }}
+        >
+          <Folder sx={{ color: "orange" }} />
+          <Typography>{it}</Typography>
+        </Box>)}
+      </Box>
+      <Box sx={{ display: "flex", gap: 1, mt: 2 }}>
+        {folder[selectedProjectFolder].map((item, inx) => {
           return (
             <Box
               onClick={() => setSelectedFolder(item)}
