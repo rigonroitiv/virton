@@ -28,7 +28,7 @@ import Logo from "../../assets/svg/logo";
 import "./pslides.css";
 import { useNavigate } from "react-router-dom";
 
-const PlanimetricSlides = ( { building } ) => {
+const PlanimetricSlides = ( { building, type } ) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const dispatch = useDispatch();
   const [data, setData] = useState();
@@ -44,16 +44,25 @@ const PlanimetricSlides = ( { building } ) => {
     dispatch(getObjectSvgDataAll(building))
   }, [dispatch, building]); // Also depend on buildingData to account for changes
   
-  const a = buildingData?.map((it) => {
-    return it.apartmentList?.map((apartment) => {
-      return {
-        square: apartment.square,
-        rooms: apartment.rooms,
-
-      }
-    })
-  });
   
+
+  useEffect(() => {
+    if (buildingData) {
+      const a = buildingData?.map((it) => {
+        return it.apartmentList?.filter((apartment) => apartment.rooms === type).map((apartment) => {
+          return {
+            square: apartment.square,
+            rooms: apartment.rooms,
+            floorNumber: apartment.floorNumber,
+            imageUrl: apartment.imageUrl,
+    
+          }
+        })
+      });
+      
+      setData(a.flat(2));
+    }
+  }, [buildingData]);
 
   return (
     <Box
