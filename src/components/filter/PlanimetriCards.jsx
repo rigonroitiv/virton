@@ -39,7 +39,10 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   const handleSingleView = () => setColumns(1);
   const handleGridView = () => setColumns(2);
 
-  const fetchData = () => {
+  
+
+  // First useEffect to handle the 'single' prop and fetching data
+  useEffect(() => {
     if (single) {
       const dataToUpdate = buildingData
         ?.map((item) => item.apartmentList)
@@ -48,12 +51,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
     } else {
       dispatch(fetchApartmentsAll()); // Fetch apartments if 'single' is false
     }
-  };
-
-  // First useEffect to handle the 'single' prop and fetching data
-  useEffect(() => {
-    fetchData(); // Trigger fetchData whenever 'single' prop changes
-  }, [single, buildingData]); // Also depend on buildingData to account for changes
+  }, [single]); // Also depend on buildingData to account for changes
 
   // Second useEffect to update 'data' when buildingData changes
   useEffect(() => {
