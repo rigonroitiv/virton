@@ -266,8 +266,8 @@ const GeneralBuilding2 = () => {
       {id === "1" &&
         object1.map((item) => {
           if (currentInx === item.id) {
-            console.log('ID: ' + item.id)
-            console.log('index: ' + currentInx)
+            console.log("ID: " + item.id);
+            console.log("index: " + currentInx);
             return (
               <svg
                 viewBox="0 0 1440 710"

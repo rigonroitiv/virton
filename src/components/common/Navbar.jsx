@@ -29,7 +29,10 @@ const Navbar = () => {
       href: "https://virtoninvest.com/portfolio/river-residence/",
     },
     { text: "Kontakt", href: "https://virtoninvest.com/contact/" },
-    { text: "Apartamentet", href: "/apartments" },
+    {
+      text: "Apartamentet",
+      href: "https://virton.roitiv.com/projektet/#/floor-plan-page",
+    },
     { text: "Afarizmi", href: "/services" },
     { text: "Parkingjet", href: "/parking" },
   ];

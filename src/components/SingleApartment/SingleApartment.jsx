@@ -352,25 +352,29 @@ const SingleApartment = ({ data }) => {
             alignItems: "center",
           }}
         >
-          {!threedSelected ? <img
-            style={{
-              width: "100%",
-              height: "550px",
-              objectFit: "contain",
-              padding: isSmallDev ? "20px" : "60px",
-            }}
-            src={`${mainUrl}${planmetricImageUrl}${data?.imageUrl}`}
-            alt=""
-          /> : <img
-          style={{
-            width: "100%",
-            height: "550px",
-            objectFit: "contain",
-            padding: isSmallDev ? "20px" : "60px",
-          }}
-          src={`${mainUrl}${planmetricImageUrl}${data?.image3dUrl}`}
-          alt=""
-        />}
+          {!threedSelected ? (
+            <img
+              style={{
+                width: "100%",
+                height: "550px",
+                objectFit: "contain",
+                padding: isSmallDev ? "20px" : "60px",
+              }}
+              src={`${mainUrl}${planmetricImageUrl}${data?.imageUrl}`}
+              alt=""
+            />
+          ) : (
+            <img
+              style={{
+                width: "100%",
+                height: "550px",
+                objectFit: "contain",
+                padding: isSmallDev ? "20px" : "60px",
+              }}
+              src={`${mainUrl}${planmetricImageUrl}${data?.image3dUrl}`}
+              alt=""
+            />
+          )}
         </Box>
       </Box>
     </Box>
