@@ -36,6 +36,7 @@ import Notes from "../../components/admin/notes/Notes";
 import Login from "../../components/auth/Login";
 import AdmRequestPage from "./requests/AdmRequestPage";
 import AdmSalesPage from "./sales/AdmSalesPage";
+import DashboardPage from "./dashboard/DashboardPage";
 
 const AdminPage = () => {
   const [open, setOpen] = React.useState(true);
@@ -46,7 +47,7 @@ const AdminPage = () => {
         display: "flex",
         width: "100%",
         maxWidth: "100%",
-        overflow: 'hidden',
+        overflow: "hidden",
         height: "100vh",
       }}
     >
@@ -205,6 +206,7 @@ const AdminPage = () => {
           <Route path="/login" element={<Login />} />
           <Route path="/requests" element={<AdmRequestPage />} />
           <Route path="/sales" element={<AdmSalesPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
         </Routes>
       </Box>
     </Box>
