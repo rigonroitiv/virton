@@ -4,6 +4,7 @@ import Logo from "../../assets/svg/logo";
 import { useDispatch } from "react-redux";
 import {
   handleFilterState,
+  handleRegularFilterReset,
   setRegularFloorFilter,
   setRegularRoomFilter,
   setRegularSquareFilter,
@@ -35,6 +36,12 @@ const ApartmentsFilter = () => {
     dispatch(handleFilterState(true));
     dispatch(setRegularRoomFilter(room));
   };
+
+  const resetFilter = () => {
+    // dispatch(handleFilterState(false));
+    dispatch(handleRegularFilterReset());
+    setRoom(["all"]);
+  }
 
   const handleRoomFilter = (actionPayload) => {
     if (actionPayload === "all") {
@@ -134,10 +141,10 @@ const ApartmentsFilter = () => {
           }}
         >
           <Button
-            onClick={() => handleRoomFilter("1+1")}
+            onClick={() => handleRoomFilter("1")}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: room.includes("1+1") ? "#C1AC40" : "transparent",
+              backgroundColor: room.includes("1") ? "#C1AC40" : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -148,10 +155,10 @@ const ApartmentsFilter = () => {
             1+1
           </Button>
           <Button
-            onClick={() => handleRoomFilter("2+1")}
+            onClick={() => handleRoomFilter("2")}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: room.includes("2+1") ? "#C1AC40" : "transparent",
+              backgroundColor: room.includes("2") ? "#C1AC40" : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -162,10 +169,10 @@ const ApartmentsFilter = () => {
             2+1
           </Button>
           <Button
-            onClick={() => handleRoomFilter("3+1")}
+            onClick={() => handleRoomFilter("3")}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: room.includes("3+1") ? "#C1AC40" : "transparent",
+              backgroundColor: room.includes("3") ? "#C1AC40" : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -176,10 +183,10 @@ const ApartmentsFilter = () => {
             3+1
           </Button>
           <Button
-            onClick={() => handleRoomFilter("4+1")}
+            onClick={() => handleRoomFilter("4")}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: room.includes("4+1") ? "#C1AC40" : "transparent",
+              backgroundColor: room.includes("4") ? "#C1AC40" : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -190,10 +197,10 @@ const ApartmentsFilter = () => {
             4+1
           </Button>
           <Button
-            onClick={() => handleRoomFilter("5+1")}
+            onClick={() => handleRoomFilter("5")}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: room.includes("5+1") ? "#C1AC40" : "transparent",
+              backgroundColor: room.includes("5") ? "#C1AC40" : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
               color: "white",
               width: "max-content",
@@ -207,7 +214,7 @@ const ApartmentsFilter = () => {
             onClick={() => handleRoomFilter("penthouse")}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: room.includes("penthouse")
+              backgroundColor: room.includes("pthouse")
                 ? "#C1AC40"
                 : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
@@ -449,7 +456,7 @@ const ApartmentsFilter = () => {
       >
         <Button
           onClick={() => {
-            dispatch(handleFilterState(false));
+            resetFilter();
           }}
           sx={{
             border: "1px solid #C1AC40",
