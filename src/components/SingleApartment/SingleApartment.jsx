@@ -354,7 +354,7 @@ const SingleApartment = ({ data }) => {
           <img
             style={{
               width: "100%",
-              height: "100%",
+              height: "500px",
               objectFit: "cover",
               padding: isSmallDev ? "20px" : "60px",
             }}
