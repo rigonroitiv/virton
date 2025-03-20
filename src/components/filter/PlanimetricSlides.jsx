@@ -1,4 +1,4 @@
-import React, { forwardRef, useEffect, useState } from "react";
+import React, { forwardRef, useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper/modules";
 import "swiper/css";
@@ -36,6 +36,7 @@ const PlanimetricSlides = ({ building, type }) => {
   const dispatch = useDispatch();
   const [data, setData] = useState();
   const [columns, setColumns] = useState(2); // Default to 2 columns for mobile
+  const swiperRef = useRef(null);
 
   const buildingData = useSelector(getAllApartmentSvgData);
   const navigate = useNavigate();
@@ -64,19 +65,32 @@ const PlanimetricSlides = ({ building, type }) => {
     }
   }, [buildingData]);
 
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.params.navigation.prevEl = ".custom-prev";
+      swiperRef.current.swiper.params.navigation.nextEl = ".custom-next";
+      swiperRef.current.swiper.navigation.init();
+      swiperRef.current.swiper.navigation.update();
+    }
+  }, []);
+
   return (
     <Box
       sx={{
+        position: "relative",
         backgroundColor: "white",
         marginTop: "50px",
         padding: isSmallDev ? "0px" : "0px 30px",
       }}
     >
+      <div className="swiper-button-prev custom-prev"></div>
+      <div className="swiper-button-next custom-next"></div>
       <Swiper
         modules={[Navigation, Pagination]}
         spaceBetween={10}
         slidesPerView={isSmallDev ? 1 : 4}
-        navigation
+        onSwiper={(swiper) => (swiperRef.current = { swiper })}
+
         // breakpoints={{
         //   1024: { slidesPerView: 2, slidesPerGroup: 1 },
         //   768: { slidesPerView: 1, slidesPerGroup: 1 },

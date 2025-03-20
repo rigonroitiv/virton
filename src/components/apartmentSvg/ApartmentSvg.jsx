@@ -38,7 +38,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
   const floorFilter = useSelector(getRegularFloorFilter);
   const roomFilter = useSelector(getRegularRoomFilter);
   const filterState = useSelector(getFilterState);
-  
+
   const [contextMenu, setContextMenu] = useState({
     anchorEl: null,
     open: false,
@@ -108,6 +108,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
         width: "100%",
         height: "100%",
         position: "relative",
+        overflow: "auto",
       }}
     >
       {dataForSelection?.map((building, index) => {
@@ -119,8 +120,9 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                 height: index === currentIndex ? getSvgHeight() : "0px",
                 opacity: currentIndex === index ? 1 : 0,
                 transition: "opacity 0.1s ease-in-out",
-                width: "100%",
+                width: isSmallDev ? "250%" : "100%",
                 position: isMidDev ? "" : "absolute",
+                overflow: isSmallDev ? "auto" : "",
                 display: "flex",
               }}
             >
@@ -278,6 +280,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
       </Box>
       <Box
         sx={{
+          position: "static",
           display: isSmallDev ? "flex" : "none",
           flexDirection: "row",
           justifyContent: "end",
@@ -287,7 +290,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
       >
         <Button
           sx={{
-            backgroundColor: "#C1AC40",
+            backgroundColor: "#1d1d3a",
             borderRadius: "50px",
             minWidth: "10px",
             width: "50px",
@@ -299,6 +302,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
             id="fi_2985161"
             enable-background="new 0 0 128 128"
             height="45"
+            fill="#C1AC40"
             viewBox="0 0 128 128"
             width="30"
             xmlns="http://www.w3.org/2000/svg"
@@ -311,7 +315,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
         </Button>
         <Button
           sx={{
-            backgroundColor: "#C1AC40",
+            backgroundColor: "#1d1d3a",
             borderRadius: "50px",
             minWidth: "10px",
             width: "50px",
@@ -323,6 +327,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
             id="fi_2985179"
             enable-background="new 0 0 128 128"
             height="45"
+            fill="#C1AC40"
             viewBox="0 0 128 128"
             width="30"
             xmlns="http://www.w3.org/2000/svg"

@@ -38,7 +38,6 @@ const SingleApartment = ({ data }) => {
             fontWeight: "400",
             color: "#1d1d3a",
             backgroundColor: twodSelected ? "#C1AC40" : "white",
-            backgroundColor: "white",
             borderRadius: "50px",
             textTransform: "capitalize",
             height: isSmallDev ? "35px" : "40px",
