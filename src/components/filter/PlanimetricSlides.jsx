@@ -12,7 +12,10 @@ import {
 } from "../../features/filter/FilterSlice";
 import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchApartmentsAll, getObjectSvgDataAll } from "../../features/apartment/ApartmentAPI";
+import {
+  fetchApartmentsAll,
+  getObjectSvgDataAll,
+} from "../../features/apartment/ApartmentAPI";
 
 import {
   Box,
@@ -28,7 +31,7 @@ import Logo from "../../assets/svg/logo";
 import "./pslides.css";
 import { useNavigate } from "react-router-dom";
 
-const PlanimetricSlides = ( { building } ) => {
+const PlanimetricSlides = ({ building }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const dispatch = useDispatch();
   const [data, setData] = useState();
@@ -37,23 +40,19 @@ const PlanimetricSlides = ( { building } ) => {
   const buildingData = useSelector(getAllApartmentSvgData);
   const navigate = useNavigate();
 
-
   // First useEffect to handle the 'single' prop and fetching data
   useEffect(() => {
-    if(building)
-    dispatch(getObjectSvgDataAll(building))
+    if (building) dispatch(getObjectSvgDataAll(building));
   }, [dispatch, building]); // Also depend on buildingData to account for changes
-  
+
   const a = buildingData?.map((it) => {
     return it.apartmentList?.map((apartment) => {
       return {
         square: apartment.square,
         rooms: apartment.rooms,
-
-      }
-    })
+      };
+    });
   });
-  
 
   return (
     <Box
