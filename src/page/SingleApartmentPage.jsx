@@ -162,7 +162,7 @@ const SingleApartmentPage = () => {
           <span style={{ fontWeight: "700", color: "#C1AC40" }}>ngjajshme</span>
         </Typography>
 
-        <PlanimetricSlides building={data?.apartmentNumber}/>
+        <PlanimetricSlides type={data?.rooms} building={data?.apartmentNumber}/>
       </Box>
     </Box>
   );
