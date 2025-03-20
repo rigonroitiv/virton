@@ -26,6 +26,11 @@ import {
   setRegularSquareFilter,
 } from "../features/filter/FilterSlice";
 
+const object = {
+  '1': ['A', 'B', 'C', 'D', 'G'],
+  '2': ['ABC', 'DE', 'F'],
+};
+
 const PlanFilter = () => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
 
@@ -41,6 +46,7 @@ const PlanFilter = () => {
 
   const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
   const [squareRange, setSquareRange] = useState([minSquare, maxSquare]);
+  const [selectedProject, setSelectedProject] = useState("1");
   const [room, setRoom] = useState(["all"]);
   const dispatch = useDispatch();
 
@@ -147,6 +153,56 @@ const PlanFilter = () => {
           gap: isSmallDev ? "50px" : "70px",
         }}
       >
+
+<FormControl fullWidth>
+          <InputLabel
+            variant="standard"
+            htmlFor="uncontrolled-native"
+            sx={{
+              color: "#C1AC40",
+              "&.Mui-focused": {
+                color: "#C1AC40",
+              },
+            }}
+          ></InputLabel>
+          <NativeSelect
+          onChange={(e) => setSelectedProject(parseInt(e.target.value))}
+            defaultValue="projekti"
+            inputProps={{
+              name: "age",
+              id: "uncontrolled-native",
+            }}
+            sx={{
+              "&:before": {
+                borderBottom: "2px solid #c1ac40", // Underline color
+              },
+              "&:after": {
+                borderBottom: "2px solid #c1ac40", // Focused underline color
+              },
+              "& .MuiNativeSelect-select": {
+                color: "#c1ac40", // Selected option text color
+                fontFamily: "Poppins, sans-serif",
+                fontSize: "20px",
+                backgroundColor: "#1d1d3a", // Background color
+                padding: "8px 12px", // Padding for better readability
+                borderRadius: "4px", // Rounded corners
+              },
+              "& .MuiNativeSelect-icon": {
+                color: "#c1ac40", // Dropdown icon color
+              },
+            }}
+          >
+            <option value="projekti" style={{ color: "#c1ac40" }}>
+              Projekti
+            </option>
+            <option value={1} style={{ color: "#1d1d3a" }}>
+              River Residence 1
+            </option>
+            <option value={2} style={{ color: "#1d1d3a" }}>
+            River Residence 2
+            </option>
+          </NativeSelect>
+        </FormControl>
         <FormControl fullWidth>
           <InputLabel
             variant="standard"
@@ -159,7 +215,7 @@ const PlanFilter = () => {
             }}
           ></InputLabel>
           <NativeSelect
-            defaultValue="Objekti"
+            defaultValue="objekti"
             inputProps={{
               name: "age",
               id: "uncontrolled-native",
@@ -199,25 +255,18 @@ const PlanFilter = () => {
               },
             }}
           >
-            <option value="" disabled style={{ color: "#c1ac40" }}>
+            <option value="objekti" disabled style={{ color: "#c1ac40" }}>
               Objekti
             </option>
-            <option value="ABC" style={{ color: "#1d1d3a" }}>
-              ABC
-            </option>
-            <option value="B" style={{ color: "#1d1d3a" }}>
-              B
-            </option>
-            <option value="C" style={{ color: "#1d1d3a" }}>
-              C
-            </option>
-            <option value="D" style={{ color: "#1d1d3a" }}>
-              D
-            </option>
+           {object[selectedProject].map((item) => (
+              <option value={item} style={{ color: "#1d1d3a" }}>
+                {item}
+              </option>
+            ))}
           </NativeSelect>
         </FormControl>
 
-        <FormControl fullWidth>
+        {/* <FormControl fullWidth>
           <InputLabel
             variant="standard"
             htmlFor="uncontrolled-native"
@@ -264,56 +313,7 @@ const PlanFilter = () => {
               2
             </option>
           </NativeSelect>
-        </FormControl>
-
-        <FormControl fullWidth>
-          <InputLabel
-            variant="standard"
-            htmlFor="uncontrolled-native"
-            sx={{
-              color: "#C1AC40",
-              "&.Mui-focused": {
-                color: "#C1AC40",
-              },
-            }}
-          ></InputLabel>
-          <NativeSelect
-            defaultValue="Objekti"
-            inputProps={{
-              name: "age",
-              id: "uncontrolled-native",
-            }}
-            sx={{
-              "&:before": {
-                borderBottom: "2px solid #c1ac40", // Underline color
-              },
-              "&:after": {
-                borderBottom: "2px solid #c1ac40", // Focused underline color
-              },
-              "& .MuiNativeSelect-select": {
-                color: "#c1ac40", // Selected option text color
-                fontFamily: "Poppins, sans-serif",
-                fontSize: "20px",
-                backgroundColor: "#1d1d3a", // Background color
-                padding: "8px 12px", // Padding for better readability
-                borderRadius: "4px", // Rounded corners
-              },
-              "& .MuiNativeSelect-icon": {
-                color: "#c1ac40", // Dropdown icon color
-              },
-            }}
-          >
-            <option value="Objekti" style={{ color: "#c1ac40" }}>
-              Patundshmëria
-            </option>
-            <option value={20} style={{ color: "#1d1d3a" }}>
-              1
-            </option>
-            <option value={30} style={{ color: "#1d1d3a" }}>
-              2
-            </option>
-          </NativeSelect>
-        </FormControl>
+        </FormControl> */}
       </Box>
 
       <Box

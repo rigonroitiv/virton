@@ -33,6 +33,7 @@ import { useNavigate } from "react-router-dom";
 
 const PlanimetricSlides = ({ building, type }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+  window.scrollTo(0, 0);
   const dispatch = useDispatch();
   const [data, setData] = useState();
   const [columns, setColumns] = useState(2); // Default to 2 columns for mobile
@@ -57,6 +58,7 @@ const PlanimetricSlides = ({ building, type }) => {
               rooms: apartment.rooms,
               floorNumber: apartment.floorNumber,
               imageUrl: apartment.imageUrl,
+              id: apartment.id,
             };
           });
       });
