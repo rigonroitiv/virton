@@ -17,11 +17,6 @@ import { getApartmentDetailModalData } from "../features/apartment/ApartmentSlic
 import PlanimetricSlides from "../components/filter/PlanimetricSlides";
 import { isAuthorized } from "../features/auth/AuthSlice";
 
-const images = [
-  "/assets/images/galeria1.jpg",
-  "/assets/images/galeria2.jpg",
-  "/assets/images/galeria3.jpg",
-];
 
 const SingleApartmentPage = () => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
@@ -29,7 +24,6 @@ const SingleApartmentPage = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const data = useSelector(getApartmentDetailModalData);
-
   useEffect(() => {
     if (id) {
       dispatch(getApartmentById(id));
@@ -168,7 +162,7 @@ const SingleApartmentPage = () => {
           <span style={{ fontWeight: "700", color: "#C1AC40" }}>ngjajshme</span>
         </Typography>
 
-        <PlanimetricSlides />
+        <PlanimetricSlides building={data?.apartmentNumber}/>
       </Box>
     </Box>
   );
