@@ -29,7 +29,7 @@ const SingleApartment = ({ data }) => {
         }}
       >
         <Button
-          onClick={() => setThreedSelected(!threedSelected)}
+          onClick={() => setThreedSelected(false)}
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #C1AC40",
@@ -37,7 +37,7 @@ const SingleApartment = ({ data }) => {
             fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "400",
             color: "#1d1d3a",
-            backgroundColor: twodSelected ? "#C1AC40" : "white",
+            backgroundColor: !threedSelected ? "#C1AC40" : "white",
             borderRadius: "50px",
             textTransform: "capitalize",
             height: isSmallDev ? "35px" : "40px",
@@ -51,7 +51,7 @@ const SingleApartment = ({ data }) => {
           2D Plan
         </Button>
         <Button
-          onClick={() => setThreedSelected(!threedSelected)}
+          onClick={() => setThreedSelected(true)}
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #C1AC40",
@@ -352,7 +352,7 @@ const SingleApartment = ({ data }) => {
             alignItems: "center",
           }}
         >
-          {twodSelected && <img
+          {!threedSelected ? <img
             style={{
               width: "100%",
               height: "550px",
@@ -361,7 +361,16 @@ const SingleApartment = ({ data }) => {
             }}
             src={`${mainUrl}${planmetricImageUrl}${data?.imageUrl}`}
             alt=""
-          />}
+          /> : <img
+          style={{
+            width: "100%",
+            height: "550px",
+            objectFit: "contain",
+            padding: isSmallDev ? "20px" : "60px",
+          }}
+          src={`${mainUrl}${planmetricImageUrl}${data?.image3dUrl}`}
+          alt=""
+        />}
         </Box>
       </Box>
     </Box>
