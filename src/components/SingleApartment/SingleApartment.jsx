@@ -6,7 +6,6 @@ const SingleApartment = ({ data }) => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
   const isMidDev = useMediaQuery("(max-width: 1024px)");
   const [threedSelected, setThreedSelected] = useState(false);
-  const [twodSelected, setTwodSelected] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top when the component mounts
@@ -30,7 +29,7 @@ const SingleApartment = ({ data }) => {
         }}
       >
         <Button
-          onClick={() => setTwodSelected(!twodSelected)}
+          onClick={() => setThreedSelected(!threedSelected)}
           sx={{
             width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
             border: "1px solid #C1AC40",
@@ -354,7 +353,7 @@ const SingleApartment = ({ data }) => {
             alignItems: "center",
           }}
         >
-          <img
+          {twodSelected && <img
             style={{
               width: "100%",
               height: "550px",
@@ -363,7 +362,7 @@ const SingleApartment = ({ data }) => {
             }}
             src={`${mainUrl}${planmetricImageUrl}${data?.imageUrl}`}
             alt=""
-          />
+          />}
         </Box>
       </Box>
     </Box>
