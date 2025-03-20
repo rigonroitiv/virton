@@ -111,10 +111,12 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
               height: index === currentIndex ? getSvgHeight() : "0px",
               opacity: currentIndex === index ? 1 : 0,
               transition: "opacity 0.1s ease-in-out",
-              width: "100%",
+              width: isSmallDev ? "250%" : "100%",
               position: "absolute",
               display: "flex",
               justifyContent: "center",
+              overflow: isSmallDev ? "auto" : "",
+              backgroundColor: "#fff",
             }}
           >
             <svg

@@ -16,6 +16,16 @@
   transition: background-color 0.3s ease;
 }
 
+.swiper-button-next{
+  position: absolute;
+  right: -2%;
+}
+
+.swiper-button-prev{
+  position: absolute;
+  left: -2%;
+}
+
 .swiper-button-next:hover,
 .swiper-button-prev:hover {
   background-color: #c1ac40; /* Hover effect */
@@ -27,6 +37,8 @@
   font-size: 20px; /* Adjust size */
   color: white; /* Adjust arrow color */
 }
+
+
 
 /* Position adjustments */
 
