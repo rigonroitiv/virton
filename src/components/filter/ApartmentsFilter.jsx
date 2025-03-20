@@ -4,6 +4,7 @@ import Logo from "../../assets/svg/logo";
 import { useDispatch } from "react-redux";
 import {
   handleFilterState,
+  handleRegularFilterReset,
   setRegularFloorFilter,
   setRegularRoomFilter,
   setRegularSquareFilter,
@@ -35,6 +36,12 @@ const ApartmentsFilter = () => {
     dispatch(handleFilterState(true));
     dispatch(setRegularRoomFilter(room));
   };
+
+  const resetFilter = () => {
+    // dispatch(handleFilterState(false));
+    dispatch(handleRegularFilterReset());
+    setRoom(["all"]);
+  }
 
   const handleRoomFilter = (actionPayload) => {
     if (actionPayload === "all") {
@@ -449,7 +456,7 @@ const ApartmentsFilter = () => {
       >
         <Button
           onClick={() => {
-            dispatch(handleFilterState(false));
+            resetFilter();
           }}
           sx={{
             border: "1px solid #C1AC40",
