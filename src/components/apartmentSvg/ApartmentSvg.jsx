@@ -103,89 +103,54 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
   };
 
   return (
-    <Box
-      sx={{
-        width: "100%",
-        height: "100%",
-        position: "relative",
-        overflow: "auto",
-      }}
-    >
-      {dataForSelection?.map((building, index) => {
-        if (!building.hasFloor) {
-          return (
-            <div
-              key={building.buildingName}
-              style={{
-                height: index === currentIndex ? getSvgHeight() : "0px",
-                opacity: currentIndex === index ? 1 : 0,
-                transition: "opacity 0.1s ease-in-out",
-                width: isSmallDev ? "250%" : "100%",
-                position: isMidDev ? "" : "absolute",
-                overflow: isSmallDev ? "auto" : "",
-                display: "flex",
-              }}
-            >
-              <svg
-                width={"100%"}
-                height={"100%"}
-                preserveAspectRatio="none"
+    <Box sx={{ width: "100%", marginBottom: isSmallDev ? "60px" : "" }}>
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+          position: "relative",
+          overflow: "auto",
+        }}
+      >
+        {dataForSelection?.map((building, index) => {
+          if (!building.hasFloor) {
+            return (
+              <div
+                key={building.buildingName}
                 style={{
-                  borderRadius: "5px",
+                  height: index === currentIndex ? getSvgHeight() : "0px",
+                  opacity: currentIndex === index ? 1 : 0,
+                  transition: "opacity 0.1s ease-in-out",
+                  width: isSmallDev ? "250%" : "100%",
+                  position: isMidDev ? "" : "absolute",
+                  overflow: isSmallDev ? "auto" : "",
+                  display: "flex",
                 }}
-                viewBox={building.viewBoxStyle}
               >
-                <image
-                  xlinkHref={`${imagePath}${building.buildingNr}-${building.buildingSide}.jpg`}
-                  alt=""
-                  width={building.imgWidth}
-                  height={building.imgHeight}
-                  transform={building.imgTransform}
-                  objectFit="cover"
-                />
-                {building?.apartmentList?.map((apartment) => {
-                  if (apartment.pointsType === "path") {
-                    return (
-                      <path
-                        d={apartment.path}
-                        onContextMenu={(e) => handleContextMenu(e, apartment)}
-                        className={
-                          parseInt(apartment.floorNumber) >=
-                            floorFilter.startVal &&
-                          parseInt(apartment.floorNumber) <=
-                            floorFilter.endVal &&
-                          (roomFilter.includes(apartment.rooms) ||
-                            roomFilter.includes("all")) &&
-                          parseInt(apartment.square) >= squareFilter.startVal &&
-                          parseInt(apartment.square) <= squareFilter.endVal
-                            ? filterState
-                              ? "st0"
-                              : apartment.isSold
-                              ? isAuthorized()
-                                ? "st1"
-                                : "ft0"
-                              : "ft0"
-                            : "st3"
-                        }
-                        id={apartment.apartmentId}
-                        onMouseEnter={(e) => {
-                          e.preventDefault();
-                          setPopup({
-                            data: apartment,
-                            anchorEl: e.currentTarget,
-                            open: true,
-                          });
-                        }}
-                        onMouseLeave={(e) => {
-                          e.preventDefault();
-                          setPopup({
-                            anchorEl: null,
-                            data: {},
-                            open: false,
-                          });
-                        }}
-                        onClick={() => {
-                          if (
+                <svg
+                  width={"100%"}
+                  height={"100%"}
+                  preserveAspectRatio="none"
+                  style={{
+                    borderRadius: "5px",
+                  }}
+                  viewBox={building.viewBoxStyle}
+                >
+                  <image
+                    xlinkHref={`${imagePath}${building.buildingNr}-${building.buildingSide}.jpg`}
+                    alt=""
+                    width={building.imgWidth}
+                    height={building.imgHeight}
+                    transform={building.imgTransform}
+                    objectFit="cover"
+                  />
+                  {building?.apartmentList?.map((apartment) => {
+                    if (apartment.pointsType === "path") {
+                      return (
+                        <path
+                          d={apartment.path}
+                          onContextMenu={(e) => handleContextMenu(e, apartment)}
+                          className={
                             parseInt(apartment.floorNumber) >=
                               floorFilter.startVal &&
                             parseInt(apartment.floorNumber) <=
@@ -195,97 +160,138 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                             parseInt(apartment.square) >=
                               squareFilter.startVal &&
                             parseInt(apartment.square) <= squareFilter.endVal
-                          ) {
-                            navigate(`/apartment/${apartment.id}`);
+                              ? filterState
+                                ? "st0"
+                                : apartment.isSold
+                                ? isAuthorized()
+                                  ? "st1"
+                                  : "ft0"
+                                : "ft0"
+                              : "st3"
                           }
-                        }}
-                      />
-                    );
-                  }
-                  if (apartment.pointsType === "polygon") {
-                    return (
-                      <polygon
-                        key={apartment.id}
-                        points={apartment.path}
-                        className={"st0"}
-                        id={apartment.apartmentId}
-                        onClick={() => navigate(`/apartment/${apartment.id}`)}
-                      />
-                    );
-                  }
-                })}
-              </svg>
-            </div>
-          );
-        }
-      })}
-      <Box
-        onClick={handlePrevious}
-        sx={{
-          position: "absolute",
-          display: isSmallDev ? "none" : "flex",
-          top: "50%",
-          left: 5,
-          cursor: "pointer",
-          width: "45px",
-          height: "45px",
-          backgroundColor: "white",
-          justifyContent: "center",
-          borderRadius: "50px",
-        }}
-      >
-        <svg
-          id="fi_2985161"
-          enable-background="new 0 0 128 128"
-          height="45"
-          viewBox="0 0 128 128"
-          width="30"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            id="Left_Arrow_4_"
-            d="m84 108c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656l40-40c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-37.172 37.172 37.172 37.172c1.563 1.563 1.563 4.094 0 5.656-.781.781-1.805 1.172-2.828 1.172z"
-          ></path>
-        </svg>
-      </Box>
+                          id={apartment.apartmentId}
+                          onMouseEnter={(e) => {
+                            e.preventDefault();
+                            setPopup({
+                              data: apartment,
+                              anchorEl: e.currentTarget,
+                              open: true,
+                            });
+                          }}
+                          onMouseLeave={(e) => {
+                            e.preventDefault();
+                            setPopup({
+                              anchorEl: null,
+                              data: {},
+                              open: false,
+                            });
+                          }}
+                          onClick={() => {
+                            if (
+                              parseInt(apartment.floorNumber) >=
+                                floorFilter.startVal &&
+                              parseInt(apartment.floorNumber) <=
+                                floorFilter.endVal &&
+                              (roomFilter.includes(apartment.rooms) ||
+                                roomFilter.includes("all")) &&
+                              parseInt(apartment.square) >=
+                                squareFilter.startVal &&
+                              parseInt(apartment.square) <= squareFilter.endVal
+                            ) {
+                              navigate(`/apartment/${apartment.id}`);
+                            }
+                          }}
+                        />
+                      );
+                    }
+                    if (apartment.pointsType === "polygon") {
+                      return (
+                        <polygon
+                          key={apartment.id}
+                          points={apartment.path}
+                          className={"st0"}
+                          id={apartment.apartmentId}
+                          onClick={() => navigate(`/apartment/${apartment.id}`)}
+                        />
+                      );
+                    }
+                  })}
+                </svg>
+              </div>
+            );
+          }
+        })}
 
-      <Box
-        onClick={handlePrevious}
-        sx={{
-          position: "absolute",
-          display: isSmallDev ? "none" : "flex",
-          top: "50%",
-          right: 5,
-          cursor: "pointer",
-          width: "45px",
-          height: "45px",
-          backgroundColor: "white",
-          justifyContent: "center",
-          borderRadius: "50px",
-        }}
-      >
-        <svg
-          id="fi_2985179"
-          enable-background="new 0 0 128 128"
-          height="45"
-          viewBox="0 0 128 128"
-          width="30"
-          xmlns="http://www.w3.org/2000/svg"
+        <Box
+          onClick={handlePrevious}
+          sx={{
+            position: "absolute",
+            display: isSmallDev ? "none" : "flex",
+            top: "50%",
+            left: 5,
+            cursor: "pointer",
+            width: "45px",
+            height: "45px",
+            backgroundColor: "white",
+            justifyContent: "center",
+            borderRadius: "50px",
+          }}
         >
-          <path
-            id="Right_Arrow_4_"
-            d="m44 108c-1.023 0-2.047-.391-2.828-1.172-1.563-1.563-1.563-4.094 0-5.656l37.172-37.172-37.172-37.172c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l40 40c1.563 1.563 1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"
-          ></path>
-        </svg>
+          <svg
+            id="fi_2985161"
+            enable-background="new 0 0 128 128"
+            height="45"
+            viewBox="0 0 128 128"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Left_Arrow_4_"
+              d="m84 108c-1.023 0-2.047-.391-2.828-1.172l-40-40c-1.563-1.563-1.563-4.094 0-5.656l40-40c1.563-1.563 4.094-1.563 5.656 0s1.563 4.094 0 5.656l-37.172 37.172 37.172 37.172c1.563 1.563 1.563 4.094 0 5.656-.781.781-1.805 1.172-2.828 1.172z"
+            ></path>
+          </svg>
+        </Box>
+
+        <Box
+          onClick={handlePrevious}
+          sx={{
+            position: "absolute",
+            display: isSmallDev ? "none" : "flex",
+            top: "50%",
+            right: 5,
+            cursor: "pointer",
+            width: "45px",
+            height: "45px",
+            backgroundColor: "white",
+            justifyContent: "center",
+            borderRadius: "50px",
+          }}
+        >
+          <svg
+            id="fi_2985179"
+            enable-background="new 0 0 128 128"
+            height="45"
+            viewBox="0 0 128 128"
+            width="30"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              id="Right_Arrow_4_"
+              d="m44 108c-1.023 0-2.047-.391-2.828-1.172-1.563-1.563-1.563-4.094 0-5.656l37.172-37.172-37.172-37.172c-1.563-1.563-1.563-4.094 0-5.656s4.094-1.563 5.656 0l40 40c1.563 1.563 1.563 4.094 0 5.656l-40 40c-.781.781-1.805 1.172-2.828 1.172z"
+            ></path>
+          </svg>
+        </Box>
       </Box>
       <Box
         sx={{
-          position: "static",
+          position: "absolute",
           display: isSmallDev ? "flex" : "none",
           flexDirection: "row",
           justifyContent: "end",
           padding: "10px 0px",
           gap: "15px",
+          marginBottom: "20px",
+          right: "20px",
         }}
       >
         <Button
@@ -339,6 +345,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
           </svg>
         </Button>
       </Box>
+
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
       {popup.anchorEl && (
