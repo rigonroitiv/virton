@@ -60,12 +60,14 @@ const GeneralBuilding = () => {
       sx={{
         width: "100%",
         height: isSmallDev ? "100vh" : "100vh",
-        padding: isSmallDev ? "370px 20px" : "0px 50px 0px 50px",
+        padding: isSmallDev ? "" : "0px 50px 0px 50px",
         backgroundColor: "#1d1d3a",
         overflow: "hidden",
         position: "relative",
         justifyContent: "center",
-        alignItems: "center",
+        alignItems: {
+          md: 'center'
+        },
       }}
     >
       {/* <img
@@ -80,9 +82,11 @@ const GeneralBuilding = () => {
           overflow: "auto",
         }}
       /> */}
+      <Box sx={{overflowX: 'auto', position: {xs: 'absolute', md: 'static'}, top: '23%', left: 0, width: '100%'}}>
       {object1.map((item) => {
         return (
           <svg
+            width={isSmallDev ? "200%" : "100%"}
             viewBox="0 0 1920 1080"
             xmlnsXlink="http://www.w3.org/1999/xlink"
             xmlns="http://www.w3.org/2000/svg"
@@ -120,6 +124,7 @@ const GeneralBuilding = () => {
           </svg>
         );
       })}
+      </Box>
 
       <IconButton
         onClick={handlePrev}
@@ -127,7 +132,7 @@ const GeneralBuilding = () => {
           position: "absolute",
           left: 5,
           color: "white",
-          top: "50%",
+          bottom: {xs:"13%", md: '50%'},
         }}
       >
         <ArrowBackIos />
@@ -137,7 +142,7 @@ const GeneralBuilding = () => {
         sx={{
           position: "absolute",
           right: 5,
-          top: "50%",
+          bottom: {xs:"13%", md: '50%'},
           color: "white",
         }}
       >

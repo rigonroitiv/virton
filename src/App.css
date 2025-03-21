@@ -61,6 +61,13 @@
     stroke: white;
 }
 
+.reserved-apartment{
+    fill: #ff5e00;
+    opacity: 0.5;
+    stroke-width: 1px;
+    stroke: white;
+}
+
 .parking-rent {
     fill: #fffb00;
     opacity: 0.5;

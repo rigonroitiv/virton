@@ -150,23 +150,23 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                         d={apartment.path}
                         onContextMenu={(e) => handleContextMenu(e, apartment)}
                         className={
-                          parseInt(apartment.floorNumber) >=
-                            floorFilter.startVal &&
-                          parseInt(apartment.floorNumber) <=
-                            floorFilter.endVal &&
-                          (roomFilter.includes(apartment.rooms) ||
-                            roomFilter.includes("all")) &&
+                          parseInt(apartment.floorNumber) >= floorFilter.startVal &&
+                          parseInt(apartment.floorNumber) <= floorFilter.endVal &&
+                          (roomFilter.includes(apartment.rooms) || roomFilter.includes("all")) &&
                           parseInt(apartment.square) >= squareFilter.startVal &&
                           parseInt(apartment.square) <= squareFilter.endVal
-                            ? filterState
-                              ? "st0"
-                              : apartment.isSold
+                            ? apartment.isSold
                               ? isAuthorized()
-                                ? "st1"
-                                : "ft0"
-                              : "ft0"
-                            : "st3"
+                                ? "st1"  // If sold and authorized, display 'st1'
+                                : "ft0"  // If sold but not authorized, display 'ft0'
+                              : apartment.isReserved
+                              ? "reserved-apartment"  // If reserved, display 'ft0'
+                              : filterState
+                              ? "st0"  // If no sale/reservation and filterState is true, display 'st0'
+                              : "ft0"   // Default class when no conditions match
+                            : "st3"     // If filter conditions aren't met, display 'st3'
                         }
+                        
                         id={apartment.apartmentId}
                         onMouseEnter={(e) => {
                           e.preventDefault();

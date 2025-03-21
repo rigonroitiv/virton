@@ -66,7 +66,7 @@ function AdmApartmentModal() {
     id: "",
     rooms: 1,
     isSold: false,
-    isReservated: false,
+    isReserved: false,
     floorNumber: 0,
     square: 0,
     name: "",
@@ -93,7 +93,7 @@ function AdmApartmentModal() {
       id: "",
       rooms: 1,
       isSold: false,
-      isReservated: false,
+      isReserved: false,
       floorNumber: 0,
       square: 0,
       name: "",
@@ -204,7 +204,7 @@ function AdmApartmentModal() {
       apartmentData.apartmentPositionImageUrl
     );
     formData.append("vTourUrl", apartmentData.vtourUrl);
-    formData.append("isReservated", apartmentData.isReservated);
+    formData.append("isReserved", apartmentData.isReserved);
     updateHandler(apartmentData.id, formData).then().catch();
   };
 
@@ -515,12 +515,12 @@ function AdmApartmentModal() {
                     Rezervuar
                   </FormLabel>
                   <RadioGroup
-                    value={apartmentData.isReservated ? "true" : "false"}
+                    value={apartmentData.isReserved ? "true" : "false"}
                     row={true}
                     onChange={(e) => {
                       setApartmentData((prev) => ({
                         ...prev,
-                        isReservated: e.target.value === "true",
+                        isReserved: e.target.value === "true",
                       }));
                     }}
                     aria-labelledby="demo-row-radio-buttons-group-label"

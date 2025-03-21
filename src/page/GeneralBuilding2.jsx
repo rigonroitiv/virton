@@ -243,7 +243,7 @@ const GeneralBuilding2 = () => {
       sx={{
         width: "100%",
         height: isSmallDev ? "100vh" : "100vh",
-        padding: isSmallDev ? "370px 20px" : "0px 50px 0px 50px",
+        padding: isSmallDev ? '': "0px 50px 0px 50px",
         backgroundColor: "#1d1d3a",
         overflow: "hidden",
         position: "relative",
@@ -263,19 +263,19 @@ const GeneralBuilding2 = () => {
           overflow: "auto",
         }}
       /> */}
+      <Box sx={{overflowX: 'auto', position: {xs: 'absolute', md: 'static'}, top: '23%', left: 0, width: '100%'}}>
       {id === "1" &&
         object1.map((item) => {
           if (currentInx === item.id) {
-            console.log("ID: " + item.id);
-            console.log("index: " + currentInx);
             return (
               <svg
                 viewBox="0 0 1440 710"
+                width={isSmallDev ? "200%" : "100%"}
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsSvg="http://www.w3.org/2000/svg"
                 style={{
-                  borderRadius: "15px",
+                  borderRadius: !isSmallDev && "15px",
                 }}
               >
                 <image
@@ -301,6 +301,7 @@ const GeneralBuilding2 = () => {
             return (
               <svg
                 viewBox="0 0 1920 1080"
+                width={isSmallDev ? "200%" : "100%"}
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsSvg="http://www.w3.org/2000/svg"
@@ -320,13 +321,14 @@ const GeneralBuilding2 = () => {
             );
           }
         })}
+      </Box>
       <IconButton
         onClick={handlePrev}
         sx={{
           position: "absolute",
           left: 5,
           color: "white",
-          top: "50%",
+          bottom: {xs:"13%", md: '50%'},
         }}
       >
         <ArrowBackIos />
@@ -336,7 +338,7 @@ const GeneralBuilding2 = () => {
         sx={{
           position: "absolute",
           right: 5,
-          top: "50%",
+          bottom: {xs:"13%", md: '50%'},
           color: "white",
         }}
       >
