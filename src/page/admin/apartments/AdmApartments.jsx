@@ -11,7 +11,8 @@ const AdmApartments = () => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        // overflow: 'hidden',
+        height: "100%",
+        overflow: "hidden",
       }}
     >
       <AdmApartmentHeader />
