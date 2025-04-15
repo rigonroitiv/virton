@@ -67,6 +67,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
       setDataForSelection(toUpdate);
     }
   }, [buildingData]);
+
   const handleNext = () => {
     setCurrentIndex(
       (prevIndex) => (prevIndex + (limited ? 2 : 1)) % dataForSelection.length
@@ -500,6 +501,8 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
         />
       )}
     </Box>
+  </Box>
+</Box>
   );
 };
 

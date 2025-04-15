@@ -43,22 +43,22 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
 
   // First useEffect to handle the 'single' prop and fetching data
   useEffect(() => {
-    if (single) {
-      const dataToUpdate = buildingData
-        ?.map((item) => item.apartmentList)
-        .flat();
-      setData(dataToUpdate); // Set the flattened data when 'single' is true
-    } else {
-      dispatch(fetchApartmentsAll()); // Fetch apartments if 'single' is false
-    }
-  }, [single]); // Also depend on buildingData to account for changes
-
-  // Second useEffect to update 'data' when buildingData changes
-  useEffect(() => {
     if (!single) {
-      setData(buildingData); // If not 'single', set the data to buildingData
+      dispatch(fetchApartmentsAll());
     }
-  }, [buildingData, single]); // Ensure that buildingData updates when 'single' is false
+  }, [single, dispatch]);
+
+  // Update data when buildingData or single prop changes
+  useEffect(() => {
+    if (single) {
+      // Flatten buildingData into individual apartments
+      const flattenedData = buildingData?.flatMap(building => building.apartmentList) || [];
+      setData(flattenedData);
+    } else {
+      // Use buildingData as-is for grouped view
+      setData(buildingData);
+    }
+  }, [single, buildingData]);
 
   return (
     <Box
