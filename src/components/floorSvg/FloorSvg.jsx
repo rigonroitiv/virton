@@ -34,6 +34,7 @@ const minSquare = 40;
 
 const FloorSvg = ({ floorId }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+  const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -105,7 +106,7 @@ const FloorSvg = ({ floorId }) => {
 
   //Diari
 
-  const totalFloors = 15; // Total number of floors
+  const totalFloors = 9; // Total number of floors
   const floors = Array.from({ length: totalFloors }, (_, i) => totalFloors - i); // Floors in descending order
   const [activeFloor, setActiveFloor] = useState(floors[0]); // Default active floor
   const visibleRange = 5; // Number of floors visible at a time
@@ -370,7 +371,7 @@ const FloorSvg = ({ floorId }) => {
           <image
             width="1920"
             height="1080"
-            xlinkHref={`${imagePath}a1-f1.jpg`}
+            xlinkHref={`${imagePath}floor/f-${id}.png`}
           ></image>
           {/* <path className="ft0" d="M 11,58 H 648 V 526 H 11 Z" />
             <path className="ft0" d="m 648,58 h 643 V 526 H 648 Z" />
@@ -386,8 +387,11 @@ const FloorSvg = ({ floorId }) => {
           {buildingData?.apartmentDTO?.map((apartment) => {
             return (
               <path
+                key={apartment.id}
+                onContextMenu={(e) => handleContextMenu(e, apartment)}
                 className={
                   apartment.isSold ? (isAuthorized() ? "st1" : "ft0") : "ft0"
+                
                 }
                 d={apartment.path}
               />

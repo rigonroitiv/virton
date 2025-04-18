@@ -69,7 +69,7 @@ function AdmApartmentModal() {
     isReserved: false,
     floorNumber: 0,
     square: 0,
-    name: "",
+    apartmentName: "",
     imageData: null,
     apartmentNumber: 1,
     style: "",
@@ -96,7 +96,7 @@ function AdmApartmentModal() {
       isReserved: false,
       floorNumber: 0,
       square: 0,
-      name: "",
+      apartmentName: "",
       imageData: null,
       apartmentNumber: 1,
       style: "",
@@ -186,7 +186,7 @@ function AdmApartmentModal() {
     formData.append("isSold", apartmentData.isSold);
     formData.append("floorNumber", apartmentData.floorNumber);
     formData.append("square", apartmentData.square);
-    formData.append("name", apartmentData.name);
+    formData.append("name", apartmentData.apartmentName);
     formData.append("apartmentNumber", apartmentData.apartmentNumber);
     formData.append("style", apartmentData.style);
     formData.append("className", apartmentData.className);
@@ -423,12 +423,12 @@ function AdmApartmentModal() {
                 <TextField
                   fullWidth
                   size="small"
-                  name="name"
-                  value={apartmentData.name}
+                  name="apartmentName"
+                  value={apartmentData.apartmentName}
                   onChange={(e) => {
                     setApartmentData((prev) => ({
                       ...prev,
-                      name: e.target.value,
+                      apartmentName: e.target.value,
                     }));
                   }}
                   label="Emri baneses"
@@ -490,19 +490,19 @@ function AdmApartmentModal() {
                     onChange={(e) => {
                       setApartmentData((prev) => ({
                         ...prev,
-                        isSold: e.target.value,
+                        isSold: e.target.value === "true",
                       }));
                     }}
                     aria-labelledby="demo-row-radio-buttons-group-label"
                     name="row-radio-buttons-group"
                   >
                     <FormControlLabel
-                      value={true}
+                      value="true"
                       control={<Radio />}
                       label="Shitur"
                     />
                     <FormControlLabel
-                      value={false}
+                      value="false"
                       control={<Radio />}
                       label="Jo e shitur"
                     />

@@ -126,6 +126,8 @@ const FloorBuildingSvgExtractor = ( { show } ) => {
       floorId: extractedElements.floorId,
       floorNumber: extractedElements.floorNumber,
       buildingName: extractedElements.buildingName,
+      isReserved: false,
+      isSold: false,
       buildingNumber: extractedElements.buildingNumber,
       buildingSide: extractedElements.buildingSide,
       apartmentDTO: extractedElements.apartmentDTO
@@ -212,7 +214,7 @@ const handleCheckboxChange = (e) => {
   return (
     <div style={{ display: !show ? "block" : "none", padding: 10, }}>
       <ToastContainer />
-      <h2 style={{paddingTop: '80px'}}>Shto Katet e nderteses</h2>
+      <h2 style={{paddingTop: '80px'}}>Shto Katet e ndertesess</h2>
       <div style={{ display: "flex", gap: 20 }}>
         <div>
           <textarea
