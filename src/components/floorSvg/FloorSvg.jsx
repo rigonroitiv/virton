@@ -34,7 +34,7 @@ const minSquare = 40;
 
 const FloorSvg = ({ floorId }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
-  const { id } = useParams();
+  const { projectid, id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -108,7 +108,7 @@ const FloorSvg = ({ floorId }) => {
 
   const totalFloors = 9; // Total number of floors
   const floors = Array.from({ length: totalFloors }, (_, i) => totalFloors - i); // Floors in descending order
-  const [activeFloor, setActiveFloor] = useState(floors[0]); // Default active floor
+  const [activeFloor, setActiveFloor] = useState(1); // Default active floor
   const visibleRange = 5; // Number of floors visible at a time
   const [startIndex, setStartIndex] = useState(0); // Start index for the visible floors
 
@@ -129,7 +129,7 @@ const FloorSvg = ({ floorId }) => {
     const currentIndex = floors.indexOf(activeFloor);
     if (currentIndex < floors.length - 1) {
       const newActiveFloor = floors[currentIndex + 1];
-      setActiveFloor(newActiveFloor);
+      setActiveFloor(currentIndex + 1);
       updateVisibleFloors(newActiveFloor);
     }
   };
@@ -168,7 +168,7 @@ const FloorSvg = ({ floorId }) => {
     <Box
       sx={{
         width: "100%",
-        height: "100%",
+        height: "100vh",
         // objectFit: "cover",
         position: "relative",
         display: "flex",
@@ -371,7 +371,7 @@ const FloorSvg = ({ floorId }) => {
           <image
             width="1920"
             height="1080"
-            xlinkHref={`${imagePath}floor/f-${id}.png`}
+            xlinkHref={`${imagePath}floor/f-${buildingData.buildingName?.toLowerCase()}-${buildingData.name}.png`}
           ></image>
           {/* <path className="ft0" d="M 11,58 H 648 V 526 H 11 Z" />
             <path className="ft0" d="m 648,58 h 643 V 526 H 648 Z" />
@@ -385,6 +385,7 @@ const FloorSvg = ({ floorId }) => {
               d="M 11,526 V 999 H 917 V 823 H 814 V 624 H 554 v -98 z"
             /> */}
           {buildingData?.apartmentDTO?.map((apartment) => {
+            
             return (
               <path
                 key={apartment.id}

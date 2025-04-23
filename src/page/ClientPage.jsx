@@ -12,6 +12,7 @@ import Navbar from "../components/common/Navbar";
 import GeneralBuilding2 from "./GeneralBuilding2";
 import GeneralBuilding from "./GeneralBuilding1";
 import ParkingPage from "./ParkingPage";
+import SingleFloorPage from "./SingleFloorPage";
 
 const ClientPage = () => {
   return (
@@ -19,6 +20,7 @@ const ClientPage = () => {
       <Navbar />
       <Routes>
         <Route path="/:projectid/apartments/:id" element={<ApartmentsPage />} />
+        <Route path="/:projectid/floor/:id" element={<SingleFloorPage />} />
         <Route path="/floor-plan-page" element={<FloorplanPage />} />
         <Route path="/apartment/:id" element={<SingleApartmentPage />} />
         <Route path="/:id" element={<GeneralBuilding2 />} />

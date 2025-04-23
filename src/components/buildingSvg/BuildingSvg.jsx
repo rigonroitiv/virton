@@ -21,7 +21,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
-  const { id } = useParams();
+  const { projectid, id } = useParams();
   const buildingData = useSelector(getAllApartmentSvgData);
   const [dataForSelection, setDataForSelection] = useState(null);
   const wishListItemCount = useSelector(getWishlistCount);
@@ -176,9 +176,10 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
                         //   console.log(apartment.floorNumber);
                         //   setFloorPlan(true)
                         // }
-                        setFloorId(apartment.id);
-                        console.log(apartment.floorNumber);
-                        setFloorPlan(true);
+                        // setFloorId(apartment.id);
+                        // console.log(apartment.floorNumber);
+                        // setFloorPlan(true);
+                        navigate(`/${projectid}/floor/${apartment.id}`)
                       }}
                     />
                   );
