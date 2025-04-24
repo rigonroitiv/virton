@@ -217,9 +217,11 @@ const Navbar = () => {
           <Box>
             <List>
               {navItems.map(({ text, href }) => (
-                <ListItem button key={text} sx={{ paddingTop: "0" }}>
+                <ListItem onClick={() => {
+                  setIsDrawerOpen(false)
+                  window.location.replace(href)
+                }} key={text} sx={{ paddingTop: "0" }}>
                   <a
-                    href={href}
                     style={{
                       textDecoration: "none",
                       width: "100%",

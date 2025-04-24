@@ -179,7 +179,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
                         // setFloorId(apartment.id);
                         // console.log(apartment.floorNumber);
                         // setFloorPlan(true);
-                        navigate(`/${projectid}/floor/${apartment.id}`)
+                        navigate(`/${projectid}/building/${id}/floor/${apartment.floorName}`)
                       }}
                     />
                   );

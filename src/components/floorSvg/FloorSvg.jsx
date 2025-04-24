@@ -5,10 +5,12 @@ import { useNavigate, useParams } from "react-router-dom";
 import {
   getAllApartmentsByFloorId,
   getObjectSvgDataAll,
+  getFloorByBuilding,
 } from "../../features/apartment/ApartmentAPI";
 import {
   getAllApartmentSvgData,
   getAllFloorSvgData,
+  getFloorApartmentsSvgData,
 } from "../../features/apartment/ApartmentSlice";
 import { getWishlistCount } from "../../features/wishList/WishlistSlice";
 import { getFilterState } from "../../features/filter/FilterSlice";
@@ -36,18 +38,12 @@ const minSquare = 40;
 
 const FloorSvg = ({ floorId }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
-  const { projectid, id } = useParams();
+  const { projectid, id, name } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const theme = useTheme();
-  const buildingData = useSelector(getAllFloorSvgData);
+  const floorData = useSelector(getFloorApartmentsSvgData);
   const wishListItemCount = useSelector(getWishlistCount);
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
-  const [sizeRange, setSizeRange] = useState([minSquare, maxSquare]);
-  const [floorRange, setFloorRange] = useState([minFloor, maxFloor]);
-  const [roomRange, setRoomRange] = useState("all");
-  const filterState = useSelector(getFilterState);
+  
   const [contextMenu, setContextMenu] = useState({
     anchorEl: null,
     open: false,
@@ -61,11 +57,15 @@ const FloorSvg = ({ floorId }) => {
   });
   const [limited, setLimited] = useState(false);
 
+  // useEffect(() => {
+  //   if (floorId) {
+  //     dispatch(getAllApartmentsByFloorId(floorId));
+  //   }
+  // }, [dispatch, floorId]);
+
   useEffect(() => {
-    if (floorId) {
-      dispatch(getAllApartmentsByFloorId(floorId));
-    }
-  }, [dispatch, floorId]);
+    dispatch(getFloorByBuilding(id));
+  }, [dispatch, id]);
 
   // useEffect(() => {
   //   dispatch(getWishlistDataFromStorage());
@@ -73,15 +73,15 @@ const FloorSvg = ({ floorId }) => {
 
   const handleNext = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex + (limited ? 2 : 1)) % buildingData.length
+      (prevIndex) => (prevIndex + (limited ? 2 : 1)) % floorData.length
     ); //1
   };
 
   const handlePrevious = () => {
     setCurrentIndex(
       (prevIndex) =>
-        (prevIndex - (limited ? 2 : 1) + buildingData.length) %
-        buildingData.length
+        (prevIndex - (limited ? 2 : 1) + floorData.length) %
+        floorData.length
     ); //1
   };
 
@@ -131,7 +131,7 @@ const FloorSvg = ({ floorId }) => {
     const currentIndex = floors.indexOf(activeFloor);
     if (currentIndex < floors.length - 1) {
       const newActiveFloor = floors[currentIndex + 1];
-      setActiveFloor(currentIndex + 1);
+      setActiveFloor(newActiveFloor);
       updateVisibleFloors(newActiveFloor);
     }
   };
@@ -191,7 +191,7 @@ const FloorSvg = ({ floorId }) => {
         {/* Scroll Up Button */}
         <Button
           onClick={scrollDown}
-          disabled={activeFloor === floors[0]} // Disable if no higher floors
+          // disabled={activeFloor === floors[0]} // Disable if no higher floors
           sx={{
             width: "50px",
             minWidth: "0px",
@@ -212,36 +212,29 @@ const FloorSvg = ({ floorId }) => {
 
         {/* Floors List with Smooth Transition */}
         <Box sx={{ display: "flex", gap: "4px" }}>
-          <button
-            style={{
-              height: "55px",
-              width: "55px",
-              borderRadius: "55px",
-              backgroundColor: "#c1ac40",
-              color: "white",
-              border: "1px solid #1d1d3a",
+          {floors.reverse().slice(startIndex, startIndex + visibleRange).map((floor) => {
+            return (<button
+            onClick={() => {
+              setActiveFloor(floor);
+              updateVisibleFloors(floor);
             }}
-          >
-            1
-          </button>
-
-          <button
-            style={{
-              height: "55px",
-              width: "55px",
-              borderRadius: "55px",
-              backgroundColor: "#c1ac40",
-              color: "white",
-              border: "1px solid #1d1d3a",
-            }}
-          >
-            2
-          </button>
+              style={{
+                height: "55px",
+                width: "55px",
+                borderRadius: "55px",
+                backgroundColor: activeFloor !== floor ? '#1d1d3a' : "#c1ac40",
+                color: "white",
+                border: activeFloor !== floor ? '1px solid #c1ac40' : "1px solid #1d1d3a",
+              }}
+            >
+              {floor}
+            </button>)
+          })}
         </Box>
         {/* Scroll Down Button */}
         <Button
           onClick={scrollUp}
-          disabled={activeFloor === floors[floors.length - 1]} // Disable if no lower floors
+          // disabled={activeFloor === floors[floors.length - 1]} // Disable if no lower floors
           sx={{
             width: "50px",
             minWidth: "0px",
@@ -261,7 +254,7 @@ const FloorSvg = ({ floorId }) => {
         </Button>
       </Box>
       <div
-        key={buildingData?.buildingName}
+        key={floorData?.buildingName}
         style={{
           height: getSvgHeight(),
           transition: "opacity 0.1s ease-in-out",
@@ -365,37 +358,42 @@ const FloorSvg = ({ floorId }) => {
           xmlns="http://www.w3.org/2000/svg"
           xmlnsSvg="http://www.w3.org/2000/svg"
         >
-          <image
-            width="1920"
-            height="1080"
-            xlinkHref={`${imagePath}floor/f-${buildingData.buildingName?.toLowerCase()}-${
-              buildingData.name
-            }.png`}
-          ></image>
-          {/* <path className="ft0" d="M 11,58 H 648 V 526 H 11 Z" />
-            <path className="ft0" d="m 648,58 h 643 V 526 H 648 Z" />
-            <path className="ft0" d="m 1291,58 h 613 v 468 h -613 z" />
-            <path
-              className="ft0"
-              d="M 1112,999 V 775 h 105 V 625 h 155 v -99 h 532 v 473 z"
-            />
-            <path
-              className="ft0"
-              d="M 11,526 V 999 H 917 V 823 H 814 V 624 H 554 v -98 z"
-            /> */}
-          {buildingData?.apartmentDTO?.map((apartment) => {
-            if(parseInt(apartment.floorNumber) !== activeFloor) return null; // Filter apartments based on the active floor
-            return (
-              <path
-                key={apartment.id}
-                onContextMenu={(e) => handleContextMenu(e, apartment)}
-                className={
-                  apartment.isSold ? (isAuthorized() ? "st1" : "ft0") : "ft0"
-                }
-                d={apartment.path}
-              />
-            );
-          })}
+           <image
+                  width={floorData && floorData[activeFloor]?.imageWidth}
+                  height={floorData && floorData[activeFloor]?.imageHeight}
+                  transform={floorData && floorData[activeFloor]?.imageTransform}
+                  xlinkHref={
+                    floorData &&
+                    `${imagePath}floor/f-${floorData[activeFloor]?.buildingId?.toLowerCase()}-${name}.png`
+                  }
+                  
+                ></image>
+                {floorData?.map((floor) => {
+                  if (parseInt(floor.floorNumber) === activeFloor && floor.name === name) {
+                    return floor.apartmentList?.map((apartment) => {
+                      console.log(floor)
+                      return (
+                        <path
+                        id={floor.id}
+                          onClick={() => {
+                            if (apartment.isSold) return;
+                            navigate(`/apartment/${apartment.id}`);
+                          }}
+                          onContextMenu={(e) => handleContextMenu(e, apartment)}
+                          className={
+                            apartment.isSold
+                              ? 'st1'
+                              : "ft0"
+                          }
+                          d={apartment.path}
+                          // onMouseEnter={() => setHoveredId(apartment.id)}
+                          // onMouseMove={handleMouseMove}
+                          // onMouseLeave={() => setHoveredId(null)}
+                        />
+                      );
+                    });
+                  } else return <h1>{floor.floorNumber}</h1>;
+                })}
         </svg>
       </div>
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />

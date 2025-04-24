@@ -65,6 +65,30 @@ export const fetchApartmentsAll = createAsyncThunk(
     }
 );
 
+export const getFloorByBuilding = createAsyncThunk(
+    'ObjectsSlice/objedsgallsvg',
+    async(page, { rejectWithValue }) => {
+        try {
+           const res = await axios.get(`${BASE_URL}/api/v1/floor/all?id=${page}`);
+           return res.data; 
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
+export const getFloorById = createAsyncThunk(
+    'ObjectsSlice/objedsgetallsvg',
+    async(page, { rejectWithValue }) => {
+        try {
+           const res = await axios.get(`${BASE_URL}/api/v1/floor?id=${page}`);
+           return res.data; 
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    }
+);
+
 export const fetchApartmentsAllOrderByApartmentId = createAsyncThunk(
     'ObjectsSlice/get/all/apartments/order/apartmentid',
     async(a, { rejectWithValue }) => {

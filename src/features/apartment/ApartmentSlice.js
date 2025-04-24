@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchApartmentAllData, fetchApartmentsAll, fetchApartmentsAllOrderByApartmentId, getAllApartmentsByFloorId, getApartmentById, getApartmentsSvgDataAll, getObjectSvgDataAll } from "./ApartmentAPI";
+import { fetchApartmentAllData, fetchApartmentsAll, fetchApartmentsAllOrderByApartmentId, getAllApartmentsByFloorId, getApartmentById, getApartmentsSvgDataAll, getFloorByBuilding, getFloorById, getObjectSvgDataAll } from "./ApartmentAPI";
 
 const initialState = {
     apartmentUrlParamId: '',
@@ -13,7 +13,8 @@ const initialState = {
     apartmentIdModalState: false,
     apartmentIdModalId: null,
     apartmentIdModalApartmentId: null,
-    allData: []
+    allData: [],
+    floorApartmentsSvgData: null,
 }
 
 const ApartmentSlice = createSlice({
@@ -137,6 +138,28 @@ const ApartmentSlice = createSlice({
                     state.status = 'rejected';
                     state.msg = action.payload;
                 })
+                .addCase(getFloorById.pending, (state, action) => {
+                    state.status = 'pending';
+                })
+                .addCase(getFloorById.fulfilled, (state, action) => {
+                    state.status = 'success';
+                    state.floorApartmentsSvgData = action.payload;
+                })
+                .addCase(getFloorById.rejected, (state, action) => {
+                    state.status = 'rejected';
+                    state.msg = action.payload;
+                })
+                .addCase(getFloorByBuilding.pending, (state, action) => {
+                    state.floorStatus = 'pending';
+                })
+                .addCase(getFloorByBuilding.fulfilled, (state, action) => {
+                    state.floorStatus = 'success';
+                    state.floorApartmentsSvgData = action.payload;
+                })
+                .addCase(getFloorByBuilding.rejected, (state, action) => {
+                    state.floorStatus = 'rejected';
+                    state.msg = action.payload;
+                })
 
     }
 })
@@ -165,5 +188,6 @@ export const getApartmentIdModalId = (state) => state.ApartmentSlice.apartmentId
 export const getApartmentIdModalApartmentId = (state) => state.ApartmentSlice.apartmentIdModalApartmentId;
 export const getApartmentMsg = (state) => state.ApartmentSlice.msg;
 export const getApartmentAllData = (state) => state.ApartmentSlice.allData;
+export const getFloorApartmentsSvgData = (state) => state.ApartmentSlice.floorApartmentsSvgData;
 
 export default ApartmentSlice.reducer;

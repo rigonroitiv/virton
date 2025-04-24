@@ -5,7 +5,7 @@ import { mainUrl, planmetricImageUrl } from "../../utils/consts";
 const SingleApartment = ({ data }) => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
   const isMidDev = useMediaQuery("(max-width: 1024px)");
-  const [threedSelected, setThreedSelected] = useState(false);
+  const [threedSelected, setThreedSelected] = useState(true);
 
   useEffect(() => {
     window.scrollTo(0, 0); // Scrolls to the top when the component mounts
