@@ -26,6 +26,8 @@ import {
   ListItemText,
 } from "@mui/material";
 import { isAuthorized } from "../../features/auth/AuthSlice";
+import Rightarrow from "../../assets/svg/Rightarrow";
+import Leftarrow from "../../assets/svg/Leftarrow";
 
 const maxFloor = 14;
 const minFloor = 1;
@@ -168,25 +170,23 @@ const FloorSvg = ({ floorId }) => {
     <Box
       sx={{
         width: "100%",
-        height: "100vh",
+        height: "100%",
         // objectFit: "cover",
         position: "relative",
         display: "flex",
+        flexDirection: "column",
       }}
     >
       <Box
-        width="20%"
+        width="100%"
         bgcolor="#1D1D3A"
         display="flex"
-        flexDirection="column"
+        flexDirection="row"
         alignItems="center"
         justifyContent="center"
-        padding={0}
-        height={"71vh"}
-        maxHeight={"71vh"}
-        position={"absolute"}
         overflow={"hidden"}
-        top={"10%"}
+        height={"50vh"}
+        gap={"10px"}
       >
         {/* Scroll Up Button */}
         <Button
@@ -199,6 +199,7 @@ const FloorSvg = ({ floorId }) => {
             border: "1px solid #c1ac40",
             backgroundColor: "#C1AC40",
             color: "#1D1D3A",
+            cursor: "pointer",
             borderRadius: "50px",
             "&:hover": {
               backgroundColor: "#1D1D3A",
@@ -206,42 +207,37 @@ const FloorSvg = ({ floorId }) => {
             },
           }}
         >
-          <Toparrow />
+          <Leftarrow />
         </Button>
 
         {/* Floors List with Smooth Transition */}
-        <List>
-          {transitions((style, floor) => (
-            <animated.div style={style} key={floor}>
-              <ListItem disablePadding>
-                <ListItemButton
-                  onClick={() => setActiveFloor(floor)}
-                  sx={{
-                    backgroundColor:
-                      activeFloor === floor ? "#C1AC40" : "transparent",
-                    color: activeFloor === floor ? "#1D1D3A" : "#C1AC40",
-                    borderRadius: "50px",
-                    minWidth: "0px",
-                    width: "50px",
-                    height: "50px",
-                    marginBottom: "8px",
-                    fontWeight: activeFloor === floor ? "bold" : "normal",
-                    fontFamily: "poppins",
-                  }}
-                >
-                  <ListItemText
-                    primary={floor}
-                    primaryTypographyProps={{
-                      align: "center",
-                      color: "white",
-                    }}
-                  />
-                </ListItemButton>
-              </ListItem>
-            </animated.div>
-          ))}
-        </List>
+        <Box sx={{ display: "flex", gap: "4px" }}>
+          <button
+            style={{
+              height: "55px",
+              width: "55px",
+              borderRadius: "55px",
+              backgroundColor: "#c1ac40",
+              color: "white",
+              border: "1px solid #1d1d3a",
+            }}
+          >
+            1
+          </button>
 
+          <button
+            style={{
+              height: "55px",
+              width: "55px",
+              borderRadius: "55px",
+              backgroundColor: "#c1ac40",
+              color: "white",
+              border: "1px solid #1d1d3a",
+            }}
+          >
+            2
+          </button>
+        </Box>
         {/* Scroll Down Button */}
         <Button
           onClick={scrollUp}
@@ -253,6 +249,7 @@ const FloorSvg = ({ floorId }) => {
             border: "1px solid #c1ac40",
             backgroundColor: "#C1AC40",
             color: "#1D1D3A",
+            cursor: "pointer",
             borderRadius: "50px",
             "&:hover": {
               backgroundColor: "#1D1D3A",
@@ -260,7 +257,7 @@ const FloorSvg = ({ floorId }) => {
             },
           }}
         >
-          <Bottomarrow />
+          <Rightarrow />
         </Button>
       </Box>
       <div
@@ -271,8 +268,8 @@ const FloorSvg = ({ floorId }) => {
           width: "100%",
           display: "flex",
           justifyContent: "center",
-          position: "absolute",
-          left: "28%",
+          // position: "absolute",
+          // left: "28%",
         }}
       >
         {/* Buils
@@ -371,7 +368,9 @@ const FloorSvg = ({ floorId }) => {
           <image
             width="1920"
             height="1080"
-            xlinkHref={`${imagePath}floor/f-${buildingData.buildingName?.toLowerCase()}-${buildingData.name}.png`}
+            xlinkHref={`${imagePath}floor/f-${buildingData.buildingName?.toLowerCase()}-${
+              buildingData.name
+            }.png`}
           ></image>
           {/* <path className="ft0" d="M 11,58 H 648 V 526 H 11 Z" />
             <path className="ft0" d="m 648,58 h 643 V 526 H 648 Z" />
@@ -385,14 +384,12 @@ const FloorSvg = ({ floorId }) => {
               d="M 11,526 V 999 H 917 V 823 H 814 V 624 H 554 v -98 z"
             /> */}
           {buildingData?.apartmentDTO?.map((apartment) => {
-            
             return (
               <path
                 key={apartment.id}
                 onContextMenu={(e) => handleContextMenu(e, apartment)}
                 className={
                   apartment.isSold ? (isAuthorized() ? "st1" : "ft0") : "ft0"
-                
                 }
                 d={apartment.path}
               />
