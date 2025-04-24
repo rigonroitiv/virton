@@ -43,7 +43,7 @@ const FloorSvg = ({ floorId }) => {
   const dispatch = useDispatch();
   const floorData = useSelector(getFloorApartmentsSvgData);
   const wishListItemCount = useSelector(getWishlistCount);
-  
+
   const [contextMenu, setContextMenu] = useState({
     anchorEl: null,
     open: false,
@@ -80,8 +80,7 @@ const FloorSvg = ({ floorId }) => {
   const handlePrevious = () => {
     setCurrentIndex(
       (prevIndex) =>
-        (prevIndex - (limited ? 2 : 1) + floorData.length) %
-        floorData.length
+        (prevIndex - (limited ? 2 : 1) + floorData.length) % floorData.length
     ); //1
   };
 
@@ -178,83 +177,104 @@ const FloorSvg = ({ floorId }) => {
       }}
     >
       <Box
-        width="100%"
-        bgcolor="#1D1D3A"
-        display="flex"
-        flexDirection="row"
-        alignItems="center"
-        justifyContent="center"
-        overflow={"hidden"}
-        height={"40vh"}
-        gap={"10px"}
+        sx={{
+          width: "100%",
+          backgroundColor: "#1d1d3a",
+          display: "flex",
+          flexDirection: isSmallDev ? "column" : "row",
+          alignItems: "center",
+          justifyContent: "center",
+          overflow: "hidden",
+          height: "40vh",
+          gap: "15px",
+        }}
       >
-        <Typography sx={{ color: "white", fontSize: "25px" }}>
-          Objekti 4
-        </Typography>
-        {/* Scroll Up Button */}
-        <Button
-          onClick={scrollDown}
-          // disabled={activeFloor === floors[0]} // Disable if no higher floors
-          sx={{
-            width: "50px",
-            minWidth: "0px",
-            height: "50px",
-            border: "1px solid #c1ac40",
-            backgroundColor: "#C1AC40",
-            color: "#1D1D3A",
-            cursor: "pointer",
-            borderRadius: "50px",
-            "&:hover": {
-              backgroundColor: "#1D1D3A",
-              color: "#C1AC40",
-            },
-          }}
-        >
-          <Leftarrow />
-        </Button>
-
-        {/* Floors List with Smooth Transition */}
-        <Box sx={{ display: "flex", gap: "4px" }}>
-          {floors.reverse().slice(startIndex, startIndex + visibleRange).map((floor) => {
-            return (<button
-            onClick={() => {
-              setActiveFloor(floor);
-              updateVisibleFloors(floor);
-            }}
-              style={{
-                height: "55px",
-                width: "55px",
-                borderRadius: "55px",
-                backgroundColor: activeFloor !== floor ? '#1d1d3a' : "#c1ac40",
-                color: "white",
-                border: activeFloor !== floor ? '1px solid #c1ac40' : "1px solid #1d1d3a",
-              }}
-            >
-              {floor}
-            </button>)
-          })}
+        <Box>
+          <Typography sx={{ color: "white", fontSize: "35px" }}>
+            Objekti 4
+          </Typography>
         </Box>
-        {/* Scroll Down Button */}
-        <Button
-          onClick={scrollUp}
-          // disabled={activeFloor === floors[floors.length - 1]} // Disable if no lower floors
+
+        {/* Scroll Up Button */}
+        <Box
           sx={{
-            width: "50px",
-            minWidth: "0px",
-            height: "50px",
-            border: "1px solid #c1ac40",
-            backgroundColor: "#C1AC40",
-            color: "#1D1D3A",
-            cursor: "pointer",
-            borderRadius: "50px",
-            "&:hover": {
-              backgroundColor: "#1D1D3A",
-              color: "#C1AC40",
-            },
+            display: "flex",
+            gap: "5px",
+            justifyContent: "center",
+            alignItems: "center",
           }}
         >
-          <Rightarrow />
-        </Button>
+          <Button
+            onClick={scrollDown}
+            // disabled={activeFloor === floors[0]} // Disable if no higher floors
+            sx={{
+              width: "50px",
+              minWidth: "0px",
+              height: "50px",
+              border: "1px solid white",
+              color: "#1D1D3A",
+              cursor: "pointer",
+              borderRadius: "50px",
+              "&:hover": {
+                backgroundColor: "transparent",
+                color: "#C1AC40",
+              },
+            }}
+          >
+            <Leftarrow />
+          </Button>
+
+          {/* Floors List with Smooth Transition */}
+          <Box sx={{ display: "flex", gap: "4px" }}>
+            {floors
+              .reverse()
+              .slice(startIndex, startIndex + visibleRange)
+              .map((floor) => {
+                return (
+                  <button
+                    onClick={() => {
+                      setActiveFloor(floor);
+                      updateVisibleFloors(floor);
+                    }}
+                    style={{
+                      height: "55px",
+                      width: "55px",
+                      borderRadius: "55px",
+                      backgroundColor:
+                        activeFloor !== floor ? "#1d1d3a" : "#c1ac40",
+                      color: "white",
+                      border:
+                        activeFloor !== floor
+                          ? "1px solid #c1ac40"
+                          : "1px solid #1d1d3a",
+                    }}
+                  >
+                    {floor}
+                  </button>
+                );
+              })}
+          </Box>
+          {/* Scroll Down Button */}
+          <Button
+            onClick={scrollUp}
+            // disabled={activeFloor === floors[floors.length - 1]} // Disable if no lower floors
+            sx={{
+              width: "50px",
+              minWidth: "0px",
+              height: "50px",
+              border: "1px solid white",
+              color: "#1D1D3A",
+              cursor: "pointer",
+              borderRadius: "50px",
+              "&:hover": {
+                backgroundColor: "#1D1D3A",
+                color: "#C1AC40",
+              },
+            }}
+          >
+            <Rightarrow />
+          </Button>
+        </Box>
       </Box>
       <div
         key={floorData?.buildingName}
@@ -361,42 +381,42 @@ const FloorSvg = ({ floorId }) => {
           xmlns="http://www.w3.org/2000/svg"
           xmlnsSvg="http://www.w3.org/2000/svg"
         >
-           <image
-                  width={floorData && floorData[activeFloor]?.imageWidth}
-                  height={floorData && floorData[activeFloor]?.imageHeight}
-                  transform={floorData && floorData[activeFloor]?.imageTransform}
-                  xlinkHref={
-                    floorData &&
-                    `${imagePath}floor/f-${floorData[activeFloor]?.buildingId?.toLowerCase()}-${name}.png`
-                  }
-                  
-                ></image>
-                {floorData?.map((floor) => {
-                  if (parseInt(floor.floorNumber) === activeFloor && floor.name === name) {
-                    return floor.apartmentList?.map((apartment) => {
-                      console.log(floor)
-                      return (
-                        <path
-                        id={floor.id}
-                          onClick={() => {
-                            if (apartment.isSold) return;
-                            navigate(`/apartment/${apartment.id}`);
-                          }}
-                          onContextMenu={(e) => handleContextMenu(e, apartment)}
-                          className={
-                            apartment.isSold
-                              ? 'st1'
-                              : "ft0"
-                          }
-                          d={apartment.path}
-                          // onMouseEnter={() => setHoveredId(apartment.id)}
-                          // onMouseMove={handleMouseMove}
-                          // onMouseLeave={() => setHoveredId(null)}
-                        />
-                      );
-                    });
-                  } else return <h1>{floor.floorNumber}</h1>;
-                })}
+          <image
+            width={floorData && floorData[activeFloor]?.imageWidth}
+            height={floorData && floorData[activeFloor]?.imageHeight}
+            transform={floorData && floorData[activeFloor]?.imageTransform}
+            xlinkHref={
+              floorData &&
+              `${imagePath}floor/f-${floorData[
+                activeFloor
+              ]?.buildingId?.toLowerCase()}-${name}.png`
+            }
+          ></image>
+          {floorData?.map((floor) => {
+            if (
+              parseInt(floor.floorNumber) === activeFloor &&
+              floor.name === name
+            ) {
+              return floor.apartmentList?.map((apartment) => {
+                console.log(floor);
+                return (
+                  <path
+                    id={floor.id}
+                    onClick={() => {
+                      if (apartment.isSold) return;
+                      navigate(`/apartment/${apartment.id}`);
+                    }}
+                    onContextMenu={(e) => handleContextMenu(e, apartment)}
+                    className={apartment.isSold ? "st1" : "ft0"}
+                    d={apartment.path}
+                    // onMouseEnter={() => setHoveredId(apartment.id)}
+                    // onMouseMove={handleMouseMove}
+                    // onMouseLeave={() => setHoveredId(null)}
+                  />
+                );
+              });
+            } else return <h1>{floor.floorNumber}</h1>;
+          })}
         </svg>
       </div>
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
