@@ -185,9 +185,12 @@ const FloorSvg = ({ floorId }) => {
         alignItems="center"
         justifyContent="center"
         overflow={"hidden"}
-        height={"50vh"}
+        height={"40vh"}
         gap={"10px"}
       >
+        <Typography sx={{ color: "white", fontSize: "25px" }}>
+          Objekti 4
+        </Typography>
         {/* Scroll Up Button */}
         <Button
           onClick={scrollDown}
