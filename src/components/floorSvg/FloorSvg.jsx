@@ -185,9 +185,12 @@ const FloorSvg = ({ floorId }) => {
         alignItems="center"
         justifyContent="center"
         overflow={"hidden"}
-        height={"50vh"}
+        height={"40vh"}
         gap={"10px"}
       >
+        <Typography sx={{ color: "white", fontSize: "25px" }}>
+          Objekti 4
+        </Typography>
         {/* Scroll Up Button */}
         <Button
           onClick={scrollDown}
@@ -384,7 +387,7 @@ const FloorSvg = ({ floorId }) => {
               d="M 11,526 V 999 H 917 V 823 H 814 V 624 H 554 v -98 z"
             /> */}
           {buildingData?.apartmentDTO?.map((apartment) => {
-            if(parseInt(apartment.floorNumber) !== activeFloor) return null; // Filter apartments based on the active floor
+            if (parseInt(apartment.floorNumber) !== activeFloor) return null; // Filter apartments based on the active floor
             return (
               <path
                 key={apartment.id}
