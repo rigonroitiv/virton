@@ -71,7 +71,7 @@ const GeneralBuilding = () => {
       }}
     >
       {/* <img
-        src="/assets/images/building.jpg"
+        src="/projektet/assets/images/building.jpg"
         alt=""
         style={{
           width: "100%",

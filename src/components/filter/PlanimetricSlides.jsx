@@ -237,7 +237,7 @@ const PlanimetricSlides = ({ building, type }) => {
                     }}
                   >
                     <img
-                      src="/assets/images/vector.png"
+                      src="/projektet/assets/images/vector.png"
                       alt=""
                       style={{ marginRight: "7px" }}
                     />{" "}

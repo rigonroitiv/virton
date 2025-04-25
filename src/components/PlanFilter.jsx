@@ -718,7 +718,7 @@ const PlanFilter = () => {
           }}
         >
           <img
-            src="/assets/images/vector1.png"
+            src="/projektet/assets/images/vector1.png"
             alt=""
             style={{ marginRight: "5px", width: "25px" }}
           />

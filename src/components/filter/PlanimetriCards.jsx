@@ -22,10 +22,11 @@ import {
   getRegularSquareFilter,
 } from "../../features/filter/FilterSlice";
 import { fetchApartmentsAll } from "../../features/apartment/ApartmentAPI";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   const dispatch = useDispatch();
+  const { id } = useParams();
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const isMidDev = useMediaQuery("(max-width:1024px)");
   const [columns, setColumns] = useState(2); // Default to 2 columns for mobile
@@ -250,7 +251,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                     >
                       <Button
                         onClick={() => {
-                          navigate(`/apartment/${property.id}`);
+                          navigate(`/${id}/apartment/${property.id}`);
                         }}
                         sx={{
                           color: "#C1AC40",
@@ -267,11 +268,11 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                           },
                         }}
                       >
-                        <img
-                          src="/assets/images/vector.png"
+                        {/* <img
+                          src="/projektet/assets/images/vector.png"
                           alt=""
                           style={{ marginRight: "7px" }}
-                        />
+                        /> */}
                         Më Shumë...
                       </Button>
                     </Box>

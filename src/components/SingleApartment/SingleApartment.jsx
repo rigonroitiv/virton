@@ -46,7 +46,7 @@ const SingleApartment = ({ data }) => {
         >
           <img
             style={{ width: "25px", marginRight: "7px" }}
-            src="/assets/images/tile.png"
+            src="/projektet/assets/images/tile.png"
             alt=""
           />
           2D Plan
@@ -68,7 +68,7 @@ const SingleApartment = ({ data }) => {
         >
           <img
             style={{ width: "25px", marginRight: "7px" }}
-            src="/assets/images/tile.png"
+            src="/projektet/assets/images/tile.png"
             alt=""
           />
           3D Plan
@@ -91,7 +91,7 @@ const SingleApartment = ({ data }) => {
           }}
         >
           <img
-            src="/assets/images/vector.png"
+            src="/projektet/assets/images/vector.png"
             alt=""
             style={{ width: "20px", marginRight: "6px" }}
           />{" "}
@@ -307,7 +307,7 @@ const SingleApartment = ({ data }) => {
               }}
             >
               <img
-                src="/assets/images/shkarkopdf.png"
+                src="/projektet/assets/images/shkarkopdf.png"
                 alt=""
                 style={{
                   marginRight: "7px",
@@ -332,7 +332,7 @@ const SingleApartment = ({ data }) => {
               }}
             >
               <img
-                src="/assets/images/vector.png"
+                src="/projektet/assets/images/vector.png"
                 alt=""
                 style={{
                   marginRight: "7px",

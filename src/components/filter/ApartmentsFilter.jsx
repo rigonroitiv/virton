@@ -486,7 +486,7 @@ const ApartmentsFilter = () => {
         >
           <img
             style={{ marginRight: "10px", width: isSmallDev ? "20px" : "20px" }}
-            src="/assets/images/vector1.png"
+            src="/projektet/assets/images/vector1.png"
             alt=""
           />{" "}
           Filtro
