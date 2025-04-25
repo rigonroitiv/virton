@@ -192,18 +192,23 @@ const FloorSvg = ({ floorId }) => {
         <Box
           sx={{
             display: "flex",
+            flexDirection: isSmallDev ? "column" : "row",
             justifyContent: "space-between",
             width: "100%",
             padding: "10px 50px",
-            alignItems: "center",
+            alignItems: isSmallDev ? "start" : "center",
           }}
         >
-          <Typography sx={{ color: "white", fontSize: "40px" }}>
+          <Typography
+            sx={{ color: "white", fontSize: isSmallDev ? "25px" : "40px" }}
+          >
             Objekti:{" "}
             <span style={{ color: "#c1ac40" }}>{name?.toUpperCase()}</span>
           </Typography>
 
-          <Typography sx={{ color: "white", fontSize: "60px" }}>
+          <Typography
+            sx={{ color: "white", fontSize: isSmallDev ? "45px" : "60px" }}
+          >
             Kati: <span style={{ color: "#c1ac40" }}>{activeFloor}</span>
           </Typography>
 
@@ -216,10 +221,10 @@ const FloorSvg = ({ floorId }) => {
         <Box
           sx={{
             display: "flex",
-            gap: "40px",
+            gap: isSmallDev ? "5px" : "40px",
             justifyContent: "center",
             alignItems: "center",
-            mt: "30px",
+            mt: isSmallDev ? "10px" : "30px",
           }}
         >
           <Button
@@ -243,7 +248,7 @@ const FloorSvg = ({ floorId }) => {
           </Button>
 
           {/* Floors List with Smooth Transition */}
-          <Box sx={{ display: "flex", gap: "15px" }}>
+          <Box sx={{ display: "flex", gap: isSmallDev ? "5px" : "15px" }}>
             {floors
               .reverse()
               .slice(startIndex, startIndex + visibleRange)
@@ -302,6 +307,7 @@ const FloorSvg = ({ floorId }) => {
           width: "100%",
           display: "flex",
           justifyContent: "center",
+          overflow: "auto",
           // position: "absolute",
           // left: "28%",
         }}
@@ -390,52 +396,55 @@ const FloorSvg = ({ floorId }) => {
               }
             })}
           </svg> */}
-        <svg
-          x="0px"
-          y="0px"
-          viewBox="0 0 1920 1080"
-          xmlSpace="preserve"
-          xmlnsXlink="http://www.w3.org/1999/xlink"
-          xmlns="http://www.w3.org/2000/svg"
-          xmlnsSvg="http://www.w3.org/2000/svg"
-        >
-          <image
-            width={floorData && floorData[activeFloor]?.imageWidth}
-            height={floorData && floorData[activeFloor]?.imageHeight}
-            transform={floorData && floorData[activeFloor]?.imageTransform}
-            xlinkHref={
-              floorData &&
-              `${imagePath}floor/f-${floorData[
-                activeFloor
-              ]?.buildingId?.toLowerCase()}-${name}.png`
-            }
-          ></image>
-          {floorData?.map((floor) => {
-            if (
-              parseInt(floor.floorNumber) === activeFloor &&
-              floor.name === name
-            ) {
-              return floor.apartmentList?.map((apartment) => {
-                console.log(floor);
-                return (
-                  <path
-                    id={floor.id}
-                    onClick={() => {
-                      if (apartment.isSold) return;
-                      navigate(`/apartment/${apartment.id}`);
-                    }}
-                    onContextMenu={(e) => handleContextMenu(e, apartment)}
-                    className={apartment.isSold ? "st1" : "ft0"}
-                    d={apartment.path}
-                    // onMouseEnter={() => setHoveredId(apartment.id)}
-                    // onMouseMove={handleMouseMove}
-                    // onMouseLeave={() => setHoveredId(null)}
-                  />
-                );
-              });
-            } else return <h1>{floor.floorNumber}</h1>;
-          })}
-        </svg>
+        <div style={{ width: "100%" }}>
+          <svg
+            x="0px"
+            y="0px"
+            viewBox="0 0 1920 1080"
+            style={{ width: isSmallDev ? "200%" : "100%" }}
+            xmlSpace="preserve"
+            xmlnsXlink="http://www.w3.org/1999/xlink"
+            xmlns="http://www.w3.org/2000/svg"
+            xmlnsSvg="http://www.w3.org/2000/svg"
+          >
+            <image
+              width={floorData && floorData[activeFloor]?.imageWidth}
+              height={floorData && floorData[activeFloor]?.imageHeight}
+              transform={floorData && floorData[activeFloor]?.imageTransform}
+              xlinkHref={
+                floorData &&
+                `${imagePath}floor/f-${floorData[
+                  activeFloor
+                ]?.buildingId?.toLowerCase()}-${name}.png`
+              }
+            ></image>
+            {floorData?.map((floor) => {
+              if (
+                parseInt(floor.floorNumber) === activeFloor &&
+                floor.name === name
+              ) {
+                return floor.apartmentList?.map((apartment) => {
+                  console.log(floor);
+                  return (
+                    <path
+                      id={floor.id}
+                      onClick={() => {
+                        if (apartment.isSold) return;
+                        navigate(`/apartment/${apartment.id}`);
+                      }}
+                      onContextMenu={(e) => handleContextMenu(e, apartment)}
+                      className={apartment.isSold ? "st1" : "ft0"}
+                      d={apartment.path}
+                      // onMouseEnter={() => setHoveredId(apartment.id)}
+                      // onMouseMove={handleMouseMove}
+                      // onMouseLeave={() => setHoveredId(null)}
+                    />
+                  );
+                });
+              } else return <h1>{floor.floorNumber}</h1>;
+            })}
+          </svg>
+        </div>
       </div>
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
