@@ -11,7 +11,6 @@ const SalesModal = ( { open, handleClose, apartmentData } ) => {
   const [warehousePrice, setWarehousePrice] = useState(0.00);
   const [apartmentPrice, setApartmentPrice] = useState(0.00);
   const [warehouseSquare, setWarehouseSquare] = useState(0);
-console.log(apartmentData)
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = new FormData(e.target);
@@ -102,6 +101,16 @@ console.log(apartmentData)
                   type="text"
                   name='apartmentName'
                   label="Banesa"
+                />
+              </Grid>
+              <Grid item xs={12} md={6} lg={4}>
+                <TextField
+                  fullWidth
+                  defaultValue={new Date().toISOString().slice(0, 16)}
+                  size="small"
+                  type="datetime-local"
+                  name='createdAt'
+                  label="Data e shitjes"
                 />
               </Grid>
               <Grid item xs={12} md={6} lg={4}>

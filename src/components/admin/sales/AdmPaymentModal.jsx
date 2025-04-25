@@ -17,8 +17,19 @@ const style = {
   p: 4,
 };
 
+const formatDateWithSeconds = (date) => {
+  const pad = (n) => String(n).padStart(2, '0');
+  return `${date.getFullYear()}-${pad(date.getMonth() + 1)}-${pad(date.getDate())}T${pad(date.getHours())}:${pad(date.getMinutes())}:${pad(date.getSeconds())}`;
+};
+
+
 const AdmPaymentModal = ({ open, onClose, sale }) => {
   const [value, setValue] = useState(null);
+  const [createdAt, setCreatedAt] = useState(() => formatDateWithSeconds(new Date()));
+
+  const handleDateChange = (e) => {
+    setCreatedAt(e.target.value);
+  };
 
   const handleChange = (event) => {
     // Allow only numeric values
@@ -26,9 +37,10 @@ const AdmPaymentModal = ({ open, onClose, sale }) => {
     setValue(numericValue);
   };
 
+
   const addNewKesti = () => {
     axiosInstance
-      .put(`${BASE_URL}/api/v1/sales?id=${sale.id}&paid=${value}`)
+      .put(`${BASE_URL}/api/v1/sales?id=${sale.id}&paid=${value}&date=${createdAt}`)
       .then((res) => {
         toast.success("U rregullua me sukses");
       })
@@ -79,6 +91,17 @@ const AdmPaymentModal = ({ open, onClose, sale }) => {
               }
             }}
           />
+
+<TextField
+        fullWidth
+        value={createdAt}
+        onChange={handleDateChange}
+        size="small"
+        type="datetime-local"
+        name="createdAt"
+        label="Data e shitjes"
+        inputProps={{ step: 1 }}
+      />
 
           <Box
             sx={{
