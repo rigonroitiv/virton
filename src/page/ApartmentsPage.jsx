@@ -37,7 +37,8 @@ const ApartmentsPage = () => {
       sx={{
         width: "100%",
         height: "100%",
-        overflow: "auto",
+        overflowX: "auto",
+        overflowY: "hidden",
         padding: isSmallDev
           ? "120px 20px"
           : isMidDev
