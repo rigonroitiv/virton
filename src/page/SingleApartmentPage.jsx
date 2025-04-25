@@ -71,7 +71,7 @@ const SingleApartmentPage = () => {
           >
             {" "}
             <img
-              src="/assets/images/vector1.png"
+              src="/projektet/assets/images/vector1.png"
               alt=""
               style={{ marginRight: "10px", width: "25px" }}
             />
@@ -127,7 +127,7 @@ const SingleApartmentPage = () => {
                 height: isSmallDev ? "100px" : "100%",
                 objectFit: "cover",
               }}
-              src={"/assets/images/kendifoto.png"}
+              src={"/projektet/assets/images/kendifoto.png"}
               alt=""
             />
           </Box> */}

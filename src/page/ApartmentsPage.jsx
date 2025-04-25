@@ -112,7 +112,7 @@ const ApartmentsPage = () => {
             {[
               {
                 text: "3D Plan",
-                icon: "/assets/images/vector.png",
+                icon: "/projektet/assets/images/vector.png",
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "50px", right: "0" },
                 action: () => {
@@ -122,7 +122,7 @@ const ApartmentsPage = () => {
               },
               {
                 text: "Top View",
-                icon: "/assets/images/tile.png",
+                icon: "/projektet/assets/images/tile.png",
                 width: isSmallDev ? "100%" : "140px",
                 borderRadius: { left: "0", right: "0" },
                 action: () => {
@@ -132,7 +132,7 @@ const ApartmentsPage = () => {
               },
               {
                 text: "Apartamentet",
-                icon: "/assets/images/floor-plan.png",
+                icon: "/projektet/assets/images/floor-plan.png",
                 width: isSmallDev ? "100%" : "170px",
                 borderRadius: { left: "0", right: "50px" },
                 action: () => {
