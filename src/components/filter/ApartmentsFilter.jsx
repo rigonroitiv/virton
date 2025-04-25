@@ -41,7 +41,7 @@ const ApartmentsFilter = () => {
     // dispatch(handleFilterState(false));
     dispatch(handleRegularFilterReset());
     setRoom(["all"]);
-  }
+  };
 
   const handleRoomFilter = (actionPayload) => {
     if (actionPayload === "all") {
@@ -89,6 +89,7 @@ const ApartmentsFilter = () => {
         borderRadius: "5px",
         position: "relative",
         overflow: "hidden",
+        mt: isSmallDev ? "40px" : "0px",
       }}
     >
       <Box sx={{ position: "absolute", top: "-140px", right: "-120px" }}>
@@ -196,7 +197,7 @@ const ApartmentsFilter = () => {
           >
             4+1
           </Button>
-          <Button
+          {/* <Button
             onClick={() => handleRoomFilter("5")}
             sx={{
               border: "1px solid #C1AC40",
@@ -209,12 +210,12 @@ const ApartmentsFilter = () => {
             }}
           >
             5+1
-          </Button>
+          </Button> */}
           <Button
             onClick={() => handleRoomFilter("penthouse")}
             sx={{
               border: "1px solid #C1AC40",
-              backgroundColor: room.includes("pthouse")
+              backgroundColor: room.includes("penthouse")
                 ? "#C1AC40"
                 : "transparent",
               fontSize: isSmallDev ? "10px" : "13px",
