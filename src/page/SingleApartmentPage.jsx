@@ -139,7 +139,9 @@ const SingleApartmentPage = () => {
       <GallerySlider
         images={[
           "./assets/images/galeria1.jpg",
+          "./assets/images/galeria2.jpg",
           "./assets/images/galeria3.jpg",
+          "./assets/images/galeria4.jpg",
         ]}
       />
       <Box
