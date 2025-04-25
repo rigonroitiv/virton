@@ -151,7 +151,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                     height={
                       isSmallDev ? (columns === 1 ? "300" : "200") : "300"
                     }
-                    image={`${mainUrl}${planmetricImageUrl}${property.imageUrl}`}
+                    image={`${mainUrl}${planmetricImageUrl}${property.image3dUrl}`}
                     alt={`${property.rooms} image`}
                   />
                   <CardContent

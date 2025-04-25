@@ -69,7 +69,7 @@ function AdmApartmentModal() {
     isReserved: false,
     floorNumber: 0,
     square: 0,
-    apartmentName: "",
+    name: "",
     imageData: null,
     apartmentNumber: 1,
     style: "",
@@ -96,7 +96,7 @@ function AdmApartmentModal() {
       isReserved: false,
       floorNumber: 0,
       square: 0,
-      apartmentName: "",
+      name: "",
       imageData: null,
       apartmentNumber: 1,
       style: "",
@@ -186,7 +186,7 @@ function AdmApartmentModal() {
     formData.append("isSold", apartmentData.isSold);
     formData.append("floorNumber", apartmentData.floorNumber);
     formData.append("square", apartmentData.square);
-    formData.append("name", apartmentData.apartmentName);
+    formData.append("name", apartmentData.name);
     formData.append("apartmentNumber", apartmentData.apartmentNumber);
     formData.append("style", apartmentData.style);
     formData.append("className", apartmentData.className);
@@ -423,12 +423,12 @@ function AdmApartmentModal() {
                 <TextField
                   fullWidth
                   size="small"
-                  name="apartmentName"
-                  value={apartmentData.apartmentName}
+                  name="name"
+                  value={apartmentData.name}
                   onChange={(e) => {
                     setApartmentData((prev) => ({
                       ...prev,
-                      apartmentName: e.target.value,
+                      name: e.target.value,
                     }));
                   }}
                   label="Emri baneses"

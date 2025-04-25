@@ -21,7 +21,7 @@ const SingleApartmentPage = () => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { id, buildingId } = useParams();
   const data = useSelector(getApartmentDetailModalData);
   useEffect(() => {
     if (id) {
@@ -165,7 +165,7 @@ const SingleApartmentPage = () => {
 
         <PlanimetricSlides
           type={data?.rooms}
-          building={data?.apartmentNumber}
+          building={buildingId}
         />
       </Box>
     </Box>

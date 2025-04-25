@@ -30,6 +30,7 @@ import {
 import { isAuthorized } from "../../features/auth/AuthSlice";
 import Rightarrow from "../../assets/svg/Rightarrow";
 import Leftarrow from "../../assets/svg/Leftarrow";
+import ApartmentPopup from "../popup/ApartmentPopup";
 
 const maxFloor = 14;
 const minFloor = 1;
@@ -430,7 +431,23 @@ const FloorSvg = ({ floorId }) => {
                       id={floor.id}
                       onClick={() => {
                         if (apartment.isSold) return;
-                        navigate(`/apartment/${apartment.id}`);
+                        navigate(`/${id}/apartment/${apartment.id}`);
+                      }}
+                      onMouseEnter={(e) => {
+                        e.preventDefault();
+                        setPopup({
+                          data: apartment,
+                          anchorEl: e.currentTarget,
+                          open: true,
+                        });
+                      }}
+                      onMouseLeave={(e) => {
+                        e.preventDefault();
+                        setPopup({
+                          anchorEl: null,
+                          data: {},
+                          open: false,
+                        });
                       }}
                       onContextMenu={(e) => handleContextMenu(e, apartment)}
                       className={apartment.isSold ? "st1" : "ft0"}
@@ -448,6 +465,13 @@ const FloorSvg = ({ floorId }) => {
       </div>
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
+      {popup.anchorEl && (
+            <ApartmentPopup
+              anchorEl={popup.anchorEl}
+              data={popup.data}
+              open={popup.open}
+            />
+          )}
     </Box>
   );
 };

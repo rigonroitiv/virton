@@ -351,7 +351,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                                 parseInt(apartment.square) <=
                                   squareFilter.endVal
                               ) {
-                                navigate(`/apartment/${apartment.id}`);
+                                navigate(`/${id}/apartment/${apartment.id}`);
                               }
                             }}
                           />
@@ -365,7 +365,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
                             className={"st0"}
                             id={apartment.apartmentId}
                             onClick={() =>
-                              navigate(`/apartment/${apartment.id}`)
+                              navigate(`/${id}/apartment/${apartment.id}`)
                             }
                           />
                         );
