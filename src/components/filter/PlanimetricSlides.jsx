@@ -120,7 +120,7 @@ const PlanimetricSlides = ({ building, type }) => {
                   borderRadius: "5px",
                 }}
                 height={isSmallDev ? (columns === 1 ? "300" : "200") : "300"}
-                image={`${mainUrl}${planmetricImageUrl}${property.imageUrl}`}
+                image={`${mainUrl}${planmetricImageUrl}${property?.image3dUrl}`}
                 alt={`${property.rooms} image`}
               />
               <CardContent
@@ -179,7 +179,7 @@ const PlanimetricSlides = ({ building, type }) => {
                     variant="body1"
                     sx={{ color: "white", fontFamily: "Poppins" }}
                   >
-                    {property.rooms}
+                    {property.rooms}+1
                   </Typography>
                 </Box>
                 <Box
@@ -222,7 +222,7 @@ const PlanimetricSlides = ({ building, type }) => {
                       textTransform: "capitalize",
                       fontFamily: "Poppins",
                       zIndex: "2",
-                      border: "1px solid #c1ac40",
+                      border: "1px solid white",
                       borderRadius: "50px",
                       ":hover": {
                         backgroundColor: "#c1ac40",

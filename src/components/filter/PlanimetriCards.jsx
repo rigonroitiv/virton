@@ -39,8 +39,6 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   const handleSingleView = () => setColumns(1);
   const handleGridView = () => setColumns(2);
 
-  
-
   // First useEffect to handle the 'single' prop and fetching data
   useEffect(() => {
     if (!single) {
@@ -52,7 +50,8 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   useEffect(() => {
     if (single) {
       // Flatten buildingData into individual apartments
-      const flattenedData = buildingData?.flatMap(building => building.apartmentList) || [];
+      const flattenedData =
+        buildingData?.flatMap((building) => building.apartmentList) || [];
       setData(flattenedData);
     } else {
       // Use buildingData as-is for grouped view
@@ -213,7 +212,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                         variant="body1"
                         sx={{ color: "white", fontFamily: "Poppins" }}
                       >
-                        {property.rooms}
+                        {property.rooms}+1
                       </Typography>
                     </Box>
 
@@ -259,7 +258,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
                           fontFamily: "Poppins",
                           cursor: "pointer",
                           zIndex: 2,
-                          border: "1px solid #c1ac40",
+                          border: "1px solid white",
                           borderRadius: "50px",
                           ":hover": {
                             backgroundColor: "#c1ac40",

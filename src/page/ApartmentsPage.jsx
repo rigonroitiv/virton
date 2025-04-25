@@ -249,7 +249,7 @@ const ApartmentsPage = () => {
         >
           Planimetritë e{" "}
           <span style={{ color: "#1d1d3a", fontWeight: "600" }}>
-            Objektit A
+            Objektit {id.toUpperCase()}
           </span>
         </Typography>
 

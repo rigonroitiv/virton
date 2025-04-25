@@ -181,27 +181,45 @@ const FloorSvg = ({ floorId }) => {
           width: "100%",
           backgroundColor: "#1d1d3a",
           display: "flex",
-          flexDirection: isSmallDev ? "column" : "row",
+          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
           overflow: "hidden",
-          height: "40vh",
+          height: "55vh",
           gap: "15px",
         }}
       >
-        <Box>
-          <Typography sx={{ color: "white", fontSize: "35px" }}>
-            Objekti 4
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+            padding: "10px 50px",
+            alignItems: "center",
+          }}
+        >
+          <Typography sx={{ color: "white", fontSize: "40px" }}>
+            Objekti:{" "}
+            <span style={{ color: "#c1ac40" }}>{name?.toUpperCase()}</span>
           </Typography>
+
+          <Typography sx={{ color: "white", fontSize: "60px" }}>
+            Kati: <span style={{ color: "#c1ac40" }}>{activeFloor}</span>
+          </Typography>
+
+          <Box>
+            <h1 style={{ color: "#1d1d3a ", visibility: "hidden" }}>------</h1>
+          </Box>
         </Box>
 
         {/* Scroll Up Button */}
         <Box
           sx={{
             display: "flex",
-            gap: "5px",
+            gap: "40px",
             justifyContent: "center",
             alignItems: "center",
+            mt: "30px",
           }}
         >
           <Button
@@ -225,7 +243,7 @@ const FloorSvg = ({ floorId }) => {
           </Button>
 
           {/* Floors List with Smooth Transition */}
-          <Box sx={{ display: "flex", gap: "4px" }}>
+          <Box sx={{ display: "flex", gap: "15px" }}>
             {floors
               .reverse()
               .slice(startIndex, startIndex + visibleRange)

@@ -4,7 +4,7 @@ import Logo from "../../assets/svg/logo";
 import LogoPopup from "../../assets/svg/LogoPopup";
 import { isAuthorized } from "../../features/auth/AuthSlice";
 
-const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
+const KatiPopup = ({ anchorEl, setPopupMenu, data, open }) => {
   const [position, setPosition] = useState({ top: 0, left: 0 });
 
   useEffect(() => {
@@ -60,7 +60,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
           flexDirection: "column",
           gap: "10px",
           width: "200px",
-          height: "250px",
+          height: "70px",
           padding: "20px",
           border: "1px solid #C1AC40",
           borderRadius: "5px",
@@ -81,30 +81,14 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
             <Typography variant="h2">SOLD</Typography>
           </Box>
         )}
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Poppins",
-              fontWeight: "400",
-              color: "white",
-              fontSize: "25px",
-            }}
-          >
-            {data.name}
-          </Typography>
-        </Box>
 
         <Box
           sx={{
             display: "flex",
             flexDirection: "row",
+            height: "100%",
             justifyContent: "space-between",
+            alignContent: "center",
           }}
         >
           <Typography
@@ -112,36 +96,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
               fontFamily: "Poppins",
               fontWeight: "600",
               color: "white",
-              fontSize: "14px",
-            }}
-          >
-            Sipërfaqja
-          </Typography>
-          <Typography
-            sx={{
-              fontFamily: "Poppins",
-              fontWeight: "400",
-              color: "white",
-              fontSize: "14px",
-            }}
-          >
-            {data.square}m2
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Poppins",
-              fontWeight: "600",
-              color: "white",
-              fontSize: "14px",
+              fontSize: "22px",
             }}
           >
             Kati
@@ -151,7 +106,7 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
               fontFamily: "Poppins",
               fontWeight: "400",
               color: "white",
-              fontSize: "14px",
+              fontSize: "35px",
             }}
           >
             {data.floorNumber}
@@ -161,44 +116,15 @@ const ApartmentPopup = ({ anchorEl, setPopupMenu, data, open }) => {
         <Box
           sx={{
             display: "flex",
-            flexDirection: "row",
-            justifyContent: "space-between",
-          }}
-        >
-          <Typography
-            sx={{
-              fontFamily: "Poppins",
-              fontWeight: "600",
-              color: "white",
-              fontSize: "14px",
-            }}
-          >
-            Dhoma
-          </Typography>
-          <Typography
-            sx={{
-              fontFamily: "Poppins",
-              fontWeight: "400",
-              color: "white",
-              fontSize: "14px",
-            }}
-          >
-            {data.rooms}+1
-          </Typography>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
             position: "absolute",
-            top: "20%",
+            top: "10%",
           }}
         >
-          <LogoPopup width={"150px"} height={"150px"} />
+          <LogoPopup width={"170px"} height={"100px"} />
         </Box>
       </Box>
     </div>
   );
 };
 
-export default ApartmentPopup;
+export default KatiPopup;

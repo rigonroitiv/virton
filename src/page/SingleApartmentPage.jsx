@@ -17,7 +17,6 @@ import { getApartmentDetailModalData } from "../features/apartment/ApartmentSlic
 import PlanimetricSlides from "../components/filter/PlanimetricSlides";
 import { isAuthorized } from "../features/auth/AuthSlice";
 
-
 const SingleApartmentPage = () => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
   const navigate = useNavigate();
@@ -113,7 +112,7 @@ const SingleApartmentPage = () => {
           >
             Apartamenti: <span style={{ color: "white" }}>{data?.name}</span>
           </Typography>
-          <Box
+          {/* <Box
             sx={{
               height: isSmallDev ? "100px" : "120px",
               backgroundColor: "white",
@@ -131,7 +130,7 @@ const SingleApartmentPage = () => {
               src={"/assets/images/kendifoto.png"}
               alt=""
             />
-          </Box>
+          </Box> */}
         </Box>
       </Box>
       <Box sx={{ padding: isSmallDev ? "20px" : "50px" }}>
@@ -162,7 +161,10 @@ const SingleApartmentPage = () => {
           <span style={{ fontWeight: "700", color: "#C1AC40" }}>ngjajshme</span>
         </Typography>
 
-        <PlanimetricSlides type={data?.rooms} building={data?.apartmentNumber}/>
+        <PlanimetricSlides
+          type={data?.rooms}
+          building={data?.apartmentNumber}
+        />
       </Box>
     </Box>
   );

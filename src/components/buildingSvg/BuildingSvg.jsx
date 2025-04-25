@@ -9,7 +9,7 @@ import { getFilterState } from "../../features/filter/FilterSlice";
 import { imagePath } from "../../utils/consts";
 import ContextMenu from "../common/contextMenu/ContextMenu";
 import AdmApartmentModal from "../admin/apartments/AdmApartmentModal";
-import ApartmentPopup from "../popup/ApartmentPopup";
+import KatiPopup from "../popup/KatiPopup";
 
 const maxFloor = 14;
 const minFloor = 1;
@@ -18,6 +18,8 @@ const minSquare = 40;
 
 const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
   const isSmallDev = useMediaQuery("(max-width:768px)");
+  const isMidDev = useMediaQuery("(max-width:1024px)");
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const theme = useTheme();
@@ -82,7 +84,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
   };
 
   const getSvgHeight = () => {
-    return "100%";
+    return isSmallDev ? "auto" : isMidDev ? "auto" : "auto";
   };
 
   const handleContextMenu = (e, data) => {
@@ -98,9 +100,9 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
     <Box
       sx={{
         width: "100%",
-        height: "100%",
-        // objectFit: "cover",
+        height: isSmallDev ? "60vh" : "100%",
         position: "relative",
+        overflow: "auto",
       }}
     >
       {dataForSelection?.map((building, index) => {
@@ -112,7 +114,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
               opacity: currentIndex === index ? 1 : 0,
               transition: "opacity 0.1s ease-in-out",
               width: isSmallDev ? "250%" : "100%",
-              position: "absolute",
+              position: isMidDev ? "" : "absolute",
               display: "flex",
               justifyContent: "center",
               overflow: isSmallDev ? "auto" : "",
@@ -124,7 +126,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
               height={"100%"}
               preserveAspectRatio="none"
               style={{
-                transform: isSmallDev && "scale(1.9) translateX(20px)",
+                // transform: isSmallDev && "scale(1.9) translateX(20px)",
                 borderRadius: "5px",
                 objectFit: "cover ",
               }}
@@ -179,7 +181,9 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
                         // setFloorId(apartment.id);
                         // console.log(apartment.floorNumber);
                         // setFloorPlan(true);
-                        navigate(`/${projectid}/building/${id}/floor/${apartment.floorName}`)
+                        navigate(
+                          `/${projectid}/building/${id}/floor/${apartment.floorName}`
+                        );
                       }}
                     />
                   );
@@ -207,7 +211,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
       <ContextMenu menu={contextMenu} setMenu={setContextMenu} />
       <AdmApartmentModal />
       {popup.anchorEl && (
-        <ApartmentPopup
+        <KatiPopup
           anchorEl={popup.anchorEl}
           data={popup.data}
           open={popup.open}

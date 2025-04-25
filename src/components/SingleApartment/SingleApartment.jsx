@@ -17,7 +17,7 @@ const SingleApartment = ({ data }) => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        padding: "50px 0px",
+        padding: isSmallDev ? "50px 0px" : "100px 0px",
       }}
     >
       <Box
@@ -26,6 +26,7 @@ const SingleApartment = ({ data }) => {
           flexDirection: "row",
           justifyContent: "end",
           gap: "15px",
+          padding: "0px 20px",
         }}
       >
         <Button
@@ -36,8 +37,8 @@ const SingleApartment = ({ data }) => {
             fontFamily: "Poppins",
             fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "400",
-            color: "#1d1d3a",
-            backgroundColor: !threedSelected ? "#C1AC40" : "white",
+            color: !threedSelected ? "white" : "#1d1d3a",
+            backgroundColor: !threedSelected ? "#1d1d3a" : "white",
             borderRadius: "50px",
             textTransform: "capitalize",
             height: isSmallDev ? "35px" : "40px",
@@ -58,8 +59,8 @@ const SingleApartment = ({ data }) => {
             fontFamily: "Poppins",
             fontSize: isSmallDev ? "10px" : "15px",
             fontWeight: "400",
-            color: "#1d1d3a",
-            backgroundColor: threedSelected ? "#C1AC40" : "white",
+            color: threedSelected ? "white" : "#1d1d3a",
+            backgroundColor: threedSelected ? "#1d1d3a" : "white",
             borderRadius: "50px",
             textTransform: "capitalize",
             height: isSmallDev ? "35px" : "40px",
@@ -111,7 +112,7 @@ const SingleApartment = ({ data }) => {
           sx={{
             display: "flex",
             flexDirection: "column",
-            flex: "5",
+            flex: "3",
             width: "100%",
             gap: "20px",
             padding: isSmallDev
@@ -182,7 +183,7 @@ const SingleApartment = ({ data }) => {
                 textTransform: "capitalize",
               }}
             >
-              {data?.rooms}
+              {data?.rooms}+1
             </Typography>
           </Box>
 
@@ -283,7 +284,8 @@ const SingleApartment = ({ data }) => {
             sx={{
               display: "flex",
               flexDirection: "row",
-              justifyContent: "space-between",
+              width: "100%",
+              justifyContent: "end",
               width: "100%",
               borderTop: "1px solid #c1ac40",
               paddingTop: "30px",
@@ -293,15 +295,15 @@ const SingleApartment = ({ data }) => {
           >
             <Button
               sx={{
-                width: isSmallDev ? "100%" : isMidDev ? "100px" : "100%",
+                width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
                 fontFamily: "Poppins",
-                fontSize: isSmallDev ? "10px" : isMidDev ? "15px" : "20px",
+                fontSize: isSmallDev ? "10px" : isMidDev ? "15px" : "15px",
                 fontWeight: "600",
                 color: "#1d1d3a",
                 backgroundColor: "#C1AC40",
                 textTransform: "capitalize",
                 borderRadius: "50px",
-                height: isSmallDev ? "35px" : "50px",
+                height: isSmallDev ? "35px" : "40px",
               }}
             >
               <img
@@ -317,16 +319,16 @@ const SingleApartment = ({ data }) => {
 
             <Button
               sx={{
-                width: isSmallDev ? "100%" : isMidDev ? "100px" : "100%",
+                width: isSmallDev ? "100%" : isMidDev ? "100px" : "190px",
                 fontFamily: "Poppins",
-                fontSize: isSmallDev ? "10px" : isMidDev ? "15px" : "20px",
+                fontSize: isSmallDev ? "10px" : isMidDev ? "15px" : "15px",
 
                 fontWeight: "600",
                 color: "#C1AC40",
                 backgroundColor: "#1d1d3a",
                 textTransform: "capitalize",
                 borderRadius: "50px",
-                height: isSmallDev ? "35px" : "50px",
+                height: isSmallDev ? "35px" : "40px",
               }}
             >
               <img
@@ -344,7 +346,7 @@ const SingleApartment = ({ data }) => {
         <Box
           sx={{
             display: "flex",
-            flex: "6",
+            flex: "9",
             width: "100%",
             height: "100%",
             objectFit: "cover",
@@ -355,10 +357,10 @@ const SingleApartment = ({ data }) => {
           {!threedSelected ? (
             <img
               style={{
-                width: "100%",
-                height: "550px",
+                width: isSmallDev ? "100%" : "80%",
+                height: isSmallDev ? "100%" : "80%",
                 objectFit: "contain",
-                padding: isSmallDev ? "20px" : "60px",
+                padding: isSmallDev ? "20px" : "50px",
               }}
               src={`${mainUrl}${planmetricImageUrl}${data?.imageUrl}`}
               alt=""
@@ -366,10 +368,10 @@ const SingleApartment = ({ data }) => {
           ) : (
             <img
               style={{
-                width: "100%",
-                height: "550px",
+                width: isSmallDev ? "100%" : "80%",
+                height: isSmallDev ? "100%" : "80%",
                 objectFit: "contain",
-                padding: isSmallDev ? "20px" : "60px",
+                padding: isSmallDev ? "20px" : "0px",
               }}
               src={`${mainUrl}${planmetricImageUrl}${data?.image3dUrl}`}
               alt=""

@@ -242,9 +242,10 @@ const GeneralBuilding2 = () => {
     <Box
       sx={{
         width: "100%",
-        height: isSmallDev ? "100vh" : "100vh",
-        padding: isSmallDev ? '': "0px 50px 0px 50px",
+        height: isSmallDev ? "100vh" : "100%",
+        padding: isSmallDev ? "" : "100px 50px 0px 50px",
         backgroundColor: "#1d1d3a",
+        objectFit: "contain",
         overflow: "hidden",
         position: "relative",
         justifyContent: "center",
@@ -263,64 +264,72 @@ const GeneralBuilding2 = () => {
           overflow: "auto",
         }}
       /> */}
-      <Box sx={{overflowX: 'auto', position: {xs: 'absolute', md: 'static'}, top: '23%', left: 0, width: '100%'}}>
-      {id === "1" &&
-        object1.map((item) => {
-          if (currentInx === item.id) {
-            return (
-              <svg
-                viewBox="0 0 1440 710"
-                width={isSmallDev ? "200%" : "100%"}
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsSvg="http://www.w3.org/2000/svg"
-                style={{
-                  borderRadius: !isSmallDev && "15px",
-                }}
-              >
-                <image
-                  height={item.height}
-                  width={item.width}
-                  transform={item.transform}
-                  xlinkHref={item.imageUrl}
-                />
-                {item.points.map((point) => (
-                  <path
-                    onClick={() => navigate(point.href)}
-                    className="g1"
-                    d={point.d}
+      <Box
+        sx={{
+          overflowX: "auto",
+          position: { xs: "absolute", md: "static" },
+          top: "23%",
+          left: 0,
+          width: "100%",
+        }}
+      >
+        {id === "1" &&
+          object1.map((item) => {
+            if (currentInx === item.id) {
+              return (
+                <svg
+                  viewBox="0 0 1440 710"
+                  width={isSmallDev ? "200%" : "100%"}
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsSvg="http://www.w3.org/2000/svg"
+                  style={{
+                    borderRadius: !isSmallDev && "15px",
+                  }}
+                >
+                  <image
+                    height={item.height}
+                    width={item.width}
+                    transform={item.transform}
+                    xlinkHref={item.imageUrl}
                   />
-                ))}
-              </svg>
-            );
-          }
-        })}
-      {id === "2" &&
-        object2.map((item) => {
-          if (currentInx === item.id) {
-            return (
-              <svg
-                viewBox="0 0 1920 1080"
-                width={isSmallDev ? "200%" : "100%"}
-                xmlnsXlink="http://www.w3.org/1999/xlink"
-                xmlns="http://www.w3.org/2000/svg"
-                xmlnsSvg="http://www.w3.org/2000/svg"
-                style={{
-                  borderRadius: "15px",
-                }}
-              >
-                <image transform={item.transform} xlinkHref={item.imageUrl} />
-                {item.points.map((point) => (
-                  <path
-                    onClick={() => navigate(point.href)}
-                    className="g1"
-                    d={point.d}
-                  />
-                ))}
-              </svg>
-            );
-          }
-        })}
+                  {item.points.map((point) => (
+                    <path
+                      onClick={() => navigate(point.href)}
+                      className="g1"
+                      d={point.d}
+                    />
+                  ))}
+                </svg>
+              );
+            }
+          })}
+        {id === "2" &&
+          object2.map((item) => {
+            if (currentInx === item.id) {
+              return (
+                <svg
+                  viewBox="0 0 1920 1080"
+                  width={isSmallDev ? "200%" : "100%"}
+                  xmlnsXlink="http://www.w3.org/1999/xlink"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlnsSvg="http://www.w3.org/2000/svg"
+                  style={{
+                    borderRadius: "15px",
+                  }}
+                >
+                  <image transform={item.transform} xlinkHref={item.imageUrl} />
+                  {item.points.map((point) => (
+                    <path
+                      onClick={() => navigate(point.href)}
+                      className="g1"
+                      d={point.d}
+                    />
+                  ))}
+                </svg>
+              );
+            }
+          })}
       </Box>
       <IconButton
         onClick={handlePrev}
@@ -328,7 +337,7 @@ const GeneralBuilding2 = () => {
           position: "absolute",
           left: 5,
           color: "white",
-          bottom: {xs:"13%", md: '50%'},
+          bottom: { xs: "13%", md: "50%" },
         }}
       >
         <ArrowBackIos />
@@ -338,7 +347,7 @@ const GeneralBuilding2 = () => {
         sx={{
           position: "absolute",
           right: 5,
-          bottom: {xs:"13%", md: '50%'},
+          bottom: { xs: "13%", md: "50%" },
           color: "white",
         }}
       >

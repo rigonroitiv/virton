@@ -59,14 +59,14 @@ const GeneralBuilding = () => {
     <Box
       sx={{
         width: "100%",
-        height: isSmallDev ? "100vh" : "100vh",
-        padding: isSmallDev ? "" : "0px 50px 0px 50px",
+        height: isSmallDev ? "100vh" : "100%",
+        padding: isSmallDev ? "" : "100px 50px 100px 50px",
         backgroundColor: "#1d1d3a",
         overflow: "hidden",
         position: "relative",
         justifyContent: "center",
         alignItems: {
-          md: 'center'
+          md: "center",
         },
       }}
     >
@@ -82,48 +82,56 @@ const GeneralBuilding = () => {
           overflow: "auto",
         }}
       /> */}
-      <Box sx={{overflowX: 'auto', position: {xs: 'absolute', md: 'static'}, top: '23%', left: 0, width: '100%'}}>
-      {object1.map((item) => {
-        return (
-          <svg
-            width={isSmallDev ? "200%" : "100%"}
-            viewBox="0 0 1920 1080"
-            xmlnsXlink="http://www.w3.org/1999/xlink"
-            xmlns="http://www.w3.org/2000/svg"
-            xmlnsSvg="http://www.w3.org/2000/svg"
-            style={{
-              borderRadius: "15px",
-            }}
-          >
-            <image
-              height={item.height}
-              width={item.width}
-              transform={item.transform}
-              xlinkHref={item.imageUrl}
-            />
-            {item.points.map((point) => {
-              if (point.type === "path") {
-                return (
-                  <path
-                    onClick={() => navigate(point.href)}
-                    className="g1"
-                    d={point.d}
-                  />
-                );
-              }
-              if (point.type === "polygon") {
-                return (
-                  <polygon
-                    onClick={() => navigate(point.href)}
-                    className="g1"
-                    points={point.d}
-                  />
-                );
-              }
-            })}
-          </svg>
-        );
-      })}
+      <Box
+        sx={{
+          overflowX: "auto",
+          position: { xs: "absolute", md: "static" },
+          top: "23%",
+          left: 0,
+          width: "100%",
+        }}
+      >
+        {object1.map((item) => {
+          return (
+            <svg
+              width={isSmallDev ? "200%" : "100%"}
+              viewBox="0 0 1920 1080"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsSvg="http://www.w3.org/2000/svg"
+              style={{
+                borderRadius: "15px",
+              }}
+            >
+              <image
+                height={item.height}
+                width={item.width}
+                transform={item.transform}
+                xlinkHref={item.imageUrl}
+              />
+              {item.points.map((point) => {
+                if (point.type === "path") {
+                  return (
+                    <path
+                      onClick={() => navigate(point.href)}
+                      className="g1"
+                      d={point.d}
+                    />
+                  );
+                }
+                if (point.type === "polygon") {
+                  return (
+                    <polygon
+                      onClick={() => navigate(point.href)}
+                      className="g1"
+                      points={point.d}
+                    />
+                  );
+                }
+              })}
+            </svg>
+          );
+        })}
       </Box>
 
       <IconButton
@@ -132,7 +140,7 @@ const GeneralBuilding = () => {
           position: "absolute",
           left: 5,
           color: "white",
-          bottom: {xs:"13%", md: '50%'},
+          bottom: { xs: "13%", md: "50%" },
         }}
       >
         <ArrowBackIos />
@@ -142,7 +150,7 @@ const GeneralBuilding = () => {
         sx={{
           position: "absolute",
           right: 5,
-          bottom: {xs:"13%", md: '50%'},
+          bottom: { xs: "13%", md: "50%" },
           color: "white",
         }}
       >
