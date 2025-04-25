@@ -106,7 +106,8 @@ const KatiPopup = ({ anchorEl, setPopupMenu, data, open }) => {
               fontFamily: "Poppins",
               fontWeight: "400",
               color: "white",
-              fontSize: "35px",
+              fontSize: "45px",
+              transform: "translateY(-15px)",
             }}
           >
             {data.floorNumber}
