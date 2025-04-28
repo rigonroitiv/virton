@@ -49,28 +49,30 @@ const PlanimetricSlides = ({ building, type }) => {
 
   useEffect(() => {
     if (buildingData) {
-      const a = buildingData?.filter((it) => it.buildingName !== '').map((it) => {
-        return it.apartmentList
-          ?.filter((apartment) => apartment.rooms === type)
-          .map((apartment) => {
-            return {
-              square: apartment.square,
-              building: apartment.building,
-              buildingName: apartment.buildingName,
-              buildingId: apartment.buildingId,
-              rooms: apartment.rooms,
-              floorNumber: apartment.floorNumber,
-              imageUrl: apartment.imageUrl,
-              image3dUrl: apartment.image3dUrl,
-              id: apartment.id,
-            };
-          });
-      });
+      const a = buildingData
+        ?.filter((it) => it.buildingName !== "")
+        .map((it) => {
+          return it.apartmentList
+            ?.filter((apartment) => apartment.rooms === type)
+            .map((apartment) => {
+              return {
+                square: apartment.square,
+                building: apartment.building,
+                buildingName: apartment.buildingName,
+                buildingId: apartment.buildingId,
+                rooms: apartment.rooms,
+                floorNumber: apartment.floorNumber,
+                imageUrl: apartment.imageUrl,
+                image3dUrl: apartment.image3dUrl,
+                id: apartment.id,
+              };
+            });
+        });
 
       setData(a.flat(2));
     }
   }, [buildingData]);
-  console.log(buildingData?.filter((it) => it.buildingName !== ''))
+  console.log(buildingData?.filter((it) => it.buildingName !== ""));
 
   useEffect(() => {
     if (swiperRef.current && swiperRef.current.swiper) {
@@ -236,11 +238,11 @@ const PlanimetricSlides = ({ building, type }) => {
                       },
                     }}
                   >
-                    <img
+                    {/* <img
                       src="/projektet/assets/images/vector.png"
                       alt=""
                       style={{ marginRight: "7px" }}
-                    />{" "}
+                    />{" "} */}
                     Më Shumë...
                   </Button>
                 </Box>
