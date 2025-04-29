@@ -59,7 +59,7 @@ const ContextMenuParking = ({ menu, setMenu }) => {
       });
     }
   }, [status]);
-  // if(!isAuthorized()) return
+  if(!isAuthorized()) return
   console.log(menu)
 
   return (
