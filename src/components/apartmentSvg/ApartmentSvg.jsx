@@ -110,7 +110,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
           width: "100%",
           height: isSmallDev ? "60vh" : "100%",
           position: "relative",
-          overflow: "hidden",
+          overflowY: "hidden",
           overflowX: "auto",
         }}
       >
@@ -259,6 +259,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
             height: "100%",
             position: "relative",
             overflow: "auto",
+            overflowY: "hidden",
           }}
         >
           {dataForSelection?.map((building, index) => {
