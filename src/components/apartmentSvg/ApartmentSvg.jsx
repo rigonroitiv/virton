@@ -91,7 +91,7 @@ const ApartmentSvg = ({ sizeRange, floorRange }) => {
   };
 
   const getSvgHeight = () => {
-    return "100%";
+    return isSmallDev ? "100%" : "auto";
   };
 
   const handleContextMenu = (e, data) => {
