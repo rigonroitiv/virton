@@ -409,13 +409,13 @@ const FloorSvg = ({ floorId }) => {
             xmlnsSvg="http://www.w3.org/2000/svg"
           >
             <image
-              width={floorData && floorData[activeFloor]?.imageWidth}
-              height={floorData && floorData[activeFloor]?.imageHeight}
-              transform={floorData && floorData[activeFloor]?.imageTransform}
+              width={floorData && floorData[activeFloor - 1]?.imageWidth}
+              height={floorData && floorData[activeFloor - 1]?.imageHeight}
+              transform={floorData && floorData[activeFloor - 1]?.imageTransform}
               xlinkHref={
                 floorData &&
                 `${imagePath}floor/f-${floorData[
-                  activeFloor
+                  activeFloor - 1
                 ]?.buildingId?.toLowerCase()}-${name}.png`
               }
             ></image>
