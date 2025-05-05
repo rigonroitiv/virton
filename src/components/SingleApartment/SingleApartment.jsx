@@ -17,7 +17,7 @@ const SingleApartment = ({ data }) => {
         display: "flex",
         flexDirection: "column",
         width: "100%",
-        padding: isSmallDev ? "50px 0px" : "100px 0px",
+        padding: isSmallDev ? "50px 0px" : "100px 50px",
       }}
     >
       <Box
