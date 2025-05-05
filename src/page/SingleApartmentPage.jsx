@@ -56,12 +56,12 @@ const SingleApartmentPage = () => {
           <Button
             onClick={() => navigate(-1)}
             sx={{
-              width: isSmallDev ? "60%" : "240px",
+              width: isSmallDev ? "45%" : "240px",
               backgroundColor: "white",
               color: "#1d1d3a",
               borderRadius: "50px",
               fontFamily: "Poppins",
-              height: isSmallDev ? "40px" : "55px",
+              height: isSmallDev ? "35px" : "55px",
               fontSize: isSmallDev ? "12px" : "15px",
               ":hover": {
                 backgroundColor: "#C1AC40",
@@ -112,7 +112,7 @@ const SingleApartmentPage = () => {
           >
             Apartamenti: <span style={{ color: "white" }}>{data?.name}</span>
           </Typography>
-          {/* <Box
+          <Box
             sx={{
               height: isSmallDev ? "100px" : "120px",
               backgroundColor: "white",
@@ -130,7 +130,7 @@ const SingleApartmentPage = () => {
               src={"/projektet/assets/images/kendifoto.png"}
               alt=""
             />
-          </Box> */}
+          </Box>
         </Box>
       </Box>
       <Box sx={{ padding: isSmallDev ? "20px" : "50px" }}>
@@ -163,10 +163,7 @@ const SingleApartmentPage = () => {
           <span style={{ fontWeight: "700", color: "#C1AC40" }}>ngjajshme</span>
         </Typography>
 
-        <PlanimetricSlides
-          type={data?.rooms}
-          building={buildingId}
-        />
+        <PlanimetricSlides type={data?.rooms} building={buildingId} />
       </Box>
     </Box>
   );
