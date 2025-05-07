@@ -16,6 +16,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getApartmentDetailModalData } from "../features/apartment/ApartmentSlice";
 import PlanimetricSlides from "../components/filter/PlanimetricSlides";
 import { isAuthorized } from "../features/auth/AuthSlice";
+import { homepage, orientation_path } from "../utils/consts";
 
 const SingleApartmentPage = () => {
   const isSmallDev = useMediaQuery("(max-width: 768px)");
@@ -127,7 +128,7 @@ const SingleApartmentPage = () => {
                 height: isSmallDev ? "100px" : "100%",
                 objectFit: "cover",
               }}
-              src={"/projektet/assets/images/kendifoto.png"}
+              src={`${homepage}${orientation_path}${data?.apartmentPositionImageUrl}`}
               alt=""
             />
           </Box>

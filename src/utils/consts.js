@@ -7,7 +7,8 @@ export const planmetricImageUrl = 'images/planimetrit/'
 // export const BASE_URL_JEHONA = 'http://localhost:8845';
 
 export const EURO_SYMBOL = '€';
-export const homepage = `https://virtoninvest.com/projektet/`
+export const homepage = `https://virtoninvest.com/projektet/`;
+export const orientation_path = `images/orientation/`;
 export const galleryDir = 'assets/gallery/'
 export const imagePath = `https://virtoninvest.com/projektet/objektetImg/`
 export const pdfPath = `https://virtoninvest.com/projektet/pdf/`
