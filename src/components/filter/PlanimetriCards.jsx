@@ -11,8 +11,6 @@ import {
 } from "@mui/material";
 import React, { forwardRef, useEffect, useState } from "react";
 import Logo from "../../assets/svg/logo";
-import SingleViewIcon from "@mui/icons-material/ViewAgenda"; // Icon for single card view
-import GridViewIcon from "@mui/icons-material/ViewModule"; // Icon for grid view
 import { useDispatch, useSelector } from "react-redux";
 import { getAllApartmentSvgData } from "../../features/apartment/ApartmentSlice";
 import { mainUrl, planmetricImageUrl } from "../../utils/consts";
@@ -23,13 +21,15 @@ import {
 } from "../../features/filter/FilterSlice";
 import { fetchApartmentsAll } from "../../features/apartment/ApartmentAPI";
 import { useNavigate, useParams } from "react-router-dom";
+import GridIcon from "../../assets/svg/GridIcon";
+import SingleIcon from "../../assets/svg/SingleIcon";
 
 const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const isSmallDev = useMediaQuery("(max-width:768px)");
   const isMidDev = useMediaQuery("(max-width:1024px)");
-  const [columns, setColumns] = useState(2); // Default to 2 columns for mobile
+  const [columns, setColumns] = useState(1); // Default to 2 columns for mobile
   const squareFilter = useSelector(getRegularSquareFilter);
   const roomFilter = useSelector(getRegularRoomFilter);
   const [data, setData] = useState();
@@ -90,7 +90,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
               },
             }}
           >
-            <SingleViewIcon />
+            <SingleIcon />
           </IconButton>
           <IconButton
             onClick={handleGridView}
@@ -103,7 +103,7 @@ const PlanimetriCards = forwardRef(({ single, ...props }, ref) => {
               },
             }}
           >
-            <GridViewIcon />
+            <GridIcon />
           </IconButton>
         </Box>
       )}

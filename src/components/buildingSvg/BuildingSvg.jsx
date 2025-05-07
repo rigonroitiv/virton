@@ -84,7 +84,7 @@ const BuildingSvg = ({ setFloorId, setFloorPlan }) => {
   };
 
   const getSvgHeight = () => {
-    return isSmallDev ? "auto" : isMidDev ? "auto" : "auto";
+    return isSmallDev ? "100%" : "auto";
   };
 
   const handleContextMenu = (e, data) => {
