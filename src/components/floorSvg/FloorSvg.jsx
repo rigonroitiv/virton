@@ -107,8 +107,9 @@ const FloorSvg = ({ floorId }) => {
   };
 
   //Diari
+  const totalFloors = floorData?.filter((floor) => floor.name === name).length ?? 0;
 
-  const totalFloors = 14; // Total number of floors
+
   const floors = Array.from({ length: totalFloors }, (_, i) => totalFloors - i); // Floors in descending order
   const [activeFloor, setActiveFloor] = useState(1); // Default active floor
   const visibleRange = 5; // Number of floors visible at a time
